@@ -36,14 +36,12 @@ apply_wallpaper() {
 
     case "$img" in
         *.gif)
-            # Keep GIF, copy to cache for swww
             if [ ! -f "$cached_img" ]; then
                 cp "$img" "$cached_img"
             fi
             img="$cached_img"
             ;;
         *)
-            # Non-GIF, copy to cache if missing
             [ ! -f "$cached_img" ] && cp "$img" "$cached_img"
             img="$cached_img"
             ;;
@@ -51,18 +49,28 @@ apply_wallpaper() {
 
     local blurred="$BLURRED_DIR/blurred-${base%.*}.png"
     local rasifile="$BLURRED_DIR/current_wallpaper.rasi"
+    local notif_file="/tmp/.wallbash_notif_id"
+    local notif_id=""
     log "Applying wallpaper: $img"
-        autoD=(
-            "$localDir/bin/ivy-shell.sh \"$img\""
-            "matugen image \"$img\""
-        )
+
+    [[ -f "$notif_file" ]] && notif_id=$(<"$notif_file")
+    if [[ -n "$notif_id" ]]; then
+        notify-send -r "$notif_id" "Using Theme Engine: " -i "${swayncDir}/icons/palette.png" -p 
+    else
+        notif_id=$(notify-send "Using Theme Engine: " -i "${swayncDir}/icons/palette.png" -p)
+        echo "$notif_id" > "$notif_file"
+    fi &
+
+    autoD=(
+        "$localDir/bin/ivy-shell.sh \"$img\""
+        "matugen image \"$img\""
+    )
     export img
     export HOME
     export localDir
     parallel ::: "${autoD[@]}" 
     swww img "$img" -t any --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y &
     wait
-
     if [ ! -f "$blurred" ]; then
         log "Creating blurred wallpaper..."
         if [[ "$img" == *.gif ]]; then
@@ -72,13 +80,10 @@ apply_wallpaper() {
         fi
         [ "$BLUR" != "0x0" ] && magick "$blurred" -blur "$BLUR" "$blurred"
     fi
+    
     echo "* { current-image: url(\"$blurred\", height); }" > "$rasifile" &
     magick "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" &
     cp "$img" "${confDir}/rofi/shared/current-wallpaper.png" &
-
-        local notif_file="/tmp/.wallbash_notif_id"
-    local notif_id=""
-    [[ -f "$notif_file" ]] && notif_id=$(<"$notif_file")
 
     if [[ -n "$notif_id" ]]; then
         notify-send -r "$notif_id" "Wallpaper Theme applied" -i "$img"
