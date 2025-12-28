@@ -18,6 +18,7 @@ else
 fi
 
 ivygenImg="${1:-}"
+VAR2="${2:-}"
 if [ -z "$ivygenImg" ] || [ ! -f "$ivygenImg" ]; then
   printf 'Error: wallpaper missing or not found\n' >&2
   exit 2
@@ -38,13 +39,34 @@ ivyhash=$(md5sum "$ivygenImg" | awk '{print $1}')
 ivycache="$ivygen_cDot/ivy-${ivyhash}.dcol"
 
 if [[ -f $ivycache ]]; then
-  echo "Cache found: restoring wallpaper colors"
-  cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
-  {
+  case "$VAR2" in
+  --helper=0|"")
+      echo "Cache found: restoring wallpaper colors"
+      cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
+      $scrDir/modules/ivyshell-theme.sh &
+      $scrDir/modules/ivyshell-helper.sh
+      exit 0
+    ;;
+  --helper=1)
+    exit 0
+    ;;
+  --theme=1)
+    cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
     $scrDir/modules/ivyshell-theme.sh &
+    exit 0
+    ;;
+  --theme-helper)
     $scrDir/modules/ivyshell-helper.sh
-  }
-  exit 0
+    exit 0
+    ;;
+  *)
+      echo "Cache found: restoring wallpaper colors"
+      cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
+      $scrDir/modules/ivyshell-theme.sh &
+      $scrDir/modules/ivyshell-helper.sh
+      exit 0
+      ;;
+  esac
 fi
 
 # default profile & curve
@@ -257,12 +279,25 @@ cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
 
 printf 'WROTE:\n  %s\n  %s\n' "${OUT_DIR}/ivygen.dcol" 
 printf '\nTo use in your environment: This will provide variables: dcol_pry1, dcol_txt1, dcol_1xa1 ... dcol_4xa9\n' "$OUT_DIR"
-{  
-  $scrDir/modules/ivyshell-theme.sh &
-  $scrDir/modules/ivyshell-helper.sh 
-}
-exit 0
-
-
-
- 
+case "$VAR2" in
+  --helper=0|"")
+    $scrDir/modules/ivyshell-theme.sh &
+    $scrDir/modules/ivyshell-helper.sh
+    exit 0
+    ;;
+  --helper=1)
+    exit 0
+    ;;
+  --theme=1)
+    $scrDir/modules/ivyshell-theme.sh &
+    exit 0
+    ;;
+  --theme-helper)
+    $scrDir/modules/ivyshell-helper.sh
+    exit 0
+  *)
+    $scrDir/modules/ivyshell-theme.sh &
+    $scrDir/modules/ivyshell-helper.sh
+    exit 0
+    ;;
+esac
