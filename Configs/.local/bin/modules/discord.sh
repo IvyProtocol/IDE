@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
+source ./globalvariable.sh
 dQuickCss=$(jq -r '.useQuickCss' "$confDir/vesktop/settings/settings.json")
 subTarget="$confDir/vesktop"
 
@@ -16,7 +16,6 @@ else
     printf "\nIt seems like you are using Quickcss."
     exit 0
   fi
-  echo "Vesktop Theme Generation Completed"
   exit 0
 fi
 
