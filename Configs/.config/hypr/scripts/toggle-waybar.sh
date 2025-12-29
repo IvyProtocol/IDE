@@ -2,8 +2,9 @@
 
 if pgrep -x "waybar" > /dev/null; then
     {
-        pkill -SIGUSR2 waybar &>/dev/null
-        swaync-client -rs
+        pkill waybar
+        swaync-client -rs &
+        waybar & disown 
     } >/dev/null 2>&1
 else
     {
