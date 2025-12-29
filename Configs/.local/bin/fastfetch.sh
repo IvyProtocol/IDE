@@ -103,6 +103,8 @@ EOF
       fetch=$(find "$iconDir" -maxdepth 1 -type f | shuf -n 1)
       exec fastfetch -l "$fetch"
       exit 0
+    else
+      exec fastfetch
     fi
   ;;
 esac
