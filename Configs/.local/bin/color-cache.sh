@@ -35,7 +35,7 @@ total_uncached=${#uncached[@]}
 [[ $total_uncached -eq 0 ]] && echo "All wallpapers already cached. Skipped: $skipped_count." && exit 0
 
 # Progress bar settings
-BAR_WIDTH=100
+BAR_WIDTH=50
 count=0
 
 # Process uncached wallpapers
@@ -47,11 +47,11 @@ for wp in "${uncached[@]}"; do
     bar="$(printf '█%.0s' $(seq 1 $filled))$(printf ' %.0s' $(seq 1 $empty))"
 
     # Display progress
-    printf "\rCaching wallpapers: [%s] %3d%% (%d/%d) | Skipped: %d" \
+    printf "\rPopulating wallpapers: [%s] %3d%% (%d/%d) | Skipped: %d" \
            "$bar" "$percent" "$count" "$total_uncached" "$skipped_count"
 
     # Run ivy-shell.sh silently
-    ~/.local/bin/ivy-shell.sh "$wp" --helper=1 >/dev/null 2>&1
+    ${localDir}/bin/ivy-shell.sh "$wp" --helper=1 >/dev/null 2>&1
 done
 
 echo -e "\nCaching complete. Total processed: $total_uncached, Skipped: $skipped_count."
