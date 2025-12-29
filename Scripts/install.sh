@@ -104,7 +104,7 @@ It is generally recommended for this repository to have cachyos-repository. Howe
     y|Y)
       curl "https://mirror.cachyos.org/${cachyRp}" -o "${cloneDir}/${cachyRp}"
       tar xvf "${cloneDir}/${cachyRp}" -C "${cloneDir}"
-      sudo ./"${cloneDir}/cachyos-repo/cachyos-repo.sh"
+      sudo bash "${cloneDir}/cachyos-repo/cachyos-repo.sh"
       echo "${indentOk} Repository has been installed successfully."
       ;;
     n|N|""|*)
@@ -138,7 +138,7 @@ if [[ $check = "Y" ]] || [[ $check = "y" ]]; then
   esac
 fi
 
-if [[ $check = "Y" ]] && [[ $check = "y" ]]; then
+if [[ $check = "Y" ]] || [[ $check = "y" ]]; then
   if [[ -e "${pkgsRp}" ]]; then
     var=$(stat -c '%U' ${pkgsRp})
     var1=$(stat -c '%U' ${pkgsRp})
@@ -195,19 +195,19 @@ if [[ -d $configDir ]]; then
       if [[ -d "${homDir}/Pictures/wallpapers" ]]; then
         mkdir -p "${homDir}/Pictures/wallpapers"
       fi
-      git clone --depth 1 https://${repRp} "${homDir}/Pictures/wallpapers"
+      git clone --depth 1 "https://${repRp}" "${homDir}/Pictures/wallpapers"
       ${localDir}/color-cache.sh
       echo "${indentOk} Wallpapers Cached"
       ;;
     N|n)
-      prompt_timer 120 "${indentReset} Would you like to pull from another repository? [Drop the full clone link or say --skip to bypass"
+      prompt_timer 120 "${indentReset} Would you like to pull from another repository? [Drop the full clone link or say --skip to avoid"
       case $prompt_input in
         "")
           echo "${indentError} No Link was given"
           ;;
         *)
           dirTarget=$(mkdir -p ${homDir}/Pictures/wallpapers/)
-          git clone --depth 1 $PROMPT_INPUT $dirTarget
+          git clone --depth 1 "$PROMPT_INPUT" "$dirTarget"
           ${localDir}/color-cache.sh
           echo "${IndentOk} Ivy-Shell has cached all the wallpapers"
           ;;
