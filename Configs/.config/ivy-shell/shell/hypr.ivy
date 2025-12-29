@@ -1,4 +1,4 @@
-$(confDir)/hypr/hyprland/decorations/ivy.conf|$RUN:hyprctl reload &
+$(confDir)/hypr/hyprland/decorations/ivy.conf|$RUN:hyprctl reload >/dev/null 2>&1 &
 
 #//---ivy mode enabled---
 # Overriding the values below - DO NOT OVERWRITE --- # IF YOU DO, THEN EDIT $(confDir)/ivy-shell/shell/hypr.ivy-- #
