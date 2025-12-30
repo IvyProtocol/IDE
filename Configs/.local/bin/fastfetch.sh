@@ -75,7 +75,7 @@ EOF
   --print-structure)
     exec fastfetch --print-structure
     ;;
-  -c|--c|--config)
+  --c|-c|--config)
     exec fastfetch --config ${pill2}
     ;;
   --dv|-dv|--detect-version)
