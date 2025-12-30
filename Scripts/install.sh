@@ -334,6 +334,7 @@ if [[ -d $configDir ]]; then
         fi
         ${localDir}/color-cache.sh
         echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
+        break
         ;;
 
       N|n)
@@ -345,6 +346,7 @@ if [[ -d $configDir ]]; then
         fi
         bash "${localDir}/color-cache.sh"
         echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
+        break
         ;;
       *)
         echo -e " :: ${indentError} Invalid choice. Please say 'y' or 'n'. ${exitCode1}"
