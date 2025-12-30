@@ -285,8 +285,8 @@ if [[ -d $configDir ]]; then
   fi  
   EDITOR_SET=0
   if command -v nvim &>/dev/null; then
-    echo -e " :: ${indentInfo} ${indentMagenta}neovim${indentReset} is detected as installed"
-    prompt_timer 20 "${indentAction} Do you want to make ${indentMagenta}nvim${indentReset}." 2>&1
+    echo -e " :: ${indentInfo} ${indentMagenta}neovim${indentSkyBlue} is detected as installed"
+    prompt_timer 20 "${indentAction} Do you want to make ${indentMagenta}nvim${indentSkyBlue}." 2>&1
     case $PROMPT_INPUT in
       Y|y)
         update_editor "nvim"
@@ -300,7 +300,7 @@ if [[ -d $configDir ]]; then
         ;;
     esac
   elif [[ "$EDITOR_SET" -eq 0 ]] && command -v vim &>/dev/null; then
-    echo -e " :: ${indentInfo} ${indentMagenta}nano${indentReset} is detected as installed."
+    echo -e " :: ${indentInfo} ${indentMagenta}nano${indentYellow} is detected as installed."
     prompt_timer 20 "${indentAction} Do you want to make ${indentMagenta}nano${indentReset}"
     if [[ "$PROMPT_INPUT" == "Y" || "$PROMPT_INPUT" == "y" ]]; then
       update_editor "vim"
@@ -321,51 +321,34 @@ if [[ -d $configDir ]]; then
       ;;
   esac
   prompt_timer 120 "${indentYellow} Would you like to get wallpapers?"
-  case "$PROMPT_INPUT" in
-    Y|y)
-      echo -e " :: ${indentAction} Proceeding pulling repository due to User's repository."
-      mkdir -p "${walDir}"
+  while true; do
+    case "$PROMPT_INPUT" in
+      Y|y)
+        echo -e " :: ${indentAction} Proceeding pulling repository due to User's repository."
+        mkdir -p "${walDir}"
       
-      if git clone --depth 1 "https://${repRp}" "${walDir}"; then
-        echo -e " :: ${indentOk} ${indentMagenta}wallpapers${indentReset} cloned successfully!"
-      else
-        echo -e " :: ${indentError} Failed to clone ${indentYellow}wallpapers${indentReset}"
-      fi
-      ${localDir}/color-cache.sh
-      echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
-      ;;
+        if git clone --depth 1 "https://${repRp}" "${walDir}"; then
+          echo -e " :: ${indentOk} ${indentMagenta}wallpapers${indentReset} cloned successfully!"
+        else
+          echo -e " :: ${indentError} Failed to clone ${indentYellow}wallpapers${indentReset}"
+        fi
+        ${localDir}/color-cache.sh
+        echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
+        ;;
 
-    N|n)
-      
-      read -p "$(echo -e " :: ${indentAction} Would you like to pull from another repository? (y/n) ")" input
-      echo -e " :: ${indentInfo} Use --skip to use preinstalled wallpaper, or write a repository here e.g: https://github.com/IvyProtocol/Ivy-wallpapers.git."
-      case $input in
-        "")
-          echo -e " :: ${indentError} No Link was given. ${indentReset}"
-          ;;
-        *)
-          if git clone --depth 1 "$input" "${walDir}"; then
-            echo -e " :: ${indentOk} ${indentMagenta}wallpapers${indentReset} cloned successfully"
-          else
-            echo -e " :: ${indentError} Failed to clone ${indentYellow}wallpapers${indentReset}"
-          fi
-          ${localDir}/color-cache.sh
-          echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
-          ;;
-        --skip)
-          echo -e " :: ${indentOk} Pulling wallpapers from source."
-          if cp -r ${sourceDir}/assets/*.png "${walDir}" 2>/dev/null || cp -r ${sourceDir}/assets/*.jpg "${walDir}" 2>/dev/null; then
-            echo -e " :: ${indentOk} Some ${indentMagenta}wallpapers${indentReset} copied successfully!"
-          else
-            echo -e " :: ${indentError} Failed to copy some ${indentYellow}wallpapers${indentReset}"
-          fi
-            bash "${localDir}/color-cache.sh"
-            echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
-          ;;
-      esac
-      ;;
-  esac
+      N|n)
+        echo -e " :: ${indentOk} Pulling wallpapers from source."
+        if cp -r ${sourceDir}/assets/*.png "${walDir}" 2>/dev/null || cp -r ${sourceDir}/assets/*.jpg "${walDir}" 2>/dev/null; then
+          echo -e " :: ${indentOk} Some ${indentMagenta}wallpapers${indentReset} copied successfully!"
+        else
+          echo -e " :: ${indentError} Failed to copy some ${indentYellow}wallpapers${indentReset}"
+        fi
+        bash "${localDir}/color-cache.sh"
+        echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
+        ;;
+      *)
+        echo -e " :: ${indentError} Invalid choice. Please say 'y' or 'n'. ${exitCode1}"
+        ;;
+    esac
+  done
 fi
-
-
-
