@@ -3,7 +3,7 @@
 set -eo pipefail
 
 scrDir="$(dirname "$(realpath "$0")")"
-if [[ ! "${scrDir}/globalfunction.sh" ]]; then
+if [[ ! -f "${scrDir}/globalfunction.sh" ]]; then
   echo " :: Something went wrong to '${scrDir}/globalfunction.sh'"
 else
   echo " :: Sourcing Global Variable"
@@ -44,7 +44,7 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
       Y|y)
         if [[ $(stat -c '%U' ${cloneDir}/${aurRp}) = $USER ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) = $USER ]]; then
           echo -n " :: ${indentAction} Removing..."
-          rm -rf "${cloneDir}"
+          rm -rf "${cloneDir}/${aurRp}"
           break
         elif [[ $(stat -c '%u' ${cloneDir}/${aurRp}) -eq 0 ]] && [[ $(stat -c '%u' ${cloneDir}/${aurRp}/PKGBUILD) -eq 0 ]]; then
           echo " :: ${indentWarning} The file has ${indentWarning}root${indentWarning} ownership!!! Manual intervention required - ${exitCode1}"
@@ -70,7 +70,7 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
           N|n)
             if [[ $(stat -c '%U' ${cloneDir}/${aurRp}) = $USER ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) = $USER ]]; then
               echo " :: ${indentAction} Removing..."
-              rm -rf "${cloneDir}"
+              rm -rf "${cloneDir}/${aurRp}"
               break
             elif [[ $(stat -c '%u' ${cloneDir}/${aurRp}) -eq 0 ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) -eq 0 ]]; then
               echo " :: ${indentError} The file has ${indentWarning}root${indentWarning} ownership!!! ${exitCode1}"
@@ -87,7 +87,7 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
     esac
   done
 else
-  mkdir -p ${cloneDir}
+  mkdir -p "${cloneDir}"
 fi
 
 if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
@@ -229,12 +229,12 @@ if [[ -d $configDir ]]; then
     echo " :: ${indentError} - ${confDir} does not exist. Creating it now."
     mkdir -p ${confDir} && echo " :: ${indentOk} Directory created successfully." || echo " :: ${indentError} Failed to create directory."
   fi
-  confcheck="fastfetch kitty rofi swaync"
+  confcheck="fastfetch kitty rofi swaync btop  hypr ivy-shell Kvantum nwg-look qt6ct waybar wlogout dunst"
   for conf in $confcheck; do
     confpath="${confDir}/${conf}"
     if [[ -d "${confpath}" ]]; then
       while true; do
-        echo " :: ${indentInfo} Found ${indentYellow}$conf${indentReset} config found in ${confDir}/"
+        echo " :: ${indentInfo} Found ${indentYellow}$conf${indentOrange} config found in ${confDir}/"
         prompt_timer 120 "${indentAction} Do you want to replace ${indentBlue}$conf${indentReset} config?"
         case "$PROMPT_INPUT" in
           Y|y)
@@ -335,7 +335,7 @@ if [[ -d $configDir ]]; then
 
     N|n)
       prompt_timer 120 "${indentAction} Would you like to pull from another repository? [Drop the full clone link or say --skip to avoid"
-      case $prompt_input in
+      case $PROMPT_INPUT in
         "")
           echo -e " :: ${indentError} No Link was given. ${indentReset}"
           ;;
