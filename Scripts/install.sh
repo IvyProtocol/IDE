@@ -229,6 +229,7 @@ if [[ -d $configDir ]]; then
     echo " :: ${indentError} - ${confDir} does not exist. Creating it now."
     mkdir -p ${confDir} && echo " :: ${indentOk} Directory created successfully." || echo " :: ${indentError} Failed to create directory."
   fi
+  backupCheck=0
   confcheck="fastfetch kitty rofi swaync btop  hypr ivy-shell Kvantum nwg-look qt6ct waybar wlogout dunst"
   for conf in $confcheck; do
     confpath="${confDir}/${conf}"
@@ -243,11 +244,11 @@ if [[ -d $configDir ]]; then
             mkdir -p "${backupconf}" 
             mv "${confpath}" "${backupconf}/${conf}-backup-${backupDir}"
             echo -e " :: ${indentNotice} Backed up ${conf} to ${backupconf}/${conf}-backup-${backupDir}"
-            backupConfir=1
+            backupCheck=1
             break
             ;;
           N|n)
-            echo -e " :: ${indentNote} - Skipping ${indentYellow}${conf}${indentReset}" 2>&1
+            echo -e " :: ${indentNotice} - Skipping ${indentYellow}${conf}${indentReset}" 2>&1
             break
             ;;
           *)
@@ -265,10 +266,10 @@ if [[ -d $configDir ]]; then
         echo -e " :: ${indentError} The directory is owned by ${indentWarning}root!${indentYellow} ${indentWarning}${exitCode1}${indentWarning}!"
         exit 1
       fi
-      continue
+      break
     fi
   done
-  if [[ $backupConfir -eq 1 ]]; then
+  if [[ $backupCheck -eq 1 ]]; then
     if [[ $(stat -c '%U' ${confDir}) = $USER ]]; then
       echo -e " :: ${indentOk} Populating ${confDir}"
       ${scrDir}/dircaller.sh --all ${homDir}/
@@ -310,7 +311,7 @@ if [[ -d $configDir ]]; then
   case $PROMPT_INPUT in
     Y|y)
       var=$(echo "$SHELL")
-      echo -e "${indentNotice} Switching the shell to fish"
+      echo -e " :: ${indentNotice} Switching the shell to fish"
       chsh -s /usr/bin/fish
       var1=$(echo "$SHELL")
       echo -e " :: ${indentOk} Changed from $var to ${indentGreen}$var1${indentOrange} is completed!"
@@ -336,14 +337,14 @@ if [[ -d $configDir ]]; then
 
     N|n)
       
-      prompt_timer 120 "${indentAction} Would you like to pull from another repository?"
-      echo -e " :: ${indectInfo} Use --skip to use preinstalled wallpaper, or write a repository here e.g: https://github.com/IvyProtocol/Ivy-wallpapers.git."
-      case $PROMPT_INPUT in
+      read -p "$(echo -e " :: ${indentAction} Would you like to pull from another repository? (y/n) ")" input
+      echo -e " :: ${indentInfo} Use --skip to use preinstalled wallpaper, or write a repository here e.g: https://github.com/IvyProtocol/Ivy-wallpapers.git."
+      case $input in
         "")
           echo -e " :: ${indentError} No Link was given. ${indentReset}"
           ;;
         *)
-          if git clone --depth 1 "$PROMPT_INPUT" "${walDir}"; then
+          if git clone --depth 1 "$input" "${walDir}"; then
             echo -e " :: ${indentOk} ${indentMagenta}wallpapers${indentReset} cloned successfully"
           else
             echo -e " :: ${indentError} Failed to clone ${indentYellow}wallpapers${indentReset}"
@@ -358,12 +359,13 @@ if [[ -d $configDir ]]; then
           else
             echo -e " :: ${indentError} Failed to copy some ${indentYellow}wallpapers${indentReset}"
           fi
-            ${localDir}/color-cache.sh 
+            bash "${localDir}/color-cache.sh"
             echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
           ;;
       esac
       ;;
   esac
 fi
+
 
 
