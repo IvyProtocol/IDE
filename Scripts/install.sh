@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+set -euo pipefail
 
 scrDir="$(dirname "$(realpath "$0")")"
 if [[ ! -f "${scrDir}/globalfunction.sh" ]]; then
@@ -277,7 +277,7 @@ if [[ -d $configDir ]]; then
       echo -e " :: ${indentError} The directory is owned by ${indentWarning}root!${indentYellow} ${indentWarning}${exitCode1}${indentWarning}!"
     fi
   fi
-  tar -xvf "${sourceDir}/Sweet-cursors.tar.xz" -C "${homDir}/.icons" 2>&1
+  tar -xvf "${sourceDir}/Sweet-cursors.tar.xz" -C "${homDir}/.icons" 2>/dev/null 2>&1
   if [[ ! -e "${confDir}/gtk-4.0/assets" ]] || [[ ! -e "${confDir}/gtk-4.0/gtk-dark.css" ]] || [[ -L "${confDir}/gtk-4.0/assets" ]] || [[ -L "${confDir}/gtk-4.0/gtk-dark.css" ]]; then
     ln -sf /usr/share/themes/adw-gtk3/assets "${confDir}/gtk-4.0/assets" 2>&1
     ln -sf /usr/share/themes/adw-gtk3/gtk-4.0/gtk-dark.css "${confDir}/gtk-4.0/gtk-dark.css" 2>&1
@@ -312,13 +312,13 @@ if [[ -d $configDir ]]; then
     case $PROMPT_INPUT in
       Y|y)
         set +e
-        var=$(echo "$SHELL")
+        var=$(getent passwd "$USER" | cut -d: -f7)
         echo -e " :: ${indentNotice} Switching the shell to fish"
         chsh -s /usr/bin/fish 2>&1
-        status=$?
-        var1=$(echo "$SHELL")
+        exitstatus=$?
+        var1=$(getent passwd "$USER" | cut -d: -f7)
 
-        if [[ $status -eq 0 ]]; then
+        if [[ $exitstatus -eq 0 ]]; then
           echo -e " :: ${indentOk} Changed from $var to ${indentGreen}$var1${indentOrange} is completed!"
           break
         else
@@ -326,7 +326,7 @@ if [[ -d $configDir ]]; then
         fi
         ;;
       N|n)
-        echo -e " :: ${indentReset} Aborting due to user preference. Keeping $(echo "$SHELL") intact."
+        echo -e " :: ${indentReset} Aborting due to user preference. Keeping ${var} intact."
         break
         ;;
       *|"")
@@ -352,13 +352,15 @@ if [[ -d $configDir ]]; then
         break
         ;;
       N|n)
+	      mkdir -p "${walDir}"
         echo -e " :: ${indentOk} Pulling wallpapers from source."
-        if cp -r ${sourceDir}/assets/*.png "${walDir}" 2>/dev/null || cp -r ${sourceDir}/assets/*.jpg "${walDir}" 2>/dev/null; then
+        if [[ $PROMPT_INPUT = 'N' ]] || [[ $PROMPT_INPUT = 'n' ]]; then
+          cp -r ${sourceDir}/assets/*.png "${walDir}" 2>/dev/null || cp -r ${sourceDir}/assets/*.jpg "${walDir}" 2>/dev/null
           echo -e " :: ${indentOk} Some ${indentMagenta}wallpapers${indentReset} copied successfully!"
         else
           echo -e " :: ${indentError} Failed to copy some ${indentYellow}wallpapers${indentReset}"
         fi
-        bash "${localDir}/color-cache.sh"
+        ${localDir}/color-cache.sh
         echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
         break
         ;;
@@ -368,4 +370,20 @@ if [[ -d $configDir ]]; then
     esac
   done
   xdg-user-dirs-update 2>&1
+  echo -e " :: This repository has been installed on the system!"
+  read -p "$(echo -e " :: ${indentAction} It is not recommended to use newly installed or upgraded repository without rebooting the system. ${indentSkyBlue} Would you like to reboot? ${indentGreen}(yes/no): ")" answer
+  case $answer in
+    [Yy]|Yes|yes)
+      echo " :: ${indentOk} Rebooting the system. ${exitCode0}"
+      systemctl reboot
+      ;;
+    [Nn]|No|no)
+      echo " :: ${indentOk} The system will not reboot ${exitCode0}"
+      exit 0
+      ;;
+    *)
+      echo " :: ${indentOk} The system will not reboot. ${exitCode0}"
+      exit 0
+      ;;
+  esac
 fi
