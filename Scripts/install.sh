@@ -307,19 +307,34 @@ if [[ -d $configDir ]]; then
       EDITOR_SET=1
     fi
   fi
-  prompt_timer 120 "${indentAction} Would you like to switch to fish?"
-  case $PROMPT_INPUT in
-    Y|y)
-      var=$(echo "$SHELL")
-      echo -e " :: ${indentNotice} Switching the shell to fish"
-      chsh -s /usr/bin/fish 2>&1
-      var1=$(echo "$SHELL")
-      echo -e " :: ${indentOk} Changed from $var to ${indentGreen}$var1${indentOrange} is completed!"
-      ;;
-    N|n|*|"")
-      echo -e " :: ${indentReset} Aborting due to user preference. Keeping $(echo "$SHELL") intact."
-      ;;
-  esac
+  while true; do
+    prompt_timer 120 "${indentAction} Would you like to switch to fish?"
+    case $PROMPT_INPUT in
+      Y|y)
+        set +e
+        var=$(echo "$SHELL")
+        echo -e " :: ${indentNotice} Switching the shell to fish"
+        chsh -s /usr/bin/fish 2>&1
+        status=$?
+        var1=$(echo "$SHELL")
+
+        if [[ $status -eq 0 ]]; then
+          echo -e " :: ${indentOk} Changed from $var to ${indentGreen}$var1${indentOrange} is completed!"
+          break
+        else
+          echo -e " :: ${indentError} Shell change failed? (incorrect passwd?) Try again."
+        fi
+        ;;
+      N|n|)
+        echo -e " :: ${indentReset} Aborting due to user preference. Keeping $(echo "$SHELL") intact."
+        break
+        ;;
+      *|"")
+        echo -e " :: ${indentError} Invalid input. Please answer 'y' or 'n' ${exitCode1}"
+        ;;
+    esac
+  done
+  set -e
   prompt_timer 120 "${indentYellow} Would you like to get wallpapers?"
   while true; do
     case "$PROMPT_INPUT" in
