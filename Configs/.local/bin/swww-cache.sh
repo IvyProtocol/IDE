@@ -11,7 +11,7 @@ if ! pgrep -x "swww-daemon" >/dev/null; then
 fi
 
 if [[ ! -f "$flag" ]]; then
-  ${localDir}/bin/wbsecrandom.sh >/dev/null 2>&1
+  ${localDir}/bin/wbselecgen.sh ${homDir}/Pictures/wallpapers/1_rain_world.png >/dev/null 2>&1
   touch "$flag"
 fi
 
