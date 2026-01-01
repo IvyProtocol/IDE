@@ -225,7 +225,10 @@ else
 fi
 
 if [[ $check = "Y" ]] || [[ $check = "y" ]]; then
-  sudo pacman -Syu --needed >/dev/null 2>&1
+  if [[ -d "${cloneDir}/cachyos-repo" || -e "${cloneDir}/cachyos-repo/cachyos-repo.sh" ]]; then
+    sudo pacman -Syu --needed >/dev/null 2>&1
+	echo -e " :: Updated Keyring of Pacman. ${exitCode0}"
+  fi
   while true; do
     if [[ -e "${pkgsRp}" ]]; then
       if [[ $(stat -c '%U' ${pkgsRp}) = $USER ]]; then
