@@ -416,7 +416,7 @@ if [[ -d $configDir ]]; then
     cp "${localDir}/../state/ivy-shell/cava.ivy" "${confDir}/ivy-shell/shell/"    
   fi
   if pkg_installed "vscodium" &>/dev/null; then
-    mkdir -p "${homDir}/.vscode-oss"
+    mkdir -p "${homDir}/.vscode-oss/extensions/thehydeproject.wallbash-0.3.6/"
     mkdir -p "${confDir}/VSCodium/User"
     echo '
 {
@@ -442,6 +442,12 @@ if [[ -d $configDir ]]; then
 }
     ' > "${confDir}/VSCodium/User/settings.json"
     cp "${localDir}/../state/ivy-shell/code.ivy" "${confDir}/ivy-shell/shell"
+	if [[ -e "${sourceDir}/Code_wallbash.vsix" ]]; then
+	  unzip -l "${sourceDir}/Code_Wallbash.vsix" -d ${cloneDir}/
+	  mv "${cloneDir}/extension/*" "${homDir}/.vscode-oss/extensions/thehydeproject.wallbash-0.3.6/"
+	else
+	  echo -e " :: ${indentError} - Code_Wallbash.vsix doesn't exist!"
+	fi
   fi
   if pkg_installed "vesktop" &>/dev/null; then
     mkdir -p "${confDir}/vesktop/themes"
