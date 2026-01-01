@@ -385,34 +385,41 @@ if [[ -d $configDir ]]; then
     mkdir -p "${confDir}/vesktop/themes"
     cp "${localDir}/../state/ivy-shell/discord.ivy" "${confDir}/ivy-shell/shell/"
   fi
-  while true; do
-    prompt_timer 120 "${indentAction} Would you like to switch to fish?"
-    case $PROMPT_INPUT in
-      Y|y)
-        set +e
-        var=$(getent passwd "$USER" | cut -d: -f7)
-        echo -e " :: ${indentNotice} Switching the shell to fish"
-        chsh -s /usr/bin/fish 2>&1
-        exitstatus=$?
-        var1=$(getent passwd "$USER" | cut -d: -f7)
+  if pkg_installed "python-pywalfox" &>/dev/null; then
+  	cp "${localDir}/../state/ivy-shell/pyfox.ivy" "${confDir}/ivy-shell/shell/"
+  fi
+  var=$(getent passwd "$USER" | cut -d: -f7)
+  if [[ $var == "/usr/bin/fish" ]]; then
+    echo " :: ${indentOk} Shell is already ${var}. No need to trigger again. ${indentGreen}${exitCode0}"
+  else
+    while true; do
+      prompt_timer 120 "${indentAction} Would you like to switch to fish?"
+      case $PROMPT_INPUT in
+        Y|y)
+          set +e
+          echo -e " :: ${indentNotice} Switching the shell to fish"
+          chsh -s /usr/bin/fish 2>&1
+          exitstatus=$?
+          var1=$(getent passwd "$USER" | cut -d: -f7)
 
-        if [[ $exitstatus -eq 0 ]]; then
-          echo -e " :: ${indentOk} Changed from $var to ${indentGreen}$var1${indentOrange} is completed!"
+          if [[ $exitstatus -eq 0 ]]; then
+            echo -e " :: ${indentOk} Changed from $var to ${indentGreen}$var1${indentOrange} is completed!"
+            break
+          else
+            echo -e " :: ${indentError} Shell change failed? (incorrect passwd?) Try again - ${exitCode1}"
+          fi
+          ;;
+        N|n)
+          echo -e " :: ${indentReset} Aborting due to user preference. Keeping ${var} intact."
           break
-        else
-          echo -e " :: ${indentError} Shell change failed? (incorrect passwd?) Try again - ${exitCode1}"
-        fi
-        ;;
-      N|n)
-        echo -e " :: ${indentReset} Aborting due to user preference. Keeping ${var} intact."
-        break
-        ;;
-      *|"")
-        echo -e " :: ${indentError} Invalid input. Please answer 'y' or 'n' ${exitCode1}"
-        ;;
-    esac
-  done
-  set -e
+          ;;
+        *|"")
+          echo -e " :: ${indentError} Invalid input. Please answer 'y' or 'n' ${exitCode1}"
+          ;;
+      esac
+    done
+    set -e
+  fi
   prompt_timer 120 "${indentYellow} Would you like to get wallpapers?"
   while true; do
     case "$PROMPT_INPUT" in
