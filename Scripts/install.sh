@@ -189,7 +189,7 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
         case $PROMPT_INPUT in
           Y|y)
             if [[ -e "${cloneDir}/${aurRp}/PKGBUILD" ]]; then
-              (cd "${cloneDir}/${aurRp}/" && makepkg -si) >/dev/null 2>&1
+              (cd "${cloneDir}/${aurRp}/" && makepkg -si)
               break
             else
               echo "${indentWarning} !!! Something went ${indentWarning}wrong${indentWarning} in our side..."
@@ -233,7 +233,7 @@ else
         var1=$(stat -c '%U' "${cloneDir}/${aurRp}/PKGBUILD")
 
         if [[ $var = "$USER" ]] && [[ $var1 = "$USER" ]]; then
-          (cd "${cloneDir}/${aurRp}/" && makepkg -si) >/dev/null 2>&1
+          (cd "${cloneDir}/${aurRp}/" && makepkg -si)
         fi
         ;;
       [Nn]*|""|*)
@@ -257,7 +257,7 @@ if [[ "$rpcachecheck" -eq 1 ]]; then
       var1=$(stat -c '%U' "${cloneDir}/${aurRp}/PKGBUILD")
 
       if [[ $var = "$USER" ]] && [[ $var1 = "$USER" ]]; then
-        (cd "${cloneDir}/${aurRp}/" && makepkg -si) >/dev/null 2>&1
+        (cd "${cloneDir}/${aurRp}/" && makepkg -si)
       fi
       ;;
     [Nn]*|""|*)
