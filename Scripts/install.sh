@@ -327,7 +327,7 @@ if [[ -d $configDir ]]; then
   fi  
   EDITOR_SET=0
   if pkg_installed "nvim" &>/dev/null; then
-    echo -e " :: ${indentInfo} ${indentMagenta}neovim${indentSkyBlue} is detected as installed"
+    echo -e " :: ${indentInfo} By default, this repository comes with ${indentMagenta}neovim${indentSkyBlue}."
     prompt_timer 20 "${indentAction} Do you want to make ${indentMagenta}neovim${indentSkyBlue} default?" 2>&1
     case $PROMPT_INPUT in
       Y|y)
