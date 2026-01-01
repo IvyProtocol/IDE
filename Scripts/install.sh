@@ -33,7 +33,7 @@ case $command in
     mkdir -p "${cloneDir}"
     curl "https://mirror.cachyos.org/${cachyRp}" -o "${cloneDir}/${cachyRp}"
     tar xvf "${cloneDir}/${cachyRp}" -C "${cloneDir}"
-    (cd "${cloneDir}/cachyos-repo" && sudo ./cachyos-repo.sh) >/dev/null 2>&1
+    (cd "${cloneDir}/cachyos-repo" && sudo ./cachyos-repo.sh)
     echo " :: ${indentOk} Repository has been ${indentGreen}installed${indentGreen} successfully. ${exitCode0}"
     exit 0
     ;;
@@ -75,6 +75,7 @@ fi
 
 
 if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
+  rpcachecheck=0
   while true; do
     if [[ -d "${cloneDir}/cachyos-repo" ]] || [[ -d "${cloneDir}/${cachyRp}" ]]; then
       prompt_timer 120 "${indentAction} Would you like to delete the repository?"
@@ -84,6 +85,7 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
             echo " :: ${indentNotice} Deleting ${indentGreen}the Repository"
             rm -rf ${cloneDir}/${cachyRp}
             rm -rf ${cloneDir}/cachyos-repo
+			rpcachecheck=1
             break
           elif [[ $(stat -c '%u' ${cloneDir}/${cachyRp}) -eq 0 ]] || [[ $(stat -c '%u' ${cloneDir}/cachyos-repo) -eq 0 ]]; then
             echo " :: ${indentError} The file has ${indentWarning}root${indentWarning} ownership!! Manual intervention required - ${exitCode1}"
@@ -95,7 +97,7 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
           case $PROMPT_INPUT in
             y|Y)
               if [[ -e "${cloneDir}/cachyos-repo/cachyos-repo.sh" ]]; then
-                (cd "${cloneDir}/cachyos-repo" && sudo ./cachyos-repo.sh) >/dev/null 2>&1
+                (cd "${cloneDir}/cachyos-repo" && sudo ./cachyos-repo.sh)
                 break
               else
                 echo "${indentError} !!! Something went ${indentWarning}wrong${indentWarning} in our side..."
@@ -112,6 +114,7 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
                 echo " :: ${indentNotice} Deleting ${indentGreen}the repository."
                 rm -rf ${cloneDir}/${cachyRp}
                 rm -rf ${cloneDir}/cachyos-repo
+				rpcachecheck=1
                 break
               elif [[ $(stat -c '%u' ${cloneDir}/${cachyRp}) -eq 0 ]] || [[ $(stat -c '%u' ${cloneDir}/cachyos-repo) -eq 0 ]]; then
                 echo " :: ${indentError} The file has ${indentWarning}root${indentWarning} ownership!!! ${exitCode1}"
@@ -134,7 +137,7 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
 		  mkdir -p "${cloneDir}"
           curl "https://mirror.cachyos.org/${cachyRp}" -o "${cloneDir}/${cachyRp}" 2>/dev/null  2>&1
           tar xvf "${cloneDir}/${cachyRp}" -C "${cloneDir}" >/dev/null 2>&1
-          (cd "${cloneDir}/cachyos-repo/" && sudo ./cachyos-repo.sh) >/dev/null 2>&1
+          (cd "${cloneDir}/cachyos-repo/" && sudo ./cachyos-repo.sh)
           echo " :: ${indentOk} Repository has been ${indentGreen}installed${indentGreen} successfully. ${exitCode0}"
           break
           ;;
@@ -147,8 +150,27 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
   done
 fi
 
+if [[ "$rpcachecheck" -eq 1 ]]; then
+  prompt_timer 120 "${indentNotice} Would you like to get cachyos-repository? "
+  case "$PROMPT_INPUT" in 
+    y|Y)
+      mkdir -p "${cloneDir}"
+      curl "https://mirror.cachyos.org/${cachyRp}" -o "${cloneDir}/${cachyRp}" 2>/dev/null  2>&1
+      tar xvf "${cloneDir}/${cachyRp}" -C "${cloneDir}" >/dev/null 2>&1
+      (cd "${cloneDir}/cachyos-repo/" && sudo ./cachyos-repo.sh)
+      echo " :: ${indentOk} Repository has been ${indentGreen}installed${indentGreen} successfully. ${exitCode0}"
+      break
+      ;;
+    n|N|""|*)
+      echo " :: ${indentReset} Aborting installation due to user preference. ${exitCode0}"
+      break
+      ;;
+  esac 
+fi
+
 if [[ -d "${cloneDir}/${aurRp}" ]]; then
   echo -n "${indentAction} AUR exists '${cloneDir}/${aurRp}'...."
+  rpcachecheck=0
   while true; do
     prompt_timer 120 "${indentAction} Do you want to remove the directory? "
     case $PROMPT_INPUT in
@@ -156,6 +178,7 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
         if [[ $(stat -c '%U' ${cloneDir}/${aurRp}) = $USER ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) = $USER ]]; then
           echo -n " :: ${indentAction} Removing..."
           rm -rf "${cloneDir}/${aurRp}"
+		  rpcachecheck=1
           break
         elif [[ $(stat -c '%u' ${cloneDir}/${aurRp}) -eq 0 ]] && [[ $(stat -c '%u' ${cloneDir}/${aurRp}/PKGBUILD) -eq 0 ]]; then
           echo " :: ${indentWarning} The file has ${indentWarning}root${indentWarning} ownership!!! Manual intervention required - ${exitCode1}"
@@ -182,6 +205,7 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
             if [[ $(stat -c '%U' ${cloneDir}/${aurRp}) = $USER ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) = $USER ]]; then
               echo " :: ${indentAction} Removing..."
               rm -rf "${cloneDir}/${aurRp}"
+			  rpcachecheck=1
               break
             elif [[ $(stat -c '%u' ${cloneDir}/${aurRp}) -eq 0 ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) -eq 0 ]]; then
               echo " :: ${indentError} The file has ${indentWarning}root${indentWarning} ownership!!! ${exitCode1}"
@@ -222,6 +246,28 @@ else
         ;;
     esac
   fi
+fi
+
+if [[ "$rpcachecheck" -eq 1 ]]; then
+  prompt_timer 120 "${indentAction} Would you like to install yay?"
+  case "$PROMPT_INPUT" in
+    [Yy]*)
+      git clone "https://aur.archlinux.org/${aurRp}.git" "${cloneDir}/${aurRp}" 
+      var=$(stat -c '%U' "${cloneDir}/${aurRp}")
+      var1=$(stat -c '%U' "${cloneDir}/${aurRp}/PKGBUILD")
+
+      if [[ $var = "$USER" ]] && [[ $var1 = "$USER" ]]; then
+        (cd "${cloneDir}/${aurRp}/" && makepkg -si) >/dev/null 2>&1
+      fi
+      ;;
+    [Nn]*|""|*)
+      if pkg_installed "yay-bin" 2>/dev/null || pkg_installed "yay" 2>/dev/null; then
+        echo -e " :: ${indentAction} ${aurRp} is already ${indentGreen}installed - ${exitCode0}"
+      else
+        echo " :: ${indentReset} Aborting Installation due to user preference. The installation will not begin if ${aurRp} is not installed. ${exitCode1}"
+        exit 1
+      fi
+  esac
 fi
 
 if [[ $check = "Y" ]] || [[ $check = "y" ]]; then
