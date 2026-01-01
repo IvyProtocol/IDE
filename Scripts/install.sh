@@ -418,7 +418,7 @@ if [[ -d $configDir ]]; then
   if pkg_installed "vscodium" &>/dev/null; then
     mkdir -p "${homDir}/.vscode-oss"
     mkdir -p "${confDir}/VSCodium/User"
-    echo "
+    echo '
 {
   "workbench.colorTheme": "Wallbash",
   "window.menuBarVisibility": "toggle",
@@ -440,7 +440,7 @@ if [[ -d $configDir ]]; then
   "window.customTitleBarVisibility": "auto",
   "workbench.sideBar.location": "right"
 }
-    " > "${confDir}/VSCodium/User/settings.json"
+    ' > "${confDir}/VSCodium/User/settings.json"
     cp "${localDir}/../state/ivy-shell/code.ivy" "${confDir}/ivy-shell/shell"
   fi
   if pkg_installed "vesktop" &>/dev/null; then
