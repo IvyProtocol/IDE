@@ -55,6 +55,27 @@ case $command in
       exit 0
 	fi
     ;;
+  --sddm)
+    if [[ -f "${sourceDir}/SDDM-Silent.tar.gz" ]]; then
+      sudo chown -R $USER:$USER /usr/share/sddm/themes/* >/dev/null 2>&1
+      tar -xvf "${sourceDir}/SDDM-Silent.tar.gz" -C "/usr/share/sddm/themes/" >/dev/null 2>&1
+      clear
+      if [[ ! -e "${localDir}/../ivy-shell/sddm/sddm.conf" ]]; then
+        cat > "${localDir}/../ivy-shell/sddm/sddm.conf" <<EOF
+[General]
+InputMethod=qtvirtualkeyboard
+GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
+
+[Theme]
+Current=Silent
+EOF
+      fi
+      sudo cp "${localDir}/../ivy-shell/sddm/sddm.conf" /etc/sddm.conf >/dev/null 2>&1
+      if sed -n '/^[[:space:]]*if \[\[ "\$img"/,/^[[:space:]]*fi/p' "${localDir}/wbselecgen.sh" | grep -q '^[[:space:]]*#.*cp '; then
+        sed -i '/^[[:space:]]*if \[\[ "\$img"/,/^[[:space:]]*fi/ s/^\([[:space:]]\{4,\}\)# \?\(cp .*"\)/\1\2/' "${localDir}/wbselecgen.sh"
+      fi
+    fi
+    ;;
 esac
 
 if grep -iqE '(ID|ID_LIKE)=.*(arch)' /etc/os-release >/dev/null 2>&1; then
@@ -320,6 +341,22 @@ if [[ $check = "Y" ]] || [[ $check = "y" ]]; then
           break
           ;;
       esac
+	  sddmtheme=0
+      prompt_timer 120 "${indentInfo} Would you like to get SDDM Theme?"
+      case "$PROMPT_INPUT" in
+        [Yy]*)
+          echo -e " :: ${indentAction} Proceeding installation due to User's request."
+          ${pkgsRp} --sddm
+          echo -e " :: ${indentAction} SDDM dependencies have been ${indentGreen}installed${indentGreen}."
+          sddmtheme=1
+          break
+          ;;
+        [Nn]*)
+          echo -e " :: ${indentReset} Avorting themeing SDDM due to User's request."
+          sddmtheme=0
+          break
+          ;;
+      esac
     else
       echo " :: ${indentError} The Package DOES NOT EXIST!! ${indentWarning} ${exitCode0}"
       exit 0
@@ -434,6 +471,20 @@ if [[ -d $configDir ]]; then
   if pkg_installed "python-pywalfox" &>/dev/null; then
   	cp "${localDir}/../state/ivy-shell/pyfox.ivy" "${confDir}/ivy-shell/shell/"
   fi
+  if [[ $sddmtheme -eq 1 ]]; then
+    if [[ -f "${sourceDir}/SDDM-Silent.tar.gz" ]]; then
+      sudo chown -R $USER:$USER /usr/share/sddm/themes/* >/dev/null 2>&1
+      tar -xvf "${sourceDir}/SDDM-Silent.tar.gz" -C "/usr/share/sddm/themes/" >/dev/null 2>&1
+      sudo cp "${localDir}/../state/ivy-shell/sddm/sddm.conf" "/etc/sddm.conf" 2>&1
+    elif [[ $sddmtheme -eq 0 ]]; then
+      rm -rf "${localDir}/../state/ivy-shell/sddm"
+      rm "${localDir}/sddm-style.sh"
+      sed -i '27d' ${hyprDir}/keybinds.conf >/dev/null 2>&1
+	  sed -i '/^[[:space:]]*if \[\[ "\$img"/,/^[[:space:]]*fi/ s/^\([[:space:]]\{4,\}\)\(cp .*"\)/\1# \2/' "${localDir}/wbselecgen.sh"
+    else
+      echo -e " :: ${indentError} The source file for SDDM doesn't exist. ${exitCode1}"
+    fi
+  fi
   var=$(getent passwd "$USER" | cut -d: -f7)
   if [[ $var == "/usr/bin/fish" ]]; then
     echo " :: ${indentOk} Shell is already ${var}. No need to trigger again. ${indentGreen}${exitCode0}"
@@ -488,7 +539,7 @@ if [[ -d $configDir ]]; then
 	    mkdir -p "${walDir}"
         echo -e " :: ${indentOk} Pulling wallpapers from source."
         if [[ $PROMPT_INPUT = 'N' ]] || [[ $PROMPT_INPUT = 'n' ]]; then
-          cp -r ${sourceDir}/assets/*.png "${walDir}" 2>/dev/null || cp -r ${sourceDir}/assets/*.jpg "${walDir}" 2>/dev/null
+          mv ${sourceDir}/assets/*.png "${walDir}" && cp -r ${sourceDir}/assets/*.jpg "${walDir}" >/dev/null 2>&1
           echo -e " :: ${indentOk} Some ${indentMagenta}wallpapers${indentReset} copied successfully!"
         else
           echo -e " :: ${indentError} Failed to copy some ${indentYellow}wallpapers - ${exitCode1}"
