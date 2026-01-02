@@ -12,8 +12,6 @@ if [[ "$EUID" -eq 0 ]]; then
 fi
 
 if [[ -f ${OUT_DIR} ]]; then
-  :
-else
   mkdir -p "$OUT_DIR"
 fi
 
@@ -25,8 +23,6 @@ if [ -z "$ivygenImg" ] || [ ! -f "$ivygenImg" ]; then
 fi
 
 if [[ -f ${ivygen_cDot} ]]; then
-  :
-else
   mkdir -p "$ivygen_cDot"
 fi
 
