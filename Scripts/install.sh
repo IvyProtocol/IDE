@@ -372,7 +372,7 @@ if [[ -d $configDir ]]; then
     if [[ -d "${confpath}" ]]; then
       while true; do
         echo " :: ${indentInfo} Found ${indentYellow}$conf${indentOrange} config found in ${confDir}/"
-        prompt_timer 120 "${indentAction} Do you want to replace ${indentBlue}${conf}${indentReset} config?"
+        prompt_timer 120 "${indentAction} Do you want to backup ${indentBlue}${conf}${indentReset} config?"
         case "$PROMPT_INPUT" in
           Y|y)
             backupDir=$(get_backup_dirname)
