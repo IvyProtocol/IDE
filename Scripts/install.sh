@@ -110,7 +110,7 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
             echo " :: ${indentNotice} Deleting ${indentGreen}the Repository"
             rm -rf ${cloneDir}/${cachyRp}
             rm -rf ${cloneDir}/cachyos-repo
-			rpcachecheck=1
+			      rpcachecheck=1
             break
           elif [[ $(stat -c '%u' ${cloneDir}/${cachyRp}) -eq 0 ]] || [[ $(stat -c '%u' ${cloneDir}/cachyos-repo) -eq 0 ]]; then
             echo " :: ${indentError} The file has ${indentWarning}root${indentWarning} ownership!! Manual intervention required - ${exitCode1}"
@@ -122,9 +122,9 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
           case $PROMPT_INPUT in
             y|Y)
               if [[ -e "${cloneDir}/cachyos-repo/cachyos-repo.sh" ]]; then
-			  	clear
+			  	      clear
                 (cd "${cloneDir}/cachyos-repo" && sudo ./cachyos-repo.sh)
-				clear
+				        clear
                 break
               else
                 echo "${indentError} !!! Something went ${indentWarning}wrong${indentWarning} in our side..."
@@ -141,7 +141,7 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
                 echo " :: ${indentNotice} Deleting ${indentGreen}the repository."
                 rm -rf ${cloneDir}/${cachyRp}
                 rm -rf ${cloneDir}/cachyos-repo
-				rpcachecheck=1
+				        rpcachecheck=1
                 break
               elif [[ $(stat -c '%u' ${cloneDir}/${cachyRp}) -eq 0 ]] || [[ $(stat -c '%u' ${cloneDir}/cachyos-repo) -eq 0 ]]; then
                 echo " :: ${indentError} The file has ${indentWarning}root${indentWarning} ownership!!! ${exitCode1}"
@@ -161,12 +161,12 @@ if [[ "${check}" = "Y" ]] || [[ ${check} = "y" ]]; then
       prompt_timer 120 "${indentNotice} Would you like to get cachyos-repository? "
       case "$PROMPT_INPUT" in
         y|Y)
-		  mkdir -p "${cloneDir}"
+		      mkdir -p "${cloneDir}"
           curl "https://mirror.cachyos.org/${cachyRp}" -o "${cloneDir}/${cachyRp}" 2>/dev/null  2>&1
           tar xvf "${cloneDir}/${cachyRp}" -C "${cloneDir}" >/dev/null 2>&1
-		  clear
+		      clear
           (cd "${cloneDir}/cachyos-repo/" && sudo ./cachyos-repo.sh)
-		  clear
+		      clear
           echo " :: ${indentOk} Repository has been ${indentGreen}installed${indentGreen} successfully. ${exitCode0}"
           break
           ;;
@@ -207,7 +207,7 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
         if [[ $(stat -c '%U' ${cloneDir}/${aurRp}) = $USER ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) = $USER ]]; then
           echo -n " :: ${indentAction} Removing..."
           rm -rf "${cloneDir}/${aurRp}"
-		  rpcachecheck=1
+		      rpcachecheck=1
           break
         elif [[ $(stat -c '%u' ${cloneDir}/${aurRp}) -eq 0 ]] && [[ $(stat -c '%u' ${cloneDir}/${aurRp}/PKGBUILD) -eq 0 ]]; then
           echo " :: ${indentWarning} The file has ${indentWarning}root${indentWarning} ownership!!! Manual intervention required - ${exitCode1}"
@@ -218,9 +218,9 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
         case $PROMPT_INPUT in
           Y|y)
             if [[ -e "${cloneDir}/${aurRp}/PKGBUILD" ]]; then
-		      clear
+		          clear
               (cd "${cloneDir}/${aurRp}/" && makepkg -si)
-			  clear
+			        clear
               break
             else
               echo "${indentWarning} !!! Something went ${indentWarning}wrong${indentWarning} in our side..."
@@ -236,7 +236,7 @@ if [[ -d "${cloneDir}/${aurRp}" ]]; then
             if [[ $(stat -c '%U' ${cloneDir}/${aurRp}) = $USER ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) = $USER ]]; then
               echo " :: ${indentAction} Removing..."
               rm -rf "${cloneDir}/${aurRp}"
-			  rpcachecheck=1
+			        rpcachecheck=1
               break
             elif [[ $(stat -c '%u' ${cloneDir}/${aurRp}) -eq 0 ]] && [[ $(stat -c '%U' ${cloneDir}/${aurRp}/PKGBUILD) -eq 0 ]]; then
               echo " :: ${indentError} The file has ${indentWarning}root${indentWarning} ownership!!! ${exitCode1}"
@@ -264,9 +264,9 @@ else
         var1=$(stat -c '%U' "${cloneDir}/${aurRp}/PKGBUILD")
 
         if [[ $var = "$USER" ]] && [[ $var1 = "$USER" ]]; then
-		  clear
+		      clear
           (cd "${cloneDir}/${aurRp}/" && makepkg -si)
-		  clear
+		      clear
         fi
         ;;
       [Nn]*|""|*)
@@ -444,22 +444,22 @@ if [[ -d $configDir ]]; then
       EDITOR_SET=1
     fi
   fi
-    if pkg_installed "cava" &>/dev/null; then
+  if pkg_installed "cava" &>/dev/null; then
     mkdir -p "${confDir}/cava"
     cp "${localDir}/../state/ivy-shell/cava.ivy" "${confDir}/ivy-shell/shell/"    
   fi
   if pkg_installed "vscodium" &>/dev/null; then
     mkdir -p "${homDir}/.vscode-oss/extensions/thehydeproject.wallbash-0.3.6/"
     mkdir -p "${confDir}/VSCodium/User"
-	cp "${localDir}/../state/ivy-shell/VSCodium/User/settings.json" "${confDir}/VSCodium/User"
+	  cp "${localDir}/../state/ivy-shell/VSCodium/User/settings.json" "${confDir}/VSCodium/User"
     cp "${localDir}/../state/ivy-shell/code.ivy" "${confDir}/ivy-shell/shell"
-	if [[ -e "${sourceDir}/Code_wallbash.vsix" ]]; then
-	  unzip -l "${sourceDir}/Code_Wallbash.vsix"
-	  unzip -q "${sourceDir}/Code_Wallbash.vsix" -d "${cloneDir}" 
-	  mv "${cloneDir}/extension/*" "${homDir}/.vscode-oss/extensions/thehydeproject.wallbash-0.3.6/"
-	else
-	  echo -e " :: ${indentError} - Code_Wallbash.vsix doesn't exist!"
-	fi
+	  if [[ -e "${sourceDir}/Code_wallbash.vsix" ]]; then
+	    unzip -l "${sourceDir}/Code_Wallbash.vsix"
+	    unzip -q "${sourceDir}/Code_Wallbash.vsix" -d "${cloneDir}" 
+	    mv "${cloneDir}/extension/*" "${homDir}/.vscode-oss/extensions/thehydeproject.wallbash-0.3.6/"
+	  else
+	    echo -e " :: ${indentError} - Code_Wallbash.vsix doesn't exist!"
+	  fi
   fi
   if pkg_installed "vesktop" &>/dev/null; then
     mkdir -p "${confDir}/vesktop/themes"
@@ -477,7 +477,7 @@ if [[ -d $configDir ]]; then
       rm -rf "${localDir}/../state/ivy-shell/sddm"
       rm "${localDir}/sddm-style.sh"
       sed -i '27d' ${hyprDir}/keybinds.conf >/dev/null 2>&1
-	  sed -i '/^[[:space:]]*if \[\[ "\$img"/,/^[[:space:]]*fi/ s/^\([[:space:]]\{4,\}\)\(cp .*"\)/\1# \2/' "${localDir}/wbselecgen.sh"
+	    sed -i '/^[[:space:]]*if \[\[ "\$img"/,/^[[:space:]]*fi/ s/^\([[:space:]]\{4,\}\)\(cp .*"\)/\1# \2/' "${localDir}/wbselecgen.sh"
     else
       echo -e " :: ${indentError} The source file for SDDM doesn't exist. ${exitCode1}"
     fi
@@ -492,9 +492,9 @@ if [[ -d $configDir ]]; then
         Y|y)
           set +e
           echo -e " :: ${indentNotice} Switching the shell to fish"
-		  clear
+		      clear
           chsh -s /usr/bin/fish 2>&1
-		  clear
+		      clear
           exitstatus=$?
           var1=$(getent passwd "$USER" | cut -d: -f7)
 
