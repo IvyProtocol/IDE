@@ -453,7 +453,7 @@ if [[ -d $configDir ]]; then
     mkdir -p "${confDir}/VSCodium/User"
 	  cp "${localDir}/../state/ivy-shell/VSCodium/User/settings.json" "${confDir}/VSCodium/User"
       cp "${localDir}/../state/ivy-shell/code.ivy" "${confDir}/ivy-shell/shell"
-	  if [[ -e "${sourceDir}/Code_wallbash.vsix" ]]; then
+	  if [[ -e "${sourceDir}/Code_Wallbash.vsix" ]]; then
 	    unzip -l "${sourceDir}/Code_Wallbash.vsix"
 	    unzip -q "${sourceDir}/Code_Wallbash.vsix" -d "${cloneDir}" 
 	    mv ${cloneDir}/extension/* "${homDir}/.vscode-oss/extensions/thehydeproject.wallbash-0.3.6/"
