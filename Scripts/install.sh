@@ -332,11 +332,9 @@ if [[ $check = "Y" ]] || [[ $check = "y" ]]; then
           echo -e " :: ${indentAction} Proceeding installation due to User's request."
           ${pkgsRp} --driver
           echo -e " :: ${indentAction} All driver packages were ${indentGreen}installed${indentGreen}"
-          break
           ;;
         [Nn]|No|no)
           echo -e " :: ${indentReset} Avorting installation due to User Preferences."
-          break
           ;;
       esac
 	  sddmtheme=0
