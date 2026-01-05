@@ -482,7 +482,7 @@ if [[ -d $configDir ]]; then
         echo " :: Something went wrong while populating SDDM Theme. ${exitCode1}"
       fi
     elif [[ $sddmtheme -eq 0 ]]; then
-      rm -rf "${localDir}/../state/ivy-shell/sddm"
+      rm -rf ${localDir}/../state/ivy-shell/sddm
       rm "${localDir}/sddm-style.sh"
       sed -i '27d' ${hyprDir}/keybinds.conf >/dev/null 2>&1
 	    sed -i '/^[[:space:]]*if \[\[ "\$img"/,/^[[:space:]]*fi/ s/^\([[:space:]]\{4,\}\)\(cp .*"\)/\1# \2/' "${localDir}/wbselecgen.sh"
