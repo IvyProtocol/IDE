@@ -419,7 +419,12 @@ if [[ -d $configDir ]]; then
     ln -sf /usr/share/themes/adw-gtk3/assets "${confDir}/gtk-4.0/assets" 2>&1
     ln -sf /usr/share/themes/adw-gtk3/gtk-4.0/gtk-dark.css "${confDir}/gtk-4.0/gtk-dark.css" 2>&1
     echo -e " :: ${indentOk} GTK Symlink initialized ${indentGreen}."
-  fi  
+  fi
+  if [[ ! -e "${confDir}/waybar/style.css" ]] || [[ ! -e "${confDir}/waybar/config" ]] || [[ -L "${confDir}/waybar/style.css" ]] || [[ -L "${confDir}/waybar/config" ]]; then
+    ln -sf ${confDir}/waybar/Styles/\[TOP\]\ Simple-Cornered.css "${confDir}/waybar/style.css" 2>&1
+  	ln -sf ${confDir}/waybar/Styles/Configs/\[BOT\]\ Default\ Laptop "${confDir}/waybar/config" 2>&1
+  	echo -e " :: ${indentOk} Waybar Configuration reinstated."
+  fi
   EDITOR_SET=0
   if pkg_installed "nvim" &>/dev/null; then
     echo -e " :: ${indentInfo} By default, this repository comes with ${indentMagenta}neovim${indentSkyBlue}."
@@ -578,3 +583,4 @@ if [[ -d $configDir ]]; then
       ;;
   esac
 fi
+
