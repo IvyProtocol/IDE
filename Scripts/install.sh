@@ -559,6 +559,7 @@ if [[ -d $configDir ]]; then
   done
   xdg-user-dirs-update 2>&1
   sudo systemctl enable sddm 2>&1
+  chmod +x ${localDir}/
   cp "${configDir}/.gtkrc-2.0" "${homDir}/"
   echo -e " :: This repository has been installed on the system!"
   read -p "$(echo -e " :: ${indentAction} It is not recommended to use newly installed or upgraded repository without rebooting the system. ${indentSkyBlue} Would you like to reboot? ${indentGreen}(yes/no): ")" answer
