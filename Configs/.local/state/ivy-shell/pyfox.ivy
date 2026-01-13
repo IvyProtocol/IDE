@@ -4,20 +4,21 @@ $(cacheDir)/wal/colors.json|$RUN:pywalfox update &
     "alpha": "100",
     "colors": {
       "color0": "#<ivy_pry1>",
-      "color1": "",
-      "color2": "",
-      "color3": "",
-      "color4": "",
-      "color5": "",
-      "color6": "",
-      "color7": "",
-      "color8": "",
-      "color9": "",
+      "color1": "#<ivy_pry2>",
+      "color2": "#<ivy_pry3>",
+      "color3": "#<ivy_pry4>",
+      "color4": "#<ivy_1xa5>",
+      "color5": "#<ivy_2xa5>",
+      "color6": "#<ivy_3xa5>",
+      "color7": "#<ivy_4xa5>",
+      "color8": "#<ivy_1xa1>",
+      "color9": "#<ivy_2xa1>",
       "color10": "#<ivy_2xa8>",
-      "color11": "",
-      "color12": "",
+      "color11": "#<ivy_4xa1>",
+      "color12": "#<ivy_1xa6>",
       "color13": "#<ivy_2xa7>",
-      "color14": "",
+      "color14": "#<ivy_3xa7>",
       "color15": "#<ivy_4xa8>"
     }
   }
+
