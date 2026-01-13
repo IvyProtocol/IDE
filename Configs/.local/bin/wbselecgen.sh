@@ -77,14 +77,14 @@ apply_wallpaper() {
     echo "* { current-image: url(\"$blurred\", height); }" > "$rasifile" &
     cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" &
     if [[ "$img" = *.jpg ]]; then
-        magick "$img" "${confDir}/rofi/shared/current-wallpaper.png" &
-        cp "$img" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" &
+        magick "$img" "${confDir}/rofi/shared/current-wallpaper.png" 
+        cp "$blurred" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
     elif [[ "$img" = *.gif ]]; then
-        magick "$img[0]" "${confDir}/rofi/shared/current-wallpaper.png" &
-        cp "$img" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" &
+        magick "$img[0]" "${confDir}/rofi/shared/current-wallpaper.png" 
+        cp "$blurred" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
     elif [[ "$img" = *.png ]]; then
-        magick "$img" "${confDir}/rofi/shared/current-wallpaper.png" &
-        cp "$img" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" &
+        magick "$img" "${confDir}/rofi/shared/current-wallpaper.png" 
+        cp "$blurred" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
     fi
 
     if [[ -n "$notif_id" ]]; then
@@ -128,3 +128,4 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
+
