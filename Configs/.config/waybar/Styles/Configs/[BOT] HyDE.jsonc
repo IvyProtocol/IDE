@@ -15,7 +15,7 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/l_end","custom/power","custom/cliphist","custom/wbar","custom/wallchange","custom/r_end","custom/l_end","wlr/taskbar","custom/r_end","custom/padd"],
+	"modules-left": ["custom/l_end","custom/power","custom/cliphist","custom/wbar","custom/wallchange","wlr/taskbar","custom/r_end","custom/padd"],
 	"modules-center": ["custom/l_end","hyprland/workspaces","idle_inhibitor","clock","custom/r_end"],
 	"modules-right": ["custom/l_end","tray","custom/battery","backlight","network","pulseaudio","pulseaudio#microphone","custom/r_end"],
 
