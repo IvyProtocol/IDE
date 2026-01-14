@@ -1,4 +1,4 @@
-$(confDir)/waybar/theme.css|$(confDir)/hypr/scripts/toggle-waybar.sh &
+$(confDir)/waybar/theme.css|$RUN:$(confDir)/hypr/scripts/toggle-waybar.sh &
 @define-color bar-bg <ivy_pry1_rgba(0)>;
 @define-color main-bg <ivy_pry1_rgba(0.8)>;
 @define-color main-fg <ivy_1xa8_rgba(0.8)>;
