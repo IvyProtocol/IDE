@@ -7,7 +7,7 @@
     min-height: 10px;
 }
 
-@import "./hyde.css";
+@import "./theme.css";
 
 window#waybar,
 window#wabar.empty,
