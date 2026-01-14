@@ -3,14 +3,17 @@
     border-radius: 0px;
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
-    font-size: 10px;
+    font-size: 9.3px;
     min-height: 10px;
 }
 
 @import "./hyde.css";
 
-window#waybar {
+window#waybar,
+window#wabar.empty,
+window#waybar.empty #window {
     background: @bar-bg;
+    background-color: rgba(0, 0, 0, 0.40);
 }
 
 tooltip {
