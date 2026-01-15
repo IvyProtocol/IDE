@@ -6,7 +6,7 @@
     "layer": "top",
     "position": "bottom",
     "mod": "dock",
-    "height": 31,
+    "height": 10,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -17,7 +17,7 @@
 
 	"modules-left": ["custom/l_end","custom/power","custom/cliphist","custom/wbar","custom/wallchange","wlr/taskbar","custom/r_end","custom/padd"],
 	"modules-center": ["custom/l_end","hyprland/workspaces","idle_inhibitor","clock","custom/r_end"],
-	"modules-right": ["custom/l_end","tray","custom/battery","backlight","network","pulseaudio","pulseaudio#microphone","custom/r_end"],
+	"modules-right": ["custom/l_end","tray","custom/battery","power-profiles-daemon","backlight","network","pulseaudio","pulseaudio#microphone","custom/r_end"],
 
 
 // sourced from modules based on config.ctl //
@@ -70,30 +70,47 @@
         "persistent-workspaces": {}
     },
 
-	"wlr/taskbar": {
-		"format": "{icon}",
-		"rotate": 0,
-		"icon-size": 18,
-		"icon-theme": "Tela-circle-dracula",
-        "spacing": 0,
-		"tooltip-format": "{title}",
-		"on-click": "activate",
-		"on-click-middle": "close",
-		"ignore-list": [
-			"Alacritty"
-		],
-		"app_ids-mapping": {
-			"firefoxdeveloperedition": "firefox-developer-edition"
-		}
-	},
-
-    "idle_inhibitor": {
+    "wlr/taskbar": {
+        "all-outputs": true,
+        "active-first": false,
+        "markup": true,
         "format": "{icon}",
         "rotate": 0,
-        "format-icons": {
-            "activated": "󰥔",
-            "deactivated": ""
+        "spacing": 20,
+        "tooltip-format": "{title} | {app_id}",
+        "on-click": "activate",
+        "on-click-right": "fullscreen",
+        "on-click-middle": "close",
+        "class": "no-margin-padding",
+        "ignore-list": [
+            ""
+        ],
+        "app_ids-mapping": {
+            "firefoxdeveloperedition": "firefox-developer-edition",
+            "firefoxnightly": "firefox-nightly",
+            "Spotify Free": "Spotify"
+        },
+        "rewrite": {
+            "Firefox Web Browser": "Firefox",
+            "Foot Server": "Terminal",
+            "Spotify Free": "Spotify",
+            "org.kde.dolphin": "Dolphin",
+            "libreoffice-writer": "Writer"
         }
+    },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "rotate": 0,
+      "format-icons": {
+          "activated": "\udb80\udd76",
+          "deactivated": "\udb81\udeca"
+      },
+      "justify": "center",
+      "tooltip": "true",
+      "tooltip-format-activated": "<span foreground='#98c379'>\udb80\udd76 Caffeine Mode Active</span>\nPrevents system from going to sleep",
+      "tooltip-format-deactivated": "<span foreground='#e06c75'>\udb81\udeca Caffeine Mode Inactive</span>\nSystem will follow normal power settings"
+    
     },
 
     "clock": {
@@ -122,7 +139,6 @@
     },
 
     "tray": {
-        "icon-size": 18,
         "rotate": 0,
         "spacing": 5
     },
@@ -192,6 +208,17 @@
         "scroll-step": 5
     },
 
+    "power-profiles-daemon": {
+    "format": "{icon} ",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+        }
+    },
 
     // modules for padding //
 
