@@ -13,14 +13,14 @@ window#waybar,
 window#wabar.empty,
 window#waybar.empty #window {
     background: @bar-bg;
-    background-color: rgba(0, 0, 0, 0.40);
+    background-color: rgba(255, 255, 255, 0.04);
 }
 
 tooltip {
     background: @main-bg;
     color: @main-fg;
     border-radius: 7px;
-    border-width: 0px;
+    border-width: 0.1em;
 }
 
 #workspaces button {
@@ -131,11 +131,17 @@ tooltip {
 #custom-rl_end,
 #custom-rr_end {
     color: @main-fg;
-    background: @main-bg;
+    background-color: @main-bg;
+    border-style: solid;
+    border-color: @main-bg;
     opacity: 1;
     margin: 4px 0px 4px 0px;
     padding-left: 4px;
     padding-right: 4px;
+}
+
+#language {
+    min-width: 1.11em;
 }
 
 #workspaces,
@@ -177,4 +183,27 @@ tooltip {
     border-radius: 7px 0px 0px 7px;
     margin-left: 9px;
     padding-left: 3px;
+}
+
+menu menuitem:hover {
+    background-color: @wb-act-bg;
+    color: @wb-act-fg;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+tooltip,
+menu {
+    animation-name: fadeIn;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
 }
