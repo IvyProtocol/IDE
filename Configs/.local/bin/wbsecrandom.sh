@@ -36,17 +36,14 @@ swww-prefix() {
     export rand="$wallDir/${wallpapers[$idx]}"
     if [[ "$dirFlag" -eq 0 ]]; then
         ${scrDir}/wbselecgen.sh "${rand}" --swww-p
-        echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" 
     else
         ${scrDir}/wbselecgen.sh "${rand}" --swww-n
-        echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" 
     fi
 }
 
 render() {
     rmDir=$(find "$wallDir" -maxdepth 1 -type f | shuf -n 1)
     ${scrDir}/wbselecgen.sh "$rmDir"
-    echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" >/dev/null 2>&1 
 }
 
 case "$pxCheck" in
