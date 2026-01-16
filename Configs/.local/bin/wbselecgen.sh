@@ -79,9 +79,8 @@ apply_wallpaper() {
         [ "$BLUR" != "0x0" ] && magick "$blurred" -blur "$BLUR" "$blurred"
     fi
 
-    if [[ ! -e "${rasifile}" ]]; then
-        echo "* { current-image: url(\"$img\", height); }" > "$rasifile" &
-    fi
+    echo "* { current-image: url(\"$img\", height); }" > "$rasifile" &
+    
     cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" &
     if [[ "$img" = *.jpg ]]; then
         magick "$img" "${confDir}/rofi/shared/current-wallpaper.png" 
