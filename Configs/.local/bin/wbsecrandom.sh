@@ -32,7 +32,6 @@ swww-prefix() {
     case "$pxCheck" in
         --p) idx=$(( (wall_i - 1 + total) % total )); dirFlag=0 ;;
         --n) idx=$(( (wall_i + 1) % total )); dirFlag=1 ;;
-        --r) render ;; 
         *) return 1 ;;
     esac
     rand="$wallDir/${wallpapers[$idx]}"
