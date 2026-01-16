@@ -33,7 +33,7 @@ swww-prefix() {
         *) return 1 ;;
     esac
     
-    rand="$wallDir/${wallpapers[$idx]}"
+    export rand="$wallDir/${wallpapers[$idx]}"
     if [[ "$dirFlag" -eq 0 ]]; then
         ${scrDir}/wbselecgen.sh "${rand}" --swww-p
         echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" 
@@ -46,7 +46,7 @@ swww-prefix() {
 render() {
     rmDir=$(find "$wallDir" -maxdepth 1 -type f | shuf -n 1)
     ${scrDir}/wbselecgen.sh "$rmDir"
-    echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" 
+    echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" >/dev/null 2>&1 
 }
 
 case "$pxCheck" in
@@ -63,3 +63,4 @@ case "$pxCheck" in
         echo -e "Invalid '$pxCheck' for argument. Correct arguments are: -p (--previous), -n (--next), -r (--random)"
         exit 0
 esac
+
