@@ -4,12 +4,11 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalvariable.sh"
 
 pxCheck="${1:-}"
-walCheck="${2:-}"
 wallDir="${homDir}/Pictures/wallpapers"
 
 swww-prefix() {
     local walRasi="${cacheDir}/ivy-shell/blurred/current_wallpaper.rasi"
-    local wpex filterPath extract_wall wall_i candidate_i pxCheck
+    local wpex filterPath extract_wall wall_i pxCheck dirflag
    
     pxCheck="${1:-}"
     wpex=$(grep -oE '"/[^"]+"' "$walRasi") || return 1
@@ -28,25 +27,26 @@ swww-prefix() {
     done
 
     total=${#wallpapers[@]}
-    local dirFlag
     case "$pxCheck" in
         --p) idx=$(( (wall_i - 1 + total) % total )); dirFlag=0 ;;
         --n) idx=$(( (wall_i + 1) % total )); dirFlag=1 ;;
         *) return 1 ;;
     esac
+    
     rand="$wallDir/${wallpapers[$idx]}"
     if [[ "$dirFlag" -eq 0 ]]; then
         ${scrDir}/wbselecgen.sh "${rand}" --swww-p
-        echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" &
-    elif [[ "$dirFlag" -eq 1 ]]; then
+        echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" 
+    else
         ${scrDir}/wbselecgen.sh "${rand}" --swww-n
-        echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" &
+        echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" 
     fi
 }
 
 render() {
     rmDir=$(find "$wallDir" -maxdepth 1 -type f | shuf -n 1)
     ${scrDir}/wbselecgen.sh "$rmDir"
+    echo "* { current-image: url(\"$rand\", height); }" > "${walRasi}" 
 }
 
 case "$pxCheck" in
