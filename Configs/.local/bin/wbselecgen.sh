@@ -12,7 +12,6 @@ mkdir -p "$CACHE_DIR"
 BLURRED_DIR="${cacheDir}/ivy-shell/blurred"
 mkdir -p "$BLURRED_DIR"
 ROFI_THEME="${rasiDir}/config-wallpaper.rasi"
-xtrans="any"
 wallFramerate="60"
 wallTransDuration="0.4"
 BLUR_DEFAULT="50x30"
@@ -26,6 +25,7 @@ log() { echo "[walsec] $1"; }
 # Apply wallpaper + blur + cache + color sync
 apply_wallpaper() {
     local img="$1"
+    local var="$2"
     if [ -z "$img" ] || [ ! -f "$img" ]; then
         notify-send "Invalid wallpaper" "File not found: $img"
         exit 1
@@ -62,8 +62,13 @@ apply_wallpaper() {
     fi &
 
     $localDir/bin/ivy-shell.sh "$img"
-    swww img "$img" -t any --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y &
-    wait
+    
+    case $var in
+        --swww-p) swww img "$img" -t "outer" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        --swww-n) swww img "$img" -t "grow" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        *)        swww img "$img" -t "any" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
+    esac
+
     if [ ! -f "$blurred" ]; then
         log "Creating blurred wallpaper..."
         if [[ "$img" == *.gif ]]; then
@@ -73,8 +78,10 @@ apply_wallpaper() {
         fi
         [ "$BLUR" != "0x0" ] && magick "$blurred" -blur "$BLUR" "$blurred"
     fi
-    
-    echo "* { current-image: url(\"$blurred\", height); }" > "$rasifile" &
+
+    if [[ ! -e "${rasifile}" ]]; then
+        echo "* { current-image: url(\"$img\", height); }" > "$rasifile" &
+    fi
     cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" &
     if [[ "$img" = *.jpg ]]; then
         magick "$img" "${confDir}/rofi/shared/current-wallpaper.png" 
@@ -85,7 +92,7 @@ apply_wallpaper() {
     elif [[ "$img" = *.png ]]; then
         magick "$img" "${confDir}/rofi/shared/current-wallpaper.png" 
         cp "$blurred" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
-    fi
+    fi >/dev/null 2>&1 &
 
     if [[ -n "$notif_id" ]]; then
         notify-send -r "$notif_id" "Wallpaper Theme applied" -i "$img"
@@ -124,7 +131,7 @@ choose_wallpaper() {
 # ────────────────────────────────────────────────
 # Main
 if [ -n "$1" ]; then
-    apply_wallpaper "$1"
+    apply_wallpaper "$1" "$2"
 else
     choose_wallpaper
 fi
