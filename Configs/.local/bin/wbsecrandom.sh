@@ -33,7 +33,6 @@ swww-prefix() {
         *) return 1 ;;
     esac
     
-    export rand="$wallDir/${wallpapers[$idx]}"
     if [[ "$dirFlag" -eq 0 ]]; then
         ${scrDir}/wbselecgen.sh "${rand}" --swww-p
     else
