@@ -38,6 +38,23 @@ total_uncached=${#uncached[@]}
 BAR_WIDTH=50
 count=0
 
+pxcCheck="$1"
+case "$pxcCheck" in
+    -a)
+        prefix="-a"
+        ;;
+    -d)
+        prefix="-d"
+        ;;
+    -l)
+        prefix="-l"
+        ;;
+    *)
+        echo "Incorrect use of $0. The prefixes for $0 is '-a', 'd', '-l'."
+        exit 1
+        ;;
+esac
+
 # Process uncached wallpapers
 for wp in "${uncached[@]}"; do
     ((count++))
@@ -51,8 +68,8 @@ for wp in "${uncached[@]}"; do
            "$bar" "$percent" "$count" "$total_uncached" "$skipped_count"
 
     # Run ivy-shell.sh silently
-    ${localDir}/bin/ivy-shell.sh "$wp" --helper=1 >/dev/null 2>&1
+    ${localDir}/bin/ivy-shell.sh "$wp" "$prefix" --helper=1 >/dev/null 2>&1
 done
 
-echo -e "\nCaching complete. Total processed: $total_uncached, Skipped: $skipped_count."
+echo "Caching complete. Total processed: $total_uncached, Skipped: $skipped_count."
 
