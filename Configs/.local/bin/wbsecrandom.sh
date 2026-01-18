@@ -33,10 +33,11 @@ swww-prefix() {
         *) return 1 ;;
     esac
     
+    rand="$wallDir/${wallpapers[$idx]}"
     if [[ "$dirFlag" -eq 0 ]]; then
-        ${scrDir}/wbselecgen.sh "${rand}" --swww-p
+        ${scrDir}/wbselecgen.sh "${rand}" -a --swww-p
     else
-        ${scrDir}/wbselecgen.sh "${rand}" --swww-n
+        ${scrDir}/wbselecgen.sh "${rand}" -a --swww-n
     fi
 }
 
@@ -56,7 +57,7 @@ case "$pxCheck" in
         render
         ;;
     *)
-        echo -e "Invalid '$pxCheck' for argument. Correct arguments are: -p (--previous), -n (--next), -r (--random)"
+        echo -e "Invalid '$pxCheck' for $0. Correct arguments for $0 are: -p (--previous), -n (--next), -r (--random)"
         exit 0
 esac
 
