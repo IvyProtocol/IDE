@@ -46,13 +46,6 @@ esac
 
 if [[ -f $ivycache ]]; then
   case "$VAR2" in
-  --helper=0|""|*)
-      echo "Cache found: restoring wallpaper colors"
-      cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
-      $scrDir/modules/ivyshell-theme.sh 
-      $scrDir/modules/ivyshell-helper.sh
-      exit 0
-    ;;
   --helper=1)
     exit 0
     ;;
@@ -64,6 +57,13 @@ if [[ -f $ivycache ]]; then
   --theme-helper)
     $scrDir/modules/ivyshell-helper.sh
     exit 0
+    ;;
+  --helper=0|""|*)
+      echo "Cache found: restoring wallpaper colors"
+      cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
+      $scrDir/modules/ivyshell-theme.sh 
+      $scrDir/modules/ivyshell-helper.sh
+      exit 0
     ;;
   esac
 fi
@@ -251,11 +251,6 @@ cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
 
 printf 'WROTE:\n  %s\n  %s\n' "${OUT_DIR}/ivygen.dcol" 
 case "$VAR2" in
-  --helper=0|""|*)
-    $scrDir/modules/ivyshell-theme.sh 
-    $scrDir/modules/ivyshell-helper.sh
-    exit 0
-    ;;
   --helper=1)
     exit 0
     ;;
@@ -264,6 +259,11 @@ case "$VAR2" in
     exit 0
     ;;
   --theme-helper)
+    $scrDir/modules/ivyshell-helper.sh
+    exit 0
+    ;;
+  --helper=0|""|*)
+    $scrDir/modules/ivyshell-theme.sh 
     $scrDir/modules/ivyshell-helper.sh
     exit 0
     ;;
