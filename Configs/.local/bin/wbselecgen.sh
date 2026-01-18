@@ -25,7 +25,8 @@ log() { echo "[walsec] $1"; }
 # Apply wallpaper + blur + cache + color sync
 apply_wallpaper() {
     local img="$1"
-    local var="$2"
+    local argfv="$2"
+    local swi="$3"
     if [ -z "$img" ] || [ ! -f "$img" ]; then
         notify-send "Invalid wallpaper" "File not found: $img"
         exit 1
@@ -61,9 +62,14 @@ apply_wallpaper() {
         echo "$notif_id" > "$notif_file"
     fi &
 
-    $localDir/bin/ivy-shell.sh "$img"
-    
-    case $var in
+    case "$argfv" in
+        --dark|-d)   $scrDir/ivy-shell.sh "$img" -d ;;
+        --light|-l)  $scrDir/ivy-shell.sh "$img" -l ;;
+        --auto|-a|*) $scrDir/ivy-shell.sh "$img" -a ;;
+    esac
+
+
+    case $swi in
         --swww-p) swww img "$img" -t "outer" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-n) swww img "$img" -t "grow" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         *)        swww img "$img" -t "any" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
@@ -80,7 +86,7 @@ apply_wallpaper() {
     fi
 
     echo "* { current-image: url(\"$img\", height); }" > "$rasifile" &
-    
+
     cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" &
     if [[ "$img" = *.jpg ]]; then
         magick "$img" "${confDir}/rofi/shared/current-wallpaper.png" 
@@ -130,7 +136,7 @@ choose_wallpaper() {
 # ────────────────────────────────────────────────
 # Main
 if [ -n "$1" ]; then
-    apply_wallpaper "$1" "$2"
+    apply_wallpaper "$@"
 else
     choose_wallpaper
 fi
