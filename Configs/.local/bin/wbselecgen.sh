@@ -19,7 +19,7 @@ BLUR="$BLUR_DEFAULT"
 
 # ────────────────────────────────────────────────
 # Logging helper
-log() { echo "[walsec] $1"; }
+log() { echo "[walsec] "$@""; }
 
 # ────────────────────────────────────────────────
 # Apply wallpaper + blur + cache + color sync
@@ -49,7 +49,7 @@ apply_wallpaper() {
     esac
 
     local blurred="$BLURRED_DIR/blurred-${base%.*}.png"
-    local rasifile="$BLURRED_DIR/current_wallpaper.rasi"
+    local rasifile="$CACHE_DIR/../cache.rasi"
     local notif_file="/tmp/.wallbash_notif_id"
     local notif_id=""
     log "Applying wallpaper: $img"
