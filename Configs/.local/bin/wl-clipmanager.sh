@@ -5,9 +5,9 @@ if [[ ! -f "${scrDir}/globalvariable.sh" ]]; then
     rasiDir="$HOME/.config/rofi/shared/"
 else
     source "${scrDir}/globalvariable.sh"
+    rasiScr="${rasiDir}/config-clipboard.rasi"
 fi
 
-rasiScr="${rasiDir}/config-clipboard.rasi"
 kbcus1="Control-Delete"
 kbcus2="Alt-Delete"
 
