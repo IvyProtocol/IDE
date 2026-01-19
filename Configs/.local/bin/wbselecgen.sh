@@ -85,7 +85,7 @@ apply_wallpaper() {
         [ "$BLUR" != "0x0" ] && magick "$blurred" -blur "$BLUR" "$blurred"
     fi
 
-    echo "* { current-image: url(\"$img\", height); }" > "$rasifile" &
+    echo "current-image=\"$img\"" > "$rasifile" &
 
     cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" &
     if [[ "$img" = *.jpg ]]; then
@@ -140,4 +140,3 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
-
