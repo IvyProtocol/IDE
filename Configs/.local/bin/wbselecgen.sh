@@ -24,9 +24,18 @@ log() { echo "[walsec] "$@""; }
 # ────────────────────────────────────────────────
 # Apply wallpaper + blur + cache + color sync
 apply_wallpaper() {
-    local img="$1"
-    local argfv="$2"
-    local swi="$3"
+   OPTIND=1
+   local img="" schIPC="" swi=""
+
+   while getopts ":i:s:w:" arg; do
+       case "$arg" in
+           i)    img="$OPTARG" ;;
+           s) schIPC="$OPTARG" ;;
+           w)    swi="$OPTARG" ;;
+       esac
+   done
+
+   shift $((OPTIND -1))
     if [ -z "$img" ] || [ ! -f "$img" ]; then
         notify-send "Invalid wallpaper" "File not found: $img"
         exit 1
@@ -50,8 +59,11 @@ apply_wallpaper() {
 
     local blurred="$BLURRED_DIR/blurred-${base%.*}.png"
     local rasifile="$CACHE_DIR/../cache.rasi"
+    local argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
     local notif_file="/tmp/.wallbash_notif_id"
     local notif_id=""
+
+    [[ ! -e "${rasifile}" ]] && echo "returned $(exit 1)"
     log "Applying wallpaper: $img"
 
     [[ -f "$notif_file" ]] && notif_id=$(<"$notif_file")
@@ -62,16 +74,30 @@ apply_wallpaper() {
         echo "$notif_id" > "$notif_file"
     fi &
 
-    case "$argfv" in
-        --dark|-d)   $scrDir/ivy-shell.sh "$img" -d ;;
-        --light|-l)  $scrDir/ivy-shell.sh "$img" -l ;;
-        --auto|-a|*) $scrDir/ivy-shell.sh "$img" -a ;;
-    esac
+    if [[ -z "${schIPC}" ]]; then
+        if [[ "${argfv}" == "dark" ]]; then
+            "${scrDir}/ivy-shell.sh" "$img" -d
+            echo "1"
 
+        elif [[ "${argfv}" == "light" ]]; then
+            "${scrDir}/ivy-shell.sh" "$img" -l
+            echo "2"
+        elif [[ "${argfv}" == "auto" || ! -e "${schIPC}" ]]; then
+            "${scrDir}/ivy-shell.sh" "$img" -a
+            echo "3"
+        fi
+    elif [[ -n "${schIPC}" ]]; then
+        case "${schIPC}" in
+            --dark|-d)  "${scrDir}/ivy-shell.sh" "${img}" -d ;;
+            --light|-l) "${scrDir}/ivy-shell.sh" "${img}" -l ;;
+            --auto|-a)  "${scrDir}/ivy-shell.sh" "${img}" -a ;;
+        esac
+    fi
 
     case $swi in
         --swww-p) swww img "$img" -t "outer" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-n) swww img "$img" -t "grow" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        --swww-s) val="0" ;;
         *)        swww img "$img" -t "any" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
     esac
 
@@ -85,7 +111,11 @@ apply_wallpaper() {
         [ "$BLUR" != "0x0" ] && magick "$blurred" -blur "$BLUR" "$blurred"
     fi
 
-    echo "current-image=\"$img\"" > "$rasifile" &
+    if [[ ! -f $rasifile ]]; then
+        echo "current-image=\"$img\"" > "$rasifile" 
+    else
+        sed -i "s|^current-image=.*|current-image=\"$img\"|" "$rasifile"
+    fi
 
     cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" &
     if [[ "$img" = *.jpg ]]; then
@@ -130,7 +160,7 @@ choose_wallpaper() {
 
     choice=$(menu | rofi -dmenu -i -p "Wallpaper" -config "$ROFI_THEME" -theme-str 'element-icon{size:33%;}')
     [ -z "$choice" ] && exit 0
-    apply_wallpaper "$WALL_DIR/$choice"
+    apply_wallpaper -i "$WALL_DIR/$choice"
 }
 
 # ────────────────────────────────────────────────
@@ -140,3 +170,5 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
+
+
