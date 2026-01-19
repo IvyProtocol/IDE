@@ -82,7 +82,7 @@ apply_wallpaper() {
         elif [[ "${argfv}" == "light" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -l
             echo "2"
-        elif [[ "${argfv}" == "auto" || ! -e "${schIPC}" ]]; then
+        elif [[ "${argfv}" == "auto" || ! -e "${rasiDir}" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -a
             echo "3"
         fi
