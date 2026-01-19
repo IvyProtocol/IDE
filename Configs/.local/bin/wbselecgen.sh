@@ -14,12 +14,9 @@ mkdir -p "$BLURRED_DIR"
 ROFI_THEME="${rasiDir}/config-wallpaper.rasi"
 wallFramerate="60"
 wallTransDuration="0.4"
-BLUR_DEFAULT="50x30"
-BLUR="$BLUR_DEFAULT"
+BLUR="50x30"
 
-# ────────────────────────────────────────────────
-# Logging helper
-log() { echo "[walsec] "$@""; }
+log() { echo "[$0] "$@""; }
 
 # ────────────────────────────────────────────────
 # Apply wallpaper + blur + cache + color sync
@@ -37,8 +34,8 @@ apply_wallpaper() {
 
    shift $((OPTIND -1))
     if [ -z "$img" ] || [ ! -f "$img" ]; then
-        notify-send "Invalid wallpaper" "File not found: $img"
-        exit 1
+        img=$(fl_wallpaper) 
+        [[ -z "$img" ]] && notify-send "Invalid wallpaper" "File not found: $img" && exit 1
     fi
 
     local base="$(basename "$img")"
@@ -63,7 +60,6 @@ apply_wallpaper() {
     local notif_file="/tmp/.wallbash_notif_id"
     local notif_id=""
 
-    [[ ! -e "${rasifile}" ]] && echo "returned $(exit 1)"
     log "Applying wallpaper: $img"
 
     [[ -f "$notif_file" ]] && notif_id=$(<"$notif_file")
@@ -77,14 +73,12 @@ apply_wallpaper() {
     if [[ -z "${schIPC}" ]]; then
         if [[ "${argfv}" == "dark" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -d
-            echo "1"
-
         elif [[ "${argfv}" == "light" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -l
-            echo "2"
+
         elif [[ "${argfv}" == "auto" || ! -e "${rasiDir}" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -a
-            echo "3"
+
         fi
     elif [[ -n "${schIPC}" ]]; then
         case "${schIPC}" in
@@ -135,6 +129,21 @@ apply_wallpaper() {
         notif_id=$(notify-send "Wallpaper Theme applied" -i "$img" -p)
         echo "$notif_id" > "$notif_file"
     fi &
+}
+
+# ────────────────────────────────────────────────
+# Check if $PATH for wallpaper exist!
+
+fl_wallpaper() {
+    local walRasi="${cacheDir}/ivy-shell/cache.rasi"
+    local wpex fillpath extract_wall wall
+
+    wpex=$(grep -oE '"/[^"]+"' "$walRasi") || return 1
+    fillPath="${wpex#\"}"
+    fillPath="${fillPath%\"}"
+    extract_wall="${fillPath##*/}"
+    wall="${extract_wall}"
+    echo "$wall"
 }
 
 # ────────────────────────────────────────────────
