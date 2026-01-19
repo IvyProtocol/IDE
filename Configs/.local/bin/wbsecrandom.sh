@@ -35,15 +35,15 @@ swww-prefix() {
     
     rand="$wallDir/${wallpapers[$idx]}"
     if [[ "$dirFlag" -eq 0 ]]; then
-        ${scrDir}/wbselecgen.sh "${rand}" -a --swww-p
+        ${scrDir}/wbselecgen.sh -i "${rand}" -w --swww-p
     else
-        ${scrDir}/wbselecgen.sh "${rand}" -a --swww-n
+        ${scrDir}/wbselecgen.sh -i "${rand}" -w --swww-n
     fi
 }
 
 render() {
     rmDir=$(find "$wallDir" -maxdepth 1 -type f | shuf -n 1)
-    ${scrDir}/wbselecgen.sh "$rmDir"
+    ${scrDir}/wbselecgen.sh -i "$rmDir"
 }
 
 case "$pxCheck" in
