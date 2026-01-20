@@ -8,14 +8,10 @@ wallDir="${homDir}/Pictures/wallpapers"
 
 swww-prefix() {
     local walRasi="${cacheDir}/ivy-shell/cache.rasi"
-    local wpex filterPath extract_wall wall_i pxCheck dirflag
+    local wall wall_i pxCheck dirflag
    
     pxCheck="${1:-}"
-    wpex=$(grep -oE '"/[^"]+"' "$walRasi") || return 1
-    fillPath="${wpex#\"}"
-    fillPath="${fillPath%\"}"
-    extract_wall="${fillPath##*/}"
-    wall="${extract_wall}"
+    wall=$(fl_wallpaper)
 
     [[ -n "${wall}" ]] || return 1
 
@@ -49,15 +45,3 @@ render() {
 case "$pxCheck" in
     -p|--previous) 
         swww-prefix --p 
-        ;;
-    -n|--next)
-        swww-prefix --n
-        ;;
-    -r|--random)
-        render
-        ;;
-    *)
-        echo -e "Invalid '$pxCheck' for $0. Correct arguments for $0 are: -p (--previous), -n (--next), -r (--random)"
-        exit 0
-esac
-
