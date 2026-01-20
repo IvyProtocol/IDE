@@ -80,6 +80,7 @@ case $pill in
     cp -r "${configDir}/.config" "${pill2}"
     cp -r "${configDir}/.local" "${pill2}"
     cp -r "${configDir}/.icons" "${pill2}"
+    cp -r "${configDir}/.gtkrc-2.0" "${pill2}"
     ;;
   *)
     exit 0
