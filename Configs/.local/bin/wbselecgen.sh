@@ -24,11 +24,12 @@ apply_wallpaper() {
    OPTIND=1
    local img="" schIPC="" swi=""
 
-   while getopts ":i:s:w:" arg; do
+   while getopts ":i:s:w:n:" arg; do
        case "$arg" in
-           i)    img="$OPTARG" ;;
-           s) schIPC="$OPTARG" ;;
-           w)    swi="$OPTARG" ;;
+           i)    img="$OPTARG"    ;;
+           s) schIPC="$OPTARG"    ;;
+           w)    swi="$OPTARG"    ;;
+           n) supNotify="$OPTARG" ;;
        esac
    done
 
@@ -57,18 +58,9 @@ apply_wallpaper() {
     local blurred="$BLURRED_DIR/blurred-${base%.*}.png"
     local rasifile="$CACHE_DIR/../cache.rasi"
     local argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
-    local notif_file="/tmp/.wallbash_notif_id"
-    local notif_id=""
 
     log "Applying wallpaper: $img"
-
-    [[ -f "$notif_file" ]] && notif_id=$(<"$notif_file")
-    if [[ -n "$notif_id" ]]; then
-        notify-send -r "$notif_id" "Using Theme Engine: " -i "${swayncDir}/icons/palette.png" -p 
-    else
-        notif_id=$(notify-send "Using Theme Engine: " -i "${swayncDir}/icons/palette.png" -p)
-        echo "$notif_id" > "$notif_file"
-    fi &
+    notify "Using Theme Engine: " "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
         if [[ "${argfv}" == "dark" ]]; then
@@ -123,27 +115,7 @@ apply_wallpaper() {
         cp "$blurred" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
     fi >/dev/null 2>&1 &
 
-    if [[ -n "$notif_id" ]]; then
-        notify-send -r "$notif_id" "Wallpaper Theme applied" -i "$img"
-    else
-        notif_id=$(notify-send "Wallpaper Theme applied" -i "$img" -p)
-        echo "$notif_id" > "$notif_file"
-    fi &
-}
-
-# ────────────────────────────────────────────────
-# Check if $PATH for wallpaper exist!
-
-fl_wallpaper() {
-    local walRasi="${cacheDir}/ivy-shell/cache.rasi"
-    local wpex fillpath extract_wall wall
-
-    wpex=$(grep -oE '"/[^"]+"' "$walRasi") || return 1
-    fillPath="${wpex#\"}"
-    fillPath="${fillPath%\"}"
-    extract_wall="${fillPath##*/}"
-    wall="${extract_wall}"
-    echo "$wall"
+    notify "Wallpaper Theme applied" "$img"
 }
 
 # ────────────────────────────────────────────────
@@ -179,5 +151,3 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
-
-
