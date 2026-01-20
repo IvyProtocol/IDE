@@ -27,7 +27,6 @@ hyprland=(
 
   bluez-utils
   bluetui
-  iwd
   network-manager-applet
   wireless_tools
 
