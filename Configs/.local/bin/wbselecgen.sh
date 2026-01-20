@@ -24,11 +24,12 @@ apply_wallpaper() {
    OPTIND=1
    local img="" schIPC="" swi=""
 
-   while getopts ":i:s:w:" arg; do
+   while getopts ":i:s:w:n:" arg; do
        case "$arg" in
            i)    img="$OPTARG"    ;;
            s) schIPC="$OPTARG"    ;;
            w)    swi="$OPTARG"    ;;
+           n) ntSend="$OPTARG"    ;;
        esac
    done
 
@@ -54,12 +55,17 @@ apply_wallpaper() {
             ;;
     esac
 
+    case "$ntSend" in
+        --s) ntSend=1 ;;
+        *)   ntSend=0 ;;
+    esac
+
     local blurred="$BLURRED_DIR/blurred-${base%.*}.png"
     local rasifile="$CACHE_DIR/../cache.rasi"
     local argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
 
     log "Applying wallpaper: $img"
-    notify "Using Theme Engine: " "${swayncDir}/icons/palette.png"
+    [[ "$ntSend" -eq 0 ]] && notify "Using Theme Engine: " "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
         if [[ "${argfv}" == "dark" ]]; then
@@ -80,9 +86,8 @@ apply_wallpaper() {
     fi
 
     case $swi in
-        --swww-p) swww img "$img" -t "outer" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        --swww-n) swww img "$img" -t "grow" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        --swww-s) val="0" ;;
+        --swww-p) echo "hi" && swww img "$img" -t "outer" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        --swww-n) echo "hello" && swww img "$img" -t "grow" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         *)        swww img "$img" -t "any" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
     esac
 
@@ -114,7 +119,7 @@ apply_wallpaper() {
         cp "$blurred" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
     fi >/dev/null 2>&1 &
 
-    notify "Wallpaper Theme applied" "$img"
+    [[ "$ntSend" -eq 0 ]] && notify "Wallpaper Theme applied" "$img"
 }
 
 # ────────────────────────────────────────────────
@@ -150,5 +155,3 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
-
-
