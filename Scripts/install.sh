@@ -553,7 +553,7 @@ if [[ -d $configDir ]]; then
         else
           echo -e " :: ${indentError} Failed to copy some ${indentYellow}wallpapers - ${exitCode1}"
         fi
-        ${localDir}/color-cache.sh
+        "${localDir}/color-cache.sh" -a
         echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
         break
         ;;
