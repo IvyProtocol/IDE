@@ -1,0 +1,81 @@
+// Copyright: https://github.com/prasanthrangan/hyprdots
+
+configuration {
+  modi:                           "drun";
+  show-icons:                     true;
+  drun-display-format:            "{name}";
+  font:                           "JetBrainsMono Nerd Font 9";
+}
+
+@theme "../theme.rasi"
+
+window {
+  enabled:                        true;
+  fullscreen:                     false;
+  width:                          35em;
+  height:                         20em;
+  transparency:                   "real";
+  cursor:                         "default";
+  spacing:                        0em;
+  padding:                        0em;
+  border:                         0.155em;
+  border-radius:                  2.0em;
+  border-color:                   @main-br;
+  background-color:               @main-bg;
+  background-image:               url("~/.config/rofi/shared/current-wallpaper.png",height);
+}
+
+mainbox {
+  enabled:                        true;
+  orientation:                    vertical;
+  children:                       [ "dummy", "listview" ];
+  background-color:               transparent;
+}
+
+listview {
+  enabled:                        true;
+  spacing:                        1em;
+  padding:                        1em 2em 2.5em 2em;
+  columns:                        3;
+  lines:                          1;
+  dynamic:                        false;
+  fixed-height:                   false;
+  fixed-columns:                  true;
+  reverse:                        true;
+  cursor:                         "default";
+  text-color:                     @main-fg;
+  background-color:               transparent;
+}
+
+dummy {
+  padding:                        4em;
+  expand:                         false;
+  background-color:               transparent;
+}
+
+element {
+  enabled:                         true;
+  spacing:                         0em;
+  padding:                         1.5em;
+  cursor:                          pointer;
+  background-color:                @main-bg;
+  text-color:                      @main-fg;
+  border-radius:                   2em;
+}
+
+element selected.normal {
+  background-color:                @select-bg;
+  text-color:                      @select-fg;
+}
+
+element-icon {
+  enabled:                          false;
+}
+
+element-text {
+  vertical-align:                   0.5;
+  horizontal-align:                 0.5;
+  cursor:                           inherit;
+  background-color:                 transparent;
+  text-color:                       inherit;
+}
