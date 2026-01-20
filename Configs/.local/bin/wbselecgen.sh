@@ -24,19 +24,19 @@ apply_wallpaper() {
    OPTIND=1
    local img="" schIPC="" swi=""
 
-   while getopts ":i:s:w:n:" arg; do
+   while getopts ":i:s:w:" arg; do
        case "$arg" in
            i)    img="$OPTARG"    ;;
            s) schIPC="$OPTARG"    ;;
            w)    swi="$OPTARG"    ;;
-           n) supNotify="$OPTARG" ;;
        esac
    done
 
    shift $((OPTIND -1))
     if [ -z "$img" ] || [ ! -f "$img" ]; then
-        img=$(fl_wallpaper) 
-        [[ -z "$img" ]] && notify-send "Invalid wallpaper" "File not found: $img" && exit 1
+        img=$(fl_wallpaper)
+        img="$WALL_DIR/$img"
+        [[ ! -f "$img" ]] && notify-send "Invalid wallpaper" "File not found: $img" && exit 1
     fi
 
     local base="$(basename "$img")"
@@ -50,8 +50,7 @@ apply_wallpaper() {
             img="$cached_img"
             ;;
         *)
-            [ ! -f "$cached_img" ] && cp "$img" "$cached_img"
-            img="$cached_img"
+            img="$img"
             ;;
     esac
 
@@ -68,7 +67,7 @@ apply_wallpaper() {
         elif [[ "${argfv}" == "light" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -l
 
-        elif [[ "${argfv}" == "auto" || ! -e "${rasiDir}" ]]; then
+        elif [[ "${argfv}" == "auto" || ! -e "${rasiDir}" || -z "${argfv}" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -a
 
         fi
@@ -151,3 +150,5 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
+
+
