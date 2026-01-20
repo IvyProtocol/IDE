@@ -45,3 +45,14 @@ render() {
 case "$pxCheck" in
     -p|--previous) 
         swww-prefix --p 
+        ;;
+    -n|--next)
+        swww-prefix --n
+        ;;
+    -r|--random)
+        render
+        ;;
+    *)
+        echo -e "Invalid '$pxCheck' for $0. Correct arguments for $0 are: -p (--previous), -n (--next), -r (--random)"
+        exit 0
+esac
