@@ -421,8 +421,8 @@ if [[ -d $configDir ]]; then
     echo -e " :: ${indentOk} GTK Symlink initialized ${indentGreen}."
   fi
   if [[ ! -e "${confDir}/waybar/style.css" ]] || [[ ! -e "${confDir}/waybar/config" ]] || [[ -L "${confDir}/waybar/style.css" ]] || [[ -L "${confDir}/waybar/config" ]]; then
-    ln -sf ${confDir}/waybar/Styles/\[TOP\]\ Simple-Cornered.css "${confDir}/waybar/style.css" 2>&1
-  	ln -sf ${confDir}/waybar/Styles/Configs/\[BOT\]\ Default\ Laptop "${confDir}/waybar/config" 2>&1
+    ln -sf ${confDir}/waybar/Styles/\[BOT\]\ HyDE.css "${confDir}/waybar/style.css" 2>&1
+  	ln -sf ${confDir}/waybar/Styles/Configs/\[TOP\]\ HyDE-02.jsonc "${confDir}/waybar/config" 2>&1
   	echo -e " :: ${indentOk} Waybar Configuration reinstated."
   fi
   EDITOR_SET=0
@@ -564,8 +564,6 @@ if [[ -d $configDir ]]; then
   done
   xdg-user-dirs-update 2>&1
   sudo systemctl enable sddm 2>&1
-  chmod +x ${localDir}/
-  cp "${configDir}/.gtkrc-2.0" "${homDir}/"
   echo -e " :: This repository has been installed on the system!"
   read -p "$(echo -e " :: ${indentAction} It is not recommended to use newly installed or upgraded repository without rebooting the system. ${indentSkyBlue} Would you like to reboot? ${indentGreen}(yes/no): ")" answer
   case $answer in
