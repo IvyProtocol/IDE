@@ -30,3 +30,32 @@ pkg_available() {
     return 1
   fi
 }
+
+fl_wallpaper() {
+    local walRasi="${cacheDir}/ivy-shell/cache.rasi"
+    local wpex fillpath extract_wall wall
+
+    wpex=$(grep -oE '"/[^"]+"' "$walRasi") || return 1
+    fillPath="${wpex#\"}"
+    fillPath="${fillPath%\"}"
+    extract_wall="${fillPath##*/}"
+    wall="${extract_wall}"
+    echo "$wall"
+}
+
+notify() {
+  local notif_file notif_id swayIPath intOut
+  
+  notif_file="/tmp/.ivy_notif_id"
+  notif_id=""
+  intOut="$1"
+  swayIPath="$2"
+
+  [[ -f "$notif_file" ]] && notif_id=$(<"$notif_file")
+  if [[ -n "$notif_id" ]]; then
+    notify-send -r "$notif_id" "$intOut" -i "${swayIPath}" -p
+  else
+    notif_id=$(notify-send "$intOut" -i "${swayIPath}" -p)
+    echo "$notif_id" > "$notif_file"
+  fi &
+}
