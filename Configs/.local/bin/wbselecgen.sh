@@ -9,7 +9,7 @@ source "$scrDir/globalvariable.sh"
 wallDir="${homDir}/Pictures/wallpapers"
 cacheDir="${ideCDir}/cache"
 blurDir="${cacheDir}/blur"
-rofiConf="${rasiDir}/config-wallpaper.rasi"
+rofiConf="${rasiDir}/selector.rasi"
 wallFramerate="60"
 wallTransDuration="0.4"
 
@@ -91,7 +91,7 @@ apply_wallpaper() {
     {
         scRun=$(fl_wallpaper -t "${img}" -f 1)
         cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-        magick "${cacheDir}/cols//${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
+        magick "${cacheDir}/cols/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
     } >/dev/null 2>&1 
 
@@ -99,20 +99,36 @@ apply_wallpaper() {
 }
 
 # ────────────────────────────────────────────────
+# Rofi Settings
+expV() {
+    rofiScale=10
+    r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiScale}\";}"
+    elem_border=$(( hypr_border * 3 ))
+
+    mon_x_res=$(( mon_res * 100 / mon_scale ))
+    elm_width=$(( (28 + 8 + 5) * rofiScale ))
+    max_avail=$(( mon_x_res - (4 * rofiScale) ))
+    col_count=$(( max_avail / elm_width ))
+    r_override="window{width:100%;} listview{columns:${col_count};spacing:5em;} element{border-radius:${elem_border}px;orientation:vertical;} element-icon{size:28em;border-radius:0em;} element-text{padding:1em;}"
+}
+
+# ────────────────────────────────────────────────
 # Interactive wallpaper picker
 choose_wallpaper() {
     mapfile -d '' files < <(find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0)
-
+    
+    selectC="${wallDir}/$(fl_wallpaper -r)"
     menu() {
         for f in "${files[@]}"; do
             name=$(basename "$f")
-            thumb="$cacheDir/cols/${name%.*}.cols"
+            thumb="$cacheDir/thumb/${name%.*}.sloc"
             [[ ! -f "$thumb" ]] && "${scrDir}/swwwallcache.sh" -w "$f" >/dev/null 2>&1
             printf "%s\x00icon\x1f%s\n" "$name" "$thumb"
         done
     }
+    expV
 
-    choice=$(menu | rofi -dmenu -i -p "Wallpaper" -config "$rofiConf" -theme-str 'element-icon{size:33%;}')
+    choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${selectC}")
     [ -z "$choice" ] && exit 0
     apply_wallpaper -i "${wallDir}/$choice"
 }
@@ -124,5 +140,3 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
-
-
