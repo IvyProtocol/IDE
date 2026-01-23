@@ -127,7 +127,9 @@ choose_wallpaper() {
         for f in "${files[@]}"; do
             name=$(basename "$f")
             thumb="${thumbDir}/${name%.*}.sloc"
-            [[ ! -f "$thumb" ]] && "${scrDir}/swwwallcache.sh" -f "$f"
+            cols="${colsDir}/${name%.*}.cols"
+            blur="${blurDir}/${name%.*}.bpex"
+            [[ ! -f "$thumb" || ! -f "$cols" || ! -f "$blur" ]] && "${scrDir}/swwwallcache.sh" -f "$f"
             printf "%s\x00icon\x1f%s\n" "$name" "$thumb"
         done
     }
