@@ -12,7 +12,6 @@ blurDir="${cacheDir}/blur"
 rofiConf="${rasiDir}/config-wallpaper.rasi"
 wallFramerate="60"
 wallTransDuration="0.4"
-BLUR="50x30"
 
 [[ -d "${blurDir}" ]] || mkdir -p "${blurDir}"
 [[ -d "${cacheDir}" ]] || mkdir -p "${cacheDir}"
@@ -102,7 +101,7 @@ apply_wallpaper() {
 # ────────────────────────────────────────────────
 # Interactive wallpaper picker
 choose_wallpaper() {
-    mapfile -d '' files < <(find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0)
+    mapfile -d '' files < <(find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o  -iname "*.gif"  -o -iname "*.jpeg" \) -print0)
 
     menu() {
         for f in "${files[@]}"; do
