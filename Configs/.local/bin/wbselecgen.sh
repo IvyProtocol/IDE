@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+!/usr/bin/env bash
 set -eo pipefail
 
 # ────────────────────────────────────────────────
@@ -12,7 +12,6 @@ blurDir="${cacheDir}/blur"
 rofiConf="${rasiDir}/config-wallpaper.rasi"
 wallFramerate="60"
 wallTransDuration="0.4"
-BLUR="50x30"
 
 [[ -d "${blurDir}" ]] || mkdir -p "${blurDir}"
 [[ -d "${cacheDir}" ]] || mkdir -p "${cacheDir}"
@@ -45,8 +44,11 @@ apply_wallpaper() {
     img="${img}"
     blurred="${blurDir}/${base%.*}.png"
     rasifile="${ideCDir}/cache.rasi"
-    argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
-
+    if [[ -e "${rasifile}" ]]; then 
+        argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
+    else
+        skip=1
+    fi
     case "$ntSend" in
         --s) ntSend=1 ;;
         *)   ntSend=0 ;;
@@ -61,7 +63,7 @@ apply_wallpaper() {
         elif [[ "${argfv}" == "light" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -l
 
-        elif [[ "${argfv}" == "auto" || ! -e "${rasiDir}" || -z "${argfv}" ]]; then
+        elif [[ "${argfv}" == "auto" || "${skip}" -eq 1 ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -a
 
         fi
@@ -92,7 +94,7 @@ apply_wallpaper() {
     {
         scRun=$(fl_wallpaper -t "${img}" -f 1)
         cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-        magick "${cacheDir}/thumb/thumb-${scRun}.png" "${rasiDir}/current-wallpaper.png" 
+        cp "${cacheDir}/thumb/thumb-${scRun}.png" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
     } >/dev/null 2>&1 
 
@@ -102,7 +104,7 @@ apply_wallpaper() {
 # ────────────────────────────────────────────────
 # Interactive wallpaper picker
 choose_wallpaper() {
-    mapfile -d '' files < <(find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0)
+    mapfile -d '' files < <(find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o  -iname "*.gif"  -o -iname "*.jpeg" \) -print0)
 
     menu() {
         for f in "${files[@]}"; do
@@ -125,5 +127,3 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
-
-
