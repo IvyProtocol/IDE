@@ -53,10 +53,10 @@ install_package() {
   done
 }
 
-get_backup_dirname() {
+timestamp() {
   local timestamp
   timestamp=$(date +"%m%d_%H%M")
-  echo "back-up_${timestamp}"
+  echo "${timestamp}"
 }
 
 prompt_timer() {
