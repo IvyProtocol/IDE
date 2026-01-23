@@ -33,6 +33,7 @@ hyprland=(
   alsa-utils
   pipewire-alsa
   pipewire-pulse
+  parallel
   gst-plugin-pipewire
   mpd
   mpc
