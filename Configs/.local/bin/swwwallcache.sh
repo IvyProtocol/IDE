@@ -27,7 +27,7 @@ fn_wallcache() {
   local w_sum="${2:-}"
   local sr_call="$(fl_wallpaper -t "${w_sum}" -f 1)"
 
-  [[ ! -f "${colsDir}/${sr_call}.cols" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${thmbDir}/${colsDir}.cols"
+  [[ ! -f "${colsDir}/${sr_call}.cols" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${thmbDir}/${sr_call}.cols"
   [[ ! -f "${blurDir}/${sr_call}.bpex" ]] && magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
   [[ ! -f "${thmbDir}/${sr_call}.sloc" ]] && magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
   [[ ! -e "${dcolDir}/auto/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -a --helper=1
