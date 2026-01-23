@@ -9,12 +9,16 @@ source "$scrDir/globalvariable.sh"
 wallDir="${homDir}/Pictures/wallpapers"
 cacheDir="${ideCDir}/cache"
 blurDir="${cacheDir}/blur"
+colsDir="${cacheDir}/cols"
+thumbDir="${cacheDir}/thumb"
 rofiConf="${rasiDir}/selector.rasi"
 wallFramerate="60"
 wallTransDuration="0.4"
 
 [[ -d "${blurDir}" ]] || mkdir -p "${blurDir}"
 [[ -d "${cacheDir}" ]] || mkdir -p "${cacheDir}"
+[[ -d "${colsDir}" ]] || mkdir -p "${colsDir}"
+[[ -d "${thumbDir}" ]] || mkdir -p "${thumbDir}"
 
 log() { echo "[$0] "$@""; }
 
@@ -78,9 +82,11 @@ apply_wallpaper() {
         *)        swww img "$img" -t "any" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
     esac
 
-    [[ ! -f "${blurred}" ]] && log "Creating blurry wallpaper" && {
-        "${scrDir}/swwwallcache.sh" -b "${img}"
-    }
+    scRun=$(fl_wallpaper -t "${img}" -f 1)
+    if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
+        log "Creating blurry wallpaper and caching"
+        "${scrDir}/swwwallcache.sh" -w "${img}"
+    fi
 
     if [[ ! -f $rasifile ]]; then
         echo "current-image=\"$img\"" > "$rasifile" 
@@ -89,11 +95,10 @@ apply_wallpaper() {
     fi
 
     {
-        scRun=$(fl_wallpaper -t "${img}" -f 1)
         cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-        magick "${cacheDir}/cols/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
+        cp "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
-    } >/dev/null 2>&1 
+    } 
 
     [[ "$ntSend" -eq 0 ]] && notify "Wallpaper Theme applied" "$img"
 }
@@ -121,8 +126,8 @@ choose_wallpaper() {
     menu() {
         for f in "${files[@]}"; do
             name=$(basename "$f")
-            thumb="$cacheDir/thumb/${name%.*}.sloc"
-            [[ ! -f "$thumb" ]] && "${scrDir}/swwwallcache.sh" -w "$f" >/dev/null 2>&1
+            thumb="${thumbDir}/${name%.*}.sloc"
+            [[ ! -f "$thumb" ]] && "${scrDir}/swwwallcache.sh" -f "$f"
             printf "%s\x00icon\x1f%s\n" "$name" "$thumb"
         done
     }
@@ -140,3 +145,5 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
+
+
