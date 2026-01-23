@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 set -eo pipefail
 
 # ────────────────────────────────────────────────
@@ -42,13 +42,10 @@ apply_wallpaper() {
     local base blurred rasifile argfv
     base="$(basename "$img")"
     img="${img}"
-    blurred="${blurDir}/${base%.*}.png"
+    blurred="${blurDir}/${base%.*}.bpex"
     rasifile="${ideCDir}/cache.rasi"
-    if [[ -e "${rasifile}" ]]; then 
-        argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
-    else
-        skip=1
-    fi
+    argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
+
     case "$ntSend" in
         --s) ntSend=1 ;;
         *)   ntSend=0 ;;
@@ -63,7 +60,7 @@ apply_wallpaper() {
         elif [[ "${argfv}" == "light" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -l
 
-        elif [[ "${argfv}" == "auto" || "${skip}" -eq 1 ]]; then
+        elif [[ "${argfv}" == "auto" || ! -e "${rasiDir}" || -z "${argfv}" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -a
 
         fi
@@ -94,7 +91,7 @@ apply_wallpaper() {
     {
         scRun=$(fl_wallpaper -t "${img}" -f 1)
         cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-        cp "${cacheDir}/thumb/thumb-${scRun}.png" "${rasiDir}/current-wallpaper.png" 
+        magick "${cacheDir}/cols//${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
     } >/dev/null 2>&1 
 
@@ -104,12 +101,12 @@ apply_wallpaper() {
 # ────────────────────────────────────────────────
 # Interactive wallpaper picker
 choose_wallpaper() {
-    mapfile -d '' files < <(find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o  -iname "*.gif"  -o -iname "*.jpeg" \) -print0)
+    mapfile -d '' files < <(find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0)
 
     menu() {
         for f in "${files[@]}"; do
             name=$(basename "$f")
-            thumb="$cacheDir/thumb/thumb-${name%.*}.png"
+            thumb="$cacheDir/cols/${name%.*}.cols"
             [[ ! -f "$thumb" ]] && "${scrDir}/swwwallcache.sh" -w "$f" >/dev/null 2>&1
             printf "%s\x00icon\x1f%s\n" "$name" "$thumb"
         done
@@ -127,3 +124,5 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
+
+
