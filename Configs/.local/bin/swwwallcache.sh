@@ -8,39 +8,47 @@ export ideCDir
 export dcolDir
 thmbDir="${ideCDir}/cache/thumb"
 blurDir="${ideCDir}/cache/blur"
+colsDir="${ideCDir}/cache/cols"
 scrRun="${scrDir}/ivy-shell.sh"
 
 [[ -d "${thmbDir}" ]] || mkdir -p "${thmbDir}"
 [[ -d "${blurDir}" ]] || mkdir -p "${blurDir}"
+[[ -d "${colsDir}" ]] || mkdir -p "${colsDir}"
 
 if srcf_rcall fl_wallpaper >/dev/null 2>&1; then
   echo "[$0]: function {fl_wallpaper} does NOT exist!" && exit 1
 fi
 
+# cols = For ${rasiDir}/current-wallpaper.png and other usage
+# bpex = For blur
+# sloc = For thumbnail of rofiselector
 fn_wallcache() {
   local h_sum="${1:-}"
   local w_sum="${2:-}"
   local sr_call="$(fl_wallpaper -t "${w_sum}" -f 1)"
 
-  [[ ! -f "${thmbDir}/thumb-${sr_call}.png" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${thmbDir}/thumb-${sr_call}.png"
-  [[ ! -f "${blurDir}/${sr_call}.png" ]] && magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.png"
+  [[ ! -f "${colsDir}/${sr_call}.cols" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${thmbDir}/${colsDir}.cols"
+  [[ ! -f "${blurDir}/${sr_call}.bpex" ]] && magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
+  [[ ! -f "${thmbDir}/${sr_call}.sloc" ]] && magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
   [[ ! -e "${dcolDir}/auto/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -a --helper=1
   [[ ! -e "${dcolDir}/dark/ivy-${h_sum}.dcol" ]] && "${scrRun}"  "${w_sum}" -d --helper=1
   [[ ! -e "${dcolDir}/light/ivy-${h_sum}.dcol" ]] && "${scrRun}"  "${w_sum}" -l --helper=1
+
 } >/dev/null 2>&1
 
 fn_wallcache_thumb() {
   local h_sum="${1:-}"
   local w_sum="${2:-}"
   local sr_call="$(fl_wallpaper -t "${w_sum}" -f 1)"
-  [[ ! -f "${thmbDir}/thumb-${sr_call}.png" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${thmbDir}/thumb-${sr_call}.png"
+  [[ ! -f "${colsDir}/${sr_call}.cols" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${colsDir}/${sr_call}.cols"
+  [[ ! -f "${thmbDir}/${sr_call}.sloc" ]] && magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
 } >/dev/null 2>&1
 
 fn_wallcache_blur() {
   local h_sum="${1:-}"
   local w_sum="${2:-}"
   local sr_call="$(fl_wallpaper -t "${w_sum}" -f 1)"
-  [[ ! -f "${blurDir}/${sr_call}.png" ]] && magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.png"
+  [[ ! -f "${blurDir}/${sr_call}.bpex" ]] && magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
 } >/dev/null 2>&1
 
 fn_wallcache_force() {
@@ -48,15 +56,16 @@ fn_wallcache_force() {
   local w_sum="${2:-}"
   local sr_call="$(fl_wallpaper -t "${w_sum}" -f 1)"
 
-  magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${thmbDir}/thumb-${sr_call}.png"
-  magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.png"
+  magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${colsDir}/${sr_call}.cols"
+  magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
+  magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
   "${scrRun}" "${w_sum}" -a --helper=1
   "${scrRun}"  "${w_sum}" -d --helper=1
   "${scrRun}"  "${w_sum}" -l --helper=1 
 } >/dev/null 2>&1
 
 export -f fn_wallcache fn_wallcache_force fn_wallcache_blur fn_wallcache_thumb fl_wallpaper
-export thmbDir blurDir dcolDir scrRun mode cacheIn
+export thmbDir blurDir dcolDir scrRun mode cacheIn colsDir sr_call
 
 mode="${mode:-}"
 cacheIn="${cacheIn:-}"
