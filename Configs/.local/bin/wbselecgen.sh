@@ -96,7 +96,7 @@ apply_wallpaper() {
 
     {
         cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-        cp "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
+        magick "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
     } 
 
@@ -120,7 +120,7 @@ expV() {
 # ────────────────────────────────────────────────
 # Interactive wallpaper picker
 choose_wallpaper() {
-    mapfile -d '' files < <(find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0)
+    mapfile -d '' files < <(LC_ALL=C find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
     
     selectC="${wallDir}/$(fl_wallpaper -r)"
     menu() {
@@ -147,5 +147,3 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
-
-
