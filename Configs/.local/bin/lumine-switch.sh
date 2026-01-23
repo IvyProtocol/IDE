@@ -19,7 +19,7 @@ apply_config() {
     fi
 
     [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
-    ext="${wallDir}/$(fl_wallpaper)"
+    ext="${wallDir}/$(fl_wallpaper -r)"
     if [[ "$1" == "dark" ]]; then
         "${scrDir}/ivy-shell.sh" "$ext" -d
     elif [[ "$1" == "light" ]]; then

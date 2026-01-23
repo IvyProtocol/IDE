@@ -7,11 +7,11 @@ pxCheck="${1:-}"
 wallDir="${homDir}/Pictures/wallpapers"
 
 swww-prefix() {
-    local walRasi="${cacheDir}/ivy-shell/cache.rasi"
+    local walRasi="${ideCDir}/cache.rasi"
     local wall wall_i pxCheck dirflag
    
     pxCheck="${1:-}"
-    wall=$(fl_wallpaper)
+    wall=$(fl_wallpaper -r)
 
     [[ -n "${wall}" ]] || return 1
 
@@ -56,3 +56,4 @@ case "$pxCheck" in
         echo -e "Invalid '$pxCheck' for $0. Correct arguments for $0 are: -p (--previous), -n (--next), -r (--random)"
         exit 0
 esac
+

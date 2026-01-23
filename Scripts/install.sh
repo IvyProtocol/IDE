@@ -540,9 +540,7 @@ if [[ -d $configDir ]]; then
         else
           echo -e " :: ${indentError} Failed to clone ${indentYellow}wallpapers ${exitCode1}"
         fi
-        "${localDir}/color-cache.sh" -a
-		"${localDir}/color-cache.sh" -d
-		"${localDir}/color-cache.sh" -l
+        "${localDir}/swwwallcache.sh" -w "${walDir}"
         echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
         break
         ;;
@@ -555,9 +553,7 @@ if [[ -d $configDir ]]; then
         else
           echo -e " :: ${indentError} Failed to copy some ${indentYellow}wallpapers - ${exitCode1}"
         fi
-        "${localDir}/color-cache.sh" -a
-		"${localDir}/color-cache.sh" -d
-		"${localDir}/color-cache.sh" -l
+        "${localDir}/swwwallcache.sh" -w "${walDir}"
         echo -e " :: ${indentOk} ${indentOrange}wallpapers${indentGreen} has been cached by ${localDir}/color-cache.sh"
         break
         ;;

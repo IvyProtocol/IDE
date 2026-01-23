@@ -12,14 +12,13 @@ ivygenImg="${1:-}"
 pxCheck="${2:-}"
 VAR2="${3:-}"
 
-if [ -z "$ivygenImg" ] || [ ! -f "$ivygenImg" ]; then
+if [[ -z "$ivygenImg" || ! -f "$ivygenImg" ]]; then
   printf 'Error: wallpaper missing or not found\n' >&2
   exit 2
 fi
 
-if [[ ! -f ${ivygen_cDot} || ! -f ${OUT_DIR} ]]; then
-  mkdir -p "$ivygen_cDot" "$OUT_DIR"
-fi
+[ ! -f "${ivygen_cDot}" ] && mkdir -p "${ivygen_cDot}"
+[ ! -f "${OUT_DIR}" ] && mkdir -p "${OUT_DIR}"
 
 ivyhash=$(md5sum "$ivygenImg" | awk '{print $1}')
 
