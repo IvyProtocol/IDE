@@ -157,3 +157,11 @@ srcf_rcall() {
     return 0
   fi
 }
+
+if echo "$HYPRLAND_INSTANCE_SIGNATURE" &>/dev/null; then
+  export hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
+  export hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
+fi
+
+mon_res=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
+mon_scale=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .scale' | tr -d '.')
