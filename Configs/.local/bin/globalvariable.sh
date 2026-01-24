@@ -99,21 +99,49 @@ fl_wallpaper() {
 }
 
 notify() {
-  local notif_file notif_id swayIPath intOut
-  
-  notif_file="/tmp/.ivy_notif_id"
-  notif_id=""
-  intOut="$1"
-  swayIPath="$2"
-
-  [[ -f "$notif_file" ]] && notif_id=$(<"$notif_file")
-  if [[ -n "$notif_id" ]]; then
-    notify-send -r "$notif_id" "$intOut" -i "${swayIPath}" -p
+  OPTIND=1
+  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file
+  while getopts ":m:s:p:i:v:" prefix; do
+    case "${prefix}" in
+      m) modern="${OPTARG}" ;;
+      s) 
+        swayncIPath="${OPTARG}" 
+        ;;
+      p) 
+        printOut="${OPTARG}"
+        ;;
+      i)
+        notify_id="${OPTARG}"
+        ;;
+      v)
+        value="${OPTARG}"
+        ;;
+    esac
+  done
+  if [[ "${modern}" -eq 2 ]]; then
+    notify-send -e -h string:x-canonical-private-synchronous:${notify_id} ${value:+-h int:value:${value}} ${swayncIPath:+-i "${swayncIPath[@]}"} "$printOut"
+  elif [[ "${modern}" -eq 1 ]]; then
+    notif_file="/tmp/.ivy_notif_id"
+    notif_id=""
+    [[ -f "${notif_file}" ]] && notif_id=$(<"${notif_file}")
+    if [[ -n "$notif_id" ]]; then
+      notify-send -r "${notif_id}" "${printOut}" ${swayncIPath:+-i "${swayncIPath}"} -p
+    else
+      notif_id=$(notify-send "${printOut}" ${swayncIPath:+-i "${swayncIPath}"} -p)
+      echo "${notif_id}" > "${notif_file}"
+    fi
   else
-    notif_id=$(notify-send "$intOut" -i "${swayIPath}" -p)
-    echo "$notif_id" > "$notif_file"
-  fi &
+    [[ -z "${OPTARG}" ]] && {
+      echo -e "[$0] Correct arguments are:"
+      echo -e "[$0] -l, legacy usage of notif_id. Supports: -s, -p."
+      echo -e "[$0] -m, private usage of notify-send. Supports: -s, -p, -i, -v. Mandatorial: -p, -i."
+      echo -e "[$0] -i, increament notif_id to notify-send. Mandatory if -m was used."
+      echo -e "[$0] -v, value set for notify-send, optional."
+      exit 1
+    }
+  fi
 }
+
 
 hashmap() {
   local hashpref hashMap
