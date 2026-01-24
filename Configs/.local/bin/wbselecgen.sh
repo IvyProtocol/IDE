@@ -40,7 +40,7 @@ apply_wallpaper() {
     if [ -z "$img" ] || [ ! -f "$img" ]; then
         img=$(fl_wallpaper -r)
         img="${wallDir}/$img"
-        [[ ! -f "$img" ]] && notify-send "Invalid wallpaper" "File not found: $img" && exit 1
+        [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" && exit 1
     fi
 
     local base blurred rasifile argfv
@@ -56,7 +56,7 @@ apply_wallpaper() {
     esac
 
     log "Applying wallpaper: $img"
-    [[ "$ntSend" -eq 0 ]] && notify "Using Theme Engine: " "${swayncDir}/icons/palette.png"
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
         if [[ "${argfv}" == "dark" ]]; then
@@ -100,7 +100,7 @@ apply_wallpaper() {
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
     } 
 
-    [[ "$ntSend" -eq 0 ]] && notify "Wallpaper Theme applied" "$img"
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "$img"
 }
 
 # ────────────────────────────────────────────────
@@ -147,3 +147,5 @@ if [ -n "$1" ]; then
 else
     choose_wallpaper
 fi
+
+
