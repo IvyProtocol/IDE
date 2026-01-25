@@ -95,8 +95,8 @@ apply_wallpaper() {
     fi
 
     {
-        cp "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-        magick "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
+        ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
+        ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
     } 
 
