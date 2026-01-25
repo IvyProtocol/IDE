@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# Clipboard Manager. This script uses cliphist, rofi, and wl-copy.
 scrDir=$(dirname "$(realpath "$0")")
 
-if [[ ! -f "${scrDir}/globalvariable.sh" ]]; then
-    rasiDir="$HOME/.config/rofi/shared/"
+if [[ ! -f "${scrDir}/globalcontrol.sh" ]]; then
+    rasiScr="$HOME/.config/rofi/shared/config-clipboard.rasi"
 else
-    source "${scrDir}/globalvariable.sh"
+    source "${scrDir}/globalcontrol.sh"
     rasiScr="${rasiDir}/config-clipboard.rasi"
 fi
 

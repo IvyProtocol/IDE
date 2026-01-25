@@ -2,7 +2,7 @@
 set -euo pipefail
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 
 pill=${1:-}
 pill2=${2:-}
@@ -75,7 +75,7 @@ EOF
   --print-structure)
     exec fastfetch --print-structure
     ;;
-  --c|-c|--config)
+  -c|--c|--config)
     exec fastfetch --config ${pill2}
     ;;
   --dv|-dv|--detect-version)
@@ -101,6 +101,7 @@ EOF
     iconDir="${confDir}/fastfetch/icons/"
     if [[ -e "$iconDir" && -r "$iconDir" && -w "$iconDir" ]]; then
       fetch=$(find "$iconDir" -maxdepth 1 -type f | shuf -n 1)
+      clear
       exec fastfetch -l "$fetch"
       exit 0
     else

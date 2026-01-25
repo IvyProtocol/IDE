@@ -9,7 +9,7 @@
 
 # Rofi vars
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 
 rasiDir="${rasiDir}/rofiSelect.rasi"
 #// set rofi font scaling
@@ -67,6 +67,6 @@ RofiSel=$(echo -en "$rofi_list" | rofi -dmenu -markup-rows -theme-str "$r_overri
 # Set Rofi Style 
 if [ ! -z "${RofiSel}" ] ; then
     RofiSel=$(echo "$RofiSel" | awk -F '.' '{print $1}')
-    sed -i "s|@import \".*\"|@import \"styles/${RofiSel}\"|g" "${confDir}//rofi/config.rasi"
+    sed -i "s|@import \".*\"|@import \"styles/${RofiSel}\"|g" "${confDir}/rofi/config.rasi"
     notify-send -e -h string:x-canonical-private-synchronous:rofi_notif -a "t1" -r 91190 -t 2200 -i "${rofiAssetDir}/${RofiSel}.png" " Rofi style ${RofiSel} applied..." 
 fi

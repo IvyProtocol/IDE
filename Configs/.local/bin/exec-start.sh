@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 
 confDir="${cacheDir}/ivy-shell/"
 flag="$confDir/done"

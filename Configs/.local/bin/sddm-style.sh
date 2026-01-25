@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 # Define directories
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 
 wlDir="/usr/share/sddm/themes/silent/themes"
 wcDir="/usr/share/sddm/themes/silent/configs/"
@@ -12,6 +12,7 @@ rasiDir="${rasiDir}/config-waybar.rasi"
 
 apply_config() {
     ln -sf "${wlDir}/$1" "$wcDir/default.conf"
+    notify-send -a "SDDM" -r 2 -t 2200 "Style Applied"
 }
 
 main() {
@@ -19,7 +20,7 @@ main() {
     current_name=$(basename "$current_target")
 
     mapfile -t options < <(
-        find -L "${wlDir}" -maxdepth 1 -type f -printf '%f\n' | sort
+        find -L "${wlDir}" -maxdepth 1 -type f -printf '%f\n' | sort -V
     )
 
     default_row=0

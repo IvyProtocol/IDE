@@ -63,6 +63,7 @@ fi
 # Template processing function
 # -----------------------
 process_template() {
+    set +u
     local template_file="$1"
     
     case "$template_file" in
@@ -164,6 +165,7 @@ done
             echo "Skipped non-executable script: $script"
         fi
     fi
+    set -u
 }
 
 export -f process_template

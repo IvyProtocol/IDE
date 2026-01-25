@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 # Define directories
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 
 wlDir="${wlDir}"
 wcDir="${wcDir}/style.css"

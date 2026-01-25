@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 
 pxCheck="${1:-}"
 wallDir="${homDir}/Pictures/wallpapers"

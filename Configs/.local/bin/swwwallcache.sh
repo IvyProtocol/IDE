@@ -2,7 +2,7 @@
 
 export scrDir="$(dirname "$(realpath "$0")")"
 
-[[ -e "${scrDir}/globalvariable.sh" ]] && source "${scrDir}/globalvariable.sh" || exit 1 
+[[ -e "${scrDir}/globalcontrol.sh" ]] && source "${scrDir}/globalcontrol.sh" || exit 1 
 
 export ideCDir
 export dcolDir

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 IFS=$'\n\t'
 
 # Define directories
@@ -28,7 +28,7 @@ apply_config() {
         "${scrDir}/ivy-shell.sh" "$ext" -a
     fi
     if [[ -z "${ext}" && -x "${scrDir}/wbselecgen.sh" ]]; then
-        rnSel=$(find "${wallDir}" -maxpath 1 -type f | shuf -n 1) \
+        rnSel=$(find "${wallDir}" -maxpath 1 -type f | shuf -n 1)
         "${scrDir}/wbselecgen.sh" -i "${rnSel}"
     fi
 }

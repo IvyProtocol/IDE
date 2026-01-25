@@ -4,7 +4,7 @@ set -eo pipefail
 # ────────────────────────────────────────────────
 # Configuration
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 
 wallDir="${homDir}/Pictures/wallpapers"
 cacheDir="${ideCDir}/cache"
@@ -48,7 +48,7 @@ apply_wallpaper() {
     img="${img}"
     blurred="${blurDir}/${base%.*}.bpex"
     rasifile="${ideCDir}/cache.rasi"
-    argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
+    export argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
 
     case "$ntSend" in
         --s) ntSend=1 ;;
@@ -121,7 +121,6 @@ expV() {
 # Interactive wallpaper picker
 choose_wallpaper() {
     mapfile -d '' files < <(LC_ALL=C find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
-    
     selectC="${wallDir}/$(fl_wallpaper -r)"
     menu() {
         for f in "${files[@]}"; do
@@ -130,12 +129,11 @@ choose_wallpaper() {
             cols="${colsDir}/${name%.*}.cols"
             blur="${blurDir}/${name%.*}.bpex"
             [[ ! -f "$thumb" || ! -f "$cols" || ! -f "$blur" ]] && "${scrDir}/swwwallcache.sh" -f "$f"
-            printf "%s\x00icon\x1f%s\n" "$name" "$thumb"
+            printf "%s\x00icon\x1f%s\n" "$name" "$thumb" 
         done
     }
     expV
-
-    choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${selectC}")
+    choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -selected-row "${selectC}")
     [ -z "$choice" ] && exit 0
     apply_wallpaper -i "${wallDir}/$choice"
 }

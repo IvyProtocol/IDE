@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalvariable.sh"
+source "$scrDir/globalcontrol.sh"
 
 times=$(date +"%d-%b_%H-%M-%S")
 dir="${homDir}/Pictures/Screenshots"
