@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 scrDir=$(dirname "$(realpath "$0")")
-Source "$scrDir/globalcontrol.sh"
+source "$scrDir/globalcontrol.sh"
 IFS=$'\n\t'
 
 # Define directories
