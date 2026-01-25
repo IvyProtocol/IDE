@@ -14,6 +14,23 @@ export themeDir="${XDG_THEME_CONF:-${confDir}/ivy-shell}/themes"
 export ideCDir="${XDG_IDE_CACHE:-${cacheDir}/ivy-shell}"
 export dcolDir="${XDG_DCOL_HOME:-${ideCDir}/shell}"
 
+export indentOk="$(tput setaf 2)[OK]$(tput sgr0)"
+export indentError="$(tput setaf 1)[ERROR]$(tput sgr0)"
+export indentNotice="$(tput setaf 3)[NOTICE]$(tput sgr0)"
+export indentInfo="$(tput setaf 4)[INFO]$(tput sgr0)"
+export indentReset="$(tput setaf 5)[RESET]$(tput sgr0)"
+export indentAction="$(tput setaf 6)[ACTION]$(tput sgr0)"
+export indentWarning="$(tput setaf 1)"
+export exitCode1="$(tput setaf 1)[EXIT-CODE-1]$(tput sgr0)"
+export exitCode0="$(tput setaf 2)[EXIT-CODE-0]$(tput sgr0)"
+
+export indentMagenta="$(tput setaf 5)"
+export indentYellow="$(tput setaf 3)"
+export indentOrange="$(tput setaf 214)"
+export indentGreen="$(tput setaf 2)"
+export indentBlue="$(tput setaf 4)"
+export indentSkyBlue="$(tput setaf 6)"
+
 pkg_installed() {
   local PkgIn=$1
 
@@ -137,14 +154,13 @@ notify() {
       echo -e "[$0] Correct arguments are:"
       echo -e "[$0] -l, legacy usage of notif_id. Supports: -s, -p."
       echo -e "[$0] -m, private usage of notify-send. Supports: -s, -p, -i, -v. Mandatorial: -p, -i."
-      echo -e "[$0] -p, print inputted message." #If two -p are declared, then the second flag would overlap! 
+      echo -e "[$0] -p, print inputted message." #If two -p are seen, then the second input would overlap! 
       echo -e "[$0] -i, increament notif_id to notify-send. Mandatory if -m 2 was used."
       echo -e "[$0] -v, value set for notify-send, optional."
       exit 1
     }
   fi
 }
-
 
 hashmap() {
   local hashpref hashMap
@@ -196,3 +212,4 @@ fi
 
 mon_res=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
 mon_scale=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .scale' | tr -d '.')
+
