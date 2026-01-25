@@ -34,7 +34,7 @@
         "states": {
             "c": 90, // critical
             "h": 60, // high
-            "m": 30, // medium
+            "m": 30 // medium
         },
         "interval": 30,
         "format": "󰾆 {used}GB",
@@ -168,7 +168,8 @@
 
     "tray": {
         "rotate": 0,
-        "spacing": 5
+        "spacing": 5,
+        "icon-size": 13
     },
 
     "custom/battery": {

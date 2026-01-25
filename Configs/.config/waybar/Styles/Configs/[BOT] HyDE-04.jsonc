@@ -188,7 +188,8 @@
 
     "tray": {
         "rotate": 0,
-        "spacing": 5
+        "spacing": 5,
+        "icon-size": 13
     },
 
     "custom/battery": {
