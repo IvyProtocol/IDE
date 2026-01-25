@@ -101,6 +101,7 @@ fl_wallpaper() {
 notify() {
   OPTIND=1
   local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file
+  
   while getopts ":m:s:p:i:v:" prefix; do
     case "${prefix}" in
       m) modern="${OPTARG}" ;;
@@ -123,6 +124,7 @@ notify() {
   elif [[ "${modern}" -eq 1 ]]; then
     notif_file="/tmp/.ivy_notif_id"
     notif_id=""
+
     [[ -f "${notif_file}" ]] && notif_id=$(<"${notif_file}")
     if [[ -n "$notif_id" ]]; then
       notify-send -r "${notif_id}" "${printOut}" ${swayncIPath:+-i "${swayncIPath}"} -p
@@ -135,7 +137,8 @@ notify() {
       echo -e "[$0] Correct arguments are:"
       echo -e "[$0] -l, legacy usage of notif_id. Supports: -s, -p."
       echo -e "[$0] -m, private usage of notify-send. Supports: -s, -p, -i, -v. Mandatorial: -p, -i."
-      echo -e "[$0] -i, increament notif_id to notify-send. Mandatory if -m was used."
+      echo -e "[$0] -p, print inputted message." #If two -p are declared, then the second flag would overlap! 
+      echo -e "[$0] -i, increament notif_id to notify-send. Mandatory if -m 2 was used."
       echo -e "[$0] -v, value set for notify-send, optional."
       exit 1
     }
