@@ -31,48 +31,48 @@ export indentGreen="$(tput setaf 2)"
 export indentBlue="$(tput setaf 4)"
 export indentSkyBlue="$(tput setaf 6)"
 
-pkg_installed() {
-  local PkgIn=$1
-
-  if pacman -Q "${PkgIn}" &>/dev/null; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-pkg_available() {
-  local PkgIn=$1
-  if pacman -Ss "${PkgIn}" &>/dev/null; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-ISAUR="yay"
-if ! command -v yay &>/dev/null; then
-  ISAUR="pacman"
-fi
-install_package() {
-  for pkg in "$@"; do
-    if $ISAUR -Q "$pkg" &>/dev/null; then
-      echo -e " :: ${indentAction} $pkg is already installed. Skipping..."
-      continue
-    fi
-
-    (clear && $ISAUR -S --noconfirm "$pkg")
-    if $ISAUR -Q "$pkg" &>/dev/null; then
-      echo -e " :: ${indentOk} Package $pkg installed successfully!"
-    else
-      echo -e " :: ${indentError} Package $pkg failed"
-    fi
+env_pkg() {
+  local envPkg statsPkg defAur
+  OPTIND=1
+  defAur="${defAur:-yay}"
+  while getopts "A:" opt; do
+    case "$opt" in
+      A) defAur="$OPTARG" ;;
+      *) echo "Invalid option"; return 1 ;;
+    esac
   done
+  shift $((OPTIND-1))
+  [[ ! -x $(command -v "$defAur" &>/dev/null) ]] && defAur="pacman"
+  envPkg="$1"
+  shift
+
+  statsPkg=("$@")
+  if [[ "$envPkg" == "-S" ]]; then
+    for pkg in "${statsPkg[@]}"; do
+      if "$defAur" -Q "$pkg" &>/dev/null; then
+        echo -e " :: ${pkg} is already installed. Skipping..."
+        continue
+      else
+        if "$defAur" -S --noconfirm "$pkg"; then
+          echo -e " :: Package ${pkg} installed successfully!"
+        else
+          echo -e " :: Package ${pkg} failed to install!"
+        fi
+      fi
+    done
+  elif [[ "${envPkg}" == "--env-help" ]]; then
+    echo -e " :: ${indentInfo} Use env_pkg as how pacman works. Example, env_pkg -S|-Q|-Ss <package_name>"
+    echo -e " :: ${indentInfo} Use env_pkg to describe the AUR to use with -A. env_pkg -A <aur_helper> -- -<PREFIX> <package_name>"
+  else
+    "$defAur" "$envPkg" "${statsPkg[@]}"
+  fi
+  return $?
 }
+
 
 timestamp() {
   local timestamp
-  timestamp=$(date +"%m%d_%H%M")
+  timestamp=$(date +"%d-%b_%H-%M-%S")
   echo "${timestamp}"
 }
 
@@ -134,6 +134,8 @@ notify() {
       v)
         value="${OPTARG}"
         ;;
+      *)
+        exit 1
     esac
   done
   if [[ "${modern}" -eq 2 ]]; then
@@ -197,19 +199,12 @@ hashmap() {
 
 srcf_rcall() {
   local sr_call="${sr_call:-${1}}"
-
-  if declare -f "${sr_call}" >/dev/null 2>&1; then
-    return 1
-  else
-    return 0
-  fi
+  return $?
 }
 
 if echo "$HYPRLAND_INSTANCE_SIGNATURE" &>/dev/null; then
   export hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
   export hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
+  mon_res=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
+  mon_scale=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .scale' | tr -d '.')
 fi
-
-mon_res=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
-mon_scale=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .scale' | tr -d '.')
-
