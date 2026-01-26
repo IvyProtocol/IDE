@@ -13,7 +13,7 @@ fi
 kbcus1="Control-Delete"
 kbcus2="Alt-Delete"
 
-if pkg_installed "rofi"; then
+if env_pkg -- -Q "rofi"; then
     if pidof rofi > /dev/null; then
         pkill rofi
     fi
