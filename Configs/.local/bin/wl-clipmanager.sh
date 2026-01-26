@@ -18,7 +18,7 @@ if env_pkg -- -Q "rofi"; then
         pkill rofi
     fi
 else
-    notify-send -p -e -u low " [IDE]" " Is rofi installed? exit-code 1."
+    notify -m 1 -p " Is rofi installed? exit-code 1."
     exit 1
 fi
 
