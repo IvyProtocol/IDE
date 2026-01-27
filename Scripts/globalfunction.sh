@@ -35,48 +35,46 @@ export indentGreen="$(tput setaf 2)"
 export indentBlue="$(tput setaf 4)"
 export indentSkyBlue="$(tput setaf 6)"
 
-print_color() {
-  printf "%b%sb\n" "$1" "$2" "${indentReset}"
-}
+env_pkg() {
+  local envPkg statsPkg defAur
+  OPTIND=1
+  defAur="${defAur:-yay}"
 
-pkg_installed() {
-  local PkgIn=$1
-
-  if pacman -Q "${PkgIn}" &>/dev/null; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-pkg_available() {
-  local PkgIn=$1
-  if pacman -Ss "${PkgIn}" &>/dev/null; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-
-ISAUR="yay"
-if ! command -v yay &>/dev/null; then
-  ISAUR="pacman"
-fi
-install_package() {
-  for pkg in "$@"; do
-    if $ISAUR -Q "$pkg" &>/dev/null; then
-      echo -e " :: ${indentAction} $pkg is already installed. Skipping..."
-      continue
-    fi
-
-    (clear && $ISAUR -S --noconfirm "$pkg")
-    if $ISAUR -Q "$pkg" &>/dev/null; then
-      echo -e " :: ${indentOk} Package $pkg installed successfully!"
-    else
-      echo -e " :: ${indentError} Package $pkg failed"
-    fi
+  while getopts "A:H" opt; do
+    case "$opt" in
+      A) defAur="$OPTARG" ;;
+      H)
+        echo -e " :: ${indentInfo} Use env_pkg as how pacman works. Example, env_pkg -- -S|-Q|-Ss <package_name>"
+        echo -e " :: ${indentInfo} Use env_pkg to describe the AUR to use with -A. env_pkg -A <aur_helper> -- -<PREFIX> <package_name>"
+        return 0
+        ;;
+      *) echo "Invalid option"; return 1 ;;
+    esac
   done
+  shift $((OPTIND-1))
+  [[ ! -x $(command -v "$defAur" &>/dev/null) ]] && defAur="pacman"
+  envPkg="$1"
+  shift
+
+  statsPkg=("$@")
+
+  if [[ "$envPkg" == "-S" ]]; then
+    for pkg in "${statsPkg[@]}"; do
+      if "$defAur" -Q "$pkg" &>/dev/null; then
+        echo -e " :: ${pkg} is already installed. Skipping..."
+        continue
+      else
+        if "$defAur" -S --noconfirm "$pkg"; then
+          echo -e " :: Package ${pkg} installed successfully!"
+        else
+          echo -e " :: Package ${pkg} failed to install!"
+        fi
+      fi
+    done
+  else
+    "$defAur" "$envPkg" "${statsPkg[@]}"
+  fi
+  return $?
 }
 
 update_editor() {
@@ -85,10 +83,11 @@ update_editor() {
   echo " :: ${indentOk} Default editor set to ${indentMagenta}$editor${indentReset}." 2>&1
 }
 
-get_backup_dirname() {
+timestamp_dirname() {
   local timestamp
+  local name="$1"
   timestamp=$(date +"%m%d_%H%M")
-  echo "back-up_${timestamp}"
+  echo "${name}_${timestamp}"
 }
 
 prompt_timer() {
