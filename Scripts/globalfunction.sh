@@ -40,7 +40,7 @@ env_pkg() {
   OPTIND=1
   defAur="${defAur:-yay}"
 
-  while getopts "A:H" opt; do
+  while getopts "A:H:" opt; do
     case "$opt" in
       A) defAur="$OPTARG" ;;
       H)
@@ -52,7 +52,9 @@ env_pkg() {
     esac
   done
   shift $((OPTIND-1))
-  [[ ! -x $(command -v "$defAur" &>/dev/null) ]] && defAur="pacman"
+  if ! command -v "${defAur}" >/dev/null 2>&1; then
+    defAur="pacman"
+  fi
   envPkg="$1"
   shift
 
@@ -60,11 +62,11 @@ env_pkg() {
 
   if [[ "$envPkg" == "-S" ]]; then
     for pkg in "${statsPkg[@]}"; do
-      if "$defAur" -Q "$pkg" &>/dev/null; then
+      if "${defAur[@]}" -Q "$pkg" &>/dev/null; then
         echo -e " :: ${pkg} is already installed. Skipping..."
         continue
       else
-        if "$defAur" -S --noconfirm "$pkg"; then
+        if "${defAur[@]}" -S --noconfirm --needed "$pkg"; then
           echo -e " :: Package ${pkg} installed successfully!"
         else
           echo -e " :: Package ${pkg} failed to install!"
@@ -72,9 +74,9 @@ env_pkg() {
       fi
     done
   else
-    "$defAur" "$envPkg" "${statsPkg[@]}"
+    "${defAur[@]}" "$envPkg" "${statsPkg[@]}"
+    return $?
   fi
-  return $?
 }
 
 update_editor() {
