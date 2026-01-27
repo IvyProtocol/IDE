@@ -58,11 +58,11 @@ env_pkg() {
 
   if [[ "$envPkg" == "-S" ]]; then
     for pkg in "${statsPkg[@]}"; do
-      if "${defAur[@]}" -Q "$pkg" &>/dev/null; then
+      if "${defAur}" -Q "$pkg" &>/dev/null; then
         echo -e " :: ${pkg} is already installed. Skipping..."
         continue
       else
-        if "${defAur[@]}" -S --noconfirm --needed "$pkg"; then
+        if "${defAur}" -S --noconfirm --needed "$pkg"; then
           echo -e " :: Package ${pkg} installed successfully!"
         else
           echo -e " :: Package ${pkg} failed to install!"
@@ -70,7 +70,7 @@ env_pkg() {
       fi
     done
   else
-    "${defAur[@]}" "$envPkg" "${statsPkg[@]}"
+    "${defAur}" "$envPkg" "${statsPkg[@]}"
     return $?
   fi
 }
@@ -140,7 +140,7 @@ notify() {
         value="${OPTARG}"
         ;;
       *)
-        exit 1
+        return 1
     esac
   done
   if [[ "${modern}" -eq 2 ]]; then
@@ -207,7 +207,7 @@ srcf_rcall() {
   return $?
 }
 
-if echo "$HYPRLAND_INSTANCE_SIGNATURE" &>/dev/null; then
+if [[ -n "${HYPRLAND_INSTANCE_SIGNATURE}" ]] && command -v hyprctl jq >/dev/null; then
   export hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
   export hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
   mon_res=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
