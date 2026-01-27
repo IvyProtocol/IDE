@@ -40,12 +40,12 @@ case $command in
     exit 0
     ;;
   --yay)
-  	if pkg_installed "yay-bin" 2>/dev/null; then
-	  echo -e " :: ${indentAction} ${aurRp} is already ${indentGreen} installed - ${exitCode0}"
-	else
-	  clear
-	  git clone "https://aur.archlinux.org/${aurRp}.git" "${cloneDir}/${aurRp}" >/dev/null 2>&1
-	  clear
+    if env_pkg -- -Qs 2>/dev/null; then
+      echo -e " :: ${indentAction} ${aurRp} is already ${indentGreen} installed - ${exitCode0}"
+    else
+      clear
+	    git clone "https://aur.archlinux.org/${aurRp}.git" "${cloneDir}/${aurRp}" >/dev/null 2>&1
+	    clear
       var=$(stat -c '%U' "${cloneDir}/${aurRp}")
       var1=$(stat -c '%U' "${cloneDir}/${aurRp}/PKGBUILD")
 
@@ -53,7 +53,7 @@ case $command in
         (cd "${cloneDir}/${aurRp}/" && makepkg -si)
       fi
       exit 0
-	fi
+	  fi
     ;;
   --sddm)
     if [[ -f "${sourceDir}/SDDM-Silent.tar.gz" ]]; then
@@ -270,7 +270,7 @@ else
         fi
         ;;
       [Nn]*|""|*)
-        if pkg_installed "yay-bin" 2>/dev/null || pkg_installed "yay" 2>/dev/null; then
+        if env_pkg -- -Q "yay-bin" 2>/dev/null || env_pkg -- -Q "yay" 2>/dev/null; then
           echo -e " :: ${indentAction} ${aurRp} is already ${indentGreen}installed - ${exitCode0}"
         else
           echo " :: ${indentReset} Aborting Installation due to user preference. The installation will not begin if ${aurRp} is not installed. ${exitCode1}"
@@ -296,7 +296,7 @@ if [[ "$rpcachecheck" -eq 1 ]]; then
       fi
       ;;
     [Nn]*|""|*)
-      if pkg_installed "yay-bin" 2>/dev/null || pkg_installed "yay" 2>/dev/null; then
+      if env_pkg -- -Q "yay-bin" 2>/dev/null || env_pkg -- -Q "yay" 2>/dev/null; then
         echo -e " :: ${indentAction} ${aurRp} is already ${indentGreen}installed - ${exitCode0}"
       else
         echo " :: ${indentReset} Aborting Installation due to user preference. The installation will not begin if ${aurRp} is not installed. ${exitCode1}"
@@ -375,7 +375,7 @@ if [[ -d $configDir ]]; then
         prompt_timer 120 "${indentAction} Do you want to backup ${indentBlue}${conf}${indentReset} config?"
         case "$PROMPT_INPUT" in
           Y|y)
-            backupDir=$(get_backup_dirname)
+            backupDir=$(timestamp_dirname "back-up")
             backupconf="${homDir}/.backup"
             mkdir -p "${backupconf}" 
             mv "${confpath}" "${backupconf}/${conf}-backup-${backupDir}"
@@ -426,7 +426,7 @@ if [[ -d $configDir ]]; then
   	echo -e " :: ${indentOk} Waybar Configuration reinstated."
   fi
   EDITOR_SET=0
-  if pkg_installed "nvim" &>/dev/null; then
+  if env_pkg -- -Q "nvim" &>/dev/null; then
     echo -e " :: ${indentInfo} By default, this repository comes with ${indentMagenta}neovim${indentSkyBlue}."
     prompt_timer 20 "${indentAction} Do you want to make ${indentMagenta}neovim${indentSkyBlue} default?" 2>&1
     case $PROMPT_INPUT in
@@ -441,7 +441,7 @@ if [[ -d $configDir ]]; then
         echo -e " :: ${indentError} Please say 'y' or 'n'. ${exitCode1}!"
         ;;
     esac
-  elif [[ "$EDITOR_SET" -eq 0 ]] && pkg_installed "vim" &>/dev/null; then
+  elif [[ "$EDITOR_SET" -eq 0 ]] && env_pkg -- -Q "vim" &>/dev/null; then
     echo -e " :: ${indentInfo} ${indentMagenta}vim${indentYellow} is detected as installed."
     prompt_timer 20 "${indentAction} Do you want to make ${indentMagenta}vim${indentGreen} default?"
     if [[ "$PROMPT_INPUT" == "Y" || "$PROMPT_INPUT" == "y" ]]; then
@@ -449,11 +449,11 @@ if [[ -d $configDir ]]; then
       EDITOR_SET=1
     fi
   fi
-  if pkg_installed "cava" &>/dev/null; then
+  if env_pkg -- -Q "cava" &>/dev/null; then
     mkdir -p "${confDir}/cava"
     cp "${localDir}/../state/ivy-shell/cava.ivy" "${confDir}/ivy-shell/shell/"    
   fi
-  if pkg_installed "vscodium" &>/dev/null; then
+  if env_pkg -- -Q "vscodium" &>/dev/null; then
   	set +e
     mkdir -p "${homDir}/.vscode-oss/extensions/thehydeproject.wallbash-0.3.6/"
     mkdir -p "${confDir}/VSCodium/User"
@@ -468,11 +468,11 @@ if [[ -d $configDir ]]; then
 	  fi
 	set -e
   fi
-  if pkg_installed "vesktop" &>/dev/null; then
+  if env_pkg -- -Q "vesktop" &>/dev/null; then
     mkdir -p "${confDir}/vesktop/themes"
     cp "${localDir}/../state/ivy-shell/discord.ivy" "${confDir}/ivy-shell/shell/"
   fi
-  if pkg_installed "python-pywalfox" &>/dev/null; then
+  if env_pkg -- -Q "python-pywalfox" &>/dev/null; then
   	cp "${localDir}/../state/ivy-shell/pyfox.ivy" "${confDir}/ivy-shell/shell/"
   fi
   if [[ $sddmtheme -eq 1 ]]; then
