@@ -48,7 +48,7 @@ apply_wallpaper() {
     img="${img}"
     blurred="${blurDir}/${base%.*}.bpex"
     rasifile="${ideCDir}/cache.rasi"
-    export argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
+    argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
 
     case "$ntSend" in
         --s) ntSend=1 ;;
@@ -63,10 +63,8 @@ apply_wallpaper() {
             "${scrDir}/ivy-shell.sh" "$img" -d
         elif [[ "${argfv}" == "light" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -l
-
         elif [[ "${argfv}" == "auto" || ! -e "${rasiDir}" || -z "${argfv}" ]]; then
             "${scrDir}/ivy-shell.sh" "$img" -a
-
         fi
     elif [[ -n "${schIPC}" ]]; then
         case "${schIPC}" in
@@ -79,13 +77,13 @@ apply_wallpaper() {
     case $swi in
         --swww-p) swww img "$img" -t "outer" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-n) swww img "$img" -t "grow" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        *)        swww img "$img" -t "any" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
+        *)               swww img "$img" -t "any" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
     esac
 
     scRun=$(fl_wallpaper -t "${img}" -f 1)
     if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
         log "Creating blurry wallpaper and caching"
-        "${scrDir}/swwwallcache.sh" -w "${img}"
+        "${scrDir}/swwwallcache.sh" -b "${img}"
     fi
 
     if [[ ! -f $rasifile ]]; then
@@ -93,13 +91,9 @@ apply_wallpaper() {
     else
         sed -i "s|^current-image=.*|current-image=\"$img\"|" "$rasifile"
     fi
-
-    {
-        ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-        ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
-        cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
-    } 
-
+    ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
+    ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
+    cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "$img"
 }
 
