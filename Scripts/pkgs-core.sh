@@ -117,16 +117,16 @@ var="${1:-}"
  
 case $var in
   --hyprland)
-    install_package "${hyprland[@]}"
+    env_pkg -- -S "${hyprland[@]}"
     ;;
   --extra)
-    install_package "${extra[@]}"
+    env_pkg -- -S "${extra[@]}"
     ;;
   --driver)
-    install_package "${driver[@]}"
+    env_pkg -- -S "${driver[@]}"
     ;;
   --sddm)
-    install_package "${sddm[@]}"
+    env_pkg -- -S "${sddm[@]}"
     ;;
   *|"")
     exit 0
