@@ -8,7 +8,7 @@ IFS=$'\n\t'
 rasiPath="${rasiDir}/shell.rasi"
 
 apply_config() {
-    local rasiTarget="${cacheDir}/ivy-shell"
+    local rasiTarget="${ideCDir}"
     local awCheck=$(awk 'NR == 2' "${rasiTarget}/cache.rasi")
     local wallDir="${homDir}/Pictures/wallpapers"
 
