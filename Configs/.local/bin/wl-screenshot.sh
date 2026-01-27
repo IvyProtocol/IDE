@@ -3,12 +3,11 @@
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
-times=$(date +"%d-%b_%H-%M-%S")
 dir="${homDir}/Pictures/Screenshots"
-scrfile="${dir}/Screenshot_${times}.png"
+scrfile="${dir}/Screenshot_$(timestamp).png"
 
 active_window_class=$(hyprctl -j activewindow | jq -r '(.class)')
-active_window_file="Screenshot_${times}_${active_window_class}.png"
+active_window_file="Screenshot_$(timestamp)_${active_window_class}.png"
 active_window_path="${dir}/${active_window_file}"
 
 notify_cmd_base="notify-send -t 10000 -A action1=Open -A action2=Delete -h string:x-canonical-private-synchronous:shot-notify"
