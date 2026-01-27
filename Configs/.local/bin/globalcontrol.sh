@@ -35,9 +35,15 @@ env_pkg() {
   local envPkg statsPkg defAur
   OPTIND=1
   defAur="${defAur:-yay}"
-  while getopts "A:" opt; do
+
+  while getopts "A:H" opt; do
     case "$opt" in
       A) defAur="$OPTARG" ;;
+      H)
+        echo -e " :: ${indentInfo} Use env_pkg as how pacman works. Example, env_pkg -- -S|-Q|-Ss <package_name>"
+        echo -e " :: ${indentInfo} Use env_pkg to describe the AUR to use with -A. env_pkg -A <aur_helper> -- -<PREFIX> <package_name>"
+        return 0
+        ;;
       *) echo "Invalid option"; return 1 ;;
     esac
   done
@@ -47,6 +53,7 @@ env_pkg() {
   shift
 
   statsPkg=("$@")
+
   if [[ "$envPkg" == "-S" ]]; then
     for pkg in "${statsPkg[@]}"; do
       if "$defAur" -Q "$pkg" &>/dev/null; then
@@ -60,14 +67,12 @@ env_pkg() {
         fi
       fi
     done
-  elif [[ "${envPkg}" == "--env-help" ]]; then
-    echo -e " :: ${indentInfo} Use env_pkg as how pacman works. Example, env_pkg --  -S|-Q|-Ss <package_name>"
-    echo -e " :: ${indentInfo} Use env_pkg to describe the AUR to use with -A. env_pkg -A <aur_helper> -- -<PREFIX> <package_name>"
   else
     "$defAur" "$envPkg" "${statsPkg[@]}"
   fi
   return $?
 }
+
 
 
 timestamp() {
