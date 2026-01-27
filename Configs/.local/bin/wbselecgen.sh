@@ -37,7 +37,7 @@ apply_wallpaper() {
    done
 
    shift $((OPTIND -1))
-    if [ -z "$img" || ! -f "$img" ]; then
+    if [ -z "$img" ] || [ ! -f "$img" ]; then
         img=$(fl_wallpaper -r)
         img="${wallDir}/$img"
         [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" && exit 1
