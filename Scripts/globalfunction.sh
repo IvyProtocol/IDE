@@ -42,7 +42,9 @@ env_pkg() {
 
   while getopts "A:H:" opt; do
     case "$opt" in
-      A) defAur="$OPTARG" ;;
+      A) 
+        defAur="$OPTARG"
+        ;;
       H)
         echo -e " :: ${indentInfo} Use env_pkg as how pacman works. Example, env_pkg -- -S|-Q|-Ss <package_name>"
         echo -e " :: ${indentInfo} Use env_pkg to describe the AUR to use with -A. env_pkg -A <aur_helper> -- -<PREFIX> <package_name>"
@@ -53,28 +55,26 @@ env_pkg() {
   done
   shift $((OPTIND-1))
   if ! command -v "${defAur}" >/dev/null 2>&1; then
+    echo -e " :: ${defAur} does not exist! Defaulting to pacman!"
     defAur="pacman"
   fi
   envPkg="$1"
   shift
 
   statsPkg=("$@")
-
   if [[ "$envPkg" == "-S" ]]; then
+    echo -e " :: ${defAur} ${envPkg} is being used!"
     for pkg in "${statsPkg[@]}"; do
-      if "${defAur[@]}" -Q "$pkg" &>/dev/null; then
+      if "${defAur}" -Q "$pkg" &>/dev/null; then
         echo -e " :: ${pkg} is already installed. Skipping..."
         continue
       else
-        if "${defAur[@]}" -S --noconfirm --needed "$pkg"; then
-          echo -e " :: Package ${pkg} installed successfully!"
-        else
-          echo -e " :: Package ${pkg} failed to install!"
-        fi
+        [[ "${defAur}" == "pacman" ]] && sudo "${defAur}" -S --noconfirm --needed "${pkg}" || "${defAur}" -S --noconfirm --needed "${pkg}" 
+        [[ "$?" != 0 ]] && echo -e " :: Package ${pkg} failed to install! Manual intervention required!" || echo -e " :: ${pkg} installed successfully!"
       fi
     done
   else
-    "${defAur[@]}" "$envPkg" "${statsPkg[@]}"
+    [[ "${defAur}" == "pacman" ]] && sudo "${defAur}" "${envPkg}" "${statsPkg[@]}" || "${defAur}" "${envPkg}" "${statsPkg[@]}"
     return $?
   fi
 }
