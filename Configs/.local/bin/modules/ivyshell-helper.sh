@@ -14,25 +14,16 @@ confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
 cacheDir="${XDG_CACHE_HOME:-$HOME/.cache}"
 homDir="${XDG_HOME:-$HOME}"
 
+
 # -----------------------
 # Early Fallback Check
 # -----------------------
-if [[ ! -d "$shellDir" ]]; then
-    echo "ivygen-helper: no dcol directory found, nothing to apply."
-    exit 0
-fi
+[[ "$EUID" -eq 0 ]] && echo "[$0] must not be run as root." >&2 && exit 1
+[[ ! -d "${shellDir}" ]] && echo "[$0] no dcol/ivy file found. Nothing to apply!" && exit 0
 
 if ! find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' \) -print -quit | grep -q .; then
     echo "ivygen-helper: no .dcol or .ivy templates found, nothing to apply."
     exit 0
-fi
-
-# -----------------------
-# Forbid Root Execution
-# -----------------------
-if [[ "$EUID" -eq 0 ]]; then
-  echo "ivygen must not be run as root." >&2
-  exit 1
 fi
 
 # -----------------------
