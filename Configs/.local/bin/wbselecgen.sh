@@ -48,7 +48,9 @@ apply_wallpaper() {
     img="${img}"
     blurred="${blurDir}/${base%.*}.bpex"
     rasifile="${ideCDir}/cache.rasi"
-    argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile")
+    set +e
+    argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile") >/dev/null 2>&1
+    set -e
 
     case "$ntSend" in
         --s) ntSend=1 ;;
@@ -115,20 +117,20 @@ expV() {
 # Interactive wallpaper picker
 choose_wallpaper() {
     mapfile -d '' files < <(LC_ALL=C find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
-    selectC="${wallDir}/$(fl_wallpaper -r)"
     menu() {
+        selectC=0
         for f in "${files[@]}"; do
             name=$(basename "$f")
             thumb="${thumbDir}/${name%.*}.sloc"
             cols="${colsDir}/${name%.*}.cols"
             blur="${blurDir}/${name%.*}.bpex"
             [[ ! -f "$thumb" || ! -f "$cols" || ! -f "$blur" ]] && "${scrDir}/swwwallcache.sh" -f "$f"
-            printf "%s\x00icon\x1f%s\n" "$name" "$thumb" 
+            printf "%s\x00icon\x1f%s\n" "$name" "$thumb"
         done
     }
     expV
     choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -selected-row "${selectC}")
-    [ -z "$choice" ] && exit 0
+    [[ -z "$choice" ]] && exit 0
     apply_wallpaper -i "${wallDir}/$choice"
 }
 
