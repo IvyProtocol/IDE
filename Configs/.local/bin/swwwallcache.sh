@@ -15,9 +15,7 @@ scrRun="${scrDir}/ivy-shell.sh"
 [[ -d "${blurDir}" ]] || mkdir -p "${blurDir}"
 [[ -d "${colsDir}" ]] || mkdir -p "${colsDir}"
 
-if srcf_rcall fl_wallpaper >/dev/null 2>&1; then
-  echo "[$0]: function {fl_wallpaper} does NOT exist!" && exit 1
-fi
+srcf_rcall fl_wallpaper && [[ $? -ge 1 ]] && echo "[$0]: function {fl_wallpaper} does NOT exist!" && exit 1
 
 # cols = For ${rasiDir}/current-wallpaper.png and other usage
 # bpex = For blur
