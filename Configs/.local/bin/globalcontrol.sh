@@ -55,7 +55,7 @@ env_pkg() {
     defAur="pacman"
   fi
   envPkg="$1"
-  shift
+  shift >/dev/null 2>&1
 
   statsPkg=("$@")
   if [[ "$envPkg" == "-S" ]]; then
