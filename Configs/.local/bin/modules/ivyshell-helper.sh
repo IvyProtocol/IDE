@@ -45,7 +45,7 @@ load_ivy_file() {
         if [[ "$line" == *=* ]]; then
             key="${line%%=*}"
             value="${line#*=}"
-            [[ "$key" == *_hex || "$value" == \#* ]] && value="${value#\#}"
+            [[ "$value" == \#* ]] && value="${value#\#}"
             export "$key=$value"
         fi
     done < "$file"
@@ -149,6 +149,7 @@ done
         echo "Generated: $target"
     else
         echo "Skipped (unchanged): $target"
+        exit 0
     fi
 
     # -----------------------
@@ -176,4 +177,4 @@ for var in $(compgen -v | grep '^ivy_'); do export "$var"; done
 # Run templates in parallel
 # -----------------------
 find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' \) -print0 \
-    | xargs -0 -n 1 -P "$(nproc)" bash -c 'process_template "$@"' _
+    | xargs -0 -n 1 -P 3 bash -c 'process_template "$@"' _
