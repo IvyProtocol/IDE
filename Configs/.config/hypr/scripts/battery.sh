@@ -4,8 +4,8 @@
 #   no-args -> outputs JSON for Waybar
 #   toggle  -> flips click-mode (show time beside icon)
 
-TOGGLE="/tmp/waybar_battery_show_alt"
-HISTORY="/tmp/waybar_battery_hist"
+TOGGLE="/tmp/waybar_battery_show_alt_$USER"
+HISTORY="/tmp/waybar_battery_hist_$USER"
 HIST_N=3
 
 BAT0="/sys/class/power_supply/BAT0"
