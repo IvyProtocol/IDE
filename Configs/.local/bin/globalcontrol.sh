@@ -33,7 +33,8 @@ export indentGreen="$(tput setaf 2)"
 export indentBlue="$(tput setaf 4)"
 export indentSkyBlue="$(tput setaf 6)"
 
-source "${ideConf}"
+clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${ideConf}" | sed 's/exclusion=\"(//')"
+[[ -n "${clusterExclude}" ]] && source <(grep -vE "^[[:space:]]*($clusterExclude)=" "$ideConf") || source "${ideConf}"
 
 env_pkg() {
   local envPkg statsPkg defAur
