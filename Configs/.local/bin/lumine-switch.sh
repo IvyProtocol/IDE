@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-
+set -eo pipefail
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
-IFS=$'\n\t'
 
 rasiPath="${rasiDir}/shell.rasi"
 
@@ -14,12 +13,15 @@ apply_config() {
     [[ $1 == "light" ]] && wallIde=2
 
     [[ -n "${enableWallIde}" ]] && sed -i "s|^enableWallIde=[0-9]|enableWallIde=${wallIde}|" "${ideDir}/ide.conf" || sed -i "s|^enableWallIde=.*|enableWallIde=0|" "${ideDir}/ide.conf"
+    notify -m 1 -p "Theme Mode: $1" -s "${swayncDir}/icons/palette.png"
 
     [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
     ext="${wallSet}"
-    [[ "${wallIde}" -eq 0 ]] && "${scrDir}/ivy-shell.sh" -i "$ext" -c auto -t 
-    [[ "${wallide}" -eq 1 ]] && "${scrDir}/ivy-shell.sh" -i "$ext" -c dark -t
-    [[ "${wallIde}" -eq 2 ]] && "${scrDir}/ivy-shell.sh" -i "$ext" -c light -t
+    [[ "${wallIde}" -eq 0 ]] && "${scrDir}/ivy-shell.sh" -i "$ext" -c auto  
+    [[ "${wallIde}" -eq 1 ]] && "${scrDir}/ivy-shell.sh" -i "$ext" -c dark 
+    [[ "${wallIde}" -eq 2 ]] && "${scrDir}/ivy-shell.sh" -i "$ext" -c light
+
+
 
     if [[ -z "${ext}" && -x "${scrDir}/wbselecgen.sh" ]]; then
         rnSel=$(find "${wallDir}" -maxpath 1 -type f | shuf -n 1)
