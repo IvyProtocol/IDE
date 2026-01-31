@@ -125,7 +125,7 @@ fl_wallpaper() {
 
 notify() {
   OPTIND=1
-  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file
+  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file=""
   
   while getopts ":m:s:p:i:v:" prefix; do
     case "${prefix}" in
@@ -142,12 +142,13 @@ notify() {
       v)
         value="${OPTARG}"
         ;;
-      *)
+      \?)
         return 1
     esac
   done
+  shift $((OPTIND -1))
   if [[ "${modern}" -eq 2 ]]; then
-    notify-send -e -h string:x-canonical-private-synchronous:${notify_id} ${value:+-h int:value:${value}} ${swayncIPath:+-i "${swayncIPath[@]}"} "$printOut"
+    notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
   elif [[ "${modern}" -eq 1 ]]; then
     notif_file="/tmp/.ivy_notif_id"
     notif_id=""
