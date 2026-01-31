@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
