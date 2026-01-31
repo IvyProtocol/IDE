@@ -66,10 +66,8 @@ if [[ -f $ivycache ]]; then
   --helper=0|""|*)
       echo "Cache found: restoring wallpaper colors"
       cp -f "$ivycache" "${OUT_DIR}/ivygen.dcol"
-      echo "$ivycache"
       $scrDir/modules/ivyshell-theme.sh 
       $scrDir/modules/ivyshell-helper.sh
-      echo "$ivygenImg"
       exit 0
     ;;
   esac
