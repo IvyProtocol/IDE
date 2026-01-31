@@ -56,7 +56,6 @@ apply_wallpaper() {
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
-        echo "enableWallIde is = $enableWallIde and this is $img"
         [[ "${enableWallIde}" -eq 0 || -z "${enableWallIde}" ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c auto
         [[ "${enableWallIde}" -eq 1 ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c dark 
         [[ "${enableWallIde}" -eq 2 ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c light
