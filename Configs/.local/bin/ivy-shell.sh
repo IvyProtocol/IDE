@@ -8,14 +8,17 @@ scrDir="$(dirname "$(realpath "$0")")"
 
 [[ "$EUID" -eq 0 ]] && exit 1
 
-ivygenImg="${1:-}"
-pxCheck="${2:-}"
-VAR2="${3:-}"
-
-if [[ -z "$ivygenImg" || ! -f "$ivygenImg" ]]; then
-  printf 'Error: wallpaper missing or not found\n' >&2
-  exit 2
-fi
+ivygenImg="" pxCheck="" VAR2="" silent=0
+OPTIND=1
+while getopts ":i:c:t:s" arg; do
+  case "${arg}" in
+    i) ivygenImg="${OPTARG}" ;;
+    c) pxCheck="${OPTARG}" ;;
+    t) VAR2="${OPTARG}" ;;
+    s) silent=1 ;;
+  esac
+done
+shift $((OPTIND -1))
 
 [ ! -f "${ivygen_cDot}" ] && mkdir -p "${ivygen_cDot}"
 [ ! -f "${OUT_DIR}" ] && mkdir -p "${OUT_DIR}"
@@ -23,23 +26,26 @@ fi
 ivyhash=$(md5sum "$ivygenImg" | awk '{print $1}')
 
 case "$pxCheck" in
-  -d|--dark)
+  dark)
     sortMode="dark"
     colSort=""
     mkdir -p "${ivygen_cDot}/dark"
     ivycache="${ivygen_cDot}/dark/ivy-${ivyhash}.dcol"
+    echo "Using Dark Mode"
     ;;
-  -l|--light)
+  light)
     sortMode="light"
     colSort="-r"
     mkdir -p "${ivygen_cDot}/light"
     ivycache="${ivygen_cDot}/light/ivy-${ivyhash}.dcol"
+    echo "Using Light Mode"
     ;;
-  -a|--auto|*) 
+  auto|*) 
     sortMode="auto" 
     colSort=""
     mkdir -p "${ivygen_cDot}/auto"
     ivycache="$ivygen_cDot/auto/ivy-${ivyhash}.dcol"
+    echo "using Auto Mode"
     ;;
 esac
 
@@ -59,9 +65,11 @@ if [[ -f $ivycache ]]; then
     ;;
   --helper=0|""|*)
       echo "Cache found: restoring wallpaper colors"
-      cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
+      cp -f "$ivycache" "${OUT_DIR}/ivygen.dcol"
+      echo "$ivycache"
       $scrDir/modules/ivyshell-theme.sh 
       $scrDir/modules/ivyshell-helper.sh
+      echo "$ivygenImg"
       exit 0
     ;;
   esac

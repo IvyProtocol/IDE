@@ -6,14 +6,12 @@ set -eo pipefail
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
-wallDir="${homDir}/Pictures/wallpapers"
+wallDir="${wallDir}"
 cacheDir="${ideCDir}/cache"
 blurDir="${cacheDir}/blur"
 colsDir="${cacheDir}/cols"
 thumbDir="${cacheDir}/thumb"
 rofiConf="${rasiDir}/selector.rasi"
-wallFramerate="60"
-wallTransDuration="0.4"
 
 [[ -d "${blurDir}" ]] || mkdir -p "${blurDir}"
 [[ -d "${cacheDir}" ]] || mkdir -p "${cacheDir}"
@@ -39,18 +37,15 @@ apply_wallpaper() {
    shift $((OPTIND -1))
     if [[ -z "$img" || ! -f "$img" ]]; then
         img=$(fl_wallpaper -r)
-        img="${wallDir}/$img"
+        img="${wallDir}$img"
         [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" && exit 1
     fi
 
-    local base blurred rasifile argfv
+    local base blurred rasifile
     base="$(basename "$img")"
     img="${img}"
     blurred="${blurDir}/${base%.*}.bpex"
-    rasifile="${ideCDir}/cache.rasi"
-    set +e
-    argfv=$(awk -F'"' 'NR==2 {print $2}' "$rasifile") >/dev/null 2>&1
-    set -e
+ 
 
     case "$ntSend" in
         --s) ntSend=1 ;;
@@ -61,25 +56,27 @@ apply_wallpaper() {
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
-        if [[ "${argfv}" == "dark" ]]; then
-            "${scrDir}/ivy-shell.sh" "$img" -d
-        elif [[ "${argfv}" == "light" ]]; then
-            "${scrDir}/ivy-shell.sh" "$img" -l
-        elif [[ "${argfv}" == "auto" || ! -e "${rasiDir}" || -z "${argfv}" ]]; then
-            "${scrDir}/ivy-shell.sh" "$img" -a
-        fi
+        echo "enableWallIde is = $enableWallIde and this is $img"
+        [[ "${enableWallIde}" -eq 0 || -z "${enableWallIde}" ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c auto
+        [[ "${enableWallIde}" -eq 1 ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c dark 
+        [[ "${enableWallIde}" -eq 2 ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c light
     elif [[ -n "${schIPC}" ]]; then
         case "${schIPC}" in
-            --dark|-d)  "${scrDir}/ivy-shell.sh" "${img}" -d ;;
-            --light|-l) "${scrDir}/ivy-shell.sh" "${img}" -l ;;
-            --auto|-a)  "${scrDir}/ivy-shell.sh" "${img}" -a ;;
+            --dark|-d)  "${scrDir}/ivy-shell.sh" -i "${img}" -c dark ;;
+            --light|-l) "${scrDir}/ivy-shell.sh" -i "${img}" -c light ;;
+            --auto|-a)  "${scrDir}/ivy-shell.sh" -i "${img}" -c auto ;;
         esac
     fi
+    [[ -z "${wallFramerate}" ]] && wallFramerate=144 || wallFramerate="${wallFramerate}"
+    [[ -z "${wallTransDuration}" ]] && wallTransDuration=0.4 || wallTransDuration="${wallTransDuration}"
+    [[ -z "${wallAnimation}" ]] && wallAnimation="any" || wallAnimation="${wallAnimation}"
+    [[ -z "${wallAnimationPrevious}" ]] && wallAnimation="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
+    [[ -z "${wallAnimationNext}" ]] && wallAnimation="grow" || wallAnimationNext="${wallAnimationNext}"
 
     case $swi in
-        --swww-p) swww img "$img" -t "outer" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        --swww-n) swww img "$img" -t "grow" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        *)        swww img "$img" -t "any" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
+        --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
     esac
 
     scRun=$(fl_wallpaper -t "${img}" -f 1)
@@ -88,11 +85,8 @@ apply_wallpaper() {
         "${scrDir}/swwwallcache.sh" -b "${img}"
     fi
 
-    if [[ ! -f $rasifile ]]; then
-        echo "current-image=\"$img\"" > "$rasifile" 
-    else
-        sed -i "s|^current-image=.*|current-image=\"$img\"|" "$rasifile"
-    fi
+    sed -i "s|^wallSet=.*|wallSet=\"$wallDir$(fl_wallpaper -t $img)\"|" "${confDir}/ivy-shell/ide.conf"
+
     ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
     ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
     cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
@@ -102,7 +96,7 @@ apply_wallpaper() {
 # ────────────────────────────────────────────────
 # Rofi Settings
 expV() {
-    rofiScale=10
+    [[ -z "${rofiScale}" ]] && rofiScale=10 || rofiScale="${rofiScale}"
     r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiScale}\";}"
     elem_border=$(( hypr_border * 3 ))
 
@@ -131,7 +125,7 @@ choose_wallpaper() {
     expV
     choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -selected-row "${selectC}")
     [[ -z "$choice" ]] && exit 0
-    apply_wallpaper -i "${wallDir}/$choice"
+    apply_wallpaper -i "${wallDir}$choice"
 }
 
 # ────────────────────────────────────────────────

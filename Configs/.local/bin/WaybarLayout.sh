@@ -10,8 +10,7 @@ wcDir="${wcDir}/config"
 rasiTarget="${rasiDir}/config-waybar.rasi"
 
 apply_config() {
-    ln -sf "$wlDir/$1" "$wcDir"
-    "${hyprscrDir}/toggle-waybar.sh" &
+    wblayout "$1"
 }
 
 main() {
@@ -43,9 +42,6 @@ main() {
     choice=${choice# $MARKER}
 
     case "$choice" in
-        "no panel")
-            pgrep -x "waybar" && pkill waybar || true
-            ;;
         *)
             apply_config "$choice"
             ;;

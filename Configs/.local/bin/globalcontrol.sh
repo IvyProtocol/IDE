@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 export homDir="${XDG_HOME:-$HOME}"
 export confDir="${XDG_CONFIG_HOME:-${homDir}/.config}"
 export localDir="${XDG_LOCAL_HOME:-${homDir}/.local}"
@@ -13,6 +14,7 @@ export hyprscrDir="${XDG_WBSCRDIR_HOME:-${confDir}/hypr/scripts}"
 export themeDir="${XDG_THEME_CONF:-${confDir}/ivy-shell}/themes"
 export ideCDir="${XDG_IDE_CACHE:-${cacheDir}/ivy-shell}"
 export dcolDir="${XDG_DCOL_HOME:-${ideCDir}/shell}"
+export ideConf="${XDG_CONF_HOME:-${confDir}/ivy-shell}/ide.conf"
 
 export indentOk="$(tput setaf 2)[OK]$(tput sgr0)"
 export indentError="$(tput setaf 1)[ERROR]$(tput sgr0)"
@@ -30,6 +32,8 @@ export indentOrange="$(tput setaf 214)"
 export indentGreen="$(tput setaf 2)"
 export indentBlue="$(tput setaf 4)"
 export indentSkyBlue="$(tput setaf 6)"
+
+source "${ideConf}"
 
 env_pkg() {
   local envPkg statsPkg defAur
@@ -99,13 +103,12 @@ prompt_timer() {
 fl_wallpaper() {
   OPTIND=1
   local fill=0 fillPath extract_wall w_int="" c_rasi
-  c_rasi="${ideCDir}/cache.rasi"
 
   while getopts ":f:t:r" prefix; do
     case "${prefix}" in
        f) fill="${OPTARG}" ;;
        t) w_int="${OPTARG}" ;;
-       r) w_int=$(grep -oE '"/[^"]+"' "$c_rasi") || return 1 ;;
+       r) w_int="${wallSet}" || return 1 ;;
      esac
   done
   shift $((OPTIND - 1))
@@ -213,3 +216,15 @@ if [[ -n "${HYPRLAND_INSTANCE_SIGNATURE}" ]] && command -v hyprctl jq >/dev/null
   mon_res=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
   mon_scale=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .scale' | tr -d '.')
 fi
+
+wblayout() {
+  local wlDir="${wlDir}/Configs"
+  local wcDir="${wcDir}/config"
+  local rasiTarget="${rasiDir}/config-waybar.rasi"
+
+  [[ -z $1 ]] && exit 0
+  ln -sf "${wlDir}/$1" "${wcDir}"
+  "${hyprscrDir}/toggle-waybar.sh" &
+}
+
+

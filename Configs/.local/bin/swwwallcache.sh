@@ -105,5 +105,5 @@ done
 
 wallPathArray=("${cacheIn}")
 hashmap -v -t "${wallPathArray[@]}"
-parallel --bar --link fn_wallcache${mode} ::: "${wallHash[@]}" ::: "${wallList[@]}"
+parallel --bar --link --compress fn_wallcache${mode} ::: "${wallHash[@]}" ::: "${wallList[@]}"
 exit 0

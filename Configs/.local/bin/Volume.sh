@@ -7,7 +7,7 @@ source "$scrDir/globalcontrol.sh"
 # Scripts for volume controls for audio and mic
 
 iDIR="${swayncDir}/icons"
-sDIR="${hyprscrDir}"
+sDIR="${confDir}/hypr/scripts"
 
 # Get Volume
 get_volume() {

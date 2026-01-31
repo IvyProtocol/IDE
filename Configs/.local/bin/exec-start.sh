@@ -2,7 +2,8 @@
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
-flag="${ideCDir}/done"
+confDir="${cacheDir}/ivy-shell/"
+flag="$confDir/done"
 
 if ! pgrep -x "swww-daemon" >/dev/null; then
   swww-daemon &

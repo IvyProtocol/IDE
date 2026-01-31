@@ -5,7 +5,7 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
 pill=${1:-}
-pill2=${2:-}
+pill2=${2:-@}
 case $pill in
   --h|-h|--help)
     if [[ -z $pill2 ]]; then
@@ -43,7 +43,7 @@ Display options:
   -s, --structure <structure>                Set the structure of the fetch
 EOF
     else
-      if [ $pill2 = "show-full"  ]; then
+      if [ $pill2 = "--show-full"  ]; then
         exec fastfetch --help 
       fi
     fi
@@ -98,9 +98,11 @@ EOF
     exec fastfetch --logo-height ${pill2}
     ;;
   *)
-    iconDir="${confDir}/fastfetch/icons/"
-    if [[ -e "$iconDir" && -r "$iconDir" && -w "$iconDir" ]]; then
-      fetch=$(find "$iconDir" -maxdepth 1 -type f | shuf -n 1)
+    [[ "${fetchIcon}" = "null" ]] || fastfetch -l "${fetchIcon}"  
+    [[ "${fetchIconDir}" == "null" ]] && exit 0 || fetchIconDir="${fetchIconDir}" || fetchIconDir="${confDir}/fastfetch/icons"
+
+    if [[ -e "${fetchIconDir}" ]]; then
+      fetch=$(find "${fetchIconDir}" -maxdepth 1 -type f | shuf -n 1)
       clear
       exec fastfetch -l "$fetch"
       exit 0
