@@ -7,7 +7,6 @@ pxCheck="${1:-}"
 wallDir="${homDir}/Pictures/wallpapers"
 
 swww-prefix() {
-    local walRasi="${ideCDir}/cache.rasi"
     local wall wall_i pxCheck dirflag
    
     pxCheck="${1:-}"
