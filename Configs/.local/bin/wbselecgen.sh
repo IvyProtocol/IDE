@@ -56,26 +56,18 @@ apply_wallpaper() {
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
-        [[ "${enableWallIde}" -eq 0 || -z "${enableWallIde}" ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c auto
-        [[ "${enableWallIde}" -eq 1 ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c dark 
-        [[ "${enableWallIde}" -eq 2 ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c light
+        "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
     elif [[ -n "${schIPC}" ]]; then
         case "${schIPC}" in
-            --dark|-d)  "${scrDir}/ivy-shell.sh" -i "${img}" -c dark ;;
-            --light|-l) "${scrDir}/ivy-shell.sh" -i "${img}" -c light ;;
-            --auto|-a)  "${scrDir}/ivy-shell.sh" -i "${img}" -c auto ;;
+            dark|light|auto)  "${scrDir}/ivy-shell.sh" -i "${img}" -c "${schIPC}" ;;
+            *) echo -e "Invalid Argument for [$0]. Correct arguments are dark|light|auto"
         esac
     fi
-    [[ -z "${wallFramerate}" ]] && wallFramerate=144 || wallFramerate="${wallFramerate}"
-    [[ -z "${wallTransDuration}" ]] && wallTransDuration=0.4 || wallTransDuration="${wallTransDuration}"
-    [[ -z "${wallAnimation}" ]] && wallAnimation="any" || wallAnimation="${wallAnimation}"
-    [[ -z "${wallAnimationPrevious}" ]] && wallAnimation="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
-    [[ -z "${wallAnimationNext}" ]] && wallAnimation="grow" || wallAnimationNext="${wallAnimationNext}"
 
     case $swi in
-        --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier .43,1.19,1,.4 --transition-duration $wallTransDuration --transition-fps $wallFramerate --invert-y ;;
+        --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y ;;
     esac
 
     scRun=$(fl_wallpaper -t "${img}" -f 1)
@@ -83,8 +75,8 @@ apply_wallpaper() {
         log "Creating blurry wallpaper and caching"
         "${scrDir}/swwwallcache.sh" -b "${img}"
     fi
-
-    sed -i "s|^wallSet=.*|wallSet=\"$wallDir$(fl_wallpaper -t $img)\"|" "${confDir}/ivy-shell/ide.conf"
+    
+    setConf "wallSet" "${wallDir}$(fl_wallpaper -t $img)" "${ideDir}/ide.conf"
 
     ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
     ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
