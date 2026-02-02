@@ -11,10 +11,9 @@ export rasiDir="${XDG_RTDIR_HOME:-${confDir}/rofi/shared}"
 export wlDir="${XDG_WLDIR_HOME:-${confDir}/waybar/Styles}"
 export wcDir="${XDG_WCDIR_HOME:-${confDir}/waybar/}"
 export hyprscrDir="${XDG_WBSCRDIR_HOME:-${confDir}/hypr/scripts}"
-export themeDir="${XDG_THEME_CONF:-${confDir}/ivy-shell}/themes"
+export ideDir="${XDG_CONF_HOME:-${confDir}/ivy-shell}"
 export ideCDir="${XDG_IDE_CACHE:-${cacheDir}/ivy-shell}"
 export dcolDir="${XDG_DCOL_HOME:-${ideCDir}/shell}"
-export ideConf="${XDG_CONF_HOME:-${confDir}/ivy-shell}/ide.conf"
 
 export indentOk="$(tput setaf 2)[OK]$(tput sgr0)"
 export indentError="$(tput setaf 1)[ERROR]$(tput sgr0)"
@@ -33,8 +32,9 @@ export indentGreen="$(tput setaf 2)"
 export indentBlue="$(tput setaf 4)"
 export indentSkyBlue="$(tput setaf 6)"
 
-clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${ideConf}" | sed 's/exclusion=\"(//')"
-[[ -n "${clusterExclude}" ]] && source <(grep -vE "^[[:space:]]*($clusterExclude)=" "$ideConf") || source "${ideConf}"
+set +e
+clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${ideDir}/ide.conf" | sed 's/exclusion=\"(//')"
+[[ -n "${clusterExclude}" ]] && source <(grep -vE "^[[:space:]]*($clusterExclude)=" "${ideDir}/ide.conf") || source "${ideDir}/ide.conf"
 
 env_pkg() {
   local envPkg statsPkg defAur
@@ -85,6 +85,28 @@ timestamp() {
   timestamp=$(date +"%d-%b_%H-%M-%S")
   echo "${timestamp}"
 }
+
+case "${enableWallIde}" in
+  1)
+    enableWallIde=1
+    dcolMode="dark"
+    ;;
+  2) 
+    enableWallIde=2
+    dcolMode="light"
+    ;;
+  0|*) 
+    enableWallIde=0 
+    dcolMode="auto" 
+    ;;
+esac
+
+[[ -z "${wallFramerate}" ]] && wallFramerate=144 || wallFramerate="${wallFramerate}"
+[[ -z "${wallTransDuration}" ]] && wallTransDuration=0.4 || wallTransDuration="${wallTransDuration}"
+[[ -z "${wallAnimation}" ]] && wallAnimation="any" || wallAnimation="${wallAnimation}"
+[[ -z "${wallAnimationPrevious}" ]] && wallAnimationPrevious="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
+[[ -z "${wallAnimationNext}" ]] && wallAnimationNext="grow" || wallAnimationNext="${wallAnimationNext}"
+[[ -z "${wallTransitionBezier}" ]] && wallTranitionBezier=".43,1.19,1,.4" || wallTransitionBezier="${wallTransitionBezier}"
 
 prompt_timer() {
     set +e
@@ -229,4 +251,20 @@ wblayout() {
   "${hyprscrDir}/toggle-waybar.sh" &
 }
 
+ext_thumb() {
+  local x_arg x_arg_temp
+  x_arg=$(realpath "$x_wall")
+  x_arg_temp=$2
+  [[ -z "${x_arg}" ]] && return 1
+  ffmpeg -y -i "${x_arg}" -vf "thumbnail,scale=1000:-1" -frames:v 1 -update 1 "${x_arg_temp}" &>/dev/null
+}
 
+setConf() {
+  local varName="${1}"
+  local varValue="${2}"
+  local varPath="${3}" 
+
+  [[ -z "${varValue}" ]] && echo -e "No value has been provided!" && return 1
+  [[ "${varValue}" =~ ^[0-9]+$ ]] && varValue="${varValue}" || varValue="\"${varValue}\""
+  [[ "$(grep -c "^${varName}" "${varPath}")" -eq 1 ]] && sed -i "s|^${varName}=.*|${varName}=${varValue}|" "${varPath}" || echo "${varName}=${varValue}" >> "${varPath}"
+}
