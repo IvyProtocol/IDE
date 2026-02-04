@@ -12,8 +12,7 @@ rofiConf="${rasiDir}/selector.rasi"
 log() { echo "[$0] "$@""; }
 
 # ────────────────────────────────────────────────
-# Apply wallpaper + blur + cache + color sync
-apply_wallpaper() {
+apply_themer() {
     thmChsh="${1}"
     [[ "${themeIde}" == "${1}" ]] || setConf "themeIde" "${1}" "${scrDir}/globalcontrol.sh" &
     [[ "${wallDir}" == "${ideDir}/theme/${1}/wallpapers" ]] || setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${1}/wallpapers" "${ideDir}/ide.conf" &
@@ -44,7 +43,7 @@ expV() {
 
 # ────────────────────────────────────────────────
 # Interactive wallpaper picker
-choose_wallpaper() {
+choose_theme() {
     mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf)
 
     menu() {
@@ -58,13 +57,13 @@ choose_wallpaper() {
     expV
     choice=$(menu | rofi -dmenu -i -p "ThemeControl" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${selectC}")
     [[ -z "$choice" ]] && exit 0
-    apply_wallpaper "$choice"
+    apply_theme "$choice"
 }
 
 # ────────────────────────────────────────────────
 # Main
 if [ -n "$1" ]; then
-    apply_wallpaper "$@"
+    apply_theme "$@"
 else
-    choose_wallpaper
+    choose_theme
 fi
