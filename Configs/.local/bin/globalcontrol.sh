@@ -9,7 +9,7 @@ export rofiStyleDir="${XDG_RSDIR_HOME:-${confDir}/rofi}/styles"
 export rofiAssetDir="${XDG_RADIR_HOME:-${confDir}/rofi/shared}/assets"
 export rasiDir="${XDG_RTDIR_HOME:-${confDir}/rofi/shared}"
 export wlDir="${XDG_WLDIR_HOME:-${confDir}/waybar/Styles}"
-export wcDir="${XDG_WCDIR_HOME:-${confDir}/waybar/}"
+export wcDir="${XDG_WCDIR_HOME:-${confDir}/waybar}"
 export hyprscrDir="${XDG_WBSCRDIR_HOME:-${confDir}/hypr/scripts}"
 export ideDir="${XDG_CONF_HOME:-${confDir}/ivy-shell}"
 export ideCDir="${XDG_IDE_CACHE:-${cacheDir}/ivy-shell}"
@@ -31,7 +31,6 @@ export indentOrange="$(tput setaf 214)"
 export indentGreen="$(tput setaf 2)"
 export indentBlue="$(tput setaf 4)"
 export indentSkyBlue="$(tput setaf 6)"
-
 set +e
 clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${ideDir}/ide.conf" | sed 's/exclusion=\"(//')"
 [[ -n "${clusterExclude}" ]] && source <(grep -vE "^[[:space:]]*($clusterExclude)=" "${ideDir}/ide.conf") || source "${ideDir}/ide.conf"
@@ -95,11 +94,16 @@ case "${enableWallIde}" in
     enableWallIde=2
     dcolMode="light"
     ;;
+  3)
+    enableWallIde=3
+    ;;
   0|*) 
     enableWallIde=0 
     dcolMode="auto" 
     ;;
 esac
+
+themeIde="Wallbash-Ivy"
 
 [[ -z "${wallFramerate}" ]] && wallFramerate=144 || wallFramerate="${wallFramerate}"
 [[ -z "${wallTransDuration}" ]] && wallTransDuration=0.4 || wallTransDuration="${wallTransDuration}"
@@ -243,28 +247,44 @@ fi
 
 wblayout() {
   local wlDir="${wlDir}/Configs"
-  local wcDir="${wcDir}/config"
+  local tarDir="${wlDir}/../config"
   local rasiTarget="${rasiDir}/config-waybar.rasi"
 
+
   [[ -z $1 ]] && exit 0
-  ln -sf "${wlDir}/$1" "${wcDir}"
-  "${hyprscrDir}/toggle-waybar.sh" &
+  ln -sf "${wlDir}/$1" "${tarDir}"
+  "${hyprscrDir}/toggle-waybar.sh" 
 }
 
 ext_thumb() {
   local x_arg x_arg_temp
-  x_arg=$(realpath "$x_wall")
+  x_arg=$(realpath "$x_arg")
   x_arg_temp=$2
   [[ -z "${x_arg}" ]] && return 1
   ffmpeg -y -i "${x_arg}" -vf "thumbnail,scale=1000:-1" -frames:v 1 -update 1 "${x_arg_temp}" &>/dev/null
 }
 
 setConf() {
-  local varName="${1}"
+  local varString="${1}"
   local varValue="${2}"
   local varPath="${3}" 
 
   [[ -z "${varValue}" ]] && echo -e "No value has been provided!" && return 1
-  [[ "${varValue}" =~ ^[0-9]+$ ]] && varValue="${varValue}" || varValue="\"${varValue}\""
-  [[ "$(grep -c "^${varName}" "${varPath}")" -eq 1 ]] && sed -i "s|^${varName}=.*|${varName}=${varValue}|" "${varPath}" || echo "${varName}=${varValue}" >> "${varPath}"
+
+  local IFS="|"
+  read -ra confStrings <<< "${varString}"
+  read -ra confValue <<< "${varValue}"
+
+  (( ${#confStrings[@]} != ${#confValue[@]} )) && {
+        echo "Name/value count mismatch"
+        return 1
+  }
+
+  for i in "${!confStrings[@]}"; do
+    local confKey="${confStrings[i]}"
+    local confVal="${confValue[i]}"
+    [[ "${confVal}" =~ ^[0-9]+$ ]] || confVal="\"${confVal}\""
+    [[ "$(grep -c "^${confKey}" "${varPath}")" -eq 1 ]] && sed -i "s|^${confKey}=.*|${confKey}=${confVal}|" "${varPath}" || echo "${confKey}=${confVal}" >> "${varPath}"
+
+  done
 }
