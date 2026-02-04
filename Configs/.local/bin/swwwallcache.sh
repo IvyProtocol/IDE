@@ -57,9 +57,9 @@ fn_wallcache_force() {
   magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${colsDir}/${sr_call}.cols"
   magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
   magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
-  "${scrRun}" -i "${w_sum}" -c dark -t --silent
-  "${scrRun}" -i "${w_sum}" -c light -t --silent
-  "${scrRun}" -i  "${w_sum}" -c auto -t --silent
+  "${scrRun}" -i "${w_sum}" -c dark -t silent
+  "${scrRun}" -i "${w_sum}" -c light -t silent
+  "${scrRun}" -i  "${w_sum}" -c auto -t silent
 } >/dev/null 2>&1
 
 export -f fn_wallcache fn_wallcache_force fn_wallcache_blur fn_wallcache_thumb fl_wallpaper
