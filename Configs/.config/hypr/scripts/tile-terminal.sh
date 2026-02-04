@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# CREDITS TO HERRUR from JaKooLit
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 #
 # Made and brought to by Kiran George
@@ -353,6 +352,5 @@ else
   debug_echo "No terminal found, creating new one"
   spawn_terminal
 fi
-  fi
-fi
+
 

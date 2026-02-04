@@ -6,7 +6,7 @@ set -eo pipefail
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
-wallDir="${wallDir}"
+wallSel="${wallDir}"
 cacheDir="${ideCDir}/cache"
 blurDir="${cacheDir}/blur"
 colsDir="${cacheDir}/cols"
@@ -37,7 +37,7 @@ apply_wallpaper() {
    shift $((OPTIND -1))
     if [[ -z "$img" || ! -f "$img" ]]; then
         img=$(fl_wallpaper -r)
-        img="${wallDir}$img"
+        img="${wallDir}/$img"
         [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" && exit 1
     fi
 
@@ -56,18 +56,20 @@ apply_wallpaper() {
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
-        "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
+        [[ "${enableWallIde}" -ne 3 ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
     elif [[ -n "${schIPC}" ]]; then
         case "${schIPC}" in
             dark|light|auto)  "${scrDir}/ivy-shell.sh" -i "${img}" -c "${schIPC}" ;;
+            theme) "${scrDir}/modules/ivyshell-helper.sh" & ;;
             *) echo -e "Invalid Argument for [$0]. Correct arguments are dark|light|auto"
         esac
     fi
-
+    
     case $swi in
         --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y ;;
+        --swww-t) swww img "$img" -t "${wallAnimationTheme}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" & ;;
+        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y & ;;
     esac
 
     scRun=$(fl_wallpaper -t "${img}" -f 1)
@@ -76,11 +78,13 @@ apply_wallpaper() {
         "${scrDir}/swwwallcache.sh" -b "${img}"
     fi
     
-    setConf "wallSet" "${wallDir}$(fl_wallpaper -t $img)" "${ideDir}/ide.conf"
+    setConf "wallSet" "${wallSel}/$(fl_wallpaper -t $img)" "${ideDir}/ide.conf" 
+    echo "$img" > "${ideDir}/theme/${themeIde}/wallpapers/.wallbash.main" 
 
     ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
     ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
-    cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg"
+    cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
+    cp "${thumbDir}/${scRun}.sloc" "${ideDir}/theme/${themeIde}/wall.set"
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "$img"
 }
 
@@ -101,7 +105,7 @@ expV() {
 # ────────────────────────────────────────────────
 # Interactive wallpaper picker
 choose_wallpaper() {
-    mapfile -d '' files < <(LC_ALL=C find "${wallDir}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
+    mapfile -d '' files < <(LC_ALL=C find "${wallSel}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
     menu() {
         selectC=0
         for f in "${files[@]}"; do
@@ -110,13 +114,13 @@ choose_wallpaper() {
             cols="${colsDir}/${name%.*}.cols"
             blur="${blurDir}/${name%.*}.bpex"
             [[ ! -f "$thumb" || ! -f "$cols" || ! -f "$blur" ]] && "${scrDir}/swwwallcache.sh" -f "$f"
-            printf "%s\x00icon\x1f%s\n" "$name" "$thumb"
+            printf "%s\x00icon\x1f%s\n" "$name" "$thumb" 
         done
     }
     expV
     choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -selected-row "${selectC}")
     [[ -z "$choice" ]] && exit 0
-    apply_wallpaper -i "${wallDir}$choice"
+    apply_wallpaper -i "${wallSel}/$choice"
 }
 
 # ────────────────────────────────────────────────

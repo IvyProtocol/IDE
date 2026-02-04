@@ -4,16 +4,19 @@ set -euo pipefail
 # -----------------------
 # Configuration
 # -----------------------
-wbDir="${XDG_CONFIG_HOME:-$HOME/.config}/ivy-shell"
-shellDir="${1:-$wbDir/shell}"
+scrDir="$(dirname "$(realpath "$0")")"
+source "${scrDir}/../globalcontrol.sh"
+
+wbDir="${ideDir}"
+shellDir="${1:-${wbDir}/theme/${ideTheme}}"
 targetDir="${2:-${XDG_CACHE_HOME:-$HOME/.cache}/wal/wal-dir/}"
 mkdir -p "$targetDir"
 
-scrDir="$(dirname "$(realpath "$0")")"
-confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
-cacheDir="${XDG_CACHE_HOME:-$HOME/.cache}"
-homDir="${XDG_HOME:-$HOME}"
+confDir="${confDir}"
+cacheDir="${cacheDir}"
+homDir="${homDir}"
 
+[[ -z "${plLoader}" ]] && plLoader="ivy"
 
 # -----------------------
 # Early Fallback Check
@@ -21,7 +24,7 @@ homDir="${XDG_HOME:-$HOME}"
 [[ "$EUID" -eq 0 ]] && echo "[$0] must not be run as root." >&2 && exit 1
 [[ ! -d "${shellDir}" ]] && echo "[$0] no dcol/ivy file found. Nothing to apply!" && exit 0
 
-if ! find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' \) -print -quit | grep -q .; then
+if ! find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print -quit | grep -q .; then
     echo "ivygen-helper: no .dcol or .ivy templates found, nothing to apply."
     exit 0
 fi
@@ -45,7 +48,7 @@ load_ivy_file() {
 [[ -f "$wbDir/theme.ivy" ]] && load_ivy_file "$wbDir/theme.ivy"
 [[ -f "$wbDir/theme-rgba.ivy" ]] && load_ivy_file "$wbDir/theme-rgba.ivy"
 
-if ! compgen -v | grep -q '^ivy_'; then
+if ! compgen -v | grep -Eq "^(${plLoader})_"; then
     echo "ivygen-helper: no palette variables loaded, nothing to apply."
     exit 0
 fi
@@ -58,7 +61,7 @@ process_template() {
     local template_file="$1"
     
     case "$template_file" in
-    *.dcol|*.ivy) ;;
+    *.dcol|*.ivy|*.theme) ;;
     *)
         echo "ivygen-helper: unsupported template type: $template_file" >&2
         return 0
@@ -101,34 +104,34 @@ process_template() {
     [[ -n "$script" ]] && script="${script//\$(homDir)/$homDir}"
 
     # Replace placeholders
-    for var in $(compgen -v | grep '^ivy_'); do
-    value="${!var}"       # original value
-    placeholder="<${var}>"
+    for var in $(compgen -v | grep -E "^(${plLoader})_" ); do
+        value="${!var}"       # original value
+        placeholder="<${var}>"
 
     # 1) Replace simple <wallbash_XXXX>
-    template_content="${template_content//${placeholder}/${value}}"
+        template_content="${template_content//${placeholder}/${value}}"
 
     # 2) Replace <wallbash_XXXX_rgba>
-    if [[ "$var" == *_rgba ]]; then
-        placeholder_rgba="<${var}>"
-        template_content="${template_content//${placeholder_rgba}/${value}}"
+        if [[ "$var" == *_rgba ]]; then
+            placeholder_rgba="<${var}>"
+            template_content="${template_content//${placeholder_rgba}/${value}}"
 
         # 3) Replace <wallbash_XXXX_rgba(X)>
         # Use regex to find all occurrences with optional alpha
-        while [[ "$template_content" =~ \<${var}\(([0-9.]+)\)\> ]]; do
-            alpha="${BASH_REMATCH[1]}"
-            if [[ "$value" =~ rgba\(([0-9]+),([0-9]+),([0-9]+),([0-9.]+)\) ]]; then
-                r="${BASH_REMATCH[1]}"
-                g="${BASH_REMATCH[2]}"
-                b="${BASH_REMATCH[3]}"
-                template_content="${template_content//<${var}(${alpha})>/rgba($r,$g,$b,$alpha)}"
-            else
+            while [[ "$template_content" =~ \<${var}\(([0-9.]+)\)\> ]]; do
+                alpha="${BASH_REMATCH[1]}"
+                if [[ "$value" =~ rgba\(([0-9]+),([0-9]+),([0-9]+),([0-9.]+)\) ]]; then
+                    r="${BASH_REMATCH[1]}"
+                    g="${BASH_REMATCH[2]}"
+                    b="${BASH_REMATCH[3]}"
+                    template_content="${template_content//<${var}(${alpha})>/rgba($r,$g,$b,$alpha)}"
+                else
                 # Fallback: remove placeholder if badly formatted
-                template_content="${template_content//<${var}(${alpha})>/$value}"
-            fi
-        done
-    fi
-done
+                    template_content="${template_content//<${var}(${alpha})>/$value}"
+                fi
+            done
+        fi
+    done
 
 
     # -----------------------
@@ -160,12 +163,12 @@ done
     set -u
 }
 
-export -f process_template
-export scrDir confDir cacheDir targetDir homDir shellDir
-for var in $(compgen -v | grep '^ivy_'); do export "$var"; done
+export -f process_template setConf
+export scrDir confDir cacheDir targetDir homDir shellDir plLoader
+for var in $(compgen -v | grep -E "^(${plLoader})_"); do export "$var"; done
 
 # -----------------------
 # Run templates in parallel
 # -----------------------
-find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' \) -print0 \
+find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print0 \
     | xargs -0 -n 1 -P 3 bash -c 'process_template "$@"' _

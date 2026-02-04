@@ -23,7 +23,7 @@ shift $((OPTIND -1))
 [ ! -f "${ivygen_cDot}" ] && mkdir -p "${ivygen_cDot}"
 [ ! -f "${OUT_DIR}" ] && mkdir -p "${OUT_DIR}"
 
-ivyhash=$(md5sum "$ivygenImg" | awk '{print $1}')
+ivyhash="$(md5sum "$ivygenImg" | awk '{print $1}')"
 
 case "$pxCheck" in
   dark)
@@ -51,7 +51,7 @@ esac
 
 if [[ -f $ivycache ]]; then
   case "$VAR2" in
-  --helper=1)
+  silent)
     exit 0
     ;;
   --theme=1)
@@ -63,7 +63,7 @@ if [[ -f $ivycache ]]; then
     $scrDir/modules/ivyshell-helper.sh
     exit 0
     ;;
-  --helper=0|""|*)
+  --non-silent|""|*)
       echo "Cache found: restoring wallpaper colors"
       cp -f "$ivycache" "${OUT_DIR}/ivygen.dcol"
       echo "$ivycache"

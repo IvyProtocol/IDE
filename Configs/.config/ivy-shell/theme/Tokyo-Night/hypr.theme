@@ -1,0 +1,34 @@
+$(confDir)/hypr/themes/theme.conf|$RUN:hyprctl reload
+#  P̳r̳a̳s̳a̳n̳t̳h̳ R̳a̳n̳g̳a̳n̳
+
+# exec = gsettings set org.gnome.desktop.interface icon-theme $ICON_THEME
+# exec = gsettings set org.gnome.desktop.interface gtk-theme $GTK_THEME
+# exec = gsettings set org.gnome.desktop.interface color-scheme $COLOR_SCHEME
+
+general {
+    gaps_in = 3
+    gaps_out = 5
+    border_size = 2
+    col.active_border = rgba(bb9af7ff) rgba(b4f9f8ff) 45deg
+    col.inactive_border = rgba(565f89cc) rgba(9aa5cecc) 45deg
+}
+
+group {
+    col.border_active = rgba(bb9af7ff) rgba(b4f9f8ff) 45deg
+    col.border_inactive = rgba(565f89cc) rgba(9aa5cecc) 45deg
+    col.border_locked_active = rgba(bb9af7ff) rgba(b4f9f8ff) 45deg
+    col.border_locked_inactive = rgba(565f89cc) rgba(9aa5cecc) 45deg
+}
+
+decoration {
+    rounding = 10
+    blur {
+        enabled = yes
+        size = 6
+        passes = 3
+        new_optimizations = on
+        ignore_opacity = on
+        xray = false
+    }
+}
+

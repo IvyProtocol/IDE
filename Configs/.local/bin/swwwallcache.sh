@@ -28,9 +28,9 @@ fn_wallcache() {
   [[ ! -f "${colsDir}/${sr_call}.cols" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${colsDir}/${sr_call}.cols"
   [[ ! -f "${blurDir}/${sr_call}.bpex" ]] && magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
   [[ ! -f "${thmbDir}/${sr_call}.sloc" ]] && magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
-  [[ ! -e "${dcolDir}/auto/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -a --helper=1
-  [[ ! -e "${dcolDir}/dark/ivy-${h_sum}.dcol" ]] && "${scrRun}"  "${w_sum}" -d --helper=1
-  [[ ! -e "${dcolDir}/light/ivy-${h_sum}.dcol" ]] && "${scrRun}"  "${w_sum}" -l --helper=1
+  [[ ! -e "${dcolDir}/auto/ivy-${h_sum}.dcol" ]] && "${scrRun}" -i "${w_sum}" -c auto -t silent
+  [[ ! -e "${dcolDir}/dark/ivy-${h_sum}.dcol" ]] && "${scrRun}" -i "${w_sum}" -c dark -t silent
+  [[ ! -e "${dcolDir}/light/ivy-${h_sum}.dcol" ]] && "${scrRun}" -i "${w_sum}" -c light -t silent
 
 } >/dev/null 2>&1
 
@@ -57,9 +57,9 @@ fn_wallcache_force() {
   magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${colsDir}/${sr_call}.cols"
   magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
   magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
-  "${scrRun}" "${w_sum}" -a --helper=1
-  "${scrRun}"  "${w_sum}" -d --helper=1
-  "${scrRun}"  "${w_sum}" -l --helper=1 
+  "${scrRun}" -i "${w_sum}" -c dark -t --silent
+  "${scrRun}" -i "${w_sum}" -c light -t --silent
+  "${scrRun}" -i  "${w_sum}" -c auto -t --silent
 } >/dev/null 2>&1
 
 export -f fn_wallcache fn_wallcache_force fn_wallcache_blur fn_wallcache_thumb fl_wallpaper

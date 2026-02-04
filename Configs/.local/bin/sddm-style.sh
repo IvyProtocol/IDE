@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 IFS=$'\n\t'
 
@@ -16,6 +16,7 @@ apply_config() {
 }
 
 main() {
+    local sddmLayout="${1}"
     current_target=$(readlink -f "$wcDir")
     current_name=$(basename "$current_target")
 
@@ -38,6 +39,8 @@ main() {
                -config "$rasiDir" \
                -selected-row "$default_row"
     )
+
+    echo "${choice}"
 
     [[ -z "$choice" ]] && { echo "No option selected. Exiting."; exit 0; }
 

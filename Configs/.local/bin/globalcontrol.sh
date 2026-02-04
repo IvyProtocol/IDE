@@ -33,7 +33,7 @@ export indentBlue="$(tput setaf 4)"
 export indentSkyBlue="$(tput setaf 6)"
 set +e
 clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${ideDir}/ide.conf" | sed 's/exclusion=\"(//')"
-[[ -n "${clusterExclude}" ]] && source <(grep -vE "^[[:space:]]*($clusterExclude)=" "${ideDir}/ide.conf") || source "${ideDir}/ide.conf"
+[[ -n "${clusterExclude}" ]] && source <(grep -vE "^[[:space:]]*($clusterExclude)=.*" "${ideDir}/ide.conf") || source "${ideDir}/ide.conf"
 
 env_pkg() {
   local envPkg statsPkg defAur
@@ -110,6 +110,7 @@ themeIde="Wallbash-Ivy"
 [[ -z "${wallAnimation}" ]] && wallAnimation="any" || wallAnimation="${wallAnimation}"
 [[ -z "${wallAnimationPrevious}" ]] && wallAnimationPrevious="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
 [[ -z "${wallAnimationNext}" ]] && wallAnimationNext="grow" || wallAnimationNext="${wallAnimationNext}"
+[[ -z "${wallAnimationTheme}" ]] && wallAnimationTheme="grow" || wallAnimationTheme="${wallAnimationTheme}"
 [[ -z "${wallTransitionBezier}" ]] && wallTranitionBezier=".43,1.19,1,.4" || wallTransitionBezier="${wallTransitionBezier}"
 
 prompt_timer() {
@@ -265,26 +266,24 @@ ext_thumb() {
 }
 
 setConf() {
+  set +H
   local varString="${1}"
   local varValue="${2}"
   local varPath="${3}" 
 
   [[ -z "${varValue}" ]] && echo -e "No value has been provided!" && return 1
 
-  local IFS="|"
+  local IFS="|!"
   read -ra confStrings <<< "${varString}"
   read -ra confValue <<< "${varValue}"
-
-  (( ${#confStrings[@]} != ${#confValue[@]} )) && {
-        echo "Name/value count mismatch"
-        return 1
-  }
 
   for i in "${!confStrings[@]}"; do
     local confKey="${confStrings[i]}"
     local confVal="${confValue[i]}"
     [[ "${confVal}" =~ ^[0-9]+$ ]] || confVal="\"${confVal}\""
-    [[ "$(grep -c "^${confKey}" "${varPath}")" -eq 1 ]] && sed -i "s|^${confKey}=.*|${confKey}=${confVal}|" "${varPath}" || echo "${confKey}=${confVal}" >> "${varPath}"
+    [[ "$(grep -c "^${confKey}" "${varPath}" 2>/dev/null)" -eq 1 ]] && sed -i "s|^${confKey}=.*|${confKey}=${confVal}|" "${varPath}" || echo "${confKey}=${confVal}" >> "${varPath}"
 
   done
+  set -H
 }
+

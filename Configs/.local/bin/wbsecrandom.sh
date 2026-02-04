@@ -4,7 +4,7 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
 pxCheck="${1:-}"
-wallDir="${homDir}/Pictures/wallpapers"
+wallDir="${wallDir}"
 
 swww-prefix() {
     local wall wall_i pxCheck dirflag
