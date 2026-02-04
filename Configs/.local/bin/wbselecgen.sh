@@ -56,11 +56,11 @@ apply_wallpaper() {
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
-        [[ "${enableWallIde}" -ne 3 ]] && "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
+        [[ "${enableWallIde}" -eq 3 ]] && "${scrDir}/modules/ivyshell-helper.sh" || "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
     elif [[ -n "${schIPC}" ]]; then
         case "${schIPC}" in
-            dark|light|auto)  "${scrDir}/ivy-shell.sh" -i "${img}" -c "${schIPC}" ;;
-            theme) "${scrDir}/modules/ivyshell-helper.sh" & ;;
+            dark|light|auto) "${scrDir}/ivy-shell.sh" -i "${img}" -c "${schIPC}" ;;
+            theme) "${scrDir}/modules/ivyshell-helper.sh" ;;
             *) echo -e "Invalid Argument for [$0]. Correct arguments are dark|light|auto"
         esac
     fi
