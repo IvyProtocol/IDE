@@ -96,6 +96,7 @@ case "${enableWallIde}" in
     ;;
   3)
     enableWallIde=3
+    dcolMode="theme"
     ;;
   0|*) 
     enableWallIde=0 
