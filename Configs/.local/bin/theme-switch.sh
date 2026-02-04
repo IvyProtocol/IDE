@@ -42,7 +42,6 @@ expV() {
 }
 
 # ────────────────────────────────────────────────
-# Interactive wallpaper picker
 choose_theme() {
     mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf)
 
