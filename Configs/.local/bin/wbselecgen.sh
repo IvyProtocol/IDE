@@ -56,7 +56,11 @@ apply_wallpaper() {
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
     if [[ -z "${schIPC}" ]]; then
-        [[ "${enableWallIde}" -eq 3 ]] && "${scrDir}/modules/ivyshell-helper.sh" || "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
+        if [[ "${enableWallIde}" -eq 3 ]]; then
+            "${scrDir}/modules/ivyshell-helper.sh"
+        else
+            "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
+        fi
     elif [[ -n "${schIPC}" ]]; then
         case "${schIPC}" in
             dark|light|auto) "${scrDir}/ivy-shell.sh" -i "${img}" -c "${schIPC}" ;;
