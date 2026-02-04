@@ -12,18 +12,25 @@ rofiConf="${rasiDir}/selector.rasi"
 log() { echo "[$0] "$@""; }
 
 # ────────────────────────────────────────────────
-apply_themer() {
+# Apply wallpaper + blur + cache + color sync
+apply_wallpaper() {
     thmChsh="${1}"
-    [[ "${themeIde}" == "${1}" ]] || setConf "themeIde" "${1}" "${scrDir}/globalcontrol.sh" &
-    [[ "${wallDir}" == "${ideDir}/theme/${1}/wallpapers" ]] || setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${1}/wallpapers" "${ideDir}/ide.conf" &
-    [[ "${ideTheme}" == "$1" ]] && exit 0 || setConf "ideTheme" "$1" "${ideDir}/ide.conf" &
+    [[ "${themeIde}" == "${1}" ]] || setConf "themeIde" "${1}" "${scrDir}/globalcontrol.sh" 
+    [[ "${wallDir}" == "${ideDir}/theme/${1}/wallpapers" ]] || setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${1}/wallpapers" "${ideDir}/ide.conf"
+
+    if [[ "${enableWallIde}" -eq 3 ]]; then
+        [[ "${ideTheme}" == "$1" ]] && exit 0 || setConf "ideTheme" "$1" "${ideDir}/ide.conf"
+        sed -i 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
+    else
+        sed -i 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
+    fi
 
     if [[ ! -f "${ideDir}/theme/${themeIde}/wallpapers/.wallbash.main" ]]; then
         echo "${ideDir}/theme/${themeIde}/wallpapers/1_rain_world.png" > "${ideDir}/theme/${themeIde}/wallpapers/.wallbash.main" &
     fi
     img="$(cat "${ideDir}/theme/${1}/wallpapers/.wallbash.main")"
 
-    [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${swayncDir}/icons/palette.png" || "${scrDir}/wbselecgen.sh" -i "${img}" -w --swww-t -n --s theme && exit 1
+    [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s d"${swayncDir}/icons/palette.png" || "${scrDir}/wbselecgen.sh" -i "${img}" -w --swww-t -n --s theme && exit 1
 }
 
 # ────────────────────────────────────────────────
@@ -42,7 +49,8 @@ expV() {
 }
 
 # ────────────────────────────────────────────────
-choose_theme() {
+# Interactive wallpaper picker
+choose_wallpaper() {
     mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf)
 
     menu() {
@@ -56,13 +64,13 @@ choose_theme() {
     expV
     choice=$(menu | rofi -dmenu -i -p "ThemeControl" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${selectC}")
     [[ -z "$choice" ]] && exit 0
-    apply_theme "$choice"
+    apply_wallpaper "$choice"
 }
 
 # ────────────────────────────────────────────────
 # Main
 if [ -n "$1" ]; then
-    apply_theme "$@"
+    apply_wallpaper "$@"
 else
-    choose_theme
+    choose_wallpaper
 fi
