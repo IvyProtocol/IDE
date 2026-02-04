@@ -14,20 +14,18 @@ apply_config() {
 
     [[ -n "${enableWallIde}" ]] && setConf "enableWallIde" "${wallIde}" "${ideDir}/ide.conf" || setConf "enableWallIde" "0" "${ideDir}/ide.conf"
     notify -m 2 -i "theme_engine" -p "Theme Mode: $1" -s "${swayncDir}/icons/palette.png"
-
+    [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
     if [[ "${wallIde}" -eq 3 ]]; then
         setConf "ideTheme|enableWallIde" "${themeIde}|3" "${ideDir}/ide.conf" &
         sed -i 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf" &
         "${scrDir}/modules/ivyshell-helper.sh"
         exit 0
-    fi
-
-    [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
-    if [[ -n "${wallIde}" ]]; then
+    else
         setConf "ideTheme" "Wallbash-Ivy" "${confDir}/ivy-shell/ide.conf" &
         sed -i 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf" &
         "${scrDir}/ivy-shell.sh" -i "${wallSet}" -c "${1}"
     fi
+
     if [[ -z "${wallSet}" && -x "${scrDir}/wbselecgen.sh" ]]; then
         rnSel=$(find "${wallDir}" -maxpath 1 -type f | shuf -n 1)
         "${scrDir}/wbselecgen.sh" -i "${rnSel}"
@@ -53,4 +51,4 @@ if pgrep -x "rofi" >/dev/null; then
     pkill rofi
 fi
 
-main "$@"
+[[ -z "$1" ]] && main || apply_config "$1"
