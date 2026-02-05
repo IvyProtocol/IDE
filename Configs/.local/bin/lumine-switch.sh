@@ -16,7 +16,7 @@ apply_config() {
     notify -m 2 -i "theme_engine" -p "Theme Mode: $1" -s "${swayncDir}/icons/palette.png"
     [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
     if [[ "${wallIde}" -eq 3 ]]; then
-        setConf "ideTheme|enableWallIde" "${themeIde}|3" "${ideDir}/ide.conf" &
+        setConf "ideTheme|enableWallIde" "${PrevThemeIde}|3" "${ideDir}/ide.conf" &
         sed -i 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf" &
         "${scrDir}/modules/ivyshell-helper.sh"
         exit 0
