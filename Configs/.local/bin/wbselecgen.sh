@@ -55,19 +55,20 @@ apply_wallpaper() {
     log "Applying wallpaper: $img"
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
-    if [[ -z "${schIPC}" ]]; then
-        if [[ "${enableWallIde}" -eq 3 ]]; then
-            "${scrDir}/modules/ivyshell-helper.sh"
-        else
-            "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
-        fi
-    elif [[ -n "${schIPC}" ]]; then
-        case "${schIPC}" in
-            dark|light|auto) "${scrDir}/ivy-shell.sh" -i "${img}" -c "${schIPC}" ;;
-            theme) "${scrDir}/modules/ivyshell-helper.sh" ;;
-            *) echo -e "Invalid Argument for [$0]. Correct arguments are dark|light|auto"
-        esac
-    fi
+
+
+    case "${schIPC}" in
+        dark|light|auto) 
+            "${scrDir}/ivy-shell.sh" -i "${img}" -c "${schIPC}"
+            ;;
+        theme|*)
+            if [[ "${enableWallIde}" -eq 3 && "${dcolMode}" == "theme" ]]; then
+                "${scrDir}/modules/ivyshell-helper.sh"
+            else
+                "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
+            fi
+            ;;
+    esac
     
     case $swi in
         --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
@@ -83,12 +84,12 @@ apply_wallpaper() {
     fi
     
     setConf "wallSet" "${wallSel}/$(fl_wallpaper -t $img)" "${ideDir}/ide.conf" 
-    echo "$img" > "${ideDir}/theme/${themeIde}/wallpapers/.wallbash.main" 
+    echo "$img" > "${ideDir}/theme/${PrevThemeIde}/wallpapers/.wallbash.main" 
 
     ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
     ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
     cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
-    cp "${thumbDir}/${scRun}.sloc" "${ideDir}/theme/${themeIde}/wall.set"
+    cp "${thumbDir}/${scRun}.sloc" "${ideDir}/theme/${PrevThemeIde}/wall.set"
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "$img"
 }
 
