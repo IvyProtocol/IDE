@@ -27,7 +27,6 @@ themeSelTui() {
     unset PrevThemeIde
     PrevThemeIde="${thmChsh}"
     PreProcess="${ideDir}/theme/${PrevThemeIde}/wallpapers"
-    echo "2"
     if [[ ! -f "${PreProcess}/.wallbash.main" ]]; then
         echo "$(find "${PreProcess}" -mindepth 1 -maxdepth 1 -type f ! -name ".wallbash.main" | shuf -n 1 )" > "${PreProcess}/.wallbash.main" 
     fi
