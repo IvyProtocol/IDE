@@ -104,7 +104,7 @@ case "${enableWallIde}" in
     ;;
 esac
 
-themeIde="Wallbash-Ivy"
+PrevThemeIde="Wallbash-Ivy"
 
 [[ -z "${wallFramerate}" ]] && wallFramerate=144 || wallFramerate="${wallFramerate}"
 [[ -z "${wallTransDuration}" ]] && wallTransDuration=0.4 || wallTransDuration="${wallTransDuration}"
