@@ -63,7 +63,7 @@ fn_wallcache_force() {
 } >/dev/null 2>&1
 
 export -f fn_wallcache fn_wallcache_force fn_wallcache_blur fn_wallcache_thumb fl_wallpaper
-export thmbDir blurDir dcolDir scrRun mode cacheIn colsDir sr_call
+export thmbDir blurDir dcolDir scrRun mode cacheIn colsDir sr_call scrDir
 
 mode="${mode:-}"
 cacheIn="${cacheIn:-}"
@@ -105,5 +105,7 @@ done
 
 wallPathArray=("${cacheIn}")
 hashmap -v -t "${wallPathArray[@]}"
-parallel --bar --link --compress fn_wallcache${mode} ::: "${wallHash[@]}" ::: "${wallList[@]}"
+mkdir -p "${scrDir}/tmpfs"
+parallel --bar --link --compress --tmpdir "${scrDir}/tmpfs" fn_wallcache${mode} ::: "${wallHash[@]}" ::: "${wallList[@]}"
+rm -rf "${scrDir}/tmpfs"
 exit 0
