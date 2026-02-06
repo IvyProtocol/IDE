@@ -207,4 +207,3 @@ case "$PROMPT_INPUT" in
     echo -e "${indentOk} The system will not reboot."
     exit 0
 esac
-
