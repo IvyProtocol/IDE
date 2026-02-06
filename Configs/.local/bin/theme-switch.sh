@@ -14,6 +14,7 @@ log() { echo "[$0] "$@""; }
 # ────────────────────────────────────────────────
 themeSelTui() {
     thmChsh="${1}"
+    PreProcess="${ideDir}/theme/${thmChsh}/wallpapers"
     [[ "${PrevThemeIde}" == "${thmChsh}" ]] || setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh" 
     [[ "${wallDir}" == "${ideDir}/theme/${1}/wallpapers" ]] || setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${1}/wallpapers" "${ideDir}/ide.conf"
     
@@ -24,18 +25,19 @@ themeSelTui() {
         sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
     fi
 
-    unset PrevThemeIde
-    PrevThemeIde="${thmChsh}"
-    PreProcess="${ideDir}/theme/${PrevThemeIde}/wallpapers"
     if [[ ! -f "${PreProcess}/.wallbash.main" ]]; then
-        echo "$(find "${PreProcess}" -mindepth 1 -maxdepth 1 -type f ! -name ".wallbash.main" | shuf -n 1 )" > "${PreProcess}/.wallbash.main" 
+        find "${PreProcess}" -mindepth 1 -maxdepth 1 -type f ! -name ".wallbash.main" | shuf -n 1 | tee "${PreProcess}/.wallbash.main" >/dev/null 
     fi
 
-    img="$(cat "${ideDir}/theme/${PrevThemeIde}/wallpapers/.wallbash.main")"
-    [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${swayncDir}/icons/palette.png" && return 1 || "${scrDir}/wbselecgen.sh" -i "${img}" -w --swww-t -n
+    thmImg="$(<"${PreProcess}/.wallbash.main")"
+    # We will eval to bypass errors. I hate this.
+    
+    [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${swayncDir}/icons/palette.png" && return 1
+    eval "${scrDir}/wbselecgen.sh" -i "${thmImg}" -w --swww-t 
 }
 
 # ────────────────────────────────────────────────
+# Rofi Settings
 rSettings() {
     [[ -z "${rofiScale}" ]] && rofiScale=10 || rofiScale="${rofiScale}"
     r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiScale}\";}"

@@ -32,19 +32,6 @@ fi
 # -----------------------
 # Load palette files
 # -----------------------
-load_ivy_file() {
-    local file="$1"
-    while IFS= read -r line; do
-        [[ -z "$line" || "$line" =~ ^# ]] && continue
-        if [[ "$line" == *=* ]]; then
-            key="${line%%=*}"
-            value="${line#*=}"
-            [[ "$value" == \#* ]] && value="${value#\#}"
-            export "$key=$value"
-        fi
-    done < "$file"
-}
-
 [[ -f "$wbDir/theme.ivy" ]] && load_ivy_file "$wbDir/theme.ivy"
 [[ -f "$wbDir/theme-rgba.ivy" ]] && load_ivy_file "$wbDir/theme-rgba.ivy"
 

@@ -206,6 +206,7 @@ hashmap() {
   local hashpref hashMap
   wallHash=()
   wallList=()
+  OPTIND=1
   while getopts ":v:t:" hashpref; do
     case "$hashpref" in
       v) verboseMap=1;;
@@ -288,3 +289,15 @@ setConf() {
   set -H
 }
 
+load_ivy_file() {
+  local file="$1"
+  while IFS= read -r line; do
+    [[ -z "$line" || "$line" =~ ^# ]] && continue
+    if [[ "$line" == *=* ]]; then
+      key="${line%%=*}"
+      value="${line#*=}"
+      [[ "$value" == \#* ]] && value="${value#\#}"
+      export "$key=$value"
+    fi
+  done < "$file"
+}

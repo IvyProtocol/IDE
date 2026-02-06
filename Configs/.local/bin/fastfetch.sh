@@ -98,11 +98,8 @@ EOF
     exec fastfetch --logo-height ${pill2}
     ;;
   *)
-    # [[ ! -z "${fetchIconDir}" ]] && fetchIconDir="${fetchIconDir}" || fetchIconDir="${confDir}/fastfetch/icons/"
-
-    if [[ -e "${fetchIconDir}" ]]; then
-      fetch=$(find "${fetchIconDir}" -maxdepth 1 -type f | shuf -n 1)
- 
+    if [[ -e "${fetchIcon}" ]]; then
+      fetch=$(find "${fetchIcon}" -maxdepth 1 -type f | shuf -n 1)
       exec fastfetch -l "$fetch"
       exit 0
     else

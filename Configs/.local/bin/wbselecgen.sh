@@ -45,17 +45,19 @@ apply_wallpaper() {
     base="$(basename "$img")"
     img="${img}"
     blurred="${blurDir}/${base%.*}.bpex"
- 
+    echo "$img" > "${ideDir}/theme/${PrevThemeIde}/wallpapers/.wallbash.main" 
 
-    case "$ntSend" in
-        --s) ntSend=1 ;;
-        *)   ntSend=0 ;;
+    case "${ntSend}" in
+        1)
+            ntSend=1
+            ;;
+        0|*)
+            ntSend=0
+            ;;
     esac
 
     log "Applying wallpaper: $img"
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
-
-
 
     case "${schIPC}" in
         dark|light|auto) 
@@ -63,7 +65,13 @@ apply_wallpaper() {
             ;;
         theme|*)
             if [[ "${enableWallIde}" -eq 3 && "${dcolMode}" == "theme" ]]; then
-                "${scrDir}/modules/ivyshell-helper.sh"
+                read -r hashMech <<< $(hashmap -v -t "${img}" | awk -F '"' '{print $2}')
+                if [[ -f "${dcolDir}/auto/ivy-${hashMech}.dcol" ]]; then
+                    cp "${dcolDir}/auto/ivy-${hashMech}.dcol" "${ideDir}/main/ivygen.dcol"
+                    "${scrDir}/modules/ivyshell-theme.sh" && "${scrDir}/modules/ivyshell-helper.sh"
+                else
+                    "${scrDir}/ivy-shell.sh" -i "$img"
+                fi
             else
                 "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
             fi
@@ -84,7 +92,6 @@ apply_wallpaper() {
     fi
     
     setConf "wallSet" "${wallSel}/$(fl_wallpaper -t $img)" "${ideDir}/ide.conf" 
-    echo "$img" > "${ideDir}/theme/${PrevThemeIde}/wallpapers/.wallbash.main" 
 
     ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
     ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
@@ -110,7 +117,7 @@ expV() {
 # ────────────────────────────────────────────────
 # Interactive wallpaper picker
 choose_wallpaper() {
-    mapfile -d '' files < <(LC_ALL=C find "${wallSel}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
+    mapfile -d '' files < <(LC_ALL=C find "${wallSel}" "${WallAddCustomPath[@]}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
     menu() {
         selectC=0
         for f in "${files[@]}"; do

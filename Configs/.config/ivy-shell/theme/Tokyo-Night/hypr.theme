@@ -7,7 +7,7 @@ $(confDir)/hypr/themes/theme.conf|$RUN:hyprctl reload
 
 general {
     gaps_in = 3
-    gaps_out = 5
+    gaps_out = 8
     border_size = 2
     col.active_border = rgba(bb9af7ff) rgba(b4f9f8ff) 45deg
     col.inactive_border = rgba(565f89cc) rgba(9aa5cecc) 45deg
@@ -22,6 +22,8 @@ group {
 
 decoration {
     rounding = 10
+    shadow:enabled = false
+
     blur {
         enabled = yes
         size = 6
