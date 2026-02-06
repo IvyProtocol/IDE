@@ -254,6 +254,7 @@ for idx in $(seq 1 44); do
 done
 
 mv "$tmp_sh" "$ivycache"
+rm -rf "$tmp_sh"
 cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
 
 printf 'WROTE:\n  %s\n  %s\n' "${OUT_DIR}/ivygen.dcol" 
