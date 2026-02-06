@@ -1,93 +1,69 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
-# ---------- Config ----------
-OUT_DIR="${XDG_CONFIG_HOME:-$HOME/.config/ivy-shell}/main"
-ivygen_cDot="${XDG_CACHE_HOME:-$HOME/.cache}/ivy-shell/shell"
 scrDir="$(dirname "$(realpath "$0")")"
+source "${scrDir}/globalcontrol.sh"
+wallbashImg="$1"
+wallbashHash="$(md5sum "${wallbashImg}" | awk '{print $1}')"
 
-[[ "$EUID" -eq 0 ]] && exit 1
-
-ivygenImg="" pxCheck="" VAR2="" silent=0
-OPTIND=1
-while getopts ":i:c:t:s" arg; do
-  case "${arg}" in
-    i) ivygenImg="${OPTARG}" ;;
-    c) pxCheck="${OPTARG}" ;;
-    t) VAR2="${OPTARG}" ;;
-    s) silent=1 ;;
-  esac
-done
-shift $((OPTIND -1))
-
-[ ! -f "${ivygen_cDot}" ] && mkdir -p "${ivygen_cDot}"
-[ ! -f "${OUT_DIR}" ] && mkdir -p "${OUT_DIR}"
-
-ivyhash="$(md5sum "$ivygenImg" | awk '{print $1}')"
-
-case "$pxCheck" in
-  dark)
-    sortMode="dark"
-    colSort=""
-    mkdir -p "${ivygen_cDot}/dark"
-    ivycache="${ivygen_cDot}/dark/ivy-${ivyhash}.dcol"
-    echo "Using Dark Mode"
-    ;;
-  light)
-    sortMode="light"
-    colSort="-r"
-    mkdir -p "${ivygen_cDot}/light"
-    ivycache="${ivygen_cDot}/light/ivy-${ivyhash}.dcol"
-    echo "Using Light Mode"
-    ;;
-  auto|*) 
-    sortMode="auto" 
-    colSort=""
-    mkdir -p "${ivygen_cDot}/auto"
-    ivycache="$ivygen_cDot/auto/ivy-${ivyhash}.dcol"
-    echo "using Auto Mode"
-    ;;
-esac
-
-if [[ -f $ivycache ]]; then
-  case "$VAR2" in
-  silent)
-    exit 0
-    ;;
-  --theme=1)
-    cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
-    $scrDir/modules/ivyshell-theme.sh 
-    exit 0
-    ;;
-  --theme-helper)
-    $scrDir/modules/ivyshell-helper.sh
-    exit 0
-    ;;
-  --non-silent|""|*)
-      echo "Cache found: restoring wallpaper colors"
-      cp -f "$ivycache" "${OUT_DIR}/ivygen.dcol"
-      echo "$ivycache"
-      $scrDir/modules/ivyshell-theme.sh 
-      $scrDir/modules/ivyshell-helper.sh
-      echo "$ivygenImg"
-      exit 0
-    ;;
-  esac
-fi
+[[ ! -d "${dcolDir}" ]] && mkdir -p "${dcolDir}"
+[[ ! -d "${dcolDir}/auto" ]] && mkdir -p "${dcolDir}/auto"
+[[ ! -d "${dcolDir}/dark" ]] && mkdir -p "${dcolDir}/dark"
+[[ ! -d "${dcolDir}/light" ]] && mkdir -p "${dcolDir}/light"
 
 colorProfile="default"
-ivygenCurve="32 50
-42 46
-49 40
-56 39
-64 38
-76 37
-90 33
-94 29
-100 20"
+wallbashCurve="32 50\n42 46\n49 40\n56 39\n64 38\n76 37\n90 33\n94 29\n100 20"
+sortMode="auto"
 
-ivygenColors=4        
-ivygenFuzz=70
+while [ $# -gt 1 ]; do
+    case "$2" in
+        -v | --vibrant)
+            colorProfile="vibrant"
+            wallbashCurve="18 99\n32 97\n48 95\n55 90\n70 80\n80 70\n88 60\n94 40\n99 24"
+            ;;
+        -p | --pastel)
+            colorProfile="pastel"
+            wallbashCurve="10 99\n17 66\n24 49\n39 41\n51 37\n58 34\n72 30\n84 26\n99 22"
+            ;;
+        -m | --mono)
+            colorProfile="mono"
+            wallbashCurve="10 0\n17 0\n24 0\n39 0\n51 0\n58 0\n72 0\n84 0\n99 0"
+            ;;
+        -c | --custom)
+            shift
+            if [ -n "$2" ] && [[ $2 =~ ^([0-9]+[[:space:]][0-9]+\\n){8}[0-9]+[[:space:]][0-9]+$ ]]; then
+                colorProfile="custom"
+                wallbashCurve="$2"
+            else
+                echo "Error: Custom color curve format is incorrect $1"
+                exit 1
+            fi
+            ;;
+        -d | --dark)
+            sortMode="dark"
+            colSort=""
+            ;;
+        -l | --light)
+            sortMode="light"
+            colSort="-r"
+            ;;
+        *) break ;;
+    esac
+    shift
+done
+
+wallbashColors=4
+wallbashFuzz=70
+wallbashRaw="$(mktemp --tmpdir="${TMPDIR:-/tmp}" wallbash.XXXXXX.mpc)"
+wallbashOut="${dcolDir}/${sortMode}/ivy-${wallbashHash}.dcol"
+
+if [[ -f "${wallbashOut}" ]]; then
+    echo -e "$0 $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
+    cp "${wallbashOut}" "${ideDir}/main/ivygen.dcol"
+    "${scrDir}/modules/ivyshell-theme.sh"
+    "${scrDir}/modules/ivyshell-helper.sh"
+    exit 0
+fi
+
 pryDarkBri=116
 pryDarkSat=110
 pryDarkHue=88
@@ -96,183 +72,107 @@ pryLightSat=100
 pryLightHue=114
 txtDarkBri=188
 txtLightBri=16
-
-rgba_convert_hex() {
-  local inCol=$1
-  local r=${inCol:0:2}
-  local g=${inCol:2:2}
-  local b=${inCol:4:2}
-  local r16=$((16#$r))
-  local g16=$((16#$g))
-  local b16=$((16#$b))
-  printf 'rgba(%d,%d,%d,1)\n' "$r16" "$g16" "$b16"
-}
-
-rgb_negative_hex() {
-  local inCol=$1
-  local r=${inCol:0:2}
-  local g=${inCol:2:2}
-  local b=${inCol:4:2}
-  local r16=$((16#$r))
-  local g16=$((16#$g))
-  local b16=$((16#$b))
-  r=$(printf "%02X" $((255 - r16)))
-  g=$(printf "%02X" $((255 - g16)))
-  b=$(printf "%02X" $((255 - b16)))
-  printf "%s%s%s" "$r" "$g" "$b"
-}
-
-fx_brightness_img() {
-  local imgref="$1"
-  local fxb
-  fxb=$(magick "$imgref" -colorspace gray -format "%[fx:mean]" info: 2>/dev/null || echo 0.0)
-  awk -v fxb="$fxb" 'BEGIN { exit !(fxb < 0.5) }'
-}
-
-ivygenRaw="$(mktemp --tmpdir="${TMPDIR:-/tmp}" ivygen.XXXXXX.mpc)"
-trap 'rm -f "$ivygenRaw"' EXIT
-magick -quiet -regard-warnings "${ivygenImg}"[0] -alpha off +repage "$ivygenRaw"
-readarray -t dcolRaw < <(
-  magick "$ivygenRaw" -depth 8 -fuzz ${ivygenFuzz}% +dither -kmeans ${ivygenColors} -depth 8 -format "%c" histogram:info: \
-  | sed -n 's/^[[:space:]]*\([0-9]\+\):.*#\([0-9A-Fa-f]\+\).*$/\1,\2/p' \
-  | sort -r -n -k 1 -t ","
-)
-
-if [ "${#dcolRaw[@]}" -lt "$ivygenColors" ]; then
-  readarray -t dcolRaw < <(
-    magick "$ivygenRaw" -depth 8 -fuzz ${ivygenFuzz}% +dither -kmeans $((ivygenColors + 4)) -depth 8 -format "%c" histogram:info: \
-    | sed -n 's/^[[:space:]]*\([0-9]\+\):.*#\([0-9A-Fa-f]\+\).*$/\1,\2/p' \
-    | sort -r -n -k 1 -t ","
-  )
+if [[ -z "$wallbashImg" || ! -f "$wallbashImg" ]]; then
+    echo "Error: Input file not found!"
+    exit 1
 fi
 
-if [ "$sortMode" = "auto" ]; then
-  if fx_brightness_img "$ivygenRaw"; then
-    sortMode="dark"; colSort=""
-  else
-    sortMode="light"; colSort="-r"
-  fi
+if ! magick -ping "$wallbashImg" -format "%t" info: &> /dev/null; then
+    echo "Error: Unsuppoted image format $wallbashImg"
+    exit 1
 fi
+echo -e "$0 $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
 
-mapfile -t dcolHex < <(printf '%s\n' "${dcolRaw[@]:0:$ivygenColors}" | awk -F',' '{print $2}' | sort $colSort)
-
-while [ "${#dcolHex[@]}" -lt "$ivygenColors" ]; do
-  local_last_index=$(( ${#dcolHex[@]} - 1 ))
-  dcolHex+=("${dcolHex[$local_last_index]}")
-done
-
-greyCheck=$(magick "$ivygenRaw" -colorspace HSL -channel g -separate +channel -format "%[fx:mean]" info:)
-if awk -v g="$greyCheck" 'BEGIN{exit !(g < 0.12)}'; then
-  ivygenCurve="10 0
-17 0
-24 0
-39 0
-51 0
-58 0
-72 0
-84 0
-99 0"
-fi
-
-tmp_sh="$(mktemp --tmpdir="${TMPDIR:-/tmp}" ivygen.XXXXXX.tmp)"
-: > "$tmp_sh"
-
-cat > "$tmp_sh" <<'EOF'
-# auto-generated color slots — source this file
-EOF
-
-slot_write() {
-  local idx="$1" hex="$2"
-  hex="${hex#\#}"
-  hex="${hex^^}"
-  local var="dcol_rrggbb_${idx}"
-  local rgba
-  rgba=$(rgba_convert_hex "$hex")
-  printf '%s=%s\n' "$var" "#$hex" >>"$tmp_sh"
-  printf '%s_rgba=%s\n' "${var}" "$rgba" >>"$tmp_sh"
+rgb_negative() {
+    local inCol=$1
+    local r=${inCol:0:2}
+    local g=${inCol:2:2}
+    local b=${inCol:4:2}
+    local r16=$((16#$r))
+    local g16=$((16#$g))
+    local b16=$((16#$b))
+    r=$(printf "%02X" $((255 - r16)))
+    g=$(printf "%02X" $((255 - g16)))
+    b=$(printf "%02X" $((255 - b16)))
+    echo "$r$g$b"
 }
-
-for ((i=0;i<ivygenColors;i++)); do
-  base_hex="${dcolHex[i]#\#}"
-  base_hex="${base_hex^^}"
-  base_slot=$((1 + i*11))    
-  txt_slot=$((base_slot + 1))
-
-  if [ -z "${base_hex}" ]; then
-    base_hex="000000"
-  fi
-  slot_write "$base_slot" "$base_hex"
-
-  nTxt="$(rgb_negative_hex "$base_hex")"
-  if fx_brightness_img "xc:#${base_hex}" ; then
-    modBri=$txtDarkBri
-  else
-    modBri=$txtLightBri
-  fi
-  tcol=$(magick xc:"#${nTxt}" -depth 8 -normalize -modulate ${modBri},10,100 -depth 8 -format "%c" histogram:info: \
-         | sed -n 's/^[[:space:]]*[0-9]\+:[^#]*#\([0-9A-Fa-f]\+\).*$/\1/p' | head -n1)
-  tcol="${tcol:-$nTxt}"
-  slot_write "$txt_slot" "$tcol"
-
-  xHue=$(magick xc:"#${base_hex}" -colorspace HSB -format "%c" histogram:info: 2>/dev/null | awk -F '[hsb(,]' '{print $2}' | head -n1 || echo 0)
-  xHue="${xHue:-0}"
-
-  # write 9 accents according to curve
-  acnt=1
-  if [ -n "$colSort" ]; then
-    mapfile -t curve_lines < <(printf '%s\n' "$ivygenCurve" | tac)
-  else
-    mapfile -t curve_lines < <(printf '%s\n' "$ivygenCurve")
-  fi
-
-  for cl in "${curve_lines[@]}"; do
-    [ -z "$cl" ] && continue
-    xBri=$(awk '{print $1}' <<<"$cl")
-    xSat=$(awk '{print $2}' <<<"$cl")
-    acol=$(magick xc:"hsb(${xHue},${xSat}%,${xBri}%)" -depth 8 -format "%c" histogram:info: \
-         | sed -n 's/^[[:space:]]*[0-9]\+:[^#]*#\([0-9A-Fa-f]\+\).*$/\1/p' | head -n1)
-    acol="${acol:-000000}"
-    acc_slot=$((base_slot + 1 + acnt))
-    slot_write "$acc_slot" "$acol"
-    acnt=$((acnt+1))
-    [ "$acnt" -gt 9 ] && break
-  done
-done
-
-for idx in $(seq 1 44); do
-  if ! grep -q "^dcol_rrggbb_${idx}=" "$tmp_sh"; then
-    if [ "$idx" -le 11 ]; then fallback=1
-    elif [ "$idx" -le 22 ]; then fallback=12
-    elif [ "$idx" -le 33 ]; then fallback=23
-    else fallback=34
+rgba_convert() {
+    local inCol=$1
+    local r=${inCol:0:2}
+    local g=${inCol:2:2}
+    local b=${inCol:4:2}
+    local r16=$((16#$r))
+    local g16=$((16#$g))
+    local b16=$((16#$b))
+    printf "rgba(%d,%d,%d,\1341)\n" "$r16" "$g16" "$b16"
+}
+fx_brightness() {
+    local inCol="$1"
+    local fxb
+    fxb=$(magick "$inCol" -colorspace gray -format "%[fx:mean]" info:)
+    if awk -v fxb="$fxb" 'BEGIN {exit !(fxb < 0.5)}'; then
+        return 0
+    else
+        return 1
     fi
-    baseval=$(grep "^dcol_rrggbb_${fallback}=" "$tmp_sh" | head -n1 | sed -E 's/^dcol_rrggbb_[0-9]+="([^"]+)".*$/\1/')
-    if [ -z "$baseval" ]; then baseval="#000000"; fi
-    printf 'dcol_rrggbb_%d=%s\n' "$idx" "$baseval" >>"$tmp_sh"
-    printf 'dcol_rrggbb_%d_rgba=%s\n' "$idx" "$(rgba_convert_hex "${baseval##"#"}")" >>"$tmp_sh"
-  fi
+}
+magick -quiet -regard-warnings "$wallbashImg"[0] -alpha off +repage "$wallbashRaw"
+readarray -t dcolRaw <<< "$(magick "$wallbashRaw" -depth 8 -fuzz $wallbashFuzz% +dither -kmeans $wallbashColors -depth 8 -format "%c" histogram:info: | sed -n 's/^[ ]*\(.*\):.*#\([0-9a-fA-F]*\) .*$/\1,\2/p' | sort -r -n -k 1 -t ",")"
+if [ ${#dcolRaw[*]} -lt $wallbashColors ]; then
+    echo -e "RETRYING :: distinct colors ${#dcolRaw[*]} is less than $wallbashColors palette color..."
+    readarray -t dcolRaw <<< "$(magick "$wallbashRaw" -depth 8 -fuzz $wallbashFuzz% +dither -kmeans $((wallbashColors + 2)) -depth 8 -format "%c" histogram:info: | sed -n 's/^[ ]*\(.*\):.*#\([0-9a-fA-F]*\) .*$/\1,\2/p' | sort -r -n -k 1 -t ",")"
+fi
+if [ "$sortMode" == "auto" ]; then
+    if fx_brightness "$wallbashRaw"; then
+        sortMode="dark"
+        colSort=""
+    else
+        sortMode="light"
+        colSort="-r"
+    fi
+fi
+echo "dcol_mode=\"$sortMode\"" >> "$wallbashOut"
+mapfile -t dcolHex < <(echo -e "${dcolRaw[@]:0:wallbashColors}" | tr ' ' '\n' | awk -F ',' '{print $2}' | sort ${colSort:+"$colSort"})
+greyCheck=$(magick "$wallbashRaw" -colorspace HSL -channel g -separate +channel -format "%[fx:mean]" info:)
+if (($(awk 'BEGIN {print ('"$greyCheck"' < 0.12)}'))); then
+    wallbashCurve="10 0\n17 0\n24 0\n39 0\n51 0\n58 0\n72 0\n84 0\n99 0"
+fi
+for ((i = 0; i < wallbashColors; i++)); do
+    if [ -z "${dcolHex[i]}" ]; then
+        if fx_brightness "xc:#${dcolHex[i - 1]}"; then
+            modBri=$pryDarkBri
+            modSat=$pryDarkSat
+            modHue=$pryDarkHue
+        else
+            modBri=$pryLightBri
+            modSat=$pryLightSat
+            modHue=$pryLightHue
+        fi
+        echo -e "dcol_pry$((i + 1)) :: regen missing color"
+        dcolHex[i]=$(magick xc:"#${dcolHex[i - 1]}" -depth 8 -normalize -modulate $modBri,$modSat,$modHue -depth 8 -format "%c" histogram:info: | sed -n 's/^[ ]*\(.*\):.*[#]\([0-9a-fA-F]*\) .*$/\2/p')
+    fi
+    echo "dcol_pry$((i + 1))=\"#${dcolHex[i]}\"" >> "$wallbashOut"
+    echo "dcol_pry$((i + 1))_rgba=\"$(rgba_convert "${dcolHex[i]}")\"" >> "$wallbashOut"
+    nTxt=$(rgb_negative "${dcolHex[i]}")
+    if fx_brightness "xc:#${dcolHex[i]}"; then
+        modBri=$txtDarkBri
+    else
+        modBri=$txtLightBri
+    fi
+    tcol=$(magick xc:"#$nTxt" -depth 8 -normalize -modulate $modBri,10,100 -depth 8 -format "%c" histogram:info: | sed -n 's/^[ ]*\(.*\):.*[#]\([0-9a-fA-F]*\) .*$/\2/p')
+    echo "dcol_txt$((i + 1))=\"#$tcol\"" >> "$wallbashOut"
+    echo "dcol_txt$((i + 1))_rgba=\"$(rgba_convert "$tcol")\"" >> "$wallbashOut"
+    xHue=$(magick xc:"#${dcolHex[i]}" -colorspace HSB -format "%c" histogram:info: | awk -F '[hsb(,]' '{print $2}')
+    acnt=1
+    echo -e "$wallbashCurve" | sort -n ${colSort:+"$colSort"} | while read -r xBri xSat; do
+        acol=$(magick xc:"hsb($xHue,$xSat%,$xBri%)" -depth 8 -format "%c" histogram:info: | sed -n 's/^[ ]*\(.*\):.*[#]\([0-9a-fA-F]*\) .*$/\2/p')
+        echo "dcol_$((i + 1))xa$acnt=\"#$acol\"" >> "$wallbashOut"
+        echo "dcol_$((i + 1))xa${acnt}_rgba=\"$(rgba_convert "$acol")\"" >> "$wallbashOut"
+        ((acnt++))
+    done
 done
 
-mv "$tmp_sh" "$ivycache"
-rm -rf "$tmp_sh"
-cp "$ivycache" "${OUT_DIR}/ivygen.dcol"
-
-printf 'WROTE:\n  %s\n  %s\n' "${OUT_DIR}/ivygen.dcol" 
-case "$VAR2" in
-  --helper=1)
-    exit 0
-    ;;
-  --theme=1)
-    $scrDir/modules/ivyshell-theme.sh 
-    exit 0
-    ;;
-  --theme-helper)
-    $scrDir/modules/ivyshell-helper.sh
-    exit 0
-    ;;
-  --helper=0|""|*)
-    $scrDir/modules/ivyshell-theme.sh 
-    $scrDir/modules/ivyshell-helper.sh
-    exit 0
-    ;;
-esac
+if [[ -d "${ideDir}/main" ]]; then
+    cp "${wallbashOut}" "${ideDir}/main/ivygen.dcol"
+fi
+rm -f "$wallbashRaw"
