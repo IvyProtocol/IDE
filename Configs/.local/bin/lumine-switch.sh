@@ -23,7 +23,7 @@ apply_config() {
     else
         setConf "ideTheme" "Wallbash-Ivy" "${confDir}/ivy-shell/ide.conf" &
         sed -i 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf" &
-        "${scrDir}/ivy-shell.sh" -i "${wallSet}" -c "${1}"
+        "${scrDir}/ivy-shell.sh" "${wallSet}" --"${1}"
     fi
 
     if [[ -z "${wallSet}" && -x "${scrDir}/wbselecgen.sh" ]]; then
