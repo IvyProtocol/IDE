@@ -4,9 +4,20 @@ source "${scrDir}/../globalcontrol.sh"
 
 declare -A ivy
 
-while IFS='=' read -r key val; do
+while IFS= read -r line || [[ -n $line ]]; do
+  line="${line#"${line%%[![:space:]]*}"}"
+  line="${line%"${line##*[![:space:]]}"}"
+
+  [[ -z $line || $line == \#* ]] && continue
+  [[ $line != dcol_* ]] && continue
+  key="${line%%=*}"
+  val="${line#*=}"
+
+  key="${key%"${key##*[![:space:]]}"}"
+  key="${key#"${key%%[![:space:]]*}"}"
   val="${val//\\/}"
   val="${val//\"/}"
+
   ivy["$key"]="$val"
 done < "${ideDir}/main/ivygen.dcol"
 
