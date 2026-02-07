@@ -14,26 +14,28 @@ log() { echo "[$0] "$@""; }
 # ────────────────────────────────────────────────
 themeSelTui() {
     thmChsh="${1}"
-    PreProcess="${ideDir}/theme/${thmChsh}/wallpapers"
-    [[ "${PrevThemeIde}" == "${thmChsh}" ]] || setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh" 
-    [[ "${wallDir}" == "${ideDir}/theme/${1}/wallpapers" ]] || setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${1}/wallpapers" "${ideDir}/ide.conf"
+    thmImg="$(<"${themeDir}/${thmChsh}/wallpapers/.wallbash-main")"
+    if [[ -n "${thmImg}" ]]; then
+        if [[ "${PrevThemeIde}" != "${thmChsh}" ]]; then
+            setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh" 
+        fi
+        if [[ "${wallDir}" != "${ideDir}/theme/${1}/wallpapers" ]]; then
+            setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${ideDir}/ide.conf"
+        fi
+        if [[ "${enableWallIde}" -eq 3 ]]; then
+            if [[ "${ideTheme}" != "${thmChsh}" ]]; then
+                setConf "ideTheme" "$1" "${ideDir}/ide.conf"
+            fi
+            sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
+        else
+            "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
+#            cp "${themeDir}/${thmChsh}/hypr.theme" "${confDir}/hypr/themes/theme.conf"
+            sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
+        fi
     
-    if [[ "${enableWallIde}" -eq 3 ]]; then
-        [[ "${ideTheme}" == "${thmChsh}" ]] || setConf "ideTheme" "$1" "${ideDir}/ide.conf"
-        sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
-    else
-        sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
+        [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${swayncDir}/icons/palette.png" && return 1
+        "${scrDir}/wbselecgen.sh" -i "${thmImg}" -w --swww-t 
     fi
-
-    if [[ ! -f "${PreProcess}/.wallbash.main" ]]; then
-        find "${PreProcess}" -mindepth 1 -maxdepth 1 -type f ! -name ".wallbash.main" | shuf -n 1 | tee "${PreProcess}/.wallbash.main" >/dev/null 
-    fi
-
-    thmImg="$(<"${PreProcess}/.wallbash.main")"
-    # We will eval to bypass errors. I hate this.
-    
-    [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${swayncDir}/icons/palette.png" && return 1
-    eval "${scrDir}/wbselecgen.sh" -i "${thmImg}" -w --swww-t 
 }
 
 # ────────────────────────────────────────────────
@@ -59,7 +61,6 @@ thmSelEnv() {
         selectC=0
         for indx in "${themes[@]}"; do
             wallSet="${themeDir}/${indx}/wall.set"
-
             printf "%s\x00icon\x1f%s\n" "${indx}" "${wallSet}"
         done
     }
@@ -70,3 +71,4 @@ thmSelEnv() {
 }
 
 [[ -z "${1}" ]] && thmSelEnv || themeSelTui "$1"
+
