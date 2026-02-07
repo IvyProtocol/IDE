@@ -14,23 +14,28 @@ log() { echo "[$0] "$@""; }
 # ────────────────────────────────────────────────
 themeSelTui() {
     thmChsh="${1}"
+    if [[ ! -f "${themeDir}/${thmChsh}/wallpapers/.wallbash-main" ]]; then
+        find "${themeDir}/${thmChsh}/wallpapers" -mindepth 1 -maxdepth 1 -type f ! -name ".wallbash.main" | shuf -n 1 | tee "${themeDir}/${thmChsh}/wallpapers/.wallbash-main" >/dev/null 
+    fi
     thmImg="$(<"${themeDir}/${thmChsh}/wallpapers/.wallbash-main")"
     if [[ -n "${thmImg}" ]]; then
         if [[ "${PrevThemeIde}" != "${thmChsh}" ]]; then
             setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh" 
         fi
-        if [[ "${wallDir}" != "${ideDir}/theme/${1}/wallpapers" ]]; then
+        if [[ "${wallDir}" != "${themeDir}/${thmChsh}/wallpapers" ]]; then
             setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${ideDir}/ide.conf"
+        else
+            echo -e "Theme Control has already updated ${thmChsh} to the system. No need for updating."
+            exit 0
         fi
         if [[ "${enableWallIde}" -eq 3 ]]; then
             if [[ "${ideTheme}" != "${thmChsh}" ]]; then
-                setConf "ideTheme" "$1" "${ideDir}/ide.conf"
+                setConf "ideTheme" "${thmChsh}" "${ideDir}/ide.conf"
             fi
             sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         else
             "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
-#            cp "${themeDir}/${thmChsh}/hypr.theme" "${confDir}/hypr/themes/theme.conf"
-            sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
+             sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         fi
     
         [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${swayncDir}/icons/palette.png" && return 1

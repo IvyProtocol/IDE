@@ -3,7 +3,7 @@ $(confDir)/hypr/themes/theme.conf|$RUN:hyprctl reload
 
 # $GTK_THEME=Catppuccin-Mocha
 # $ICON_THEME = Tela-circle-dracula
-# $COLOR_SCHEME = prefer-dark
+$COLOR_SCHEME = prefer-dark
 
 # Optional: The varibles above will be set automatically when the theme is loaded
 # This exec commands will soon be deprecated

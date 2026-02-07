@@ -11,7 +11,7 @@
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
-rasiDir="${rasiDir}/rofiSelect.rasi"
+rasiDir="${rasiDir}/selector.rasi"
 #// set rofi font scaling
 [[ -z "${rofiFontScale}" ]] && font_scale=10 || font_scale="${rofiFontScale}"
 
@@ -58,7 +58,7 @@ done
 
 
 # Present the list of styles using rofi and get the selected style
-RofiSel=$(echo -en "$rofi_list" | rofi -dmenu -markup-rows -theme-str "$r_override" -theme "$rasiDir")
+RofiSel=$(echo -en "$rofi_list" | rofi -dmenu -markup-rows -theme-str "$r_override" -theme "$rasiDir" -selected-row 0 )
 
 # Set Rofi Style 
 if [ ! -z "${RofiSel}" ] ; then

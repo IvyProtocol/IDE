@@ -45,7 +45,7 @@ apply_wallpaper() {
     base="$(basename "$img")"
     img="${img}"
     blurred="${blurDir}/${base%.*}.bpex"
-    echo "$img" > "${ideDir}/theme/${PrevThemeIde}/wallpapers/.wallbash.main" 
+    echo "$img" > "${ideDir}/theme/${PrevThemeIde}/wallpapers/.wallbash-main" 
 
     case "${ntSend}" in
         1)
@@ -60,8 +60,11 @@ apply_wallpaper() {
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
 
     case "${schIPC}" in
-        dark|light|auto) 
-            "${scrDir}/ivy-shell.sh" -i "${img}" -c "${schIPC}"
+        dark|light) 
+            "${scrDir}/ivy-shell.sh" "${img}" --"${schIPC}"
+            ;;
+        auto)
+            "${scrDir}/ivy-shell.sh" "${img}"
             ;;
         theme|*)
             if [[ "${enableWallIde}" -eq 3 && "${dcolMode}" == "theme" ]]; then
@@ -70,10 +73,10 @@ apply_wallpaper() {
                     cp "${dcolDir}/auto/ivy-${hashMech}.dcol" "${ideDir}/main/ivygen.dcol"
                     "${scrDir}/modules/ivyshell-theme.sh" && "${scrDir}/modules/ivyshell-helper.sh"
                 else
-                    "${scrDir}/ivy-shell.sh" -i "$img"
+                    "${scrDir}/ivy-shell.sh" "$img"
                 fi
             else
-                "${scrDir}/ivy-shell.sh" -i "$img" -c "${dcolMode}"
+                "${scrDir}/ivy-shell.sh" "$img" --"${dcolMode}"
             fi
             ;;
     esac
@@ -81,9 +84,10 @@ apply_wallpaper() {
     case $swi in
         --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        --swww-t) swww img "$img" -t "${wallAnimationTheme}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" & ;;
-        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y & ;;
+        --swww-t) swww img "$img" -t "${wallAnimationTheme}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y  ;;
     esac
+    sleep 0.2
 
     scRun=$(fl_wallpaper -t "${img}" -f 1)
     if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
@@ -132,7 +136,7 @@ choose_wallpaper() {
     expV
     choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -selected-row "${selectC}")
     [[ -z "$choice" ]] && exit 0
-    apply_wallpaper -i "${wallSel}/$choice"
+    apply_wallpaper -i "${wallSel}/$choice" -n 1
 }
 
 # ────────────────────────────────────────────────

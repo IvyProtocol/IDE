@@ -10,33 +10,4 @@
 @define-color wb-hvr-bg rgba(75,92,125,0.4);
 @define-color wb-hvr-fg rgba(170,219,240,0.8);
 
-@define-color foreground             #FFFFFF;
-@define-color background             #1B1B29;
-@define-color cursor                 #974C4E;
-
-@define-color color0                 #1B1B29;
-@define-color color8                 #292952;
-
-@define-color color1                 #272E3C;
-@define-color color9                 #293652;
-
-@define-color color2                 #2D4E5C;
-@define-color color10                #294552;
-
-@define-color color3                 #974C4E;
-@define-color color11                #52292A;
-
-@define-color color4                 #6565A3;
-@define-color color12                #7A7AC2;
-
-@define-color color5                 #657AA3;
-@define-color color13                #9AB3E6;
-
-@define-color color6                 #6591A3;
-@define-color color14                #9ACFE6;
-
-@define-color color7                 #A36567;
-@define-color color15                #FFFFFF;
-
-
 /* // ------------------------------------- */

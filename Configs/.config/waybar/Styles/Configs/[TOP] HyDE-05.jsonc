@@ -48,7 +48,7 @@
         "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB"
     },
 
-    "custom/window": {
+    "hyprland/window": {
         "format": "  {}",
         "rotate": 0,
         "separate-outputs": true,
@@ -109,6 +109,7 @@
 
     "hyprland/workspaces": {
         "all-outputs": true,
+        "rotate": 0,
         "active-only": false,
         "on-click": "activate",
         "disable-scroll": false,
@@ -123,7 +124,8 @@
         "markup": true,
         "format": "{icon}",
         "rotate": 0,
-        "icon-size": 13,
+        
+ 
         "spacing": 20,
         "tooltip-format": "{title} | {app_id}",
         "on-click": "activate",
@@ -189,7 +191,7 @@
     "tray": {
         "rotate": 0,
         "spacing": 5,
-        "icon-size": 13
+        "icon-size": 12
     },
 
     "custom/battery": {
@@ -207,7 +209,8 @@
         "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "on-scroll-up": "$HOME/.local/bin/Brightness.sh --inc &",
-        "on-scroll-down": "$HOME/.local/bin/Brightness.sh --dec &"
+        "on-scroll-down": "$HOME/.local/bin/Brightness.sh --dec &",
+        "min-length": 6
     },
 
     "network": {
