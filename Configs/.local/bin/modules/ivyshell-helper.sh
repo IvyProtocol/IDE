@@ -22,9 +22,8 @@ homDir="${homDir}"
 # Early Fallback Check
 # -----------------------
 [[ "$EUID" -eq 0 ]] && echo "[$0] must not be run as root." >&2 && exit 1
-[[ ! -d "${shellDir}" ]] && echo "[$0] no dcol/ivy file found. Nothing to apply!" && exit 0
 
-if ! find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print -quit | grep -q .; then
+ if ! find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print -quit | grep -q .; then
     echo "ivygen-helper: no .dcol or .ivy templates found, nothing to apply."
     exit 0
 fi
