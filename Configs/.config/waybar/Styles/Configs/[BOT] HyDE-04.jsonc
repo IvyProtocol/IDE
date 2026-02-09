@@ -17,7 +17,7 @@
 
 	"modules-left": ["custom/l_end","cpu","memory","custom/r_end","custom/l_end","idle_inhibitor","clock","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end"],
 	"modules-center": ["custom/l_end","tray","custom/r_end"],
-	"modules-right": ["custom/l_end","backlight","network","pulseaudio","pulseaudio#microphone","custom/r_end","custom/l_end","custom/battery","power-profiles-daemon","custom/r_end","custom/l_end","wlr/taskbar","custom/wallchange","custom/wbar","custom/cliphist","custom/power","custom/r_end"],
+	"modules-right": ["custom/l_end","backlight","network","pulseaudio","pulseaudio#microphone","custom/r_end","custom/l_end","custom/battery","power-profiles-daemon","custom/r_end","custom/l_end","wlr/taskbar","custom/wallchange","custom/theme","custom/wbar","custom/cliphist","custom/power","custom/r_end"],
 
 
 // sourced from modules based on config.ctl //
@@ -103,6 +103,17 @@
         "on-click-right": "$HOME/.local/bin/wbsecrandom.sh -p &",
         "on-click-middle": "$HOME/.local/bin/wbsecrandom.sh -r &",
         "on-click": "$HOME/.local/bin/wbsecrandom.sh -n &",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/theme": {
+        "format": "{}",
+        "rotate": 0,
+        "exec": "echo ; echo 󰟡 switch theme",
+        "on-click": "$HOME/.local/bin/themeswitch.sh -n",
+        "on-click-right": "$HOME/.local/bin/themeswitch.sh -p",
+        "on-click-middle": "sleep 0.1 && $HOME/.local/bin/themeswitch.sh",
         "interval" : 86400, // once every day
         "tooltip": true
     },
@@ -206,8 +217,8 @@
         "rotate": 0,
         "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-scroll-up": "$HOME/.local/bin/Brightness.sh --inc &",
-        "on-scroll-down": "$HOME/.local/bin/Brightness.sh --dec &"
+        "on-scroll-up": "$HOME/.local/bin/brightnesscontrol.sh --inc &",
+        "on-scroll-down": "$HOME/.local/bin/brightnesscontrol --dec &"
     },
 
     "network": {
@@ -227,10 +238,10 @@
         "format": "{icon} {volume}",
         "rotate": 0,
         "format-muted": "󰖁",
-        "on-click": "$HOME/.local/bin/Volume.sh --toggle &",
-        "on-click-middle": "pavucontrol -t 3",
-        "on-scroll-up": "$HOME/.local/bin/Volume.sh --inc &",
-        "on-scroll-down": "$HOME/.local/bin/Volume.sh --dec &",
+        "on-click": "pavucontrol -t 3",
+        "on-click-middle": "$HOME/.local/bin/volumecontrol.sh -o m",
+        "on-scroll-up": "$HOME/.local/bin/volumecontrol.sh -o i",
+        "on-scroll-down": "$HOME/.local/bin/volumecontrol.sh -o d",
         "tooltip-format": "{icon} {desc} // {volume}%",
         "scroll-step": 5,
         "format-icons": {
@@ -249,9 +260,10 @@
         "rotate": 0,
         "format-source": "",
         "format-source-muted": "\uf131",
-        "on-click": "$HOME/.local/bin/Volume.sh --toggle-mic &",
-        "on-scroll-up": "$HOME/.local/bin/Volume.sh --mic-inc &",
-        "on-scroll-down": "$HOME/.local/bin/Volume.sh --mic-dec &",
+        "on-click": "pavucontrol -t 4",
+        "on-click-middle": "$HOME/.local/bin/volumecontrol.sh -i m",
+        "on-scroll-up": "$HOME/.local/bin/volumecontrol.sh -i i ",
+        "on-scroll-down": "$HOME/.local/bin/volumecontrol.sh -i d",
         "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
         "scroll-step": 5
     },

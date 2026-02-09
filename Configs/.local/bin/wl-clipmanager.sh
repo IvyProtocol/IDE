@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-# Clipboard Manager. This script uses cliphist, rofi, and wl-copy.
 scrDir=$(dirname "$(realpath "$0")")
 
 if [[ ! -f "${scrDir}/globalcontrol.sh" ]]; then
@@ -13,11 +11,7 @@ fi
 kbcus1="Control-Delete"
 kbcus2="Alt-Delete"
 
-if env_pkg -- -Q "rofi"; then
-    if pidof rofi > /dev/null; then
-        pkill rofi
-    fi
-else
+if ! env_pkg -- -Q "rofi"; then
     notify -m 1 -p " Is rofi installed? exit-code 1."
     exit 1
 fi

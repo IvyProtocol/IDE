@@ -13,6 +13,7 @@ swww-prefix() {
     wall=$(fl_wallpaper -r)
 
     [[ -n "${wall}" ]] || return 1
+
     mapfile -t wallpapers < <( LC_ALL=C find "$wallDir" -maxdepth 1 -mindepth 1 -type f ! -name '.*' -printf '%f\n' | sort -V )
 
     wall_i=-1

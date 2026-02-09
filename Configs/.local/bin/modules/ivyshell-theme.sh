@@ -47,4 +47,4 @@ generate_theme() {
 generate_theme "" "${ideDir}/theme.ivy" ""
 generate_theme "_rgba" "${ideDir}/theme-rgba.ivy" "_rgba"
 
-echo "Generated"
+echo " :: Theme Control - Generated necessary files for placeholder loader"

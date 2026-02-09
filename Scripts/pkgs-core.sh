@@ -71,8 +71,8 @@ hyprland=(
   nwg-look
   gnome-disk-utility
   gnome-system-monitor
-  swaync
-  
+  dunst
+
   ttf-cascadia-code-nerd
   ttf-fira-mono
   ttf-jetbrains-mono-nerd
@@ -82,9 +82,6 @@ hyprland=(
 
 extra=(
   gnome-sound-recorder
-  vesktop
-  vscodium
-  python-pywalfox
   btop
   cava
   wl-screenrec

@@ -57,7 +57,7 @@ wallbashRaw="$(mktemp --tmpdir="${TMPDIR:-/tmp}" wallbash.XXXXXX.mpc)"
 wallbashOut="${dcolDir}/${sortMode}/ivy-${wallbashHash}.dcol"
 
 if [[ -f "${wallbashOut}" ]]; then
-    echo -e "$0 $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
+    echo -e " :: $0 $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
     cp "${wallbashOut}" "${ideDir}/main/ivygen.dcol"
     "${scrDir}/modules/ivyshell-theme.sh"
     "${scrDir}/modules/ivyshell-helper.sh"
@@ -81,7 +81,7 @@ if ! magick -ping "$wallbashImg" -format "%t" info: &> /dev/null; then
     echo "Error: Unsuppoted image format $wallbashImg"
     exit 1
 fi
-echo -e "$0 $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
+echo -e " :: $0 $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
 
 rgb_negative() {
     local inCol=$1

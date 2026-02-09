@@ -18,8 +18,6 @@ rofiConf="${rasiDir}/selector.rasi"
 [[ -d "${colsDir}" ]] || mkdir -p "${colsDir}"
 [[ -d "${thumbDir}" ]] || mkdir -p "${thumbDir}"
 
-log() { echo "[$0] "$@""; }
-
 # ────────────────────────────────────────────────
 # Apply wallpaper + blur + cache + color sync
 apply_wallpaper() {
@@ -55,9 +53,8 @@ apply_wallpaper() {
             ntSend=0
             ;;
     esac
-
-    log "Applying wallpaper: $img"
-    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${swayncDir}/icons/palette.png"
+    echo -e " :: [$0] Wallpaper Control - Applying $img"
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${confDir}/dunst/icons/hyprdots.svg"
 
     case "${schIPC}" in
         dark|light) 
@@ -91,7 +88,7 @@ apply_wallpaper() {
 
     scRun=$(fl_wallpaper -t "${img}" -f 1)
     if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
-        log "Creating blurry wallpaper and caching"
+        echo -e " :: Re-populating cache for ${img}"
         "${scrDir}/swwwallcache.sh" -b "${img}"
     fi
     
@@ -100,13 +97,12 @@ apply_wallpaper() {
     ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
     ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
     cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
-    cp "${thumbDir}/${scRun}.sloc" "${ideDir}/theme/${PrevThemeIde}/wall.set"
-    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "$img"
+    ln -sf "${thumbDir}/${scRun}.sloc" "${ideDir}/theme/${PrevThemeIde}/wall.set"
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "${ideDir}/theme/${PrevThemeIde}/wall.set"
 }
 
 # ────────────────────────────────────────────────
-# Rofi Settings
-expV() {
+rofi_wbselecgen() {
     [[ -z "${rofiScale}" ]] && rofiScale=10 || rofiScale="${rofiScale}"
     r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiScale}\";}"
     elem_border=$(( hypr_border * 3 ))
@@ -116,27 +112,22 @@ expV() {
     max_avail=$(( mon_x_res - (4 * rofiScale) ))
     col_count=$(( max_avail / elm_width ))
     r_override="window{width:100%;} listview{columns:${col_count};spacing:5em;} element{border-radius:${elem_border}px;orientation:vertical;} element-icon{size:28em;border-radius:0em;} element-text{padding:1em;}"
-}
 
-# ────────────────────────────────────────────────
-# Interactive wallpaper picker
-choose_wallpaper() {
     mapfile -d '' files < <(LC_ALL=C find "${wallSel}" "${WallAddCustomPath[@]}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
     menu() {
         selectC=0
-        for f in "${files[@]}"; do
-            name=$(basename "$f")
+        for indx in "${files[@]}"; do
+            name=$(basename "$indx")
             thumb="${thumbDir}/${name%.*}.sloc"
             cols="${colsDir}/${name%.*}.cols"
             blur="${blurDir}/${name%.*}.bpex"
-            [[ ! -f "$thumb" || ! -f "$cols" || ! -f "$blur" ]] && "${scrDir}/swwwallcache.sh" -f "$f"
+            [[ ! -f "$thumb" || ! -f "$cols" || ! -f "$blur" ]] && "${scrDir}/swwwallcache.sh" -f "$indx"
             printf "%s\x00icon\x1f%s\n" "$name" "$thumb" 
         done
     }
-    expV
-    choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -selected-row "${selectC}")
+    choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${selectC}")
     [[ -z "$choice" ]] && exit 0
-    apply_wallpaper -i "${wallSel}/$choice" -n 1
+    apply_wallpaper -i "${wallSel}/$choice"
 }
 
 # ────────────────────────────────────────────────
@@ -144,5 +135,5 @@ choose_wallpaper() {
 if [ -n "$1" ]; then
     apply_wallpaper "$@"
 else
-    choose_wallpaper
+    rofi_wbselecgen
 fi

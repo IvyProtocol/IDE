@@ -104,7 +104,7 @@ case "${enableWallIde}" in
     ;;
 esac
 
-PrevThemeIde="Graphite-Mono"
+PrevThemeIde="Decay-Green"
 
 [[ -z "${wallFramerate}" ]] && wallFramerate=144 || wallFramerate="${wallFramerate}"
 [[ -z "${wallTransDuration}" ]] && wallTransDuration=0.4 || wallTransDuration="${wallTransDuration}"
@@ -203,7 +203,9 @@ notify() {
 }
 
 hashmap() {
-  local hashpref hashMap
+  unset hashpref 
+  unset hashMap
+
   wallHash=()
   wallList=()
   OPTIND=1
@@ -216,7 +218,7 @@ hashmap() {
   shift $((OPTIND - 1))
 
   for src in "$@"; do
-    hashMap=$(find "$src" -type f \( -iname "*.gif" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec md5sum {} + | sort -V)
+    hashMap=$(find "$src" -type f \( -iname "*.gif" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec md5sum {} + | sort -Vf)
 
     if [[ -z "${hashMap}" ]]; then
       echo "WARNING: No image found in \"${src}\""
@@ -247,17 +249,6 @@ if [[ -n "${HYPRLAND_INSTANCE_SIGNATURE}" ]] && command -v hyprctl jq >/dev/null
   mon_res=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
   mon_scale=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .scale' | tr -d '.')
 fi
-
-wblayout() {
-  local wlDir="${wlDir}/Configs"
-  local tarDir="${wlDir}/../config"
-  local rasiTarget="${rasiDir}/config-waybar.rasi"
-
-
-  [[ -z $1 ]] && exit 0
-  ln -sf "${wlDir}/$1" "${tarDir}"
-  "${hyprscrDir}/toggle-waybar.sh" 
-}
 
 ext_thumb() {
   local x_arg x_arg_temp

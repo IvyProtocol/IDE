@@ -9,12 +9,23 @@ source "${scrDir}/../globalcontrol.sh"
 
 wbDir="${ideDir}"
 shellDir="${1:-${wbDir}/theme/${ideTheme}}"
+thmDcolDir="${ideDir}/main/ivybash"
 targetDir="${2:-${XDG_CACHE_HOME:-$HOME/.cache}/wal/wal-dir/}"
 mkdir -p "$targetDir"
-
 confDir="${confDir}"
 cacheDir="${cacheDir}"
 homDir="${homDir}"
+
+inputPath="${@}"
+template_sources=()
+
+if [[ -n "${inputPath}" && -f "${inputPath}" ]]; then
+    template_sources=("${inputPath}")
+elif [[ -n "${inputPath}" && -d "${inputPath}" ]]; then
+    template_sources=("${inputPath}" "${thmDcolDir}")
+else
+    template_sources=("${shellDir}" "${thmDcolDir}")
+fi
 
 [[ -z "${plLoader}" ]] && plLoader="ivy"
 
@@ -22,9 +33,8 @@ homDir="${homDir}"
 # Early Fallback Check
 # -----------------------
 [[ "$EUID" -eq 0 ]] && echo "[$0] must not be run as root." >&2 && exit 1
-#[[ ! -e "${shellDir}" ]] && echo "[$0] no dcol/ivy file found. Nothing to apply!" && exit 0
 
- if ! find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print -quit | grep -q .; then
+ if ! find "$shellDir" "${thmDcolDir}" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print -quit | grep -q .; then
     echo "ivygen-helper: no .dcol or .ivy templates found, nothing to apply."
     exit 0
 fi
@@ -77,6 +87,7 @@ process_template() {
         case "$rel" in
             *.dcol) target="$targetDir/$(rel%.dcol)" ;;
             *.ivy)  target="$targetDir/$(rel%.ivy)" ;;
+            *.theme) target="$targetDir/$(rel%.theme)"
         esac
     fi
 
@@ -127,9 +138,9 @@ process_template() {
     mkdir -p "$(dirname "$target")"
     if [[ ! -f "$target" || "$(cat "$target")" != "$template_content" ]]; then
         printf "%s" "$template_content" > "$target" 
-        echo "Generated: $target"
+        echo " :: Theme Control - Populating ${target} <- ${template_file}"
     else
-        echo "Skipped (unchanged): $target"
+        echo " :: Theme Control - Skipped changing ${target} <- "${template_file}
         exit 0
     fi
 
@@ -144,18 +155,24 @@ process_template() {
         elif [[ -x "$script" ]]; then
             "$script"
         else
-            echo "Skipped non-executable script: $script"
+            echo " :: Theme Control - Skipping non-executable script from ${template_file}"
         fi
     fi
     set -u
 }
 
 export -f process_template setConf
-export scrDir confDir cacheDir targetDir homDir shellDir plLoader
+export scrDir confDir cacheDir targetDir homDir shellDir plLoader thmDcolDir
 for var in $(compgen -v | grep -E "^(${plLoader})_"); do export "$var"; done
 
 # -----------------------
 # Run templates in parallel
 # -----------------------
-find "$shellDir" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print0 \
+
+if [[ -f "${template_sources[0]}" ]]; then
+    process_template "${template_sources[0]}"
+else
+    find "${template_sources[@]}" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print0 \
     | xargs -0 -n 1 -P 3 bash -c 'process_template "$@"' _
+fi
+

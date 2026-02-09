@@ -22,7 +22,7 @@ window {
   border-radius:                  2.0em;
   border-color:                   @main-br;
   background-color:               @main-bg;
-  background-image:               url("~/.config/rofi/shared/current-wallpaper.png",height);
+  background-image:               url("~/.config/rofi/shared/wallbash_mode.png",height);
 }
 
 mainbox {
