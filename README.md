@@ -45,12 +45,7 @@ Iricalgen-dotfiles/ <-------- $(rpDir)
 │   └── pkgs-core.sh
 └── Source < ----- Extra Sources
     ├── assets
-    │   ├── irgen.gif
-    │   ├──  1_rain_world.png
-    │   ├──  2_rain_world.png
-    │   ├──  3_rain_world.png
-    │   ├──  arcade_decay_red.png
-    │   └── rain_girl_door.jpg
+    │   └── irgen.gif
     ├── Code_Wallbash.vsix
     ├── Icon_Vivid-Glassy-Dark.tar.gz
     └── Sweet-cursors.tar.xz
