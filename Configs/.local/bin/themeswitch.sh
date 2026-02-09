@@ -59,7 +59,7 @@ thmSelEnv() {
     r_override="window{width:100%;} listview{columns:${col_count};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"
 
     local indx selectC themes wallSet
-    mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf)
+    mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d ! -name 'Wallbash-Ivy' -printf '%f\n' | sort -Vf)
     menu() {
         selectC=0
         for indx in "${themes[@]}"; do
@@ -77,7 +77,7 @@ theme_control() {
     thmCheck="${1:-}"
 
     [[ -n "${PrevThemeIde}" ]] || return 1
-    mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf )
+    mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d ! -name 'Wallbash-Ivy' -printf '%f\n' | sort -Vf )
     thm_i=-1
     for i in "${!themes[@]}"; do
         [[ "${themes[$i]}" == "${PrevThemeIde}" ]] && thm_i=$i
@@ -108,5 +108,3 @@ case "${1}" in
         thmSelEnv
         ;;
 esac
-
-
