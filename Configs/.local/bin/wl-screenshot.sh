@@ -3,6 +3,7 @@
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
+
 dir="${homDir}/Pictures/Screenshots"
 scrfile="${dir}/Screenshot_$(timestamp).png"
 

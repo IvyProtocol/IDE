@@ -15,22 +15,7 @@ export ideDir="${XDG_CONF_HOME:-${confDir}/ivy-shell}"
 export ideCDir="${XDG_IDE_CACHE:-${cacheDir}/ivy-shell}"
 export dcolDir="${XDG_DCOL_HOME:-${ideCDir}/shell}"
 
-export indentOk="$(tput setaf 2)[OK]$(tput sgr0)"
-export indentError="$(tput setaf 1)[ERROR]$(tput sgr0)"
-export indentNotice="$(tput setaf 3)[NOTICE]$(tput sgr0)"
-export indentInfo="$(tput setaf 4)[INFO]$(tput sgr0)"
-export indentReset="$(tput setaf 5)[RESET]$(tput sgr0)"
-export indentAction="$(tput setaf 6)[ACTION]$(tput sgr0)"
-export indentWarning="$(tput setaf 1)"
-export exitCode1="$(tput setaf 1)[EXIT-CODE-1]$(tput sgr0)"
-export exitCode0="$(tput setaf 2)[EXIT-CODE-0]$(tput sgr0)"
 
-export indentMagenta="$(tput setaf 5)"
-export indentYellow="$(tput setaf 3)"
-export indentOrange="$(tput setaf 214)"
-export indentGreen="$(tput setaf 2)"
-export indentBlue="$(tput setaf 4)"
-export indentSkyBlue="$(tput setaf 6)"
 set +e
 clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${ideDir}/ide.conf" | sed 's/exclusion=\"(//')"
 [[ -n "${clusterExclude}" ]] && source <(grep -vE "^[[:space:]]*($clusterExclude)=.*" "${ideDir}/ide.conf") || source "${ideDir}/ide.conf"
@@ -46,8 +31,8 @@ env_pkg() {
         defAur="$OPTARG"
         ;;
       H)
-        echo -e " :: ${indentInfo} Use env_pkg as how pacman works. Example, env_pkg -- -S|-Q|-Ss <package_name>"
-        echo -e " :: ${indentInfo} Use env_pkg to describe the AUR to use with -A. env_pkg -A <aur_helper> -- -<PREFIX> <package_name>"
+        echo -e " :: Use env_pkg as how pacman works. Example, env_pkg -- -S|-Q|-Ss <package_name>"
+        echo -e " :: Use env_pkg to describe the AUR to use with -A. env_pkg -A <aur_helper> -- -<PREFIX> <package_name>"
         return 0
         ;;
       *) echo "Invalid option"; return 1 ;;
@@ -104,15 +89,28 @@ case "${enableWallIde}" in
     ;;
 esac
 
-PrevThemeIde="Decay-Green"
+PrevThemeIde="Catppuccin-Mocha"
 
-[[ -z "${wallFramerate}" ]] && wallFramerate=144 || wallFramerate="${wallFramerate}"
-[[ -z "${wallTransDuration}" ]] && wallTransDuration=0.4 || wallTransDuration="${wallTransDuration}"
-[[ -z "${wallAnimation}" ]] && wallAnimation="any" || wallAnimation="${wallAnimation}"
+[[ "${wallFramerate}" =~ ^[0-9]+$ ]] || wallFramerate=144
+[[ "${wallTransDuration}" =~ ^[0-9]+$ ]] || wallTransDuration=0.4
+[[ "${wallAnimation}" =~ ^[0-9]+$ ]] || wallAnimation="any"
+[[ "${wallTransitionBezier}" =~ ^[0-9]+$ ]] || wallTranitionBezier=".43,1.19,1,.4"
+
+[[ -z "${wallTransitionStep}" ]] &&wallTransitionStep=$(awk "BEGIN {printf \"%d\", (${wallTransDuration} * ${wallFramerate}) + 0.5}")
 [[ -z "${wallAnimationPrevious}" ]] && wallAnimationPrevious="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
 [[ -z "${wallAnimationNext}" ]] && wallAnimationNext="grow" || wallAnimationNext="${wallAnimationNext}"
 [[ -z "${wallAnimationTheme}" ]] && wallAnimationTheme="grow" || wallAnimationTheme="${wallAnimationTheme}"
-[[ -z "${wallTransitionBezier}" ]] && wallTranitionBezier=".43,1.19,1,.4" || wallTransitionBezier="${wallTransitionBezier}"
+
+[[ "${brightnessStep}" =~ ^[0-9]+$ ]] || brightnessStep=5
+[[ "${brightnessNotify}" =~ ^[0-9]+$ ]] || brightnessNotify=0
+[[ "${brightnessIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${brightnessIconDir} -!" 
+
+[[ "${volumeStep}" =~ ^[0-9]+$ ]] || volumeStep=5
+[[ "${volumeNotifyUpdateLevel}" =~ ^[0-9]+$ ]] || volumeNotifyUpdateLevel=0
+[[ "${volumeNotifyMute}" =~ ^[0-9]+$ ]] || volumeNotifyMute=0
+[[ "${volumeIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${volumeIconDir} -!"
+
+[[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ) || notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)" && nProcCount="$(nproc)"
 
 prompt_timer() {
     set +e
@@ -154,9 +152,9 @@ fl_wallpaper() {
 
 notify() {
   OPTIND=1
-  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file=""
+  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file="" time="" style=""
   
-  while getopts ":m:s:p:i:v:" prefix; do
+  while getopts ":m:s:p:i:v:t:a:" prefix; do
     case "${prefix}" in
       m) modern="${OPTARG}" ;;
       s) 
@@ -171,22 +169,28 @@ notify() {
       v)
         value="${OPTARG}"
         ;;
+      t)
+        time="${OPTARG}"
+        ;;
+      a)
+        style="${OPTARG}"
+        ;;
       \?)
         return 1
     esac
   done
   shift $((OPTIND -1))
   if [[ "${modern}" -eq 2 ]]; then
-    notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
+    notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${time:+-t ${time}} ${style:+-a "${style}"} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
   elif [[ "${modern}" -eq 1 ]]; then
     notif_file="/tmp/.ivy_notif_id"
     notif_id=""
 
     [[ -f "${notif_file}" ]] && notif_id=$(<"${notif_file}")
     if [[ -n "$notif_id" ]]; then
-      notify-send -r "${notif_id}" "${printOut}" ${swayncIPath:+-i "${swayncIPath}"} -p
+      notify-send -r "${notif_id}" "${printOut}" ${style:+-a ${style}} ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p
     else
-      notif_id=$(notify-send "${printOut}" ${swayncIPath:+-i "${swayncIPath}"} -p)
+      notif_id=$(notify-send "${printOut}" ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p)
       echo "${notif_id}" > "${notif_file}"
     fi
   else

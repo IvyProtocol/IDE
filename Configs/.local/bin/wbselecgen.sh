@@ -32,11 +32,11 @@ apply_wallpaper() {
        esac
    done
 
-   shift $((OPTIND -1))
+    shift $((OPTIND -1))
     if [[ -z "$img" || ! -f "$img" ]]; then
         img=$(fl_wallpaper -r)
         img="${wallDir}/$img"
-        [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" && exit 1
+        [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" -t 900 -a "t1" && exit 1
     fi
 
     local base blurred rasifile
@@ -53,9 +53,16 @@ apply_wallpaper() {
             ntSend=0
             ;;
     esac
-    echo -e " :: [$0] Wallpaper Control - Applying $img"
-    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${confDir}/dunst/icons/hyprdots.svg"
-
+    echo -e " :: Theme Control - [$0] - Wallpaper Control - Applying $img"
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${confDir}/dunst/icons/hyprdots.svg" -a "t1"
+    
+    case $swi in
+        --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        --swww-t) swww img "$img" -t "${wallAnimationTheme}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  ;;
+    esac
+    sleep "${wallTransDuration}"
     case "${schIPC}" in
         dark|light) 
             "${scrDir}/ivy-shell.sh" "${img}" --"${schIPC}"
@@ -77,14 +84,6 @@ apply_wallpaper() {
             fi
             ;;
     esac
-    
-    case $swi in
-        --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        --swww-t) swww img "$img" -t "${wallAnimationTheme}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
-        *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y  ;;
-    esac
-    sleep 0.2
 
     scRun=$(fl_wallpaper -t "${img}" -f 1)
     if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
@@ -98,22 +97,27 @@ apply_wallpaper() {
     ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
     cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
     ln -sf "${thumbDir}/${scRun}.sloc" "${ideDir}/theme/${PrevThemeIde}/wall.set"
-    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "${ideDir}/theme/${PrevThemeIde}/wall.set"
+    sleep 0.2
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "${ideDir}/theme/${PrevThemeIde}/wall.set" -t 900 -a "t1"
 }
 
 # ────────────────────────────────────────────────
 rofi_wbselecgen() {
-    [[ -z "${rofiScale}" ]] && rofiScale=10 || rofiScale="${rofiScale}"
+    if [[ -z "${rofiScale}" || "${rofiScale}" -eq 0 ]]; then
+        rofiScale=10
+    fi
     r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiScale}\";}"
     elem_border=$(( hypr_border * 3 ))
 
     mon_x_res=$(( mon_res * 100 / mon_scale ))
     elm_width=$(( (28 + 8 + 5) * rofiScale ))
     max_avail=$(( mon_x_res - (4 * rofiScale) ))
-    col_count=$(( max_avail / elm_width ))
-    r_override="window{width:100%;} listview{columns:${col_count};spacing:5em;} element{border-radius:${elem_border}px;orientation:vertical;} element-icon{size:28em;border-radius:0em;} element-text{padding:1em;}"
+    if [[ "${rofiColCount}" -eq 0 || -z "${rofiColCount}" ]]; then
+        rofiColCount=$(( max_avail / elm_width ))
+    fi
+    r_override="window{width:100%;} listview{columns:${rofiColCount};spacing:5em;} element{border-radius:${elem_border}px;orientation:vertical;} element-icon{size:28em;border-radius:0em;} element-text{padding:1em;}"
 
-    mapfile -d '' files < <(LC_ALL=C find "${wallSel}" "${WallAddCustomPath[@]}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -Vzf)
+    mapfile -d '' files < <(LC_ALL=C find "${wallSel}" "${WallAddCustomPath[@]}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" -o -iname "*.jpeg" \) -print0 | sort -Vzf)
     menu() {
         selectC=0
         for indx in "${files[@]}"; do

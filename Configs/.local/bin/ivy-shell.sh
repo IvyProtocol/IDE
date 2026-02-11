@@ -57,7 +57,7 @@ wallbashRaw="$(mktemp --tmpdir="${TMPDIR:-/tmp}" wallbash.XXXXXX.mpc)"
 wallbashOut="${dcolDir}/${sortMode}/ivy-${wallbashHash}.dcol"
 
 if [[ -f "${wallbashOut}" ]]; then
-    echo -e " :: $0 $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
+    echo -e " :: Theme Control - [$0] $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
     cp "${wallbashOut}" "${ideDir}/main/ivygen.dcol"
     "${scrDir}/modules/ivyshell-theme.sh"
     "${scrDir}/modules/ivyshell-helper.sh"

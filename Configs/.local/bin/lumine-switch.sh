@@ -12,7 +12,7 @@ apply_config() {
     [[ $1 == "theme" ]] && wallIde=3 
 
     [[ -n "${enableWallIde}" ]] && setConf "enableWallIde" "${wallIde}" "${ideDir}/ide.conf" || setConf "enableWallIde" "0" "${ideDir}/ide.conf"
-    notify -m 2 -i "theme_engine" -p "Theme Mode: $1" -s "${confDir}/dunst/icons/hyprdots.svg"
+    notify -m 2 -i "theme_engine" -p "Theme Mode: $1" -s "${confDir}/dunst/icons/hyprdots.svg" -t 900 -a "t1"
     [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
     if [[ "${wallIde}" -eq 3 ]]; then
         setConf "ideTheme|enableWallIde" "${PrevThemeIde}|3" "${ideDir}/ide.conf" &
@@ -32,7 +32,10 @@ apply_config() {
 }
 
 rofi_wallbash() {
-    [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
+    if [[ -z "${rofiScale}" || "${rofiScale}" -eq 0 ]]; then
+        rofiScale=10
+    fi
+
     r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiScale}\";}"
     elem_border=$(( hypr_border * 4 ))
     r_override="window{border-radius:${elem_border}px;} element{border-radius:${elem_border}px;}"

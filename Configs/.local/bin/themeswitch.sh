@@ -21,8 +21,8 @@ themeSelTui() {
             setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh" 
         fi
         if [[ "${wallDir}" != "${themeDir}/${thmChsh}/wallpapers" ]]; then
-            echo " :: Theme Control - Populating $thmChsh -> ${confDir}"
-            notify -m 2 -i "theme_engine" -p "Theme Selected: ${thmChsh}" -s "${themeDir}/${thmChsh}/wall.set"
+            echo " :: Theme Control - Theme '${thmChsh}' :: Wallpaper '${thmImg}' :: DcolMode '${enableWallIde}' --> '${confDir}'"
+            notify -m 2 -i "theme_engine" -p "Theme Selected: ${thmChsh}" -s "${themeDir}/${thmChsh}/wall.set" -t 1100 -a "t1"
             setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${ideDir}/ide.conf"
         else
             echo -e " :: Theme Control - Skipped populating $thmChsh -> ${confDir}"
@@ -47,7 +47,9 @@ themeSelTui() {
 # ────────────────────────────────────────────────
 # Rofi Settings
 thmSelEnv() {
-    [[ -z "${rofiScale}" ]] && rofiScale=10 || rofiScale="${rofiScale}"
+    if [[ -z "${rofiScale}" || "${rofiScale}" -eq 0 ]]; then
+        rofiScale=10
+    fi
     r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiScale}\";}"
     mon_x_res=$(( mon_res * 100 / mon_scale ))
     elem_border=$(( hypr_border * 3 ))
@@ -55,8 +57,10 @@ thmSelEnv() {
 
     elm_width=$(( (23 + 12 + 1) * rofiScale * 2 ))
     max_avail=$(( mon_x_res - (4 * rofiScale) ))
-    col_count=$(( max_avail / elm_width ))
-    r_override="window{width:100%;} listview{columns:${col_count};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"
+    if [[ "${rofiColCount}" -eq 0 || -z "${rofiColCount}" ]]; then
+        rofiColCount=$(( max_avail / elm_width ))
+    fi
+    r_override="window{width:100%;} listview{columns:${rofiColCount};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"
 
     local indx selectC themes wallSet
     mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d ! -name 'Wallbash-Ivy' -printf '%f\n' | sort -Vf)
@@ -108,3 +112,5 @@ case "${1}" in
         thmSelEnv
         ;;
 esac
+
+

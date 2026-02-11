@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 
 # -----------------------
 # Configuration
@@ -25,6 +25,13 @@ elif [[ -n "${inputPath}" && -d "${inputPath}" ]]; then
     template_sources=("${inputPath}" "${thmDcolDir}")
 else
     template_sources=("${shellDir}" "${thmDcolDir}")
+fi
+
+if [[ -n "${skipTemplate}" ]]; then
+    __clause=()
+    for indx in "${skipTemplate[@]}"; do
+        __clause+=( ! -name "${indx}" )
+    done
 fi
 
 [[ -z "${plLoader}" ]] && plLoader="ivy"
@@ -140,7 +147,7 @@ process_template() {
         printf "%s" "$template_content" > "$target" 
         echo " :: Theme Control - Populating ${target} <- ${template_file}"
     else
-        echo " :: Theme Control - Skipped changing ${target} <- "${template_file}
+        echo " :: Theme Control - Skipped changing ${target} <- ${template_file}"
         exit 0
     fi
 
@@ -161,8 +168,8 @@ process_template() {
     set -u
 }
 
-export -f process_template setConf
-export scrDir confDir cacheDir targetDir homDir shellDir plLoader thmDcolDir
+export -f process_template setConf notify
+export scrDir confDir cacheDir targetDir homDir shellDir plLoader thmDcolDir __clause skipTemplate nProcCount
 for var in $(compgen -v | grep -E "^(${plLoader})_"); do export "$var"; done
 
 # -----------------------
@@ -172,7 +179,7 @@ for var in $(compgen -v | grep -E "^(${plLoader})_"); do export "$var"; done
 if [[ -f "${template_sources[0]}" ]]; then
     process_template "${template_sources[0]}"
 else
-    find "${template_sources[@]}" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) -print0 \
-    | xargs -0 -n 1 -P 3 bash -c 'process_template "$@"' _
+    find "${template_sources[@]}" -type f \( -name '*.dcol' -o -name '*.ivy' -o -name '*.theme' \) "${__clause[@]}" -print0 \
+        | xargs -0 -n 1 -P "${nProcCount}" bash -c 'process_template "$@"' _
 fi
 

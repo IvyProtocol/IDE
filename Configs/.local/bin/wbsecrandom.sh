@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
@@ -30,9 +30,9 @@ swww-prefix() {
     
     rand="$wallDir/${wallpapers[$idx]}"
     if [[ "$dirFlag" -eq 0 ]]; then
-        ${scrDir}/wbselecgen.sh -i "${rand}" -w --swww-p
+        ${scrDir}/wbselecgen.sh -i "${rand}" -w --swww-p -n 1
     else
-        ${scrDir}/wbselecgen.sh -i "${rand}" -w --swww-n
+        ${scrDir}/wbselecgen.sh -i "${rand}" -w --swww-n -n 1
     fi
 }
 
