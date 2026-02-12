@@ -115,10 +115,9 @@ wallSelEnv() {
     fi
     r_override="window{width:100%;} listview{columns:${rofiColCount};spacing:5em;} element{border-radius:${elem_border}px;orientation:vertical;} element-icon{size:28em;border-radius:0em;} element-text{padding:1em;}"
 
-    local indx selectC files thumb cols blur name
+    local indx files thumb cols blur name
     mapfile -d '' files < <(LC_ALL=C find "${wallSel}" "${WallAddCustomPath[@]}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" -o -iname "*.jpeg" \) -print0 | sort -Vzf)
     menu() {
-        selectC=0
         for indx in "${files[@]}"; do
             name=$(basename "$indx")
             thumb="${thumbDir}/${name%.*}.sloc"
@@ -128,7 +127,7 @@ wallSelEnv() {
             printf "%s\x00icon\x1f%s\n" "$name" "$thumb" 
         done
     }
-    choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${selectC}")
+choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "$(fl_wallpaper -r)")
     [[ -z "$choice" ]] && exit 0
     wallSelTui -i "${wallSel}/$choice"
 }
