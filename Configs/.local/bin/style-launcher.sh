@@ -39,7 +39,7 @@ for style_name in "${style_names[@]}"; do
     rofi_list+="${style_name}\x00icon\x1f${rofiAssetDir}/${style_name}\n"
 done
 
-RofiSel=$(echo -en "$rofi_list" | rofi -dmenu -markup-rows -theme-str "$r_override" -theme "$rasiDir" -selected-row 0 )
+RofiSel=$(echo -en "$rofi_list" | rofi -dmenu -markup-rows -theme-str "$r_override" -theme "$rasiDir" -select "style-${rofiStyle}.png")
 
 if [[ ! -z "${RofiSel}" ]]; then
     UpdRofiSel=$(echo "$RofiSel" | tr -d '[A-Za-z.]-')
