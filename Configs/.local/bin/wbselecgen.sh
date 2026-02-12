@@ -39,7 +39,7 @@ apply_wallpaper() {
         [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" -t 900 -a "t1" && exit 1
     fi
 
-    local base blurred rasifile
+    local base blurred
     base="$(basename "$img")"
     img="${img}"
     blurred="${blurDir}/${base%.*}.bpex"
@@ -53,9 +53,25 @@ apply_wallpaper() {
             ntSend=0
             ;;
     esac
+
     echo -e " :: Theme Control - [$0] - Wallpaper Control - Applying $img"
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${confDir}/dunst/icons/hyprdots.svg" -a "t1"
+    scRun=$(fl_wallpaper -t "${img}" -f 1)
     
+    {
+        if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
+            echo -e " :: Re-populating cache for ${img}"
+            "${scrDir}/swwwallcache.sh" -b "${img}"
+        fi
+    
+        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t $img)" "${ideDir}/ide.conf" 
+
+        ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
+        ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
+        cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
+        ln -sf "${thumbDir}/${scRun}.sloc" "${ideDir}/theme/${PrevThemeIde}/wall.set"
+    } &
+
     case $swi in
         --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
@@ -85,19 +101,6 @@ apply_wallpaper() {
             ;;
     esac
 
-    scRun=$(fl_wallpaper -t "${img}" -f 1)
-    if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
-        echo -e " :: Re-populating cache for ${img}"
-        "${scrDir}/swwwallcache.sh" -b "${img}"
-    fi
-    
-    setConf "wallSet" "${wallSel}/$(fl_wallpaper -t $img)" "${ideDir}/ide.conf" 
-
-    ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-    ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
-    cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
-    ln -sf "${thumbDir}/${scRun}.sloc" "${ideDir}/theme/${PrevThemeIde}/wall.set"
-    sleep 0.2
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "${ideDir}/theme/${PrevThemeIde}/wall.set" -t 900 -a "t1"
 }
 
@@ -135,7 +138,6 @@ rofi_wbselecgen() {
 }
 
 # ────────────────────────────────────────────────
-# Main
 if [ -n "$1" ]; then
     apply_wallpaper "$@"
 else
