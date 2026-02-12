@@ -101,17 +101,6 @@ PrevThemeIde="Catppuccin-Mocha"
 [[ -z "${wallAnimationNext}" ]] && wallAnimationNext="grow" || wallAnimationNext="${wallAnimationNext}"
 [[ -z "${wallAnimationTheme}" ]] && wallAnimationTheme="grow" || wallAnimationTheme="${wallAnimationTheme}"
 
-[[ "${brightnessStep}" =~ ^[0-9]+$ ]] || brightnessStep=5
-[[ "${brightnessNotify}" =~ ^[0-9]+$ ]] || brightnessNotify=0
-[[ "${brightnessIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${brightnessIconDir} -!" 
-
-[[ "${volumeStep}" =~ ^[0-9]+$ ]] || volumeStep=5
-[[ "${volumeNotifyUpdateLevel}" =~ ^[0-9]+$ ]] || volumeNotifyUpdateLevel=0
-[[ "${volumeNotifyMute}" =~ ^[0-9]+$ ]] || volumeNotifyMute=0
-[[ "${volumeIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${volumeIconDir} -!"
-
-[[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ) || notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)" && nProcCount="$(nproc)"
-
 prompt_timer() {
     set +e
     unset PROMPT_INPUT
@@ -205,6 +194,17 @@ notify() {
     }
   fi
 }
+
+[[ "${brightnessStep}" =~ ^[0-9]+$ ]] || brightnessStep=5
+[[ "${brightnessNotify}" =~ ^[0-9]+$ ]] || brightnessNotify=0
+[[ "${brightnessIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${brightnessIconDir} -!" 
+
+[[ "${volumeStep}" =~ ^[0-9]+$ ]] || volumeStep=5
+[[ "${volumeNotifyUpdateLevel}" =~ ^[0-9]+$ ]] || volumeNotifyUpdateLevel=0
+[[ "${volumeNotifyMute}" =~ ^[0-9]+$ ]] || volumeNotifyMute=0
+[[ "${volumeIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${volumeIconDir} -!"
+
+[[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ) || notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)" && nProcCount="$(nproc)"
 
 hashmap() {
   unset hashpref 
