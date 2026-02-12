@@ -4,55 +4,14 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
 pxCheck="${1:-}"
-wallDir="${wallDir}"
 
-swww-prefix() {
-    local wall wall_i pxCheck dirflag
-   
-    pxCheck="${1:-}"
-    wall=$(fl_wallpaper -r)
+echo -e " :: THIS SCRIPT HAS BEEN DEPRECATED! Use ${scrDir}/wbselecgen.sh!"
 
-    [[ -n "${wall}" ]] || return 1
-
-    mapfile -t wallpapers < <( LC_ALL=C find "$wallDir" -maxdepth 1 -mindepth 1 -type f ! -name '.*' -printf '%f\n' | sort -V )
-
-    wall_i=-1
-    for i in "${!wallpapers[@]}"; do
-        [[ "${wallpapers[$i]}" == "${wall}" ]] && wall_i=$i
-    done
-
-    total=${#wallpapers[@]}
-    case "$pxCheck" in
-        --p) idx=$(( (wall_i - 1 + total) % total )); dirFlag=0 ;;
-        --n) idx=$(( (wall_i + 1) % total )); dirFlag=1 ;;
-        *) return 1 ;;
-    esac
-    
-    rand="$wallDir/${wallpapers[$idx]}"
-    if [[ "$dirFlag" -eq 0 ]]; then
-        ${scrDir}/wbselecgen.sh -i "${rand}" -w --swww-p -n 1
-    else
-        ${scrDir}/wbselecgen.sh -i "${rand}" -w --swww-n -n 1
-    fi
-}
-
-render() {
-    rmDir=$(find "$wallDir" -maxdepth 1 -type f | shuf -n 1)
-    ${scrDir}/wbselecgen.sh -i "$rmDir"
-}
-
-case "$pxCheck" in
-    -p|--previous) 
-        swww-prefix --p 
-        ;;
-    -n|--next)
-        swww-prefix --n
-        ;;
-    -r|--random)
-        render
+case "${pxCheck}" in
+    -p|-n|-r)
+        "${scrDir}/wbselecgen.sh" "${pxCheck}"
         ;;
     *)
-        echo -e "Invalid '$pxCheck' for $0. Correct arguments for $0 are: -p (--previous), -n (--next), -r (--random)"
-        exit 0
-esac
+        return 1 ;;
+esac >/dev/null
 
