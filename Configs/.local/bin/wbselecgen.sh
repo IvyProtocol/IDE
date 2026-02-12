@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-# ────────────────────────────────────────────────
-# Configuration
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
@@ -18,9 +16,7 @@ rofiConf="${rasiDir}/selector.rasi"
 [[ -d "${colsDir}" ]] || mkdir -p "${colsDir}"
 [[ -d "${thumbDir}" ]] || mkdir -p "${thumbDir}"
 
-# ────────────────────────────────────────────────
-# Apply wallpaper + blur + cache + color sync
-apply_wallpaper() {
+wallSelTui() {
    OPTIND=1
    local img="" schIPC="" swi="" ntSend=""
    while getopts ":i:s:w:n:" arg; do
@@ -104,8 +100,7 @@ apply_wallpaper() {
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "${ideDir}/theme/${PrevThemeIde}/wall.set" -t 900 -a "t1"
 }
 
-# ────────────────────────────────────────────────
-rofi_wbselecgen() {
+wallSelEnv() {
     if [[ -z "${rofiScale}" || "${rofiScale}" -eq 0 ]]; then
         rofiScale=10
     fi
@@ -120,6 +115,7 @@ rofi_wbselecgen() {
     fi
     r_override="window{width:100%;} listview{columns:${rofiColCount};spacing:5em;} element{border-radius:${elem_border}px;orientation:vertical;} element-icon{size:28em;border-radius:0em;} element-text{padding:1em;}"
 
+    local indx selectC files thumb cols blur name
     mapfile -d '' files < <(LC_ALL=C find "${wallSel}" "${WallAddCustomPath[@]}" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" -o -iname "*.jpeg" \) -print0 | sort -Vzf)
     menu() {
         selectC=0
@@ -134,12 +130,56 @@ rofi_wbselecgen() {
     }
     choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${selectC}")
     [[ -z "$choice" ]] && exit 0
-    apply_wallpaper -i "${wallSel}/$choice"
+    wallSelTui -i "${wallSel}/$choice"
 }
 
-# ────────────────────────────────────────────────
-if [ -n "$1" ]; then
-    apply_wallpaper "$@"
-else
-    rofi_wbselecgen
-fi
+wall_control() {
+    local wall wall_i wallCheck wallpapers wallTotal wallFinal swwwTrans
+    wallCheck="${1:-}"
+    wall="$(fl_wallpaper -r)"
+
+    [[ -n "${wall}" ]] || return 1
+    mapfile -t wallpapers < <(LC_ALL=C find "${wallDir}" -maxdepth 1 -mindepth 1 -type f ! -name '.*' -printf '%f\n' | sort -V)
+
+    wall_i=-1
+    for indx in "${!wallpapers[@]}"; do 
+        [[ "${wallpapers[$indx]}" == "${wall}" ]] && wall_i=$indx
+    done
+
+    wallTotal=${#wallpapers[@]}
+    case "${wallCheck}" in
+        --p) 
+            idx=$(( (wall_i - 1 + wallTotal) % wallTotal ));
+            swwwTrans="--swww-p"
+            ;;
+        --n) 
+            idx=$(( (wall_i + 1) % wallTotal ));
+            swwwTrans="--swww-n"
+            ;;
+        *) return 1 ;;
+    esac
+    wallSelTui -i "${wallDir}/${wallpapers[$idx]}" -w "${swwwTrans}" -n 1
+}
+
+wallSelRandom() {
+    random=$(find "${wallDir}" -maxdepth 1 -type f | shuf -n 1 )
+    wallSelTui -i "${random}" -n 1
+}
+
+case "${1}" in
+    -n)
+        wall_control --n
+        ;;
+    -p)
+        wall_control --p
+        ;;
+    -t)
+        wallSelTui ${@}
+        ;;
+    -r)
+        wallSelRandom 
+        ;;
+    *)
+        wallSelEnv
+        ;;
+esac
