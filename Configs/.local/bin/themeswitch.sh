@@ -9,9 +9,6 @@ rofiConf="${rasiDir}/selector.rasi"
 
 themeSelTui() {
     thmChsh="${1}"
-    if [[ ! -f "${themeDir}/${thmChsh}/wallpapers/.wallbash-main" ]]; then
-        find "${themeDir}/${thmChsh}/wallpapers" -mindepth 1 -maxdepth 1 -type f | shuf -n 1 | tee "${themeDir}/${thmChsh}/wallpapers/.wallbash-main" >/dev/null 
-    fi
     thmImg="$(<"${themeDir}/${thmChsh}/wallpapers/.wallbash-main")"
     if [[ -n "${thmImg}" ]]; then
         if [[ "${PrevThemeIde}" != "${thmChsh}" ]]; then
@@ -19,7 +16,7 @@ themeSelTui() {
         fi
         if [[ "${wallDir}" != "${themeDir}/${thmChsh}/wallpapers" ]]; then
             echo " :: Theme Control - Theme '${thmChsh}' :: Wallpaper '${thmImg}' :: DcolMode '${enableWallIde}' --> '${confDir}'"
-            notify -m 2 -i "theme_engine" -p "${thmChsh}" -s "${themeDir}/${thmChsh}/wall.set" -t 1100 -a "t1"
+            notify -m 2 -i "theme_engine" -p "${thmChsh}" -s "${ideCDir}/cache/thumb/$(fl_wallpaper -t "${thmImg}" -f 1).sloc" -t 1100 -a "t1"
             setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${ideDir}/ide.conf"
         else
             echo -e " :: Theme Control - Skipped populating $thmChsh -> ${confDir}"
@@ -49,19 +46,55 @@ thmSelEnv() {
     mon_x_res=$(( mon_res * 100 / mon_scale ))
     elem_border=$(( hypr_border * 3 ))
     icon_border=$(( elem_border - 5 ))
+    local indx themes wallSet thumbDir thmExtn thmWall stripWall
 
-    elm_width=$(( (23 + 12 + 1) * rofiScale * 2 ))
-    max_avail=$(( mon_x_res - (4 * rofiScale) ))
-    if [[ "${rofiColCount}" -eq 0 || -z "${rofiColCount}" ]]; then
-        rofiColCount=$(( max_avail / elm_width ))
-    fi
-    r_override="window{width:100%;} listview{columns:${rofiColCount};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"
-
-    local indx themes wallSet
+    case "${themeRofiStyle}" in
+        2)
+            elm_width=$(( (20 + 12 ) * rofiScale * 2 ))
+            max_avail=$(( mon_x_res - ( 4 * rofiScale) ))
+            if [[ "${rofiColCount}" -eq 0 || -z "${rofiColCount}" ]]; then
+                rofiColCount=$(( max_avail / elm_width ))
+            fi
+            r_override="window{width:100%;background-color:#00000003;} listview{columns:${rofiColCount};} element{border-radius:${elem_border}px;background-color:@main-bg;} element-icon{size:20em;border-radius:${icon_border}px 0px 0px ${icon_border}px;}"
+            thmExtn="quad"
+            thumbDir="${ideCDir}/cache/quad"
+            ;;
+        1|*)
+            elm_width=$(( (23 + 12 + 1) * rofiScale * 2 ))
+            max_avail=$(( mon_x_res - (4 * rofiScale) ))
+            if [[ "${rofiColCount}" -eq 0 || -z "${rofiColCount}" ]]; then
+                rofiColCount=$(( max_avail / elm_width ))
+            fi
+            r_override="window{width:100%;} listview{columns:${rofiColCount};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"
+            thmExtn="sloc"
+            thumbDir="${ideCDir}/cache/thumb"
+            ;;
+    esac
     mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d ! -name 'Wallbash-Ivy' -printf '%f\n' | sort -Vf)
     menu() {
         for indx in "${themes[@]}"; do
             wallSet="${themeDir}/${indx}/wall.set"
+            symUpdate=0
+                if [[ ! -e "${themeDir}/${indx}/wallpapers/.wallbash-main" ]]; then
+                    thmWall=$(find "${themeDir}/${indx}/wallpapers" -type f ! -name '.*' | sort -V | head -n 1 | tee -a "${themeDir}/${indx}/wallpapers/.wallbash-main")
+                else
+                    thmWall="$(<"${themeDir}/${indx}/wallpapers/.wallbash-main")"
+                fi
+                thmWall="$(fl_wallpaper -t "${thmWall}" -f 1).${thmExtn}"
+
+                [[ ! -L "${wallSet}" ]] && symUpdate=1
+                [[ -L "${wallSet}" && ! -e "${wallSet}" ]] && symUpdate=1
+                
+                set +e
+                relpath="$(readlink -f "${wallSet}")"
+                stripPath="${relpath##*.}"
+
+                if [[ "${stripPath}" != "${thmExtn}" || -z "${relpath}" ]]; then
+                    symUpdate=1
+                fi
+                set -e
+                [[ "${symUpdate}" -eq 1 ]] && ln -fs "${thumbDir}/${thmWall}" "${wallSet}"
+
             printf "%s\x00icon\x1f%s\n" "${indx}" "${wallSet}"
         done
     }
