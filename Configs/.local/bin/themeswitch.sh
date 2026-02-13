@@ -25,15 +25,14 @@ themeSelTui() {
         if [[ "${enableWallIde}" -eq 3 ]]; then
             if [[ "${ideTheme}" != "${thmChsh}" ]]; then
                 setConf "ideTheme" "${thmChsh}" "${ideDir}/ide.conf"
-            fi
+            fi 
             sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         else
             "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
              sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         fi
-    
         [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${swayncDir}/icons/palette.png" && return 1
-        "${scrDir}/wbselecgen.sh" -t -i "${thmImg}" -w --swww-t -n 1
+        "${scrDir}/wbselecgen.sh" -t -i "${thmImg}" -w --swww-t -n 1 -r 1
         echo -e " :: Theme Control - Populated successfully ${thmChsh} -> ${confDir}"
     fi
 }
@@ -46,7 +45,7 @@ thmSelEnv() {
     mon_x_res=$(( mon_res * 100 / mon_scale ))
     elem_border=$(( hypr_border * 3 ))
     icon_border=$(( elem_border - 5 ))
-    local indx themes wallSet thumbDir thmExtn thmWall stripWall
+    local indx themes wallSet thumbDir thmExtn thmWall stripWall relpath
 
     case "${themeRofiStyle}" in
         2)
@@ -74,7 +73,6 @@ thmSelEnv() {
     menu() {
         for indx in "${themes[@]}"; do
             wallSet="${themeDir}/${indx}/wall.set"
-            symUpdate=0
                 if [[ ! -e "${themeDir}/${indx}/wallpapers/.wallbash-main" ]]; then
                     thmWall=$(find "${themeDir}/${indx}/wallpapers" -type f ! -name '.*' | sort -V | head -n 1 | tee -a "${themeDir}/${indx}/wallpapers/.wallbash-main")
                 else
@@ -82,18 +80,12 @@ thmSelEnv() {
                 fi
                 thmWall="$(fl_wallpaper -t "${thmWall}" -f 1).${thmExtn}"
 
-                [[ ! -L "${wallSet}" ]] && symUpdate=1
-                [[ -L "${wallSet}" && ! -e "${wallSet}" ]] && symUpdate=1
-                
-                set +e
-                relpath="$(readlink -f "${wallSet}")"
+                relpath="$(readlink -f "${wallSet}" 2>/dev/null || true)"
                 stripPath="${relpath##*.}"
 
-                if [[ "${stripPath}" != "${thmExtn}" || -z "${relpath}" ]]; then
-                    symUpdate=1
+                if [[ ! -L "${wallSet}" || -L "${wallSet}" && ! -e "${wallSet}" || "${stripPath}" != "${thmExtn}" || -z "${relpath}"  ]]; then
+                    ln -fs "${thumbDir}/${thmWall}" "${wallSet}"
                 fi
-                set -e
-                [[ "${symUpdate}" -eq 1 ]] && ln -fs "${thumbDir}/${thmWall}" "${wallSet}"
 
             printf "%s\x00icon\x1f%s\n" "${indx}" "${wallSet}"
         done
