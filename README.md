@@ -1,6 +1,6 @@
 <div align="center">
 
-![banner](Source/assets/showcase.mp4)
+<https://github.com/IvyProtocol/IDE/Source/assets/showcase.mp4>
 
 ### Ivy-Dotfiles
 
