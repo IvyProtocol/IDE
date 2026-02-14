@@ -9,17 +9,19 @@ export dcolDir
 thmbDir="${ideCDir}/cache/thumb"
 blurDir="${ideCDir}/cache/blur"
 colsDir="${ideCDir}/cache/cols"
+quadDir="${ideCDir}/cache/quad"
 scrRun="${scrDir}/ivy-shell.sh"
 
 [[ -d "${thmbDir}" ]] || mkdir -p "${thmbDir}"
 [[ -d "${blurDir}" ]] || mkdir -p "${blurDir}"
 [[ -d "${colsDir}" ]] || mkdir -p "${colsDir}"
+[[ -d "${quadDir}" ]] || mkdir -p "${quadDir}"
 
 srcf_rcall fl_wallpaper && [[ $? -ge 1 ]] && echo "[$0]: function {fl_wallpaper} does NOT exist!" && exit 1
 
 # cols = For ${rasiDir}/current-wallpaper.png and other usage
 # bpex = For blur
-# sloc = For thumbnail of rofiselector
+# sloc/quad = Thumbnail of Rofi
 fn_wallcache() {
   local h_sum="${1:-}"
   local w_sum="${2:-}"
@@ -28,11 +30,12 @@ fn_wallcache() {
   [[ ! -f "${colsDir}/${sr_call}.cols" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${colsDir}/${sr_call}.cols"
   [[ ! -f "${blurDir}/${sr_call}.bpex" ]] && magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
   [[ ! -f "${thmbDir}/${sr_call}.sloc" ]] && magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
+  [[ ! -f "${quadDir}/${sr_call}.quad" ]] && magick "${thmbDir}/${sr_call}.sloc" \( -size 500x500 xc:white -fill "rgba(0,0,0,7)"  -draw "polygon 400,500 500,500 500,0 450,0" -fill black -draw "polygon 500,500 500,0 450,500" \) -alpha Off -compose CopyOpacity -composite png:"${quadDir}/${sr_call}.quad"
   [[ ! -e "${dcolDir}/auto/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -a 
   [[ ! -e "${dcolDir}/dark/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -d 
   [[ ! -e "${dcolDir}/light/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -l
 
-} >/dev/null 2>&1
+} 
 
 fn_wallcache_thumb() {
   local h_sum="${1:-}"
@@ -40,6 +43,7 @@ fn_wallcache_thumb() {
   local sr_call="$(fl_wallpaper -t "${w_sum}" -f 1)"
   [[ ! -f "${colsDir}/${sr_call}.cols" ]] && magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${colsDir}/${sr_call}.cols"
   [[ ! -f "${thmbDir}/${sr_call}.sloc" ]] && magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
+  [[ ! -f "${quadDir}/${sr_call}.quad" ]] && magick "${thmbDir}/${sr_call}.sloc" \( -size 500x500 xc:white -fill "rgba(0,0,0,7)"  -draw "polygon 400,500 500,500 500,0 450,0" -fill black -draw "polygon 500,500 500,0 450,500" \) -alpha Off -compose CopyOpacity -composite png:"${quadDir}/${sr_call}.quad"
 } >/dev/null 2>&1
 
 fn_wallcache_blur() {
@@ -57,13 +61,14 @@ fn_wallcache_force() {
   magick "${w_sum}"[0] -strip -resize 1000 -gravity center -extent 1000 -quality 90 "${colsDir}/${sr_call}.cols"
   magick "${w_sum}"[0] -strip -scale 10% -blur 0x3 -resize 100% "${blurDir}/${sr_call}.bpex"
   magick "${w_sum}"[0] -strip -thumbnail 500x500^ -gravity center -extent 500x500 "${thmbDir}/${sr_call}.sloc"
+  magick "${thmbDir}/${sr_call}.sloc" \( -size 500x500 xc:white -fill "rgba(0,0,0,7)"  -draw "polygon 400,500 500,500 500,0 450,0" -fill black -draw "polygon 500,500 500,0 450,500" \) -alpha Off -compose CopyOpacity -composite png:"${quadDir}/${sr_call}.quad"
   "${scrRun}" "${w_sum}" -d
   "${scrRun}" "${w_sum}" -l 
   "${scrRun}" "${w_sum}" -a 
 } >/dev/null 2>&1
 
 export -f fn_wallcache fn_wallcache_force fn_wallcache_blur fn_wallcache_thumb fl_wallpaper
-export thmbDir blurDir dcolDir scrRun mode cacheIn colsDir sr_call scrDir
+export thmbDir blurDir dcolDir scrRun mode cacheIn colsDir sr_call scrDir quadDir
 
 mode="${mode:-}"
 cacheIn="${cacheIn:-}"
@@ -104,7 +109,7 @@ while getopts ":f:w:b:t:" option; do
 done
 
 wallPathArray=("${cacheIn}")
-hashmap -v -t "${wallPathArray[@]}"
+hashmap -v -t "${wallPathArray[@]}" >/dev/null
 mkdir -p "${scrDir}/tmpfs"
 parallel --bar --link --compress --tmpdir "${scrDir}/tmpfs" fn_wallcache${mode} ::: "${wallHash[@]}" ::: "${wallList[@]}"
 rm -rf "${scrDir}/tmpfs"
