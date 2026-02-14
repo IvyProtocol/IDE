@@ -45,7 +45,7 @@ thmSelEnv() {
     mon_x_res=$(( mon_res * 100 / mon_scale ))
     elem_border=$(( hypr_border * 3 ))
     icon_border=$(( elem_border - 5 ))
-    local indx themes wallSet thumbDir thmExtn thmWall stripWall relpath
+    local indx themes wallSet thumbDir thmExtn thmWall stripWall
 
     case "${themeRofiStyle}" in
         2)
@@ -73,6 +73,7 @@ thmSelEnv() {
     menu() {
         for indx in "${themes[@]}"; do
             wallSet="${themeDir}/${indx}/wall.set"
+            symUpdate=0
                 if [[ ! -e "${themeDir}/${indx}/wallpapers/.wallbash-main" ]]; then
                     thmWall=$(find "${themeDir}/${indx}/wallpapers" -type f ! -name '.*' | sort -V | head -n 1 | tee -a "${themeDir}/${indx}/wallpapers/.wallbash-main")
                 else
