@@ -31,7 +31,7 @@ themeSelTui() {
             "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
              sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         fi
-        [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${swayncDir}/icons/palette.png" && return 1
+        [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${dunstDir}/icons/hyprdots.svg" && return 1
         "${scrDir}/wbselecgen.sh" -t -i "${thmImg}" -w --swww-t -n 1 -r 1
         echo -e " :: Theme Control - Populated successfully ${thmChsh} -> ${confDir}"
     fi
