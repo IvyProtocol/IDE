@@ -75,7 +75,7 @@ wallSelTui() {
         ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
         ln -sf "${cacheDir}/${thmExtn}/${scRun}.${thmExtn}" "${ideDir}/theme/${PrevThemeIde}/wall.set"
-    }
+    } &
 
     case $swi in
         --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
@@ -105,7 +105,6 @@ wallSelTui() {
             fi
             ;;
     esac
-
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "${cacheDir}/thumb/${scRun}.sloc" -t 900 -a "t1"
 }
 
@@ -170,7 +169,7 @@ wall_control() {
 }
 
 wallSelRandom() {
-    random=$(finigs/.config/ivy-shelld "${wallDir}" -maxdepth 1 -type f | shuf -n 1 )
+    random=$(find "${wallDir}" -maxdepth 1 -type f | shuf -n 1 )
     wallSelTui -i "${random}" -n 1
 }
 
