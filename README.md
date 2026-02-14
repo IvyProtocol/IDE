@@ -1,6 +1,6 @@
 <div align="center">
 
-![banner](Source/assets/irgen.gif)
+![banner](Source/assets/showcase.mp4f)
 
 ### Ivy-Dotfiles
 
