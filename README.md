@@ -1,7 +1,6 @@
 <div align="center">
-  <video width="900" controls>
-    <source src="https://raw.githubusercontent.com/IvyProtocol/IDE/main/Source/assets/showcase.mp4" type="video/mp4">
-  </video>
+
+![banner](Source/assets/irgen.gif)
 
 ### Ivy-Dotfiles
 
