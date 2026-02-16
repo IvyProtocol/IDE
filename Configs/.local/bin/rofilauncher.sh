@@ -7,10 +7,6 @@ source "${scrDir}/globalcontrol.sh"
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
 [[ -z "${rofiStyleDir}" ]] && rofiStyleDir="${confDir}/rofi/styles"
 
-rofiStyleLaunch="${rofiStyleDir}/style-${rofiStyle}.rasi"
-[[ ! -f "${rofiStyleLaunch}" ]] && read -r rofiStyleLaunch <<< "$(find "${rofiStyleDir}" -type f -name "style-*.rasi" | sort -t '-' -k 2 -n | head -1 )" 
-echo -e " :: Rofi-Launch - Preparting to read ${rofiStyleLaunch} - Deploying...."
-
 case "${1}" in
   -d|--drun) rofiMode="drun" ;;
   -w|--window) rofiMode="window" ;;
@@ -20,9 +16,14 @@ case "${1}" in
     echo "-d : drun mode"
     echo "-w : window mode"
     echo "-f : filebrowser mode"
+    exit 0
     ;;
   *) rofiMode="drun" ;;
 esac
+
+rofiStyleLaunch="${rofiStyleDir}/style-${rofiStyle}.rasi"
+[[ ! -f "${rofiStyleLaunch}" ]] && read -r rofiStyleLaunch <<< "$(find "${rofiStyleDir}" -type f -name "style-*.rasi" | sort -t '-' -k 2 -n | head -1 )" 
+echo -e " :: Rofi-Launch - Preparting to read ${rofiStyleLaunch} - Deploying...."
 
 wind_border=$(( hypr_border * 3 ))
 [[ "${hypr_border}" -eq 0 ]] && elem_border="10" || elem_border=$(( hypr_border * 2 ))

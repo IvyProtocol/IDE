@@ -16,11 +16,12 @@ apply_config() {
     [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
     if [[ "${wallIde}" -eq 3 ]]; then
         setConf "ideTheme|enableWallIde" "${PrevThemeIde}|3" "${ideDir}/ide.conf" &
+        [[ -f "${ideDir}/theme/${PrevThemeIde}/theme.dcol" ]] && cp "${ideDir}/theme/${PrevThemeIde}/theme.dcol" "${ideDir}/main/ivygen.dcol" &
         sed -i 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf" &
         "${scrDir}/modules/ivyshell-helper.sh"
         exit 0
     else
-        setConf "ideTheme" "Wallbash-Ivy" "${confDir}/ivy-shell/ide.conf" &
+        [[ "${ideTheme}" != "Walbash-Ivy" ]] && setConf "ideTheme" "Wallbash-Ivy" "${confDir}/ivy-shell/ide.conf" &
         sed -i 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf" &
         "${scrDir}/ivy-shell.sh" "${wallSet}" --"${1}"
     fi

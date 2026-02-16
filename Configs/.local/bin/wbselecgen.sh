@@ -35,25 +35,12 @@ wallSelTui() {
         [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" -t 900 -a "t1" && exit 1
     fi
 
-    local base blurred thmExtn thmThumb
-    base="$(basename "$img")"
-    img="${img}"
+    local base blurred thmExtn 
+    base="${img##*/}"
     blurred="${blurDir}/${base%.*}.bpex"
     echo "$img" > "${ideDir}/theme/${PrevThemeIde}/wallpapers/.wallbash-main" 
 
-    case "${ntSend}" in
-        1)
-            ntSend=1
-            ;;
-        0|*)
-            ntSend=0
-            ;;
-    esac
-
-    echo -e " :: Theme Control - [$0] - Wallpaper Control - Applying $img"
-    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "Using Theme Engine: " -s "${confDir}/dunst/icons/hyprdots.svg" -a "t1"
-    scRun=$(fl_wallpaper -t "${img}" -f 1)
-    
+    scRun=$(fl_wallpaper -t "${img}" -f 1)    
     case "${themeRofiStyle}" in
         2)
             thmExtn="quad"
@@ -63,19 +50,21 @@ wallSelTui() {
             ;;
     esac
 
-    {
-        if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
-            echo -e " :: Re-populating cache for ${img}"
-            "${scrDir}/swwwallcache.sh" -b "${img}"
-        fi
-    
-        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t $img)" "${ideDir}/ide.conf" 
+    if [[ "$(find "${blurDir}" -maxdepth 0 -empty)" || "$(find "${colsDir}" -maxdepth 0 -empty)" || "$(find "${thumbDir}" -maxdepth 0 -empty)" ]]; then
+        echo -e " :: Re-populating cache for ${img}"
+        "${scrDir}/swwwallcache.sh" -b "${img}"
+    fi
 
+    {    
+        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t $img)" "${ideDir}/ide.conf" 
         ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
         ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
         ln -sf "${cacheDir}/${thmExtn}/${scRun}.${thmExtn}" "${ideDir}/theme/${PrevThemeIde}/wall.set"
     } &
+
+    echo -e " :: Theme Control - [$0] - Wallpaper Control - Applying $img"
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "${base} " -s "${cacheDir}/thumb/$(fl_wallpaper -t "${img}" -f 1).sloc" -a "t1"
 
     case $swi in
         --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
@@ -105,7 +94,6 @@ wallSelTui() {
             fi
             ;;
     esac
-    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine" -p "Wallpaper Theme applied" -s "${cacheDir}/thumb/${scRun}.sloc" -t 900 -a "t1"
 }
 
 wallSelEnv() {
@@ -135,7 +123,7 @@ wallSelEnv() {
             printf "%s\x00icon\x1f%s\n" "$name" "$thumb" 
         done
     }
-choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "$(fl_wallpaper -r)")
+    choice=$(menu | rofi -dmenu -i -p "Wallpaper" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "$(fl_wallpaper -r)")
     [[ -z "$choice" ]] && exit 0
     wallSelTui -i "${wallSel}/$choice"
 }
@@ -169,7 +157,8 @@ wall_control() {
 }
 
 wallSelRandom() {
-    random=$(find "${wallDir}" -maxdepth 1 -type f | shuf -n 1 )
+    mapfile -t random < <(printf '%s\n' "${wallDir}"/*)
+    random="${random[RANDOM % ${#random[@]}]}"
     wallSelTui -i "${random}" -n 1
 }
 
@@ -190,3 +179,4 @@ case "${1}" in
         wallSelEnv
         ;;
 esac
+

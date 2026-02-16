@@ -9,7 +9,11 @@ source "${scrDir}/../globalcontrol.sh"
 
 wbDir="${ideDir}"
 shellDir="${1:-${wbDir}/theme/${ideTheme}}"
-thmDcolDir="${ideDir}/main/ivybash"
+
+if [[ "${ideTheme}" == "Wallbash-Ivy" ]]; then
+    shellDir="${1:-${wbDir}/Wall-Dcol}"
+fi
+thmDcolDir="${ideDir}/Wall-Ways"
 targetDir="${2:-${XDG_CACHE_HOME:-$HOME/.cache}/wal/wal-dir/}"
 mkdir -p "$targetDir"
 confDir="${confDir}"

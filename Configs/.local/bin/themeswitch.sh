@@ -69,7 +69,7 @@ thmSelEnv() {
             thumbDir="${ideCDir}/cache/thumb"
             ;;
     esac
-    mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d ! -name 'Wallbash-Ivy' -printf '%f\n' | sort -Vf)
+    mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf)
     menu() {
         for indx in "${themes[@]}"; do
             wallSet="${themeDir}/${indx}/wall.set"
@@ -85,6 +85,7 @@ thmSelEnv() {
                 stripPath="${relpath##*.}"
 
                 if [[ ! -L "${wallSet}" || -L "${wallSet}" && ! -e "${wallSet}" || "${stripPath}" != "${thmExtn}" || -z "${relpath}"  ]]; then
+                    echo -e " :: fixing symlink - ${thumbDir}/${thmWall} -> ${wallSet}" >&2
                     ln -fs "${thumbDir}/${thmWall}" "${wallSet}"
                 fi
 
@@ -101,7 +102,7 @@ theme_control() {
     thmCheck="${1:-}"
 
     [[ -n "${PrevThemeIde}" ]] || return 1
-    mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d ! -name 'Wallbash-Ivy' -printf '%f\n' | sort -Vf )
+    mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf )
     thm_i=-1
     for i in "${!themes[@]}"; do
         [[ "${themes[$i]}" == "${PrevThemeIde}" ]] && thm_i=$i
@@ -132,3 +133,5 @@ case "${1}" in
         thmSelEnv
         ;;
 esac
+
+
