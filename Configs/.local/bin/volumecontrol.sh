@@ -52,9 +52,9 @@ notify_mute() {
     mute=$(pamixer "${srce}" --get-mute | cat)
     [ "${srce}" == "--default-source" ] && dvce="mic" || dvce="speaker"
     if [ "${mute}" == "true" ]; then
-        notify-send -a "t2" -r 91190 -t 800 -i "${volumeIconDir}/muted-${dvce}.svg" "muted" "${nsink}"
+        notify-send -a "t2" -r 91190 -t 800 -i "${volumeIconDir}/muted-${dvce}.svg" "Muted" "${nsink}"
     else
-        notify-send -a "t2" -r 91190 -t 800 -i "${volumeIconDir}/unmuted-${dvce}.svg" "unmuted" "${nsink}"
+        notify-send -a "t2" -r 91190 -t 800 -i "${volumeIconDir}/unmuted-${dvce}.svg" "Unmuted" "${nsink}"
     fi
 }
 

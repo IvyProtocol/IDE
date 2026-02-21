@@ -9,7 +9,7 @@ $(confDir)/hypr/themes/theme.conf|$RUN:hyprctl reload >/dev/null 2>&1 &
 # $GTK_THEME = Gruvbox-Retro
 # $ICON_THEME = Gruvbox-Plus-Dark
 # $CURSOR_THEME = Gruvbox-Retro
-# $CURSOR_SIZE = 20
+$CURSOR_SIZE = 20
 $COLOR_SCHEME = prefer-dark
 
 # Optional: The varibles above will be set automatically when the theme is loaded

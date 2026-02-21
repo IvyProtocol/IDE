@@ -89,7 +89,7 @@ case "${enableWallIde}" in
     ;;
 esac
 
-PrevThemeIde="Catppuccin-Mocha"
+PrevThemeIde="Graphite-Mono"
 
 [[ "${wallFramerate}" =~ ^[0-9]+$ ]] || wallFramerate=144
 [[ "${wallTransDuration}" =~ ^[0-9]+$ ]] || wallTransDuration=0.4
@@ -172,7 +172,7 @@ notify() {
   if [[ "${modern}" -eq 2 ]]; then
     notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${time:+-t ${time}} ${style:+-a "${style}"} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
   elif [[ "${modern}" -eq 1 ]]; then
-    notif_file="/tmp/.ivy_notif_id"
+    notif_file="/tmp/.$USER_notif_id"
     notif_id=""
 
     [[ -f "${notif_file}" ]] && notif_id=$(<"${notif_file}")

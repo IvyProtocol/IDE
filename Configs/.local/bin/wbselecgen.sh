@@ -56,7 +56,7 @@ wallSelTui() {
     fi
 
     {    
-        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t $img)" "${ideDir}/ide.conf" 
+        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t "$img")" "${ideDir}/ide.conf" 
         ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
         ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
@@ -64,7 +64,7 @@ wallSelTui() {
     } &
 
     echo -e " :: Theme Control - [$0] - Wallpaper Control - Applying $img"
-    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "${base} " -s "${cacheDir}/thumb/$(fl_wallpaper -t "${img}" -f 1).sloc" -a "t1"
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "${base}" -s "${cacheDir}/thumb/$(fl_wallpaper -t "${img}" -f 1).sloc" -a "t1"
 
     case $swi in
         --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;

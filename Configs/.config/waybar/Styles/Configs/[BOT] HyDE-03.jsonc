@@ -52,7 +52,7 @@
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo  logout",
-        "on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
+        "on-click": "$HOME/.local/bin/logoutlaunch.sh",
         "interval" : 86400, // once every day
         "tooltip": true
     },
@@ -91,9 +91,9 @@
         "format": "\udb80\udd8a {0}",
         "rotate": 0,
         "exec": "echo ; echo 󰆊 switch wallpaper",
-        "on-click-right": "$HOME/.local/bin/wbsecrandom.sh -p &",
-        "on-click-middle": "$HOME/.local/bin/wbsecrandom.sh -r &",
-        "on-click": "$HOME/.local/bin/wbsecrandom.sh -n &",
+        "on-click-right": "$HOME/.local/bin/wbselecgen.sh -p",
+        "on-click-middle": "$HOME/.local/bin/wbselecgen.sh -r",
+        "on-click": "$HOME/.local/bin/wbselecgen.sh -n",
         "interval" : 86400, // once every day
         "tooltip": true
     },
