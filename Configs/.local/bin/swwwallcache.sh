@@ -34,8 +34,7 @@ fn_wallcache() {
   [[ ! -e "${dcolDir}/auto/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -a 
   [[ ! -e "${dcolDir}/dark/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -d 
   [[ ! -e "${dcolDir}/light/ivy-${h_sum}.dcol" ]] && "${scrRun}" "${w_sum}" -l
-
-} 
+} >/dev/null 2>&1
 
 fn_wallcache_thumb() {
   local h_sum="${1:-}"
