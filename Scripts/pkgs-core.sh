@@ -11,6 +11,7 @@ hyprland=(
   pacman-contrib
   cpupower
   brightnessctl
+  downgrade
   
   hyprland
   hyprlock
@@ -46,6 +47,7 @@ hyprland=(
   file-roller
   ncdu
   unzip
+  udiskie
   xdotool
   wl-clip-persist
   cliphist
@@ -77,6 +79,8 @@ hyprland=(
   ttf-fira-mono
   ttf-jetbrains-mono-nerd
   ttf-segoe-ui-variable
+  ttf-times-new-roman
+  noto-fonts-cjk
   tela-circle-icon-theme-dracula
 )
 
@@ -85,6 +89,9 @@ extra=(
   btop
   cava
   wl-screenrec
+  vscodium
+  vscodium-marketplace
+  spotify
 )
 
 driver=(
