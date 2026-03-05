@@ -42,7 +42,10 @@ rofi_wallbash() {
     r_override="window{border-radius:${elem_border}px;} element{border-radius:${elem_border}px;}"
 
     ivyshellModes=(theme auto dark light) 
-    choice=$(printf '%s\n' "${ivyshellModes[@]}" | rofi -i -dmenu -theme-str "${r_scale}" -theme-str "${r_override}" -config "$rasiPath" -select "${ivyshellModes[$(($enableWallIde + 1))]}" )
+    choice=$(parallel echo {} ::: "${ivyshellModes[@]}" \
+        | rofi -i -dmenu -theme-str "${r_scale}" \
+        -theme-str "${r_override}" -config "$rasiPath" \
+        -select "${ivyshellModes[$(($enableWallIde + 1))]}" )
 
     [[ -z "$choice" ]] && { echo "No option selected. Exiting."; exit 0; }
     apply_config "$choice"

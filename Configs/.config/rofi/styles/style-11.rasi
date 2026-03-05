@@ -59,7 +59,7 @@ inputbar {
     children:                    [ "entry" ];
     expand:                      false;
     background-color:            @main-bg;
-    background-image:            url("~/.config/rofi/shared/current-wallpaper.png", height);
+    background-image:            url("~/.config/rofi/shared/wall.cols", height);
     border-radius:               1em 0em 0em 1em;
 }
 entry {

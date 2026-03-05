@@ -29,7 +29,7 @@ case "${wlogoutStyle}" in
 esac
 if [[ "${enableWallIde}" -eq 3 ]]; then
     unset dcolMode
-    colorScheme="$(grep "^[[:space:]]*\$COLOR[-_]SCHEME\s*=" "${ideDir}/theme/${PrevThemeIde}/hypr.theme" | sed "s/.*-//g; s/'//g" \
+    colorScheme="$(grep "^[[:space:]]*\$COLOR[-_]SCHEME\s*=" "${ideDir}/theme/{PrevThemeIde}/hypr.theme" | sed "s/.*-//g; s/'//g" \
         || gsettings get org.gnome.desktop.interface color-scheme | sed "s/'//g; s/.*-//" \
         || { echo " colorScheme is empty!"; colorScheme="dark" ; } )"
     [[ "${colorScheme}" == "light" ]] && dcolMode="light" || dcolMode="dark"

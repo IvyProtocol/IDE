@@ -89,7 +89,7 @@ case "${enableWallIde}" in
     ;;
 esac
 
-PrevThemeIde="Graphite-Mono"
+PrevThemeIde="Decay-Green"
 
 [[ "${wallFramerate}" =~ ^[0-9]+$ ]] || wallFramerate=144
 [[ "${wallTransDuration}" =~ ^[0-9]+$ ]] || wallTransDuration=0.4

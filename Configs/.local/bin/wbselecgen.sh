@@ -4,6 +4,7 @@ set -eo pipefail
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
+
 wallSel="${wallDir}"
 cacheDir="${ideCDir}/cache"
 blurDir="${cacheDir}/blur"
@@ -57,13 +58,13 @@ wallSelTui() {
 
     {    
         setConf "wallSet" "${wallSel}/$(fl_wallpaper -t "$img")" "${ideDir}/ide.conf" 
-        ln -sf "$blurred" "${confDir}/wlogout/wallpaper_blurred.png" 
-        ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/current-wallpaper.png" 
+        ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/wall.cols"
+        ln -sf "${blurDir}/${scRun}.bpex" "${rasiDir}/wall.bpex"
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
         ln -sf "${cacheDir}/${thmExtn}/${scRun}.${thmExtn}" "${ideDir}/theme/${PrevThemeIde}/wall.set"
     } &
 
-    echo -e " :: Theme Control - [$0] - Wallpaper Control - Applying $img"
+echo -e " :: Theme Control - [$(basename "${0}")] - Wallpaper Control - Applying $img"
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "${base}" -s "${cacheDir}/thumb/$(fl_wallpaper -t "${img}" -f 1).sloc" -a "t1"
 
     case $swi in
