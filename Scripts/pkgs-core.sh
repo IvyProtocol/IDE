@@ -81,6 +81,7 @@ hyprland=(
   ttf-segoe-ui-variable
   ttf-times-new-roman
   noto-fonts-cjk
+  ttf-mononoki-nerd
   tela-circle-icon-theme-dracula
 )
 
