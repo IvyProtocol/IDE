@@ -124,3 +124,5 @@ json_alt=$(escape_json "$alt_time")
 printf '{"text":"%s","tooltip":"%s","alt":"%s","state":"%s","capacity":%d}\n' \
   "$json_text" "$json_tooltip" "$json_alt" "$state" "$display_percent"
 
+
+

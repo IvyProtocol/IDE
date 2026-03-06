@@ -3,10 +3,10 @@
 /* // ------------------------------------- */
 
 * {
-    main-bg:            #101419B3;
-    main-fg:            #CCE3FFE6;
-    main-br:            #4A5465E6;
-    main-ex:            #1A1E23E6;
-    select-bg:          #F0B4AA80;
-    select-fg:          #522F29E6;
+    main-bg:            #330F32B3;
+    main-fg:            #FFCCFEE6;
+    main-br:            #D64858E6;
+    main-ex:            #6770C9E6;
+    select-bg:          #F0AAC380;
+    select-fg:          #522937E6;
 }

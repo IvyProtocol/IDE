@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 export scrDir="$(dirname "$(realpath "$0")")"
 export cloneDir="${XDG_CLONE_DIR:-${scrDir}}/Clone"
 export homDir="${XDG_HOME_DIR:-$HOME}"

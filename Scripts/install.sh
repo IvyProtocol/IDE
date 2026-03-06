@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# SOURCING in order to prepare the installation.
-[[ -e "./globalfunction.sh" ]] && source "./globalfunction.sh" && echo -e " :: Sourcing Global Function"
-[[ "$EUID" -eq 0 ]] && echo -e "${IndentError} This script should ${indentWarning} NOT ${indentReset} be executed as root!!" && exit 1
+scrDir="$(dirname "$(realpath "$0")")"
+[[ -e "${scrDir}/globalfunction.sh" ]] && { source "${scrDir}/globalfunction.sh"; echo -e " :: Sourcing Global Function"; } || { echo -e " :: Global Function not found!"; exit 1; }
+[[ "$EUID" -eq 0 ]] && { echo -e "${IndentError} This script should ${indentWarning} NOT ${indentReset} be executed as root!!"; exit 1; }
 
 if grep -iqE '(ID|ID_LIKE)=.*(arch)' /etc/os-release >/dev/null 2>&1; then
   echo -e " :: ${indentOk} Arch Linux Detected."
@@ -129,10 +129,14 @@ for conf in ${confcheck}; do
     continue
   else
     echo -e "Populating ${confDir}"
-    "./dircaller.sh" --all "${homDir}" 2>&1
+    "${scrDir}/dircaller.sh" --all "${homDir}" 2>&1
     break
   fi
-  [[ "${backup}" -eq 1 ]] && echo -e "Populating ${confDir}" && "./dircaller.sh" --all "${homDir}" 2>&1 && break
+  if [[ "${backup}" -eq 1 ]]; then
+    echo -e "Populating ${confDir}"
+    "${scrDir}/dircaller.sh" --all "${homDir}" 2>&1
+    break
+  fi
 done
 
 [[ -e "${sourceDir}/Sweet-cursors.tar.xz" ]] && tar -xvf "${sourceDir}/Sweet-cursors.tar.xz" -C "${homDir}/.icons" 
@@ -189,7 +193,7 @@ else
   esac
 fi
 
-[[ ! -e "${localDir}/swwwallcache.sh" ]] && echo -e " :: swwwallcache.sh does not exist." && exit 1
+[[ ! -e "${localDir}/swwwallcache.sh" ]] && { echo -e " :: swwwallcache.sh does not exist."; exit 1; }
 "${localDir}/swwwallcache.sh" -w "${confDir}/ivy-shell/theme/"
 xdg-user-dirs-update && sudo systemctl enable sddm 2>&1
 
@@ -204,4 +208,5 @@ case "$PROMPT_INPUT" in
   [Nn]|*)
     echo -e "${indentOk} The system will not reboot."
     exit 0
+    ;;
 esac
