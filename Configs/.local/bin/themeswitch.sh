@@ -12,7 +12,7 @@ themeSelTui() {
     thmImg="$(<"${themeDir}/${thmChsh}/wallpapers/.wallbash-main")"
     if [[ -n "${thmImg}" ]]; then
         if [[ "${PrevThemeIde}" != "${thmChsh}" ]]; then
-            setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh" 
+            setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh"
         fi
         if [[ "${wallDir}" != "${themeDir}/${thmChsh}/wallpapers" ]]; then
             echo " :: Theme Control - Theme '${thmChsh}' :: Wallpaper '${thmImg}' :: DcolMode '${enableWallIde}' --> '${confDir}'"
@@ -25,7 +25,7 @@ themeSelTui() {
         if [[ "${enableWallIde}" -eq 3 ]]; then
             if [[ "${ideTheme}" != "${thmChsh}" ]]; then
                 setConf "ideTheme" "${thmChsh}" "${ideDir}/ide.conf"
-            fi 
+            fi
             sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         else
             "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
@@ -113,7 +113,7 @@ theme_control() {
      --p) idx=$(( (thm_i - 1 + thmTotal) % thmTotal )) ;;
      --n) idx=$(( (thm_i + 1) % thmTotal )) ;;
      *)
-         return 1 
+         return 1
          ;;
     esac
     themeSelTui "${themes[$idx]}"
@@ -121,7 +121,7 @@ theme_control() {
 
 case "${1}" in
     -n)
-        theme_control --n 
+        theme_control --n
         ;;
     -p)
         theme_control --p
