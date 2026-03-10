@@ -2,13 +2,13 @@
 BackgroundNormal=#00000000
 
 [General]
-TerminalApplication=kitty
+TerminalApplication="kitty"
 
 [Icons]
 Theme=Tela-circle-dracula
 
 [KDE]
-widgetStyle=qt6ct-style
+widgetStyle="kvantum"
 
 [KFileDialog Settings]
 Allow Expansion=false
@@ -26,3 +26,6 @@ Sort hidden files last=false
 Sort reversed=false
 Speedbar Width=136
 View Style=DetailTree
+
+[UiSettings]
+ColorScheme="colors"
