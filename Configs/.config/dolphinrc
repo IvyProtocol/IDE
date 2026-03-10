@@ -1,6 +1,6 @@
 MenuBar=Disabled
 
-[$Version]
+[Version]
 update_info=dolphin_detailsmodesettings.upd:rename-leading-padding
 
 [General]
