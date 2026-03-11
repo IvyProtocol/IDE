@@ -7,7 +7,7 @@ tomlPath="${ideDir}/vyle.toml"
 ideTheme="$(tomlq "${tomlPath}" "${grpTmp}" "Theme")"
 plLoader="$(tomlq "${tomlPath}" "${grpTmp}" "PlaceHolder")"
 enableWallIde="$(tomlq "${tomlPath}" "${grpTmp}" "ColMode")"
-eval skipTemplate="$(tomlq "${tomlPath}" "${grpTmp}" "SkipTemplate")"
+eval skipTemplate="($(tomlq "${tomlPath}" "${grpTmp}" "SkipTemplate"))"
 nProcCount="$(tomlq "${tomlPath}" "${grpTmp}" "ProcCount")"
 
 # Wallpaper Configuration: wbselecgen.sh
@@ -16,7 +16,7 @@ grpTmp="Wallpaper.Configuration"
 
 eval wallSet="$(tomlq "${tomlPath}" "${grpTmp}" "Set")"
 eval wallDir="$(tomlq "${tomlPath}" "${grpTmp}" "Directory")"
-eval WallAddCustomPath="$(tomlq "${tomlPath}" "${grpTmp}" "CustomPath")"
+eval WallAddCustomPath="($(tomlq "${tomlPath}" "${grpTmp}" "CustomPath"))"
 
 unset grpTmp
 grpTmp="Wallpaper.Swww"
