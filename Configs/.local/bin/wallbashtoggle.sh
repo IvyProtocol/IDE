@@ -33,11 +33,11 @@ apply_config() {
 }
 
 rofi_wallbash() {
-    if [[ -z "${rofiScale}" || "${rofiScale}" -eq 0 ]]; then
-        rofiScale=10
+    if [[ -z "${rofiWallbashScale}" || "${rofiWallbashScale}" -eq 0 ]]; then
+        rofiWallbashScale=10
     fi
 
-    r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiScale}\";}"
+    r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiWallbashScale}\";}"
     elem_border=$(( hypr_border * 4 ))
     r_override="window{border-radius:${elem_border}px;} element{border-radius:${elem_border}px;}"
 

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
+set -eo pipefail
 [[ $VYLE_SHELL_INIT -ne 1 ]] && eval "$(vyle --init)"
 
 if [[ -z "${VYLE_SHELL_INIT}" ]]; then
   scrDir="$(dirname "$(realpath "$0")")"
   source "${scrDir}/globalcontrol.sh"
 fi
-set -eo pipefail
 
 #// Credits to sl1ng for the orginal script. Rewritten by Vyle.
 ctlcheck=("pactl" "jq" "notify-send" "awk" "pgrep" "hyprctl" "iconv")

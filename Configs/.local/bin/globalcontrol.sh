@@ -1,24 +1,27 @@
 #!/usr/bin/env bash
 
-export homDir="${XDG_HOME:-$HOME}"
-export confDir="${XDG_CONFIG_HOME:-${homDir}/.config}"
-export localDir="${XDG_LOCAL_HOME:-${homDir}/.local}"
-export cacheDir="${XDG_CACHE_HOME:-${homDir}/.cache}"
-export dunstDir="${XDG_DUNST_CONFIG:-${confDir}/dunst}"
-export rofiStyleDir="${XDG_RSDIR_HOME:-${confDir}/rofi}/styles"
-export rofiAssetDir="${XDG_RADIR_HOME:-${confDir}/rofi/shared}/assets"
-export rasiDir="${XDG_RTDIR_HOME:-${confDir}/rofi/shared}"
-export wlDir="${XDG_WLDIR_HOME:-${confDir}/waybar/Styles}"
-export wcDir="${XDG_WCDIR_HOME:-${confDir}/waybar}"
-export hyprscrDir="${XDG_WBSCRDIR_HOME:-${confDir}/hypr/scripts}"
-export ideDir="${XDG_CONF_HOME:-${confDir}/ivy-shell}"
-export ideCDir="${XDG_IDE_CACHE:-${cacheDir}/ivy-shell}"
-export dcolDir="${XDG_DCOL_HOME:-${ideCDir}/shell}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export VYLE_CONFIG_HOME="$XDG_CONFIG_HOME/ivy-shell"
+export VYLE_DATA_HOME="$XDG_DATA_HOME/vyle"
+export VYLE_CACHE_HOME="$XDG_CACHE_HOME/ivy-shell"
+export confDir="$XDG_CONFIG_HOME"
+export localDir="$XDG_DATA_HOME"
+export cacheDir="$XDG_CACHE_HOME"
+export ideDir="$VYLE_CONFIG_HOME"
+export ideCDir="$VYLE_CACHE_HOME"
+export dcolDir="$VYLE_CACHE_HOME/shell"
+export dunstDir="$XDG_CONFIG_HOME/dunst"
+export rasiDir="$XDG_CONFIG_HOME/rofi/shared"
+export rofiStyleDir="$XDG_CONFIG_HOME/rofi/styles"
+export rofiAssetDir="$rasiDir/assets"
+export wcDir="$XDG_CONFIG_HOME/waybar"
+export wlDir="$wcDir/Styles"
+export hyprscrDir="$XDG_CONFIG_HOME/hypr/scripts"
 
 
 set +e
-clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${ideDir}/ide.conf" | sed 's/exclusion=\"(//')"
-[[ -n "${clusterExclude}" ]] && source <(grep -vE "^[[:space:]]*($clusterExclude)=.*" "${ideDir}/ide.conf") || source "${ideDir}/ide.conf"
 
 env_pkg() {
   local envPkg statsPkg defAur
@@ -64,11 +67,183 @@ env_pkg() {
   fi
 }
 
+setConf() {
+  set +H
+  local varString="${1}"
+  local varValue="${2}"
+  local varPath="${3}" 
+
+  [[ -z "${varValue}" ]] && echo -e "No value has been provided!" && return 1
+
+  local IFS="|!"
+  read -ra confStrings <<< "${varString}"
+  read -ra confValue <<< "${varValue}"
+
+  for i in "${!confStrings[@]}"; do
+    local confKey="${confStrings[i]}"
+    local confVal="${confValue[i]}"
+    [[ "${confVal}" =~ ^[0-9]+$ ]] || confVal="\"${confVal}\""
+    [[ "$(grep -c "^${confKey}" "${varPath}" 2>/dev/null)" -eq 1 ]] && sed -i "s|^${confKey}=.*|${confKey}=${confVal}|" "${varPath}" || echo "${confKey}=${confVal}" >> "${varPath}"
+
+  done
+  set -H
+}
+
+tomlq() {
+  set +H
+  print_usage() {
+    echo -e "Vyle-Project: TOML Query Tool - tmq."
+    echo -e "Usage:
+    $(basename "${0}") [flags|path] [path|group] [group|key] [key|value] [value]"
+
+    echo -e "Available Flags:
+    -i | --inplace  Modify file in-place {required file argument}
+    null            Read file in-place {required file argument}"
+    exit 1
+  }
+
+  tmq_write() {
+    local IFS="|!"
+    read -ra tqGroups <<< "${tomlGroup}"
+    read -ra tqKeys   <<< "${tomlKey}"
+    read -ra tqVals   <<< "${tomlValue}"
+
+    for i in "${!tqGroups[@]}"; do
+      local tqGroup="${tqGroups[i]}"
+      local tqKey="${tqKeys[i]}"
+      local tqVal="${tqVals[i]}"
+
+      [[ "${tqVal}" =~ ^[0-9]+$ ]] || tqVal="\"${tqVal}\""
+
+      if ! grep -q "^\[${tqGroup}\]" "${tomlPath}" 2>/dev/null; then
+        printf "\n[%s]\n%s=%s\n" "${tqGroup}" "${tqKey}" "${tqVal}" >> "${tomlPath}"
+        continue
+      fi
+
+        # check if key exists inside group
+      if sed -n "/^\[${tqGroup}\]/,/^\[/p" "${tomlPath}" | grep -q "^${tqKey}[[:space:]]*="; then
+        sed -i "/^\[${tqGroup//./\\.}\]/,/^\[/ s|^${tqKey}[[:space:]]*=.*|${tqKey} = ${tqVal}|" "$tomlPath"
+      else
+        sed -i "/^\[${tqGroup}\]/a ${tqKey} = ${tqVal}" "${tomlPath}"
+      fi
+    done
+  }
+
+  tmq_read() {
+    local group_esc="${tomlGroup//./\\.}"
+    sed -n "/^\[${group_esc}\]/,/^\[/p" "$tomlPath" | grep "^${tomlKey}[[:space:]]*=" | sed -E "s/^${tomlKey}[[:space:]]*=[[:space:]]*(.*)/\1/; s/[[:space:]]+#.*$//" | tr -d '"[]'
+  }
+
+    case "${1}" in
+      -i | --inplace)
+        shift
+        local tomlPath=$1
+        local tomlGroup=$2
+        local tomlKey=$3
+        local tomlValue=$4
+
+        tmq_write "${tomlPath}" "${tomlGroup}" "${tomlKey}" "${tomlValue}"
+        ;;
+      *)
+        local tomlPath="$1"
+        local tomlGroup="$2"
+        local tomlKey="$3"
+        if [[ -z "${tomlPath}" || -z "${tomlGroup}" || -z "${tomlKey}" ]]; then
+          print_usage
+        fi
+        if (( ${#tqGroups[@]} != ${#tqKeys[@]} || ${#tqGroups[@]} != ${#tqVals[@]} )); then
+          echo "Vyle-Project - Tomlq: group/key/value count mismatch" >&2
+          exit 1
+        fi
+
+        tmq_read "${tomlPath}" "${tomlGroup}" "${tomlKey}"
+        ;;
+    esac
+    set -H
+}
+
+notify() {
+  OPTIND=1
+  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file="" time="" style=""
+  
+  while getopts ":m:s:p:i:v:t:a:" prefix; do
+    case "${prefix}" in
+      m) modern="${OPTARG}" ;;
+      s) 
+        swayncIPath="${OPTARG}" 
+        ;;
+      p) 
+        printOut="${OPTARG}"
+        ;;
+      i)
+        notify_id="${OPTARG}"
+        ;;
+      v)
+        value="${OPTARG}"
+        ;;
+      t)
+        time="${OPTARG}"
+        ;;
+      a)
+        style="${OPTARG}"
+        ;;
+      \?)
+        return 1
+    esac
+  done
+  shift $((OPTIND -1))
+  if [[ "${modern}" -eq 2 ]]; then
+    notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${time:+-t ${time}} ${style:+-a "${style}"} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
+  elif [[ "${modern}" -eq 1 ]]; then
+    notif_file="/tmp/.$USER_notif_id"
+    notif_id=""
+
+    [[ -f "${notif_file}" ]] && notif_id=$(<"${notif_file}")
+    if [[ -n "$notif_id" ]]; then
+      notify-send -r "${notif_id}" "${printOut}" ${style:+-a ${style}} ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p
+    else
+      notif_id=$(notify-send "${printOut}" ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p)
+      echo "${notif_id}" > "${notif_file}"
+    fi
+  else
+    [[ -z "${OPTARG}" ]] && {
+      echo -e "[$0] Correct arguments are:"
+      echo -e "[$0] -l, legacy usage of notif_id. Supports: -s, -p."
+      echo -e "[$0] -m, private usage of notify-send. Supports: -s, -p, -i, -v. Mandatorial: -p, -i."
+      echo -e "[$0] -p, print inputted message." #If two -p are seen, then the second input would overlap! 
+      echo -e "[$0] -i, increament notif_id to notify-send. Mandatory if -m 2 was used."
+      echo -e "[$0] -v, value set for notify-send, optional."
+      exit 1
+    }
+  fi
+}
+
 timestamp() {
   local timestamp
   timestamp=$(date +"%d-%b_%H-%M-%S")
   echo "${timestamp}"
 }
+
+if [[ -e "${VYLE_CONFIG_HOME}/vyle.toml" ]]; then
+  source "${VYLE_DATA_HOME}/tomlmd/tomlmainmd.sh" # Boilerplate toml configuration. DO NOT TOUCH
+  source "${VYLE_CONFIG_HOME}/usrtoml/usertomlmd.sh" # users tomlmd configuration. Use that file.
+
+  tomlSource=1
+elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
+  clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${VYLE_CONFIG_HOME}/ide.conf" | sed 's/exclusion=\"(//')"
+  if [[ -n "${clusterExclude}" ]]; then
+    source <(grep -vE "^[[:space:]]*($clusterExclude)=.*" "${VYLE_CONFIG_HOME}/ide.conf") 
+  else
+    source "${VYLE_CONFIG_HOME}/ide.conf"
+  fi
+  
+  tomlSource=0
+elif [[ -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
+  source "${VYLE_DATA_HOME}/tomlmd/tomlmainmd.sh"
+  source "${VYLE_CONFIG_HOME}/usrtoml/usertomlmd.sh"
+
+  tomlSource=1
+fi
 
 case "${enableWallIde}" in
   1)
@@ -139,62 +314,6 @@ fl_wallpaper() {
   echo "$w_int"
 }
 
-notify() {
-  OPTIND=1
-  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file="" time="" style=""
-  
-  while getopts ":m:s:p:i:v:t:a:" prefix; do
-    case "${prefix}" in
-      m) modern="${OPTARG}" ;;
-      s) 
-        swayncIPath="${OPTARG}" 
-        ;;
-      p) 
-        printOut="${OPTARG}"
-        ;;
-      i)
-        notify_id="${OPTARG}"
-        ;;
-      v)
-        value="${OPTARG}"
-        ;;
-      t)
-        time="${OPTARG}"
-        ;;
-      a)
-        style="${OPTARG}"
-        ;;
-      \?)
-        return 1
-    esac
-  done
-  shift $((OPTIND -1))
-  if [[ "${modern}" -eq 2 ]]; then
-    notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${time:+-t ${time}} ${style:+-a "${style}"} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
-  elif [[ "${modern}" -eq 1 ]]; then
-    notif_file="/tmp/.$USER_notif_id"
-    notif_id=""
-
-    [[ -f "${notif_file}" ]] && notif_id=$(<"${notif_file}")
-    if [[ -n "$notif_id" ]]; then
-      notify-send -r "${notif_id}" "${printOut}" ${style:+-a ${style}} ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p
-    else
-      notif_id=$(notify-send "${printOut}" ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p)
-      echo "${notif_id}" > "${notif_file}"
-    fi
-  else
-    [[ -z "${OPTARG}" ]] && {
-      echo -e "[$0] Correct arguments are:"
-      echo -e "[$0] -l, legacy usage of notif_id. Supports: -s, -p."
-      echo -e "[$0] -m, private usage of notify-send. Supports: -s, -p, -i, -v. Mandatorial: -p, -i."
-      echo -e "[$0] -p, print inputted message." #If two -p are seen, then the second input would overlap! 
-      echo -e "[$0] -i, increament notif_id to notify-send. Mandatory if -m 2 was used."
-      echo -e "[$0] -v, value set for notify-send, optional."
-      exit 1
-    }
-  fi
-}
-
 [[ "${brightnessStep}" =~ ^[0-9]+$ ]] || brightnessStep=5
 [[ "${brightnessNotify}" =~ ^[0-9]+$ ]] || brightnessNotify=0
 [[ "${brightnessIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${brightnessIconDir} -!" 
@@ -260,28 +379,6 @@ ext_thumb() {
   x_arg_temp=$2
   [[ -z "${x_arg}" ]] && return 1
   ffmpeg -y -i "${x_arg}" -vf "thumbnail,scale=1000:-1" -frames:v 1 -update 1 "${x_arg_temp}" &>/dev/null
-}
-
-setConf() {
-  set +H
-  local varString="${1}"
-  local varValue="${2}"
-  local varPath="${3}" 
-
-  [[ -z "${varValue}" ]] && echo -e "No value has been provided!" && return 1
-
-  local IFS="|!"
-  read -ra confStrings <<< "${varString}"
-  read -ra confValue <<< "${varValue}"
-
-  for i in "${!confStrings[@]}"; do
-    local confKey="${confStrings[i]}"
-    local confVal="${confValue[i]}"
-    [[ "${confVal}" =~ ^[0-9]+$ ]] || confVal="\"${confVal}\""
-    [[ "$(grep -c "^${confKey}" "${varPath}" 2>/dev/null)" -eq 1 ]] && sed -i "s|^${confKey}=.*|${confKey}=${confVal}|" "${varPath}" || echo "${confKey}=${confVal}" >> "${varPath}"
-
-  done
-  set -H
 }
 
 load_ivy_file() {

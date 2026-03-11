@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalcontrol.sh"
+[[ $VYLE_SHELL_INIT -ne 1 ]] && eval "$(vyle --init)"
 
 themeDir="${ideDir}/theme"
 rofiConf="${rasiDir}/selector.rasi"
@@ -12,7 +11,7 @@ themeSelTui() {
     thmImg="$(<"${themeDir}/${thmChsh}/wallpapers/.wallbash-main")"
     if [[ -n "${thmImg}" ]]; then
         if [[ "${PrevThemeIde}" != "${thmChsh}" ]]; then
-            setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh"
+            setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh" 
         fi
         if [[ "${wallDir}" != "${themeDir}/${thmChsh}/wallpapers" ]]; then
             echo " :: Theme Control - Theme '${thmChsh}' :: Wallpaper '${thmImg}' :: DcolMode '${enableWallIde}' --> '${confDir}'"
@@ -25,7 +24,7 @@ themeSelTui() {
         if [[ "${enableWallIde}" -eq 3 ]]; then
             if [[ "${ideTheme}" != "${thmChsh}" ]]; then
                 setConf "ideTheme" "${thmChsh}" "${ideDir}/ide.conf"
-            fi
+            fi 
             sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         else
             "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
@@ -38,33 +37,33 @@ themeSelTui() {
 }
 
 thmSelEnv() {
-    if [[ -z "${rofiScale}" || "${rofiScale}" -eq 0 ]]; then
-        rofiScale=10
+    if [[ -z "${rofiThemeScale}" || "${rofiThemeScale}" -eq 0 ]]; then
+        rofiThemeScale=10
     fi
-    r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiScale}\";}"
+    r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiThemeScale}\";}"
     mon_x_res=$(( mon_res * 100 / mon_scale ))
     elem_border=$(( hypr_border * 3 ))
     icon_border=$(( elem_border - 5 ))
     local indx themes wallSet thumbDir thmExtn thmWall stripWall
 
-    case "${themeRofiStyle}" in
+    case "${rofiThemeStyle}" in
         2)
-            elm_width=$(( (20 + 12 ) * rofiScale * 2 ))
-            max_avail=$(( mon_x_res - ( 4 * rofiScale) ))
-            if [[ "${rofiColCount}" -eq 0 || -z "${rofiColCount}" ]]; then
-                rofiColCount=$(( max_avail / elm_width ))
+            elm_width=$(( (20 + 12 ) * rofiThemeScale * 2 ))
+            max_avail=$(( mon_x_res - ( 4 * rofiThemeScale) ))
+            if [[ "${rofiThemeColumn}" -eq 0 || -z "${rofiThemeColumn}" ]]; then
+                rofiThemeColumn=$(( max_avail / elm_width ))
             fi
-            r_override="window{width:100%;background-color:#00000003;} listview{columns:${rofiColCount};} element{border-radius:${elem_border}px;background-color:@main-bg;} element-icon{size:20em;border-radius:${icon_border}px 0px 0px ${icon_border}px;}"
+            r_override="window{width:100%;background-color:#00000003;} listview{columns:${rofiThemeColumn};} element{border-radius:${elem_border}px;background-color:@main-bg;} element-icon{size:20em;border-radius:${icon_border}px 0px 0px ${icon_border}px;}"
             thmExtn="quad"
             thumbDir="${ideCDir}/cache/quad"
             ;;
         1|*)
-            elm_width=$(( (23 + 12 + 1) * rofiScale * 2 ))
-            max_avail=$(( mon_x_res - (4 * rofiScale) ))
-            if [[ "${rofiColCount}" -eq 0 || -z "${rofiColCount}" ]]; then
-                rofiColCount=$(( max_avail / elm_width ))
+            elm_width=$(( (23 + 12 + 1) * rofiThemeScale * 2 ))
+            max_avail=$(( mon_x_res - (4 * rofiThemeScale) ))
+            if [[ "${rofiThemeColumn}" -eq 0 || -z "${rofiThemeColumn}" ]]; then
+                rofiThemeColumn=$(( max_avail / elm_width ))
             fi
-            r_override="window{width:100%;} listview{columns:${rofiColCount};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"
+            r_override="window{width:100%;} listview{columns:${rofiThemeColumn};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"
             thmExtn="sloc"
             thumbDir="${ideCDir}/cache/thumb"
             ;;
@@ -113,7 +112,7 @@ theme_control() {
      --p) idx=$(( (thm_i - 1 + thmTotal) % thmTotal )) ;;
      --n) idx=$(( (thm_i + 1) % thmTotal )) ;;
      *)
-         return 1
+         return 1 
          ;;
     esac
     themeSelTui "${themes[$idx]}"
@@ -121,7 +120,7 @@ theme_control() {
 
 case "${1}" in
     -n)
-        theme_control --n
+        theme_control --n 
         ;;
     -p)
         theme_control --p

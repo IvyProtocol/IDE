@@ -9,7 +9,7 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
 rasiDir="${rasiDir}/selector.rasi"
-[[ -z "${rofiScale}" ]] && font_scale=10 || font_scale="${rofiScale}"
+[[ -z "${rofiStyleScale}" ]] && font_scale=10 || font_scale="${rofiStyleScale}"
 
 elem_border=$((2 * 5))
 icon_border=$((elem_border - 5))
