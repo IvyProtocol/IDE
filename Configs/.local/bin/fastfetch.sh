@@ -104,7 +104,7 @@ EOF
       exec fastfetch -l "$fetch"
       exit 0
     else
-      exec fastfetch
+       exec fastfetch
     fi
   ;;
 esac

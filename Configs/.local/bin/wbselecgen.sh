@@ -33,7 +33,7 @@ wallSelTui() {
     if [[ -z "$img" || ! -f "$img" ]]; then
         img=$(fl_wallpaper -r)
         img="${wallDir}/$img"
-        [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" -t 900 -a "t1" && exit 1
+        [[ ! -f "$img" ]] && notify -m 1 -p "Invalid wallpaper?" -u critical -t 900 -a "t1" && exit 1
     fi
 
     local base blurred thmExtn 
@@ -56,19 +56,22 @@ wallSelTui() {
         "${scrDir}/swwwallcache.sh" -b "${img}"
     fi
 
-    {    
-        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t "$img")" "${ideDir}/ide.conf" 
+    {   
+        if [[ "${tomlSource}" -eq 1 ]]; then
+            tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Wallpaper.Configuration" "Set" "${wallSel}/$(fl_wallpaper -t "${img}")"
+        else
+            setConf "wallSet" "${wallSel}/$(fl_wallpaper -t "$img")" "${ideDir}/ide.conf" 
+        fi
         ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/wall.cols"
         ln -sf "${blurDir}/${scRun}.bpex" "${rasiDir}/wall.bpex"
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
         ln -sf "${cacheDir}/${thmExtn}/${scRun}.${thmExtn}" "${ideDir}/theme/${PrevThemeIde}/wall.set"
     } &
-
-echo -e " :: Theme Control - [$(basename "${0}")] - Wallpaper Control - Applying $img"
+    
+    echo -e " :: Theme Control - [$(basename "${0}")] - Wallpaper Control - Applying $img"
     [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "${base}" -s "${cacheDir}/thumb/$(fl_wallpaper -t "${img}" -f 1).sloc" -a "t1"
-
     case $swi in
-        --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
+        --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-t) swww img "$img" -t "${wallAnimationTheme}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  ;;

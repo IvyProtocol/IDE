@@ -39,10 +39,14 @@ for style_name in "${style_names[@]}"; do
     rofi_list+="${style_name}\x00icon\x1f${rofiAssetDir}/${style_name}\n"
 done
 
-RofiSel=$(echo -en "$rofi_list" | rofi -dmenu -markup-rows -theme-str "$r_override" -theme "$rasiDir" -select "style-${rofiStyle}.png")
+RofiSel=$(echo -en "$rofi_list" | rofi -dmenu -markup-rows -theme-str "$r_override" -theme "$rasiDir" -select "style-${rofiLauncherStyle}.png")
 
 if [[ ! -z "${RofiSel}" ]]; then
     UpdRofiSel=$(echo "$RofiSel" | tr -d '[A-Za-z.]-')
-    setConf "rofiStyle" "${UpdRofiSel}" "${ideDir}/ide.conf"
+    if [[ "${tomlSource}" -eq 1 ]]; then
+        tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Rofi.Launch" "Style" "${UpdRofiSel}"
+    else
+        setConf "rofiLauncherStyle" "${UpdRofiSel}" "${ideDir}/ide.conf"
+    fi
     notify -m 2 -i "rofi_notif" -t 1200 -s "${rofiAssetDir}/${RofiSel}" -a "t1" -p "Rofi style ${RofiSel} applied..."
 fi

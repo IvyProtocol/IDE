@@ -12,9 +12,9 @@ ProcCount = 3 # Limit usage of wallbash cores. NOTE: Use "$(nproc)" if you want 
 # ▀▄▀▄▀ █▀█ █▄▄ █▄▄ █▀▀ █▀█ █▀▀ ██▄ █▀▄
 # Wallpaper configuration.
 [Wallpaper.Configuration]
-Set = "/home/iris/.config/ivy-shell/theme/Decay-Green/wallpapers/aurora_borealis.png" # Current-wallpaper set.
+Set = "/home/iris/.config/ivy-shell/theme/Catppuccin-Latte/wallpapers/abstract_blured.jpg"
 Backend = "swww" # Current-Backend Set.
-Directory = "${XDG_CONFIG_HOME:-$HOME/.config}/ivy-shell/theme/Decay-Green/wallpapers" # Current Theme Directory.
+Directory = "${VYLE_CONFIG_HOME:-/home/iris/.config/ivy-shell}/theme/Catppuccin-Latte/wallpapers"
 CustomPath = [] # List of paths to search for wallpapers.
 
 # wbselecgen.sh configuration.
@@ -31,27 +31,27 @@ AnimationTheme = "grow" # Transition AnimationTheme.
 # █▀▄ █▄█ █▀░ █
 # rofilauncher.sh configuration.
 [Rofi.Launch]
-Scale = 9 # Scale for rofilauncher.sh
+Scale = 10 # Scale for rofilauncher.sh
 Style = 1 # Style for rofilauncher.sh
 
 # wbselecgen.sh configuration.
 [Rofi.Wallpaper]
-Scale = 9 # Scale for wbselecgen.sh
-ColumnCount = 4 # Column for wbselecgen.sh
+Scale = 10 # Scale for wbselecgen.sh
+# ColumnCount = 4 # Column for wbselecgen.sh
 
 # themeswitch.sh configuration.
 [Rofi.Theme]
-Scale = 9 # Scale for themeswitch.sh
-ColumnCount =  # Column for themeswitch.sh
-Style = 2 # Style for themeswitch.sh
+Scale = 10 # Scale for themeswitch.sh
+# ColumnCount = 2  # Column for themeswitch.sh
+# Style = 2 # Style for themeswitch.sh
 
 # wallbashtoggle.sh configuraiton
 [Rofi.Wallbash]
-Scale = 9 # Scale for wallbashtoggle.sh
+# Scale = 10 # Scale for wallbashtoggle.sh
 
 # style-launcher.sh configuration.
 [Rofi.Switch]
-Scale = 9 # Scale for style-launcher.sh
+# Scale = 10 # Scale for style-launcher.sh
 
 # █░░ █▀█ █▀▀ █▀█ █░█ ▀█▀
 # █▄▄ █▄█ █▄█ █▄█ █▄█ ░█░
@@ -72,8 +72,8 @@ FetchIcon = "${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/icons" # Fetches Direct
 # brightnesscontrol.sh configuration
 [Brightness.Configuration]
 FetchIcon = "${confDir}/dunst/icons/vol" # Fetches Directory for brightnesscontrol.sh
-Steps = 5 # Steps Taken for brightnesscontrol.sh
-NotifyMute = 0 # Mute: 0 = False; 1 = True
+# Steps = 5 # Steps Taken for brightnesscontrol.sh
+# NotifyMute = 0 # Mute: 0 = False; 1 = True
 
 
 # █░█ █▀█ █░░ █░█ █▀▄▀█ █▀▀ █▀ ▀█▀ █░░ 
@@ -81,16 +81,16 @@ NotifyMute = 0 # Mute: 0 = False; 1 = True
 # volumecontrol.sh configuration.
 [Volume.Configuration]
 FetchIcon = "${XDG_CONFIG_HOME:-$HOME/.config}/dunst/icons/vol" # Fetches Directory for voluemcontrol.sh
-Steps = 5 # Steps Taken for volumecontrol.sh
-StepsMute = 0 # Silent Popups from step-taken. Mute: 0 = False; 1 = True
-NotifyMute = 0 # Silent Popups of Mic/Speaker. Mute: 0 = False; 1 = True
+# Steps = 5 # Steps Taken for volumecontrol.sh
+# StepsMute = 0 # Silent Popups from step-taken. Mute: 0 = False; 1 = True
+# NotifyMute = 0 # Silent Popups of Mic/Speaker. Mute: 0 = False; 1 = True
 
 # █▄░█ █▀█ ▀█▀ █ █▀▀ █ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄░█
 # █░▀█ █▄█ ░█░ █ █▀░ █ █▄▄ █▀█ ░█░ █ █▄█ █░▀█
 # dunstctl configuration
 [Notification.Configuration]
 Font = "JetBrainsMono Nerd Font" # Font Configuration for Dunst. 
-FontSize = 10 # Font_Size for Dunst
+FontSize = 9 # Font_Size for Dunst
 
 # █░█ █▄█ █▀█ █▀█ █░░ ▄▀█ █▄░█ █▀▄
 # █▀█ ░█░ █▀▀ █▀▄ █▄▄ █▀█ █░▀█ █▄▀

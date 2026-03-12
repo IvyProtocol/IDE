@@ -6,9 +6,10 @@ scrDir=`dirname "$(realpath "$0")"`
 source $scrDir/globalcontrol.sh
 dstDir="${confDir}/dunst"
 
-export hypr_border
+export hypr_border notificationFont notificationFontSize
 envsubst < "${dstDir}/dunst.conf" > "${dstDir}/dunstrc"
 envsubst < "${dstDir}/wallbash.conf" >> "${dstDir}/dunstrc"
 killall dunst
 dunst &
 
+echo "${notificationFont} ${notificationFontSize}"

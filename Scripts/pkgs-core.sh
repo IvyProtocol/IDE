@@ -123,7 +123,7 @@ var="${1:-}"
 case $var in
   --hyprland)
     env_pkg -- -S "${hyprland[@]}"
-    sudo pacman -U "${sourceDir}/vyle-1.0.0-1-any.pkg.tar.zst"
+    sudo pacman -U "${sourceDir}/vyle-1.0.1-1-any.pkg.tar.zst"
     ;;
   --extra)
     env_pkg -- -S "${extra[@]}"

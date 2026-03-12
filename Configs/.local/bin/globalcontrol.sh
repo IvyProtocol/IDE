@@ -90,83 +90,192 @@ setConf() {
 }
 
 tomlq() {
-  set +H
-  print_usage() {
-    echo -e "Vyle-Project: TOML Query Tool - tmq."
-    echo -e "Usage:
-    $(basename "${0}") [flags|path] [path|group] [group|key] [key|value] [value]"
+    set +H
 
-    echo -e "Available Flags:
-    -i | --inplace  Modify file in-place {required file argument}
-    null            Read file in-place {required file argument}"
-    exit 1
-  }
+    print_usage() {
+        echo -e "Vyle-Project: TOML Query Tool - tmq."
+        echo -e "Usage:\n    $(basename "${0}") [flags|path] [path|group] [group|key] [key|value] [value]"
+        echo -e "Available Flags:\n    -i | --inplace  Modify file in-place {required file argument}\n    -o | --output   Read file in-place {required file argument}"
+        exit 1
+    }
 
-  tmq_write() {
-    local IFS="|!"
-    read -ra tqGroups <<< "${tomlGroup}"
-    read -ra tqKeys   <<< "${tomlKey}"
-    read -ra tqVals   <<< "${tomlValue}"
+    tmq_write() {
+        local IFS="|!"
+        read -ra tqGroups <<< "${tomlGroup}"
+        read -ra tqKeys   <<< "${tomlKey}"
+        read -ra tqVals   <<< "${tomlValue}"
 
-    for i in "${!tqGroups[@]}"; do
-      local tqGroup="${tqGroups[i]}"
-      local tqKey="${tqKeys[i]}"
-      local tqVal="${tqVals[i]}"
+        for i in "${!tqGroups[@]}"; do
+            local tqGroup="${tqGroups[i]}"
+            local tqKey="${tqKeys[i]}"
+            local tqVal="${tqVals[i]}"
 
-      [[ "${tqVal}" =~ ^[0-9]+$ ]] || tqVal="\"${tqVal}\""
+            [[ "${tqVal}" =~ ^[0-9]+$ ]] || tqVal="\"${tqVal}\""
 
-      if ! grep -q "^\[${tqGroup}\]" "${tomlPath}" 2>/dev/null; then
-        printf "\n[%s]\n%s=%s\n" "${tqGroup}" "${tqKey}" "${tqVal}" >> "${tomlPath}"
-        continue
-      fi
+            if ! grep -q "^\[${tqGroup}\]" "${tomlPath}" 2>/dev/null; then
+                printf "\n[%s]\n%s=%s\n" "${tqGroup}" "${tqKey}" "${tqVal}" >> "${tomlPath}"
+                continue
+            fi
 
-        # check if key exists inside group
-      if sed -n "/^\[${tqGroup}\]/,/^\[/p" "${tomlPath}" | grep -q "^${tqKey}[[:space:]]*="; then
-        sed -i "/^\[${tqGroup//./\\.}\]/,/^\[/ s|^${tqKey}[[:space:]]*=.*|${tqKey} = ${tqVal}|" "$tomlPath"
-      else
-        sed -i "/^\[${tqGroup}\]/a ${tqKey} = ${tqVal}" "${tomlPath}"
-      fi
-    done
-  }
+            if sed -n "/^\[${tqGroup}\]/,/^\[/p" "${tomlPath}" | grep -q "^${tqKey}[[:space:]]*="; then
+                sed -i "/^\[${tqGroup}\]/,/^\[/ s|^\([[:space:]]*${tqKey}[[:space:]]*=[[:space:]]*\)\(.*\)\(\s*#.*\)\?$|\1${tqVal}\3|" "${tomlPath}"
+            else
+                sed -i "/^\[${tqGroup}\]/a ${tqKey} = ${tqVal}" "${tomlPath}"
+            fi
+        done
+    }
 
-  tmq_read() {
-    local group_esc="${tomlGroup//./\\.}"
-    sed -n "/^\[${group_esc}\]/,/^\[/p" "$tomlPath" | grep "^${tomlKey}[[:space:]]*=" | sed -E "s/^${tomlKey}[[:space:]]*=[[:space:]]*(.*)/\1/; s/[[:space:]]+#.*$//" | tr -d '"[]'
-  }
+    tmq_read() {
+        local group_esc="${tomlGroup//./\\.}"
+        rawVal=$(sed -n "/^\[${group_esc}\]/,/^\[/p" "$tomlPath" \
+                 | grep "^${tomlKey}[[:space:]]*=" \
+                 | sed -E "s/^${tomlKey}[[:space:]]*=[[:space:]]*(.*)/\1/; s/[[:space:]]+#.*$//; s/'//g")
+
+        if [[ "$rawVal" =~ ^\$\(|^\$\{ ]]; then
+            printf '%s\n' "$rawVal"
+        else
+            rawVal=$(echo "$rawVal" | sed -E 's/([^\"]*)#.*/\1/')
+            rawVal="${rawVal//\"/}"
+            rawVal="${rawVal//\'/}"
+            rawVal="${rawVal//[\[\]]/}"
+            printf '%s\n' "$rawVal"
+        fi
+    }
 
     case "${1}" in
-      -i | --inplace)
-        shift
-        local tomlPath=$1
-        local tomlGroup=$2
-        local tomlKey=$3
-        local tomlValue=$4
+        -i | --inplace)
+            shift
+            local tomlPath=$1
+            local tomlGroup=$2
+            local tomlKey=$3
+            local tomlValue=$4
+            tmq_write "${tomlPath}" "${tomlGroup}" "${tomlKey}" "${tomlValue}"
+            ;;
 
-        tmq_write "${tomlPath}" "${tomlGroup}" "${tomlKey}" "${tomlValue}"
-        ;;
-      *)
-        local tomlPath="$1"
-        local tomlGroup="$2"
-        local tomlKey="$3"
-        if [[ -z "${tomlPath}" || -z "${tomlGroup}" || -z "${tomlKey}" ]]; then
-          print_usage
-        fi
-        if (( ${#tqGroups[@]} != ${#tqKeys[@]} || ${#tqGroups[@]} != ${#tqVals[@]} )); then
-          echo "Vyle-Project - Tomlq: group/key/value count mismatch" >&2
-          exit 1
-        fi
+        -o | --output)
+            local tomlPath="$1"
+            local tomlGroup="$2"
+            local tomlKey="$3"
 
-        tmq_read "${tomlPath}" "${tomlGroup}" "${tomlKey}"
-        ;;
+            if [[ -z "${tomlPath}" || -z "${tomlGroup}" || -z "${tomlKey}" ]]; then
+                print_usage
+            fi
+
+            if (( ${#tqGroups[@]} != ${#tqKeys[@]} || ${#tqGroups[@]} != ${#tqVals[@]} )); then
+                echo "Vyle-Project - Tomlq: group/key/value count mismatch" >&2
+                exit 1
+            fi
+
+            tmq_read "${tomlPath}" "${tomlGroup}" "${tomlKey}"
+            ;;
+
+        -e)
+            awk '
+BEGIN { FS="="; OFS="=" }
+
+function trim(s,    t) {
+    t = s
+    sub(/^[ \t\r\n]+/, "", t)
+    sub(/[ \t\r\n]+$/, "", t)
+    return t
+}
+
+function parse_array(s, items,    i, len, ch, buf, inquote, n) {
+    len = length(s); i = 1; n = 0; buf = ""; inquote = 0
+    while (i <= len) {
+        ch = substr(s, i, 1)
+        if (!inquote && (ch == "," || ch ~ /[ \t\r\n]/)) {
+            if (buf != "") { n++; items[n] = buf; buf = "" }
+            i++; continue
+        }
+        if (ch == "\"") {
+            i++
+            while (i <= len) {
+                ch = substr(s, i, 1)
+                if (ch == "\\" && substr(s, i+1, 1) == "\"") { buf = buf "\""; i += 2; continue }
+                if (ch == "\"") { i++; break }
+                buf = buf ch
+                i++
+            }
+            n++; items[n] = buf; buf = ""
+            continue
+        }
+        while (i <= len) {
+            ch = substr(s, i, 1)
+            if (ch == "," || ch ~ /[ \t\r\n]/) break
+            buf = buf ch
+            i++
+        }
+        if (buf != "") { n++; items[n] = buf; buf = "" }
+    }
+    if (buf != "") { n++; items[n] = buf }
+    for (j = 1; j <= n; j++) items[j] = trim(items[j])
+    return n
+}
+
+# SECTION header line
+/^\s*\[/ {
+    gsub(/^\[|\]$/, "", $0)
+    section = toupper($0)
+    gsub(/\./, "_", section)
+    next
+}
+
+# key = value lines
+/^\s*[^#].*=.*/ {
+    key = $1
+    gsub(/^[ \t]+|[ \t]+$/, "", key)
+    key = toupper(key)
+
+    line = $0
+    pos = index(line, "=")
+    value = ""
+    if (pos > 0) { value = substr(line, pos+1) }
+    value = trim(value)
+
+    if (match(value, /^".*"/)) { }
+    else { sub(/#[ \t]*.*$/, "", value); value = trim(value) }
+
+    gsub(/'\''/, "", value)
+
+    if (value ~ /^\[.*\]$/) {
+        inner = substr(value, 2, length(value)-2)
+        count = parse_array(inner, items)
+        out = "("
+        for (i = 1; i <= count; i++) {
+            item = items[i]
+            gsub(/"/, "\\\"", item)
+            out = out sprintf(" \"%s\"", item)
+        }
+        out = out " )"
+        print "export " section "_" key "=" out
+    }
+    else if (value ~ /^".*"$/) {
+        print "export " section "_" key "=" value
+    }
+    else if (value ~ /^[0-9]+$/) {
+        print "export " section "_" key "=" value
+    }
+    else {
+        print "export " section "_" key "=" value
+    }
+}
+' "${VYLE_CONFIG_HOME}/vyle.toml" > "${VYLE_DATA_HOME}/staterc.conf"
+            ;;
+
+        *)
+            print_usage
+            ;;
     esac
+
     set -H
 }
 
 notify() {
   OPTIND=1
-  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file="" time="" style=""
+  local modern="" swayncIPath="" printOut="" notify_id="" value="" notif_file="" time="" style="" umode=""
   
-  while getopts ":m:s:p:i:v:t:a:" prefix; do
+  while getopts ":m:s:p:i:v:t:a:u:" prefix; do
     case "${prefix}" in
       m) modern="${OPTARG}" ;;
       s) 
@@ -187,22 +296,25 @@ notify() {
       a)
         style="${OPTARG}"
         ;;
+      u)
+        umode="${OPTARG}"
+        ;;
       \?)
         return 1
     esac
   done
   shift $((OPTIND -1))
   if [[ "${modern}" -eq 2 ]]; then
-    notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${time:+-t ${time}} ${style:+-a "${style}"} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
+    notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${umode:+-u ${umode}} ${time:+-t ${time}} ${style:+-a "${style}"} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
   elif [[ "${modern}" -eq 1 ]]; then
     notif_file="/tmp/.$USER_notif_id"
     notif_id=""
 
     [[ -f "${notif_file}" ]] && notif_id=$(<"${notif_file}")
     if [[ -n "$notif_id" ]]; then
-      notify-send -r "${notif_id}" "${printOut}" ${style:+-a ${style}} ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p
+      notify-send -r "${notif_id}" "${printOut}" ${umode:+-u ${umode}} ${style:+-a ${style}} ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p
     else
-      notif_id=$(notify-send "${printOut}" ${time:+-t ${time}} ${swayncIPath:+-i "${swayncIPath}"} -p)
+      notif_id=$(notify-send "${printOut}" ${time:+-t ${time}} ${umode:+-u ${umode}} ${swayncIPath:+-i "${swayncIPath}"} -p)
       echo "${notif_id}" > "${notif_file}"
     fi
   else
@@ -223,58 +335,6 @@ timestamp() {
   timestamp=$(date +"%d-%b_%H-%M-%S")
   echo "${timestamp}"
 }
-
-if [[ -e "${VYLE_CONFIG_HOME}/vyle.toml" ]]; then
-  source "${VYLE_DATA_HOME}/tomlmd/tomlmainmd.sh" # Boilerplate toml configuration. DO NOT TOUCH
-  source "${VYLE_CONFIG_HOME}/usrtoml/usertomlmd.sh" # users tomlmd configuration. Use that file.
-
-  tomlSource=1
-elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
-  clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${VYLE_CONFIG_HOME}/ide.conf" | sed 's/exclusion=\"(//')"
-  if [[ -n "${clusterExclude}" ]]; then
-    source <(grep -vE "^[[:space:]]*($clusterExclude)=.*" "${VYLE_CONFIG_HOME}/ide.conf") 
-  else
-    source "${VYLE_CONFIG_HOME}/ide.conf"
-  fi
-  
-  tomlSource=0
-elif [[ -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
-  source "${VYLE_DATA_HOME}/tomlmd/tomlmainmd.sh"
-  source "${VYLE_CONFIG_HOME}/usrtoml/usertomlmd.sh"
-
-  tomlSource=1
-fi
-
-case "${enableWallIde}" in
-  1)
-    enableWallIde=1
-    dcolMode="dark"
-    ;;
-  2) 
-    enableWallIde=2
-    dcolMode="light"
-    ;;
-  3)
-    enableWallIde=3
-    dcolMode="theme"
-    ;;
-  0|*) 
-    enableWallIde=0 
-    dcolMode="auto" 
-    ;;
-esac
-
-PrevThemeIde="Decay-Green"
-
-[[ "${wallFramerate}" =~ ^[0-9]+$ ]] || wallFramerate=144
-[[ "${wallTransDuration}" =~ ^[0-9]+$ ]] || wallTransDuration=0.4
-[[ "${wallAnimation}" =~ ^[0-9]+$ ]] || wallAnimation="any"
-[[ "${wallTransitionBezier}" =~ ^[0-9]+$ ]] || wallTranitionBezier=".43,1.19,1,.4"
-
-[[ -z "${wallTransitionStep}" ]] &&wallTransitionStep=$(awk "BEGIN {printf \"%d\", (${wallTransDuration} * ${wallFramerate}) + 0.5}")
-[[ -z "${wallAnimationPrevious}" ]] && wallAnimationPrevious="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
-[[ -z "${wallAnimationNext}" ]] && wallAnimationNext="grow" || wallAnimationNext="${wallAnimationNext}"
-[[ -z "${wallAnimationTheme}" ]] && wallAnimationTheme="grow" || wallAnimationTheme="${wallAnimationTheme}"
 
 prompt_timer() {
     set +e
@@ -313,17 +373,6 @@ fl_wallpaper() {
   [[ "$fill" -eq 1 ]] && w_int="${w_int%.*}"
   echo "$w_int"
 }
-
-[[ "${brightnessStep}" =~ ^[0-9]+$ ]] || brightnessStep=5
-[[ "${brightnessNotify}" =~ ^[0-9]+$ ]] || brightnessNotify=0
-[[ "${brightnessIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${brightnessIconDir} -!" 
-
-[[ "${volumeStep}" =~ ^[0-9]+$ ]] || volumeStep=5
-[[ "${volumeNotifyUpdateLevel}" =~ ^[0-9]+$ ]] || volumeNotifyUpdateLevel=0
-[[ "${volumeNotifyMute}" =~ ^[0-9]+$ ]] || volumeNotifyMute=0
-[[ "${volumeIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -p "ERROR! Invalid string-type ${volumeIconDir} -!"
-
-[[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ) || notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)" && nProcCount="$(nproc)"
 
 hashmap() {
   unset hashpref 
@@ -393,3 +442,60 @@ load_ivy_file() {
     fi
   done < "$file"
 }
+
+if [[ -e "${VYLE_CONFIG_HOME}/vyle.toml" && ! -e "${VYLE_CONFIG_HOME}/ide.conf" || -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
+    tomlSource=1
+    source "${VYLE_DATA_HOME}/tomlmd/envsubst.sh"
+elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
+  clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${VYLE_CONFIG_HOME}/ide.conf" | sed 's/exclusion=\"(//')"
+  if [[ -n "${clusterExclude}" ]]; then
+    source <(grep -vE "^[[:space:]]*($clusterExclude)=.*" "${VYLE_CONFIG_HOME}/ide.conf") 
+  else
+    source "${VYLE_CONFIG_HOME}/ide.conf"
+  fi 
+  tomlSource=0
+fi
+
+case "${enableWallIde}" in
+  1)
+    enableWallIde=1
+    dcolMode="dark"
+    ;;
+  2) 
+    enableWallIde=2
+    dcolMode="light"
+    ;;
+  3)
+    enableWallIde=3
+    dcolMode="theme"
+    ;;
+  0|*) 
+    enableWallIde=0 
+    dcolMode="auto" 
+    ;;
+esac
+
+PrevThemeIde="Rose-Pine"
+
+[[ "${wallFramerate}" =~ ^[0-9]+$ ]] || wallFramerate=144
+[[ "${wallTransDuration}" =~ ^[0-9]+$ ]] || wallTransDuration=0.4
+[[ "${wallAnimation}" =~ ^[0-9]+$ ]] || wallAnimation="any"
+[[ "${wallTransitionBezier}" =~ ^[0-9]+$ ]] || wallTranitionBezier=".43,1.19,1,.4"
+
+[[ "${wallTransitionStep}" =~ ^[0-9]+$ ]] || wallTransitionStep=$(awk -v d="$wallTransDuration" -v f="$wallFramerate" 'BEGIN {printf "%d", d*f + 31}')
+[[ -z "${wallAnimationPrevious}" ]] && wallAnimationPrevious="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
+[[ -z "${wallAnimationNext}" ]] && wallAnimationNext="grow" || wallAnimationNext="${wallAnimationNext}"
+[[ -z "${wallAnimationTheme}" ]] && wallAnimationTheme="grow" || wallAnimationTheme="${wallAnimationTheme}"
+
+[[ "${brightnessStep}" =~ ^[0-9]+$ ]] || brightnessStep=5
+[[ "${brightnessNotify}" =~ ^[0-9]+$ ]] || brightnessNotify=0
+[[ "${brightnessIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Invalid string-type ${brightnessIconDir} -!" 
+
+[[ "${volumeStep}" =~ ^[0-9]+$ ]] || volumeStep=5
+[[ "${volumeNotifyUpdateLevel}" =~ ^[0-9]+$ ]] || volumeNotifyUpdateLevel=0
+[[ "${volumeNotifyMute}" =~ ^[0-9]+$ ]] || volumeNotifyMute=0
+[[ "${volumeIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Invalid string-type ${volumeIconDir} -!"
+
+[[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ) || notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)" && nProcCount="$(nproc)"
+
+

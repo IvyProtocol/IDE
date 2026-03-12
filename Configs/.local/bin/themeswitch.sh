@@ -16,21 +16,25 @@ themeSelTui() {
         if [[ "${wallDir}" != "${themeDir}/${thmChsh}/wallpapers" ]]; then
             echo " :: Theme Control - Theme '${thmChsh}' :: Wallpaper '${thmImg}' :: DcolMode '${enableWallIde}' --> '${confDir}'"
             notify -m 2 -i "theme_engine" -p "${thmChsh}" -s "${ideCDir}/cache/thumb/$(fl_wallpaper -t "${thmImg}" -f 1).sloc" -t 1100 -a "t1"
-            setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${ideDir}/ide.conf"
+            if [[ "${tomlSource}" -ge 1 ]]; then
+                tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Wallpaper.Configuration" "Directory" "\${VYLE_CONFIG_HOME:-${VYLE_CONFIG_HOME}}/theme/${thmChsh}/wallpapers"
+            else
+                setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${ideDir}/ide.conf"
+            fi
         else
             echo -e " :: Theme Control - Skipped populating $thmChsh -> ${confDir}"
             exit 0
         fi
         if [[ "${enableWallIde}" -eq 3 ]]; then
             if [[ "${ideTheme}" != "${thmChsh}" ]]; then
-                setConf "ideTheme" "${thmChsh}" "${ideDir}/ide.conf"
+                [[ "${tomlSource}" -ge 1 ]] && tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Vyle.Configuration" "Theme" "${thmChsh}" || setConf "ideTheme" "${thmChsh}" "${ideDir}/ide.conf"
             fi 
             sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         else
             "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
              sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
         fi
-        [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${dunstDir}/icons/hyprdots.svg" && return 1
+        [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${dunstDir}/icons/hyprdots.svg" -u critical && return 1
         "${scrDir}/wbselecgen.sh" -t -i "${thmImg}" -w --swww-t -n 1 -r 1
         echo -e " :: Theme Control - Populated successfully ${thmChsh} -> ${confDir}"
     fi
@@ -50,7 +54,7 @@ thmSelEnv() {
         2)
             elm_width=$(( (20 + 12 ) * rofiThemeScale * 2 ))
             max_avail=$(( mon_x_res - ( 4 * rofiThemeScale) ))
-            if [[ "${rofiThemeColumn}" -eq 0 || -z "${rofiThemeColumn}" ]]; then
+            if [[ -z "$rofiThemeColumn" || ! "$rofiThemeColumn" =~ ^[0-9]+$ || "$rofiThemeColumn" -eq 0 ]]; then
                 rofiThemeColumn=$(( max_avail / elm_width ))
             fi
             r_override="window{width:100%;background-color:#00000003;} listview{columns:${rofiThemeColumn};} element{border-radius:${elem_border}px;background-color:@main-bg;} element-icon{size:20em;border-radius:${icon_border}px 0px 0px ${icon_border}px;}"
@@ -60,7 +64,7 @@ thmSelEnv() {
         1|*)
             elm_width=$(( (23 + 12 + 1) * rofiThemeScale * 2 ))
             max_avail=$(( mon_x_res - (4 * rofiThemeScale) ))
-            if [[ "${rofiThemeColumn}" -eq 0 || -z "${rofiThemeColumn}" ]]; then
+            if [[ -z "$rofiThemeColumn" || ! "$rofiThemeColumn" =~ ^[0-9]+$ || "$rofiThemeColumn" -eq 0 ]]; then
                 rofiThemeColumn=$(( max_avail / elm_width ))
             fi
             r_override="window{width:100%;} listview{columns:${rofiThemeColumn};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"

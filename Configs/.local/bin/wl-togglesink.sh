@@ -17,7 +17,7 @@ done
 
 if (( ${#missing[@]} )); then
   if printf '%s\n' "${missing[@]}" | grep -qx "pactl"; then
-    printf '%s\n' "${missing[@]}" | grep -qx "notify-send" || notify-send -a "t1" -r 91190 -t 2000 -i "${dunstDir}/icons/hyprdots.svg" "Pactl Not Installed!"
+    printf '%s\n' "${missing[@]}" | grep -qx "notify-send" || notify-send -a "t1" -u critical -r 91190 -t 2000 -i "${dunstDir}/icons/hyprdots.svg" "Pactl Not Installed!"
   fi
   echo "Missing required dependencies: \"${missing[*]}\"" >&2
   exit 1
@@ -130,7 +130,7 @@ done
 
 if ((errors)); then
   echo -e "pactl failed to set \"${id}\" to be \"${state_msg}\"! Manual intervention required." >&2
-  notify-send -a "t1" -r 91190 -t 1200 -i "${dunstDir}/icons/hyprdots.svg" "Failed to change sink input(s) \"${id}\":-\"${state_msg}\"!"
+  notify-send -a "t1" -r 91190 -t 1200 -u critical -i "${dunstDir}/icons/hyprdots.svg" "Failed to change sink input(s) \"${id}\":-\"${state_msg}\"!"
 else
   # // Append paxmier to get a nice result. Pamixer is complete optional here.
   if command -v pamixer >/dev/null; then

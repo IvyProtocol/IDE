@@ -4,7 +4,7 @@ scrDir="$(dirname "$(realpath "$0")")"
 source "${scrDir}/globalcontrol.sh"
 
 if ! env_pkg -- -Q "wlogout" >/dev/null 2>&1; then
-    notify -m 1 -p "Is wlogout installed? Exit-Code 1" -t 900 -a "t2" -s "${dunstDir}/icons/hyprdots.svg"
+    notify -m 1 -p "Is wlogout installed? Exit-Code 1" -u critical -t 900 -a "t2" -s "${dunstDir}/icons/hyprdots.svg"
     exit 1
 else
     pgrep -x "wlogout" 2>/dev/null && [[ $? -lt 1 ]] && pkill -x "wlogout" && exit 0
