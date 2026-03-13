@@ -5,6 +5,7 @@ source "${scrDir}/globalcontrol.sh"
 wallbashImg="$1"
 wallbashHash="$(md5sum "${wallbashImg}" | awk '{print $1}')"
 
+dcolDir="${VYLE_CACHE_HOME}/shell"
 [[ ! -d "${dcolDir}" ]] && mkdir -p "${dcolDir}"
 [[ ! -d "${dcolDir}/auto" ]] && mkdir -p "${dcolDir}/auto"
 [[ ! -d "${dcolDir}/dark" ]] && mkdir -p "${dcolDir}/dark"
@@ -58,7 +59,7 @@ wallbashOut="${dcolDir}/${sortMode}/ivy-${wallbashHash}.dcol"
 
 if [[ -f "${wallbashOut}" ]]; then
     echo -e " :: Theme Control - [$(basename "$0")] $colorProfile profile :: $sortMode :: Colors $wallbashColors :: Fuzzy $wallbashFuzz :: \"$wallbashOut\""
-    cp "${wallbashOut}" "${ideDir}/main/ivygen.dcol"
+    cp "${wallbashOut}" "${VYLE_CONFIG_HOME}/main/ivygen.dcol"
     "${scrDir}/modules/ivyshell-theme.sh"
     "${scrDir}/modules/ivyshell-helper.sh"
     exit 0
@@ -172,7 +173,7 @@ for ((i = 0; i < wallbashColors; i++)); do
     done
 done
 
-if [[ -d "${ideDir}/main" ]]; then
-    cp "${wallbashOut}" "${ideDir}/main/ivygen.dcol"
+if [[ -d "${VYLE_CONFIG_HOME}/main" ]]; then
+    cp "${wallbashOut}" "${VYLE_CONFIG_HOME}/main/ivygen.dcol"
 fi
 rm -f "$wallbashRaw"

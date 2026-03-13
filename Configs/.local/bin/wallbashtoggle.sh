@@ -11,40 +11,18 @@ apply_config() {
     [[ $1 == "light" ]] && wallIde=2
     [[ $1 == "theme" ]] && wallIde=3 
 
-    if [[ -n "${enableWallIde}" ]]; then
-        if [[ "${tomlSource}" -ge 1 ]]; then
-            tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Vyle.Configuration" "ColMode" "${wallIde}"
-        else
-            setConf "enableWallIde" "${wallIde}" "${ideDir}/ide.conf"
-        fi 
-    else
-        if [[ "${tomlSource}" -ge 1 ]]; then
-            tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Vyle.Configuration" "ColMode" "0"
-        else
-            setConf "enableWallIde" "0" "${ideDir}/ide.conf"
-        fi 
-    fi
-    notify -m 2 -i "theme_engine" -p "Theme Mode: $1" -s "${confDir}/dunst/icons/hyprdots.svg" -t 900 -a "t1"
+    [[ -n "${enableWallIde}" ]] && setConf "enableWallIde" "${wallIde}" "${VYLE_STATE_HOME}/staterc" || setConf "enableWallIde" "0" "${VYLE_STATE_HOME}/staterc"
+    notify -m 2 -i "theme_engine" -p "Theme Mode: $1" -s "${dunstDir}/icons/hyprdots.svg" -t 900 -a "t1"
     [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
     if [[ "${wallIde}" -eq 3 ]]; then
-        if [[ "${tomlSource}" -ge 1 ]]; then
-            tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Vyle.Configuration|Vyle.Configuration" "Theme|ColMode" "${PrevThemeIde}|3"
-        else
-            setConf "ideTheme|enableWallIde" "${PrevThemeIde}|3" "${ideDir}/ide.conf"
-        fi &
-        [[ -f "${ideDir}/theme/${PrevThemeIde}/theme.dcol" ]] && cp "${ideDir}/theme/${PrevThemeIde}/theme.dcol" "${ideDir}/main/ivygen.dcol" &
-        sed -i 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf" &
+        setConf "VYLE_THEME|enableWallIde" "${VYLE_RESERVED_THEME}|3" "${VYLE_STATE_HOME}/staterc"
+        [[ -f "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/theme.dcol" ]] && cp "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/theme.dcol" "${VYLE_CONFIG_HOME}/main/ivygen.dcol" &
+        sed -i 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf" &
         "${scrDir}/modules/ivyshell-helper.sh"
         exit 0
     else
-        if [[ "${ideTheme}" != "Walbash-Ivy" ]]; then
-            if [[ "${tomlSource}" -ge 1 ]]; then
-                tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Vyle.Configuration" "Theme" "Wallbash-Ivy"
-            else
-                setConf "ideTheme" "Wallbash-Ivy" "${confDir}/ivy-shell/ide.conf"
-            fi &
-        fi
-        sed -i 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf" &
+        [[ "${VYLE_THEME}" != "Wallbash-Ivy" ]] && setConf "VYLE_THEME" "Wallbash-Ivy" "${VYLE_STATE_HOME}/staterc" &
+        sed -i 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf" &
         "${scrDir}/ivy-shell.sh" "${wallSet}" --"${1}"
     fi
 

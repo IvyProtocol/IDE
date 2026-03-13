@@ -2,14 +2,6 @@
 #|-/ /-| IDE Configuration File |-/ /-|#
 #|/ /--+-------------------------+/ /--|#
 
-
-# ▀█▀ █░█ █▀▀ █▀▄▀█ █▀▀
-# ░█░ █▀█ ██▄ █░▀░█ ██▄
-
-#// ideTheme indicates the current theme in use.
-#// Do NOT update this manually! This is updated by scripts.
-ideTheme="Wallbash-Ivy"
-
 #  █░█ █▄█ █░░ █▀▀ 
 #  ▀▄▀ ░█░ █▄▄ ██▄  
 
@@ -19,16 +11,10 @@ ideTheme="Wallbash-Ivy"
 #// Warning! This may not work for others if placeholder is different from the intended
 plLoader="ivy|wallbash"
 
-#// enableWallIde to determine the color deployed by Wallbash/Ivy-shell. DO NOT UPDATE THIS MANUALLY! Use /lumine-switch.sh
-#// ebableWallIde=0, 0 applies the colors determined from wallpaper.
-#// enableWallIde=1, 1 applies dark colors determined from dark/light wallpaper. Forces dark color for light wallpaper.
-#// enableWallIde=2, 2 applies light colors determind from dark/light wallpaper. Forces light color for dark wallpaper.
-enableWallIde=0
-
 #// skipTemplate, specifies .ivy or .dcol template that should be excluded or skipped from procesing!
-#// This allows you to selectively exclude certain template that exists in /home/iris/.config/ivy-shell while still processing others.
+#// This allows you to selectively exclude certain template that exists in  while still processing others.
 #// example:
-skipTemplate=
+skipTemplate=${VYLE_CONFIGURATION_SKIPTEMPLATE[@]}
 
 #// nProcCount, lets wallbash use the maximum or limited CPU utilization to process templates!
 #// You can limit the core utilization by declaring the number of cores to be utilized.
@@ -37,9 +23,6 @@ nProcCount=3
 
 # █░█░█ ▄▀█ █░░ █░░ █▀█ ▄▀█ █▀█ █▀▀ █▀█
 # ▀▄▀▄▀ █▀█ █▄▄ █▄▄ █▀▀ █▀█ █▀▀ ██▄ █▀▄
-
-#// wallSet; indicates the current-wallpaper is in use. DO NOT UPDATE THIS MANUALLY!
-wallSet="/home/iris/.config/ivy-shell/theme/Catppuccin-Latte/wallpapers/abstract_blured.jpg"
 
 #// set the transition FPS while changing wallpaper.
 wallFramerate=60
@@ -56,10 +39,6 @@ wallAnimationTheme="grow"
 # set transition-bezier for swww while changing wallpaper.
 wallTransitionBezier=".43,1.19,.1,.4"
 
-#// wallDir, sets the user directories scanned for wallpaper.
-#// DO NOT EDIT THIS MANUALLY UNLESS YOU KNOW WHAT YOU ARE DOING!
-wallDir="/home/iris/.config/ivy-shell/theme/Catppuccin-Latte/wallpapers"
-
 #// WallAddCustomPath, sets a custom user directories scanned for wallpapers.
 #// add your wallpaper directories as - WallAddCustomPath=("/path/to/wall/dir1" "/path/to/wall/dir2")
 #// setting a custom directory for wallDir would result in to cache wallpapers by /swwwallcache.sh!
@@ -70,25 +49,28 @@ WallAddCustomPath=("${WALLPAPER_CONFIGURATION_CUSTOMPATH[@]}")
 # █▀▄ █▄█ █▀░ █
 
 # rofiLauncher.sh configuration.
-
-rofiLauncherScale=10
+rofiLauncherFont="JetBrainsMono Nerd Font"
+rofiLauncherScale=9
 rofiLauncherStyle=1
 
+
 # wbselecgen.sh configuration
-rofiWallpaperScale=10
-rofiWallpaperColumn=
+rofiWallpaperFont="JetBrainsMono Nerd Font"
+rofiWallpaperScale=9
+rofiWallpaperColumn=4
 
 # themeswitch.sh configuration.
-
-rofiThemeScale=10
-rofiThemeColumn=
-rofiThemeStyle=
+rofiThemeFont="JetBrainsMono Nerd Font"
+rofiThemeScale=9
+rofiThemeColumn=2
+rofiThemeStyle=1
 
 # style-launcher.sh configuration.
-rofiStyleScale=
+rofiStyleScale=9
 
 # wallbashtoggle.sh configuration
-rofiWallbashScale=
+rofiWallbashFont="JetBrainsMono Nerd Font"
+rofiWallbashScale=9
 
 # █░░ █▀█ █▀▀ █▀█ █░█ ▀█▀
 # █▄▄ █▄█ █▄█ █▄█ █▄█ ░█░
@@ -111,8 +93,8 @@ fetchIcon="/home/iris/.config/fastfetch/icons"
 #// brightnessStep is integer-type variable that is determined through 0 (true) and 1 (False).
 #// brightnessNotify is integer-type, determined of 0 and 1.
 brightnessIconDir="/home/iris/.config/dunst/icons/vol"
-brightnessStep=
-brightnessNotify=
+brightnessStep=5
+brightnessNotify=0
 
 # █░█ █▀█ █░░ █░█ █▀▄▀█ █▀▀ █▀ ▀█▀ █░░ 
 # ▀▄▀ █▄█ █▄▄ █▄█ █░▀░█ ██▄ █▄ ░█░ █▄▄
@@ -121,9 +103,9 @@ brightnessNotify=
 #// volumeStep is an integer-type variable to determine the steps. For example, volumeStep is defaultly set to 5.
 #// volumeNotifyUpdateLevel & volumeNotifyMute, is an integer-type variable that suppress Notification-Popups determined through 0 (true) or {1 or greater (false)}.
 volumeIconDir="/home/iris/.config/dunst/icons/vol"
-volumeStep=
-volumeNotifyUpdateLevel=
-volumeNotifyMute=
+volumeStep=5
+volumeNotifyUpdateLevel=0
+volumeNotifyMute=0
 
 # █▄░█ █▀█ ▀█▀ █ █▀▀ █ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄░█
 # █░▀█ █▄█ ░█░ █ █▀░ █ █▄▄ █▀█ ░█░ █ █▄█ █░▀█
@@ -136,11 +118,13 @@ notificationFontSize=9
 
 # Hyprland Configuration.
 TERMINAL="kitty"
-EDITOR=""
+EDITOR="vscodium"
 EXPLORER="dolphin"
 BROWSER="firefox"
 LOCKSCREEN="hyprlock"
 TASKMANAGER="gnome-system-monitor"
+CURSOR="Bibata-Modern-Ice"
+CURSOR_SIZE=19
 
 # █▀▀ ▀▄▀ ▀█▀ █▀█ ▄▀█
 # ██▄ █░█ ░█░ █▀▄ █▀█

@@ -2,9 +2,7 @@
 #  ▀▄▀ ░█░ █▄▄ ██▄  
 # Vyle configuration.
 [Vyle.Configuration]
-Theme = "Wallbash-Ivy" 
 PlaceHolder = "ivy|wallbash" # Supported Placeholder of wallbash.
-ColMode = 0 # ColorMode of Wallbash. WARNING: DO NOT EDIT THIS MANUALLY!
 SkipTemplate = [] # Templates to Skip when using wallbash.
 ProcCount = 3 # Limit usage of wallbash cores. NOTE: Use "$(nproc)" if you want to maximize full usage.
 
@@ -12,9 +10,7 @@ ProcCount = 3 # Limit usage of wallbash cores. NOTE: Use "$(nproc)" if you want 
 # ▀▄▀▄▀ █▀█ █▄▄ █▄▄ █▀▀ █▀█ █▀▀ ██▄ █▀▄
 # Wallpaper configuration.
 [Wallpaper.Configuration]
-Set = "/home/iris/.config/ivy-shell/theme/Catppuccin-Latte/wallpapers/abstract_blured.jpg"
 Backend = "swww" # Current-Backend Set.
-Directory = "${VYLE_CONFIG_HOME:-/home/iris/.config/ivy-shell}/theme/Catppuccin-Latte/wallpapers"
 CustomPath = [] # List of paths to search for wallpapers.
 
 # wbselecgen.sh configuration.
@@ -31,27 +27,31 @@ AnimationTheme = "grow" # Transition AnimationTheme.
 # █▀▄ █▄█ █▀░ █
 # rofilauncher.sh configuration.
 [Rofi.Launch]
-Scale = 10 # Scale for rofilauncher.sh
+Font = "JetBrainsMono Nerd Font" # Font for rofilauncher.sh
+Scale = 9 # Scale for rofilauncher.sh
 Style = 1 # Style for rofilauncher.sh
 
 # wbselecgen.sh configuration.
 [Rofi.Wallpaper]
-Scale = 10 # Scale for wbselecgen.sh
-# ColumnCount = 4 # Column for wbselecgen.sh
+Font = "JetBrainsMono Nerd Font" # Font for wbselecgen.sh
+Scale = 9 # Scale for wbselecgen.sh
+ColumnCount = 4 # Column for wbselecgen.sh
 
 # themeswitch.sh configuration.
 [Rofi.Theme]
-Scale = 10 # Scale for themeswitch.sh
-# ColumnCount = 2  # Column for themeswitch.sh
-# Style = 2 # Style for themeswitch.sh
+Font = "JetBrainsMono Nerd Font" # Font for themeswitch.sh
+Scale = 9 # Scale for themeswitch.sh
+ColumnCount = 2 # Column for themeswitch.sh
+Style = 1 # Style for themeswitch.sh
 
 # wallbashtoggle.sh configuraiton
 [Rofi.Wallbash]
-# Scale = 10 # Scale for wallbashtoggle.sh
+Font = "JetBrainsMono Nerd Font" # Font for wallbashtoggle.sh
+Scale = 9 # Scale for wallbashtoggle.sh
 
 # style-launcher.sh configuration.
 [Rofi.Switch]
-# Scale = 10 # Scale for style-launcher.sh
+Scale = 9 # Scale for style-launcher.sh
 
 # █░░ █▀█ █▀▀ █▀█ █░█ ▀█▀
 # █▄▄ █▄█ █▄█ █▄█ █▄█ ░█░
@@ -61,29 +61,26 @@ Style = 1 # Style for logoutlauncher.sh | Picks up style for wlogout!
 
 # █▀▀ ▄▀█ █▀ ▀█▀ █▀▀ █▀▀ ▀█▀ █▀▀ █░█
 # █▀░ █▀█ ▄█ ░█░ █▀░ ██▄ ░█░ █▄▄ █▀█
-
 # fastfetch.sh configuration.
 [Fastfetch]
-FetchIcon = "${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/icons" # Fetches Directory for fastfetch.sh
-
+FetchIcon = "${XDG_CONFIG_HOME}/fastfetch/icons" # Fetches Directory for fastfetch.sh
 
 # █▄▄ █▀█ █ █▀  █░█ ▀█▀ █▄░█ █▀▀ █▀ █▀ █▀ ▀█▀ █░░ 
 # █▄█ █▀▄ █ █▄█ █▀█ ░█░ █░▀█ ██▄ ▄█ ▄█ █▄ ░█░ █▄▄
 # brightnesscontrol.sh configuration
 [Brightness.Configuration]
-FetchIcon = "${confDir}/dunst/icons/vol" # Fetches Directory for brightnesscontrol.sh
-# Steps = 5 # Steps Taken for brightnesscontrol.sh
-# NotifyMute = 0 # Mute: 0 = False; 1 = True
-
+FetchIcon = "${XDG_CONFIG_HOME}/dunst/icons/vol" # Fetches Directory for brightnesscontrol.sh
+Steps = 5 # Steps Taken for brightnesscontrol.sh
+NotifyMute = 0 # Mute: 0 = False; 1 = True
 
 # █░█ █▀█ █░░ █░█ █▀▄▀█ █▀▀ █▀ ▀█▀ █░░ 
 # ▀▄▀ █▄█ █▄▄ █▄█ █░▀░█ ██▄ █▄ ░█░ █▄▄
 # volumecontrol.sh configuration.
 [Volume.Configuration]
 FetchIcon = "${XDG_CONFIG_HOME:-$HOME/.config}/dunst/icons/vol" # Fetches Directory for voluemcontrol.sh
-# Steps = 5 # Steps Taken for volumecontrol.sh
-# StepsMute = 0 # Silent Popups from step-taken. Mute: 0 = False; 1 = True
-# NotifyMute = 0 # Silent Popups of Mic/Speaker. Mute: 0 = False; 1 = True
+Steps = 5 # Steps Taken for volumecontrol.sh
+StepsMute = 0 # Silent Popups from step-taken. Mute: 0 = False; 1 = True
+NotifyMute = 0 # Silent Popups of Mic/Speaker. Mute: 0 = False; 1 = True
 
 # █▄░█ █▀█ ▀█▀ █ █▀▀ █ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄░█
 # █░▀█ █▄█ ░█░ █ █▀░ █ █▄▄ █▀█ ░█░ █ █▄█ █░▀█
@@ -102,5 +99,5 @@ Explorer = "dolphin" # Explorer
 Browser = "firefox" # Browser
 LockScreen = "hyprlock" # LockScreen
 TaskManager = "gnome-system-monitor" # TaskManager
-
-
+Cursor = "Bibata-Modern-Ice" # Cursor Theme
+CursorSize = 19 # Cursor Size

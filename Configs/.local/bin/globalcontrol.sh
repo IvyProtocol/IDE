@@ -2,26 +2,17 @@
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export VYLE_CONFIG_HOME="$XDG_CONFIG_HOME/ivy-shell"
 export VYLE_DATA_HOME="$XDG_DATA_HOME/vyle"
+export VYLE_STATE_HOME="$XDG_STATE_HOME/vyle"
 export VYLE_CACHE_HOME="$XDG_CACHE_HOME/ivy-shell"
-export confDir="$XDG_CONFIG_HOME"
-export localDir="$XDG_DATA_HOME"
-export cacheDir="$XDG_CACHE_HOME"
-export ideDir="$VYLE_CONFIG_HOME"
-export ideCDir="$VYLE_CACHE_HOME"
-export dcolDir="$VYLE_CACHE_HOME/shell"
+
 export dunstDir="$XDG_CONFIG_HOME/dunst"
 export rasiDir="$XDG_CONFIG_HOME/rofi/shared"
 export rofiStyleDir="$XDG_CONFIG_HOME/rofi/styles"
 export rofiAssetDir="$rasiDir/assets"
-export wcDir="$XDG_CONFIG_HOME/waybar"
-export wlDir="$wcDir/Styles"
-export hyprscrDir="$XDG_CONFIG_HOME/hypr/scripts"
-
-
-set +e
 
 env_pkg() {
   local envPkg statsPkg defAur
@@ -153,6 +144,7 @@ tomlq() {
             ;;
 
         -o | --output)
+            shift
             local tomlPath="$1"
             local tomlGroup="$2"
             local tomlKey="$3"
@@ -170,9 +162,7 @@ tomlq() {
             ;;
 
         -e)
-            awk '
-BEGIN { FS="="; OFS="=" }
-
+            awk 'BEGIN { FS="="; OFS="=" }
 function trim(s,    t) {
     t = s
     sub(/^[ \t\r\n]+/, "", t)
@@ -307,7 +297,7 @@ notify() {
   if [[ "${modern}" -eq 2 ]]; then
     notify-send -e -h "string:x-canonical-private-synchronous:${notify_id}" ${value:+-h int:value:${value}} ${umode:+-u ${umode}} ${time:+-t ${time}} ${style:+-a "${style}"} ${swayncIPath:+-i "${swayncIPath}"} "$printOut"
   elif [[ "${modern}" -eq 1 ]]; then
-    notif_file="/tmp/.$USER_notif_id"
+    notif_file="/tmp/${USER}_notif_id"
     notif_id=""
 
     [[ -f "${notif_file}" ]] && notif_id=$(<"${notif_file}")
@@ -319,13 +309,13 @@ notify() {
     fi
   else
     [[ -z "${OPTARG}" ]] && {
-      echo -e "[$0] Correct arguments are:"
-      echo -e "[$0] -l, legacy usage of notif_id. Supports: -s, -p."
-      echo -e "[$0] -m, private usage of notify-send. Supports: -s, -p, -i, -v. Mandatorial: -p, -i."
-      echo -e "[$0] -p, print inputted message." #If two -p are seen, then the second input would overlap! 
-      echo -e "[$0] -i, increament notif_id to notify-send. Mandatory if -m 2 was used."
-      echo -e "[$0] -v, value set for notify-send, optional."
-      exit 1
+      echo -e "[$0] Correct arguments are:";
+      echo -e "[$0] -l, legacy usage of notif_id. Supports: -s, -p.";
+      echo -e "[$0] -m, private usage of notify-send. Supports: -s, -p, -i, -v. Mandatorial: -p, -i.";
+      echo -e "[$0] -p, print inputted message."; #If two -p are seen, then the second input would overlap! 
+      echo -e "[$0] -i, increament notif_id to notify-send. Mandatory if -m 2 was used.";
+      echo -e "[$0] -v, value set for notify-send, optional.";
+      exit 1;
     }
   fi
 }
@@ -445,7 +435,7 @@ load_ivy_file() {
 
 if [[ -e "${VYLE_CONFIG_HOME}/vyle.toml" && ! -e "${VYLE_CONFIG_HOME}/ide.conf" || -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
     tomlSource=1
-    source "${VYLE_DATA_HOME}/tomlmd/envsubst.sh"
+    source "${VYLE_DATA_HOME}/tomlmd/envsubst.sh" 
 elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
   clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${VYLE_CONFIG_HOME}/ide.conf" | sed 's/exclusion=\"(//')"
   if [[ -n "${clusterExclude}" ]]; then
@@ -454,35 +444,32 @@ elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf
     source "${VYLE_CONFIG_HOME}/ide.conf"
   fi 
   tomlSource=0
+elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && ! -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
+    cp "${VYLE_DATA_HOME}/schema/vyle.toml" "${VYLE_CONFIG_HOME}/vyle.toml"
 fi
+source "${VYLE_STATE_HOME}/staterc"
 
 case "${enableWallIde}" in
   1)
-    enableWallIde=1
     dcolMode="dark"
     ;;
   2) 
-    enableWallIde=2
     dcolMode="light"
     ;;
   3)
-    enableWallIde=3
     dcolMode="theme"
     ;;
   0|*) 
-    enableWallIde=0 
     dcolMode="auto" 
     ;;
 esac
-
-PrevThemeIde="Rose-Pine"
 
 [[ "${wallFramerate}" =~ ^[0-9]+$ ]] || wallFramerate=144
 [[ "${wallTransDuration}" =~ ^[0-9]+$ ]] || wallTransDuration=0.4
 [[ "${wallAnimation}" =~ ^[0-9]+$ ]] || wallAnimation="any"
 [[ "${wallTransitionBezier}" =~ ^[0-9]+$ ]] || wallTranitionBezier=".43,1.19,1,.4"
 
-[[ "${wallTransitionStep}" =~ ^[0-9]+$ ]] || wallTransitionStep=$(awk -v d="$wallTransDuration" -v f="$wallFramerate" 'BEGIN {printf "%d", d*f + 31}')
+wallTransitionStep=$(awk -v d="$wallTransDuration" -v f="$wallFramerate" 'BEGIN {printf "%d", d*f + 31}')
 [[ -z "${wallAnimationPrevious}" ]] && wallAnimationPrevious="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
 [[ -z "${wallAnimationNext}" ]] && wallAnimationNext="grow" || wallAnimationNext="${wallAnimationNext}"
 [[ -z "${wallAnimationTheme}" ]] && wallAnimationTheme="grow" || wallAnimationTheme="${wallAnimationTheme}"
@@ -496,6 +483,18 @@ PrevThemeIde="Rose-Pine"
 [[ "${volumeNotifyMute}" =~ ^[0-9]+$ ]] || volumeNotifyMute=0
 [[ "${volumeIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Invalid string-type ${volumeIconDir} -!"
 
-[[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ) || notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)" && nProcCount="$(nproc)"
+[[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ) || { notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -t 900 -u critical -p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)"; nProcCount="$(nproc)"; }
 
+FontRegex='^[[:alnum:] .-]+$'
+[[ "${rofiLauncherScale}" =~ ^[0-9]+$ ]] || rofiLauncherScale=10
+[[ "${rofiLauncherStyle}" =~ ^[0-9]+$ ]] || rofiLauncherStyle=1
+[[ "${rofiLauncherFont}" =~ ${FontRegex} ]] || rofiLauncherFont="JetBrainsMono Nerd Font"
+[[ "${rofiWallpaperFont}" =~ ${FontRegex} ]] || rofiWallpaperFont="JetBrainsMono Nerd Font"
+[[ "${rofiThemeFont}" =~ ${FontRegex} ]] || rofiThemeFont="JetBrainsMono Nerd Font"
+[[ "${rofiWallbashFont}" =~ ${FontRegex} ]] || rofiWallbashFont="JetBrainsMono Nerd Font"
+unset FontRegex
+[[ "${rofiStyleScale}" =~ ^[0-9]+$ ]] || rofiStyleScale=10
+
+[[ "${notificationFont}" =~ ^[a-zA-Z]+$ ]] || notificationFont="JetBrainsMono Nerd Font"
+[[ "${notificationFontSize}" =~ ^[0-9]+$ ]] || notificationFontSize=10
 

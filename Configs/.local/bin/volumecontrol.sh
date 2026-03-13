@@ -139,7 +139,7 @@ while getopts "iop:st" opt; do
         i) device="pamixer"; srce="--default-source"; nsink=$(pamixer --list-sources | awk -F '"' 'END {print $(NF - 1)}') ;;
         o) device="pamixer"; srce=""; nsink=$(pamixer --get-default-sink | awk -F '"' 'END{print $(NF - 1)}') ;;
         p) device="playerctl"; srce="${OPTARG}"; nsink=$(playerctl --list-all | grep -w "$srce") ;;
-        s) select_output "$(select_output | rofi -dmenu -config "${confDir}/rofi/notification.rasi")"; exit ;;
+        s) select_output "$(select_output | rofi -dmenu -config "${XDG_CONFIG_HOME}/rofi/notification.rasi")"; exit ;;
         t) toggle_output; exit ;;
         *) print_usage ;;
     esac

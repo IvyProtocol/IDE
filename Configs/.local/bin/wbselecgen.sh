@@ -4,9 +4,10 @@ set -eo pipefail
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
-
+export wallDir
 wallSel="${wallDir}"
-cacheDir="${ideCDir}/cache"
+dcolDir="${VYLE_CACHE_HOME}/shell"
+cacheDir="${VYLE_CACHE_HOME}/cache"
 blurDir="${cacheDir}/blur"
 colsDir="${cacheDir}/cols"
 thumbDir="${cacheDir}/thumb"
@@ -39,7 +40,7 @@ wallSelTui() {
     local base blurred thmExtn 
     base="${img##*/}"
     blurred="${blurDir}/${base%.*}.bpex"
-    echo "$img" > "${ideDir}/theme/${PrevThemeIde}/wallpapers/.wallbash-main" 
+    echo "$img" > "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/wallpapers/.wallbash-main" 
 
     scRun=$(fl_wallpaper -t "${img}" -f 1)    
     case "${rofiThemeStyle}" in
@@ -57,19 +58,15 @@ wallSelTui() {
     fi
 
     {   
-        if [[ "${tomlSource}" -eq 1 ]]; then
-            tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Wallpaper.Configuration" "Set" "${wallSel}/$(fl_wallpaper -t "${img}")"
-        else
-            setConf "wallSet" "${wallSel}/$(fl_wallpaper -t "$img")" "${ideDir}/ide.conf" 
-        fi
+        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t "${img}")" "${VYLE_STATE_HOME}/staterc"
         ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/wall.cols"
         ln -sf "${blurDir}/${scRun}.bpex" "${rasiDir}/wall.bpex"
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
-        ln -sf "${cacheDir}/${thmExtn}/${scRun}.${thmExtn}" "${ideDir}/theme/${PrevThemeIde}/wall.set"
+        ln -sf "${cacheDir}/${thmExtn}/${scRun}.${thmExtn}" "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/wall.set"
     } &
     
     echo -e " :: Theme Control - [$(basename "${0}")] - Wallpaper Control - Applying $img"
-    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "${base}" -s "${cacheDir}/thumb/$(fl_wallpaper -t "${img}" -f 1).sloc" -a "t1"
+    [[ "$ntSend" -eq 0 ]] && notify -m 2 -i "theme_engine"  -p "${base}" -s "${thumbDir}/$(fl_wallpaper -t "${img}" -f 1).sloc" -a "t1"
     case $swi in
         --swww-p) swww img "$img" -t "${wallAnimationPrevious}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         --swww-n) swww img "$img" -t "${wallAnimationNext}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
@@ -88,7 +85,7 @@ wallSelTui() {
             if [[ "${enableWallIde}" -eq 3 && "${dcolMode}" == "theme" ]]; then
                 read -r hashMech <<< $(hashmap -v -t "${img}" | awk -F '"' '{print $2}')
                 if [[ -f "${dcolDir}/auto/ivy-${hashMech}.dcol" ]]; then
-                    cp "${dcolDir}/auto/ivy-${hashMech}.dcol" "${ideDir}/main/ivygen.dcol"
+                    cp "${dcolDir}/auto/ivy-${hashMech}.dcol" "${VYLE_CONFIG_HOME}/main/ivygen.dcol"
                     "${scrDir}/modules/ivyshell-theme.sh" && "${scrDir}/modules/ivyshell-helper.sh"
                 else
                     "${scrDir}/ivy-shell.sh" "$img"
@@ -104,7 +101,7 @@ wallSelEnv() {
     if [[ -z "${rofiWallpaperScale}" || "${rofiWallpaperScale}" -eq 0 ]]; then
         rofiWallpaperScale=10
     fi
-    r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiWallpaperScale}\";}"
+    r_scale="configuration {font : \"${rofiWallpaperFont} ${rofiWallpaperScale}\";}"
     elem_border=$(( hypr_border * 3 ))
 
     mon_x_res=$(( mon_res * 100 / mon_scale ))

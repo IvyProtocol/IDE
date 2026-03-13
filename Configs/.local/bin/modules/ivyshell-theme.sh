@@ -19,7 +19,7 @@ while IFS= read -r line || [[ -n $line ]]; do
   val="${val//\"/}"
 
   ivy["$key"]="$val"
-done < "${ideDir}/main/ivygen.dcol"
+done < "${VYLE_CONFIG_HOME}/main/ivygen.dcol"
 
 generate_theme() {
   local suffix="$1"
@@ -44,7 +44,7 @@ generate_theme() {
   mv "${tmpfile}" "$target"
 }
 
-generate_theme "" "${ideDir}/theme.ivy" ""
-generate_theme "_rgba" "${ideDir}/theme-rgba.ivy" "_rgba"
+generate_theme "" "${VYLE_CONFIG_HOME}/theme.ivy" ""
+generate_theme "_rgba" "${VYLE_CONFIG_HOME}/theme-rgba.ivy" "_rgba"
 
 echo " :: Theme Control - Generated necessary files for placeholder loader"

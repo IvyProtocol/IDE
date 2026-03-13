@@ -4,7 +4,7 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
 
-dir="${homDir}/Pictures/Screenshots"
+dir="$HOME/Pictures/Screenshots"
 scrfile="${dir}/Screenshot_$(timestamp).png"
 
 active_window_class=$(hyprctl -j activewindow | jq -r '(.class)')

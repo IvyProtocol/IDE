@@ -12,3 +12,5 @@ if status is-interactive
 	alias wbsecrandom="$HOME/.local/bin/wbsecrandom.sh"
 	set EDITOR nvim
 end
+
+fish_add_path /home/iris/.spicetify

@@ -4,8 +4,7 @@ set -eo pipefail
 scrDir="$(dirname "$(realpath "$0")")"
 source "${scrDir}/globalcontrol.sh"
 
-[[ "${rofiLauncherScale}" =~ ^[0-9]+$ ]] || rofiLauncherScale=10
-[[ -z "${rofiStyleDir}" ]] && rofiStyleDir="${confDir}/rofi/styles"
+[[ -z "${rofiStyleDir}" ]] && rofiStyleDir="${XDG_CONFIG_HOME}/rofi/styles"
 
 case "${1}" in
   -d|--drun) rofiMode="drun" ;;
@@ -28,7 +27,7 @@ echo -e " :: Rofi-Launch - Preparting to read ${rofiStyleLaunch} - Deploying....
 wind_border=$(( hypr_border * 3 ))
 [[ "${hypr_border}" -eq 0 ]] && elem_border="10" || elem_border=$(( hypr_border * 2 ))
 r_override="window {border: ${hypr_width}px; border-radius: ${wind_border}px;} element {border-radius: ${elem_border}px;}"
-r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiLauncherScale}\";}"
+r_scale="configuration {font: \"${rofiLauncherFont} ${rofiLauncherScale}\";}"
 is_override="$(gsettings get org.gnome.desktop.interface icon-theme | sed "s/'//g")"
 i_override="configuration {icon-theme: \"${is_override}\";}"
 

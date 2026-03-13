@@ -1,0 +1,106 @@
+#  █░█ █▄█ █░░ █▀▀ 
+#  ▀▄▀ ░█░ █▄▄ ██▄  
+# Vyle configuration.
+[Vyle.Configuration]
+Theme = "${VYLE_CONFIGURATION_THEME}" 
+PlaceHolder = "${VYLE_CONFIGURATION_PLACEHOLDER}" # Supported Placeholder of wallbash.
+ColMode = ${VYLE_CONFIGURATION_COLMODE} # ColorMode of Wallbash. WARNING: DO NOT EDIT THIS MANUALLY!
+SkipTemplate = [${VYLE_CONFIGURATION_SKIPTEMPLATE}] # Templates to Skip when using wallbash.
+ProcCount = ${} # Limit usage of wallbash cores. NOTE: Use "$(nproc)" if you want to maximize full usage.
+
+# █░█░█ ▄▀█ █░░ █░░ █▀█ ▄▀█ █▀█ █▀▀ █▀█
+# ▀▄▀▄▀ █▀█ █▄▄ █▄▄ █▀▀ █▀█ █▀▀ ██▄ █▀▄
+# Wallpaper configuration.
+[Wallpaper.Configuration]
+Set = "/home/iris/.config/ivy-shell/theme/Decay-Green/wallpapers/aurora_borealis.png" # Current-wallpaper set.
+Backend = "swww" # Current-Backend Set.
+Directory = "${XDG_CONFIG_HOME:-$HOME/.config}/ivy-shell/theme/Decay-Green/wallpapers" # Current Theme Directory.
+CustomPath = [] # List of paths to search for wallpapers.
+
+# wbselecgen.sh configuration.
+[Wallpaper.Swww]
+Framerate = 60 # Transition Framerate.
+TransitionDuration = 0.5 # Transition Duration.
+TransitionBezier = ".43,1.19,.1,.4" # Transition Bezier.
+Animation = "grow" # Transition Animation.
+AnimationPrevious = "outer" # Transition AnimationPrevious.
+AnimationNext = "grow" # Transition AnimationNext.
+AnimationTheme = "grow" # Transition AnimationTheme.
+
+# █▀█ █▀█ █▀▀ █
+# █▀▄ █▄█ █▀░ █
+# rofilauncher.sh configuration.
+[Rofi.Launch]
+Scale = 9 # Scale for rofilauncher.sh
+Style = 1 # Style for rofilauncher.sh
+
+# wbselecgen.sh configuration.
+[Rofi.Wallpaper]
+Scale = 9 # Scale for wbselecgen.sh
+ColumnCount = 4 # Column for wbselecgen.sh
+
+# themeswitch.sh configuration.
+[Rofi.Theme]
+Scale = 9 # Scale for themeswitch.sh
+ColumnCount =  # Column for themeswitch.sh
+Style = 2 # Style for themeswitch.sh
+
+# wallbashtoggle.sh configuraiton
+[Rofi.Wallbash]
+Scale = 9 # Scale for wallbashtoggle.sh
+
+# style-launcher.sh configuration.
+[Rofi.Switch]
+Scale = 9 # Scale for style-launcher.sh
+
+# █░░ █▀█ █▀▀ █▀█ █░█ ▀█▀
+# █▄▄ █▄█ █▄█ █▄█ █▄█ ░█░
+# logoutlaunch.sh configuration.
+[Wlogout]
+Style = 1 # Style for logoutlauncher.sh | Picks up style for wlogout!
+
+# █▀▀ ▄▀█ █▀ ▀█▀ █▀▀ █▀▀ ▀█▀ █▀▀ █░█
+# █▀░ █▀█ ▄█ ░█░ █▀░ ██▄ ░█░ █▄▄ █▀█
+
+# fastfetch.sh configuration.
+[Fastfetch]
+FetchIcon = "${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/icons" # Fetches Directory for fastfetch.sh
+
+
+# █▄▄ █▀█ █ █▀  █░█ ▀█▀ █▄░█ █▀▀ █▀ █▀ █▀ ▀█▀ █░░ 
+# █▄█ █▀▄ █ █▄█ █▀█ ░█░ █░▀█ ██▄ ▄█ ▄█ █▄ ░█░ █▄▄
+# brightnesscontrol.sh configuration
+[Brightness.Configuration]
+FetchIcon = "${confDir}/dunst/icons/vol" # Fetches Directory for brightnesscontrol.sh
+Steps = 5 # Steps Taken for brightnesscontrol.sh
+NotifyMute = 0 # Mute: 0 = False; 1 = True
+
+
+# █░█ █▀█ █░░ █░█ █▀▄▀█ █▀▀ █▀ ▀█▀ █░░ 
+# ▀▄▀ █▄█ █▄▄ █▄█ █░▀░█ ██▄ █▄ ░█░ █▄▄
+# volumecontrol.sh configuration.
+[Volume.Configuration]
+FetchIcon = "${XDG_CONFIG_HOME:-$HOME/.config}/dunst/icons/vol" # Fetches Directory for voluemcontrol.sh
+Steps = 5 # Steps Taken for volumecontrol.sh
+StepsMute = 0 # Silent Popups from step-taken. Mute: 0 = False; 1 = True
+NotifyMute = 0 # Silent Popups of Mic/Speaker. Mute: 0 = False; 1 = True
+
+# █▄░█ █▀█ ▀█▀ █ █▀▀ █ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █░▀█ █▄█ ░█░ █ █▀░ █ █▄▄ █▀█ ░█░ █ █▄█ █░▀█
+# dunstctl configuration
+[Notification.Configuration]
+Font = "JetBrainsMono Nerd Font" # Font Configuration for Dunst. 
+FontSize = 10 # Font_Size for Dunst
+
+# █░█ █▄█ █▀█ █▀█ █░░ ▄▀█ █▄░█ █▀▄
+# █▀█ ░█░ █▀▀ █▀▄ █▄▄ █▀█ █░▀█ █▄▀
+# Hyprland Configuration.
+[Hyprland.Configuration]
+Terminal = "kitty" # Terminal
+Editor = "vscodium" # Editor
+Explorer = "dolphin" # Explorer
+Browser = "firefox" # Browser
+LockScreen = "hyprlock" # LockScreen
+TaskManager = "gnome-system-monitor" # TaskManager
+
+

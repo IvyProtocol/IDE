@@ -11,10 +11,10 @@ else
 fi
 
 wlogoutStyle="${1:-${wlogoutStyle}}"
-[[ -f "${confDir}/wlogout/layout_${wlogoutStyle}" ]] || [[ -f "${confDir}/wlogout/style_${wlogoutStyle}" ]] || wlogoutStyle=1
+[[ -f "${XDG_CONFIG_HOME}/wlogout/layout_${wlogoutStyle}" ]] || [[ -f "${XDG_CONFIG_HOME}/wlogout/style_${wlogoutStyle}" ]] || wlogoutStyle=1
 
-wLayout="${confDir}/wlogout/layout_${wlogoutStyle}"
-wlTmplt="${confDir}/wlogout/style_${wlogoutStyle}.css"
+wLayout="${XDG_CONFIG_HOME}/wlogout/layout_${wlogoutStyle}"
+wlTmplt="${XDG_CONFIG_HOME}/wlogout/style_${wlogoutStyle}.css"
 y_mon=$(hyprctl -j monitors | jq '.[] | .height')
 
 case "${wlogoutStyle}" in
@@ -29,11 +29,11 @@ case "${wlogoutStyle}" in
 esac
 if [[ "${enableWallIde}" -eq 3 ]]; then
     unset dcolMode
-    colorScheme="$(grep "^[[:space:]]*\$COLOR[-_]SCHEME\s*=" "${ideDir}/theme/{PrevThemeIde}/hypr.theme" | sed "s/.*-//g; s/'//g" \
+    colorScheme="$(grep "^[[:space:]]*\$COLOR[-_]SCHEME\s*=" "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/hypr.theme" | sed "s/.*-//g; s/'//g" \
         || gsettings get org.gnome.desktop.interface color-scheme | sed "s/'//g; s/.*-//" \
         || { echo " colorScheme is empty!"; colorScheme="dark" ; } )"
     [[ "${colorScheme}" == "light" ]] && dcolMode="light" || dcolMode="dark"
-    [[ -f "${ideDir}/theme/${PrevThemeIde}/theme.dcol" ]] && source "${ideDir}/theme/${PrevThemeIde}/theme.dcol"
+    [[ -f "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/theme.dcol" ]] && source "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/theme.dcol"
 fi
 
 [[ "${dcolMode}" == "light" ]] && export BtnCol="black" || export BtnCol="white"
@@ -41,7 +41,7 @@ export active_rad=$(( hypr_border * 5 ))
 export button_rad=$(( hypr_border * 8 ))
 export fntSize=$(( y_mon * 2 / 100 ))
 
-echo -e " :: Deploying :: Profile - ${wlogoutStyle} :: DcolMode - ${dcolMode} :: Theme - ${PrevThemeIde} :: Font-Size - ${fntSize}"
+echo -e " :: Deploying :: Profile - ${wlogoutStyle} :: DcolMode - ${dcolMode} :: Theme - ${VYLE_RESERVED_THEME} :: Font-Size - ${fntSize}"
 wlStyle="$(envsubst < $wlTmplt)"
 wlogout -b "${wlColms}" -c 0 -r 0 -m 0 --layout "${wLayout}" --css <(echo "${wlStyle}") --protocol layer-shell
 

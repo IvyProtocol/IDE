@@ -4,12 +4,11 @@ export scrDir="$(dirname "$(realpath "$0")")"
 
 [[ -e "${scrDir}/globalcontrol.sh" ]] && source "${scrDir}/globalcontrol.sh" || exit 1 
 
-export ideCDir
-export dcolDir
-thmbDir="${ideCDir}/cache/thumb"
-blurDir="${ideCDir}/cache/blur"
-colsDir="${ideCDir}/cache/cols"
-quadDir="${ideCDir}/cache/quad"
+export dcolDir="${VYLE_CACHE_HOME}/shell"
+thmbDir="${VYLE_CACHE_HOME}/cache/thumb"
+blurDir="${VYLE_CACHE_HOME}/cache/blur"
+colsDir="${VYLE_CACHE_HOME}/cache/cols"
+quadDir="${VYLE_CACHE_HOME}/cache/quad"
 scrRun="${scrDir}/ivy-shell.sh"
 
 [[ -d "${thmbDir}" ]] || mkdir -p "${thmbDir}"
@@ -67,7 +66,7 @@ fn_wallcache_force() {
 } >/dev/null 2>&1
 
 export -f fn_wallcache fn_wallcache_force fn_wallcache_blur fn_wallcache_thumb fl_wallpaper
-export thmbDir blurDir dcolDir scrRun mode cacheIn colsDir sr_call scrDir quadDir
+export thmbDir blurDir dcolDir scrRun mode cacheIn colsDir sr_call scrDir quadDir VYLE_CACHE_HOME
 
 mode="${mode:-}"
 cacheIn="${cacheIn:-}"

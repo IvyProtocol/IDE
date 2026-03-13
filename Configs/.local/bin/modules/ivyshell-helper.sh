@@ -7,18 +7,18 @@ set -eo pipefail
 scrDir="$(dirname "$(realpath "$0")")"
 source "${scrDir}/../globalcontrol.sh"
 
-wbDir="${ideDir}"
-shellDir="${1:-${wbDir}/theme/${ideTheme}}"
+wbDir="${VYLE_CONFIG_HOME}"
+shellDir="${1:-${wbDir}/theme/${VYLE_THEME}}"
 
-if [[ "${ideTheme}" == "Wallbash-Ivy" ]]; then
+if [[ "${VYLE_THEME}" == "Wallbash-Ivy" ]]; then
     shellDir="${1:-${wbDir}/Wall-Dcol}"
 fi
-thmDcolDir="${ideDir}/Wall-Ways"
+thmDcolDir="${wbDir}/Wall-Ways"
 targetDir="${2:-${XDG_CACHE_HOME:-$HOME/.cache}/wal/wal-dir/}"
 mkdir -p "$targetDir"
-confDir="${confDir}"
-cacheDir="${cacheDir}"
-homDir="${homDir}"
+confDir="${XDG_CONFIG_HOME}"
+cacheDir="${XDG_CACHE_HOME}"
+homDir="$HOME"
 
 inputPath="${@}"
 template_sources=()
@@ -172,7 +172,7 @@ process_template() {
     set -u
 }
 
-export -f process_template setConf notify
+export -f process_template setConf notify tomlq
 export scrDir confDir cacheDir targetDir homDir shellDir plLoader thmDcolDir __clause skipTemplate nProcCount
 for var in $(compgen -v | grep -E "^(${plLoader})_"); do export "$var"; done
 

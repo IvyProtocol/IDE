@@ -9,13 +9,12 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir/globalcontrol.sh"
 
 rasiDir="${rasiDir}/selector.rasi"
-[[ -z "${rofiStyleScale}" ]] && font_scale=10 || font_scale="${rofiStyleScale}"
 
 elem_border=$((2 * 5))
 icon_border=$((elem_border - 5))
 mon_x_res=$((mon_res * 100 / mon_scale))
-elm_width=$(((20 + 12 + 16) * font_scale))
-max_avail=$((mon_x_res - (4 * font_scale)))
+elm_width=$(((20 + 12 + 16) * rofiStyleScale))
+max_avail=$((mon_x_res - (4 * rofiStyleScale)))
 
 if [[ "${rofiColCount}" -eq 0 || -z "${rofiColCount}" ]]; then
     rofiColCount=$((max_avail / elm_width))
@@ -46,7 +45,7 @@ if [[ ! -z "${RofiSel}" ]]; then
     if [[ "${tomlSource}" -eq 1 ]]; then
         tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Rofi.Launch" "Style" "${UpdRofiSel}"
     else
-        setConf "rofiLauncherStyle" "${UpdRofiSel}" "${ideDir}/ide.conf"
+        setConf "rofiLauncherStyle" "${UpdRofiSel}" "${VYLE_CONFIG_HOME}/ide.conf"
     fi
     notify -m 2 -i "rofi_notif" -t 1200 -s "${rofiAssetDir}/${RofiSel}" -a "t1" -p "Rofi style ${RofiSel} applied..."
 fi

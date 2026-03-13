@@ -5,13 +5,13 @@ source "$scrDir/globalcontrol.sh"
 IFS=$'\n\t'
 
 # Define directories
-wlDir="${wlDir}/Configs"
-wcDir="${wcDir}/config"
+wlDir="${XDG_CONFIG_HOME}/waybar/Styles/Configs"
+wcDir="${XDG_CONFIG_HOME}/waybar/config"
 rasiTarget="${rasiDir}/config-waybar.rasi"
 
 apply_config() {
     ln -sf "$wlDir/$1" "$wcDir"
-    "${hyprscrDir}/toggle-waybar.sh" &
+    "${XDG_CONFIG_HOME}/hypr/scripts/toggle-waybar.sh" &
 }
 
 main() {

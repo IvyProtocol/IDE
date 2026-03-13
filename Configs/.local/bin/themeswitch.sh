@@ -3,40 +3,34 @@ set -eo pipefail
 
 [[ $VYLE_SHELL_INIT -ne 1 ]] && eval "$(vyle --init)"
 
-themeDir="${ideDir}/theme"
+themeDir="${VYLE_CONFIG_HOME}/theme"
 rofiConf="${rasiDir}/selector.rasi"
 
 themeSelTui() {
     thmChsh="${1}"
     thmImg="$(<"${themeDir}/${thmChsh}/wallpapers/.wallbash-main")"
     if [[ -n "${thmImg}" ]]; then
-        if [[ "${PrevThemeIde}" != "${thmChsh}" ]]; then
-            setConf "PrevThemeIde" "${thmChsh}" "${scrDir}/globalcontrol.sh" 
+        if [[ "${VYLE_RESERVED_THEME}" != "${thmChsh}" ]]; then
+            setConf "VYLE_RESERVED_THEME" "${thmChsh}" "${VYLE_STATE_HOME}/staterc" 
         fi
         if [[ "${wallDir}" != "${themeDir}/${thmChsh}/wallpapers" ]]; then
-            echo " :: Theme Control - Theme '${thmChsh}' :: Wallpaper '${thmImg}' :: DcolMode '${enableWallIde}' --> '${confDir}'"
-            notify -m 2 -i "theme_engine" -p "${thmChsh}" -s "${ideCDir}/cache/thumb/$(fl_wallpaper -t "${thmImg}" -f 1).sloc" -t 1100 -a "t1"
-            if [[ "${tomlSource}" -ge 1 ]]; then
-                tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Wallpaper.Configuration" "Directory" "\${VYLE_CONFIG_HOME:-${VYLE_CONFIG_HOME}}/theme/${thmChsh}/wallpapers"
-            else
-                setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${ideDir}/ide.conf"
-            fi
+            echo " :: Theme Control - Theme '${thmChsh}' :: Wallpaper '${thmImg}' :: DcolMode '${enableWallIde}' --> '${XDG_CONFIG_HOME}'"
+            setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${VYLE_STATE_HOME}/staterc"
         else
-            echo -e " :: Theme Control - Skipped populating $thmChsh -> ${confDir}"
+            echo -e " :: Theme Control - Skipped populating $thmChsh -> ${XDG_CONFIG_HOME}"
             exit 0
         fi
         if [[ "${enableWallIde}" -eq 3 ]]; then
-            if [[ "${ideTheme}" != "${thmChsh}" ]]; then
-                [[ "${tomlSource}" -ge 1 ]] && tomlq -i "${VYLE_CONFIG_HOME}/vyle.toml" "Vyle.Configuration" "Theme" "${thmChsh}" || setConf "ideTheme" "${thmChsh}" "${ideDir}/ide.conf"
-            fi 
-            sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
+            [[ "${VYLE_THEME}" != "${thmChsh}" ]] && setConf "VYLE_THEME" "${thmChsh}" "${VYLE_STATE_HOME}/staterc"
+            sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf"
         else
             "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
-             sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${confDir}/hypr/hyprland.conf"
+             sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf"
         fi
-        [[ ! -e "${scrDir}/wbselecgen.sh" ]] && notify -m 1 -p "Does wbselecgen.sh exist?" -s "${dunstDir}/icons/hyprdots.svg" -u critical && return 1
+        [[ ! -e "${scrDir}/wbselecgen.sh" ]] && { notify -m 1 -p "Does wbselecgen.sh exist?" -s "${dunstDir}/icons/hyprdots.svg" -u critical; return 1; }
+        notify -m 2 -i "theme_engine" -p "${thmChsh}" -s "${VYLE_CACHE_HOME}/cache/thumb/$(fl_wallpaper -t "${thmImg}" -f 1).sloc" -t 1100 -a "t1"
         "${scrDir}/wbselecgen.sh" -t -i "${thmImg}" -w --swww-t -n 1 -r 1
-        echo -e " :: Theme Control - Populated successfully ${thmChsh} -> ${confDir}"
+        echo -e " :: Theme Control - Populated successfully ${thmChsh} -> ${XDG_CONFIG_HOME}"
     fi
 }
 
@@ -44,7 +38,7 @@ thmSelEnv() {
     if [[ -z "${rofiThemeScale}" || "${rofiThemeScale}" -eq 0 ]]; then
         rofiThemeScale=10
     fi
-    r_scale="configuration {font : \"JetBrainsMono Nerd Font ${rofiThemeScale}\";}"
+    r_scale="configuration {font : \"${rofiThemeFont} ${rofiThemeScale}\";}"
     mon_x_res=$(( mon_res * 100 / mon_scale ))
     elem_border=$(( hypr_border * 3 ))
     icon_border=$(( elem_border - 5 ))
@@ -59,7 +53,7 @@ thmSelEnv() {
             fi
             r_override="window{width:100%;background-color:#00000003;} listview{columns:${rofiThemeColumn};} element{border-radius:${elem_border}px;background-color:@main-bg;} element-icon{size:20em;border-radius:${icon_border}px 0px 0px ${icon_border}px;}"
             thmExtn="quad"
-            thumbDir="${ideCDir}/cache/quad"
+            thumbDir="${VYLE_CACHE_HOME}/cache/quad"
             ;;
         1|*)
             elm_width=$(( (23 + 12 + 1) * rofiThemeScale * 2 ))
@@ -69,7 +63,7 @@ thmSelEnv() {
             fi
             r_override="window{width:100%;} listview{columns:${rofiThemeColumn};} element{border-radius:${elem_border}px;padding:0.5em;} element-icon{size:23em;border-radius:${icon_border}px;}"
             thmExtn="sloc"
-            thumbDir="${ideCDir}/cache/thumb"
+            thumbDir="${VYLE_CACHE_HOME}/cache/thumb"
             ;;
     esac
     mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf)
@@ -95,8 +89,9 @@ thmSelEnv() {
             printf "%s\x00icon\x1f%s\n" "${indx}" "${wallSet}"
         done
     }
-    choice=$(menu | rofi -dmenu -i -p "ThemeControl" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${PrevThemeIde}")
+    choice=$(menu | rofi -dmenu -i -p "ThemeControl" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${VYLE_RESERVED_THEME}")
     [[ -z "$choice" ]] && exit 0
+    sleep 0.4
     themeSelTui "$choice"
 }
 
@@ -104,11 +99,11 @@ theme_control() {
     local thm_i thmCheck thmFlags themes thmTotal thmFinal
     thmCheck="${1:-}"
 
-    [[ -n "${PrevThemeIde}" ]] || return 1
+    [[ -n "${VYLE_RESERVED_THEME}" ]] || return 1
     mapfile -t themes < <(LC_ALL=C find "${themeDir}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -Vf )
     thm_i=-1
     for i in "${!themes[@]}"; do
-        [[ "${themes[$i]}" == "${PrevThemeIde}" ]] && thm_i=$i
+        [[ "${themes[$i]}" == "${VYLE_RESERVED_THEME}" ]] && thm_i=$i
     done
 
     thmTotal="${#themes[@]}"
