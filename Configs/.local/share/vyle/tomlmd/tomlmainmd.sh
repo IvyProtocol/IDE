@@ -1,7 +1,7 @@
 #|--/ /+-------------------------+--/ /|#
 #|-/ /-| IDE Configuration File |-/ /-|#
 #|/ /--+-------------------------+/ /--|#
-source "/home/iris/.local/share/vyle/staterc.conf"
+source "$VYLE_DATA_HOME/vyle/staterc.conf"
 
 #  █░█ █▄█ █░░ █▀▀ 
 #  ▀▄▀ ░█░ █▄▄ ██▄  
