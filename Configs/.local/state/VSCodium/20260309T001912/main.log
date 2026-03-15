@@ -1,7 +1,0 @@
-2026-03-09 00:19:14.352 [info] update#setState disabled
-2026-03-09 00:19:14.363 [info] update#ctor - updates are disabled as there is no update URL
-2026-03-09 00:20:05.999 [warning] No ptyHost heartbeat after 6 seconds
-2026-03-09 00:28:08.988 [info] Extension host with pid 605486 exited with code: 0, signal: unknown.
-2026-03-09 00:28:24.498 [info] Extension host with pid 631699 exited with code: 0, signal: unknown.
-2026-03-09 13:28:15.086 [info] Extension host with pid 632728 exited with code: 0, signal: unknown.
-2026-03-09 13:28:21.409 [info] Extension host with pid 605515 exited with code: 0, signal: unknown.

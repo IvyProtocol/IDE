@@ -1,9 +1,0 @@
-2026-03-14 01:09:53.488 [info] Started local extension host with pid 1107130.
-2026-03-14 01:09:57.169 [error] [Extension Host] (node:1107130) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-(Use `exe --trace-deprecation ...` to show where the warning was created)
-2026-03-14 01:10:00.428 [info] Auto updating outdated extensions. kylinideteam.cmake-intellisence, ms-vscode.cmake-tools
-2026-03-14 01:10:01.921 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
-2026-03-14 01:10:06.822 [info] [perf] Render performance baseline is 44ms
-2026-03-14 01:10:11.166 [error] An unknown error occurred. Please consult the log for more details.
-2026-03-14 01:10:12.588 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
-2026-03-14 01:10:30.023 [error] An unknown error occurred. Please consult the log for more details.
