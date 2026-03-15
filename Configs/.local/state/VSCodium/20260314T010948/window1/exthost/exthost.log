@@ -1,0 +1,79 @@
+2026-03-14 01:09:56.589 [info] Extension host with pid 1107130 started
+2026-03-14 01:09:56.589 [info] Skipping acquiring lock for /home/iris/.config/VSCodium/User/workspaceStorage/0dc7954b7351c20d3183ab0915089e9b.
+2026-03-14 01:09:56.642 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-03-14 01:09:56.753 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-03-14 01:09:56.818 [info] ExtensionService#_doActivateExtension llvm-vs-code-extensions.vscode-clangd, startup: false, activationEvent: 'onLanguage:cpp'
+2026-03-14 01:09:57.720 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-03-14 01:09:57.892 [info] ExtensionService#_doActivateExtension helgardrichard.helium-icon-theme, startup: true, activationEvent: '*'
+2026-03-14 01:09:58.008 [info] ExtensionService#_doActivateExtension KylinIdeTeam.cmake-intellisence, startup: true, activationEvent: 'workspaceContains:CMakeLists.txt'
+2026-03-14 01:09:58.858 [info] ExtensionService#_doActivateExtension ms-vscode.cmake-tools, startup: true, activationEvent: 'workspaceContains:CMakeLists.txt'
+2026-03-14 01:09:59.784 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-03-14 01:10:00.413 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-03-14 01:10:00.767 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-03-14 01:10:03.279 [info] Eager extensions activated
+2026-03-14 01:10:03.285 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-03-14 01:10:03.454 [info] ExtensionService#_doActivateExtension Catppuccin.catppuccin-vsc, startup: false, activationEvent: 'onStartupFinished'
+2026-03-14 01:10:03.623 [info] ExtensionService#_doActivateExtension LeonardSSH.vscord, startup: false, activationEvent: 'onStartupFinished'
+2026-03-14 01:10:12.082 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-14 01:10:12.082 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-14 01:10:12.086 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-14 01:10:12.086 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-14 01:10:12.087 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-14 01:10:12.087 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-14 01:10:12.089 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-14 01:10:12.089 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-14 01:10:12.090 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-14 01:10:12.090 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-14 01:10:12.096 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-14 01:10:12.096 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-14 01:10:12.096 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-14 01:10:12.096 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-14 01:10:12.106 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-14 01:10:12.106 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-14 01:25:13.702 [info] Extension host terminating: renderer closed the MessagePort
+2026-03-14 01:25:13.733 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b.logTrace (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:97171)
+	at Object.log (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:90664)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47362
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47557
+	at ie (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47922)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:42706
+	at Immediate.<anonymous> (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:42726)
+	at process.processImmediate (node:internal/timers:485:21)
+2026-03-14 01:25:13.735 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.append (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3682)
+	at Socket.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:37746)
+	at Socket.emit (node:events:519:28)
+	at addChunk (node:internal/streams/readable:561:12)
+	at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+	at Readable.push (node:internal/streams/readable:392:5)
+	at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2026-03-14 01:25:13.739 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.append (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3682)
+	at Socket.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:37746)
+	at Socket.emit (node:events:519:28)
+	at addChunk (node:internal/streams/readable:561:12)
+	at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+	at Readable.push (node:internal/streams/readable:392:5)
+	at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2026-03-14 01:25:13.761 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at ChildProcess.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:39032)
+	at ChildProcess.emit (node:events:519:28)
+	at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+2026-03-14 01:25:15.718 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b.logOutputMessage (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:96598)
+	at b.error (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:96489)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104864
+	at async Promise.all (index 9)
+	at async gee._deactivateAll (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12199)
+2026-03-14 01:25:15.718 [info] Extension host with pid 1107130 exiting with code 0

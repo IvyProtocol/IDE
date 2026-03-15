@@ -1,0 +1,49 @@
+[12:28:12 AM] [INFO] setStatusBarItem: status bar item is undefined
+[12:28:13 AM] [INFO] Discord Rich Presence for VS Code activated.
+[12:28:13 AM] [INFO] Registered Discord Rich Presence commands
+[12:28:13 AM] [INFO] Successfully connected to Discord
+[12:28:13 AM] [INFO] [004] Debug: Enabling Discord Rich Presence
+[12:28:13 AM] [INFO] [004] Debug: Logging in with client ID "810516608442695700"
+[12:28:13 AM] [INFO] [004] Debug: Login - isConnected true isReady 810516608442695700
+[12:28:13 AM] [INFO] [004] Debug: Login - [object Object]
+[12:28:13 AM] [INFO] [004] Debug: Client Should be logged in
+[12:28:13 AM] [INFO] [004] Debug: Enable - [object Object]
+[12:28:13 AM] [INFO] [004] Debug: Enabled - isConnected true isReady 810516608442695700
+[12:28:13 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:28:13 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:28:13 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:28:13 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:28:13 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:28:23 AM] [INFO] onDidChangeWindowState()
+[12:28:23 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:28:23 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:28:23 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:28:23 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:28:23 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:28:24 AM] [INFO] Discord Rich Presence for VS Code deactivated.
+[12:28:24 AM] [INFO] setStatusBarItem: status bar item is undefined
+[12:28:24 AM] [INFO] [004] Destroyed Discord RPC client

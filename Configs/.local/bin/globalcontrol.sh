@@ -14,6 +14,7 @@ export rasiDir="$XDG_CONFIG_HOME/rofi/shared"
 export rofiStyleDir="$XDG_CONFIG_HOME/rofi/styles"
 export rofiAssetDir="$rasiDir/assets"
 
+set +e
 env_pkg() {
   local envPkg statsPkg defAur
   OPTIND=1
@@ -126,7 +127,6 @@ tomlq() {
             printf '%s\n' "$rawVal"
         else
             rawVal=$(echo "$rawVal" | sed -E 's/([^\"]*)#.*/\1/')
-            rawVal="${rawVal//\"/}"
             rawVal="${rawVal//\'/}"
             rawVal="${rawVal//[\[\]]/}"
             printf '%s\n' "$rawVal"
@@ -341,6 +341,7 @@ prompt_timer() {
     set -e
 }
 
+set +e
 fl_wallpaper() {
   OPTIND=1
   local fill=0 fillPath extract_wall w_int="" c_rasi
@@ -435,7 +436,7 @@ load_ivy_file() {
 
 if [[ -e "${VYLE_CONFIG_HOME}/vyle.toml" && ! -e "${VYLE_CONFIG_HOME}/ide.conf" || -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
     tomlSource=1
-    source "${VYLE_DATA_HOME}/tomlmd/envsubst.sh" 
+    source "${VYLE_DATA_HOME}/tomlmd/tomlmainmd.sh"
 elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
   clusterExclude="$(grep -oE 'exclusion="\([^)"]+' "${VYLE_CONFIG_HOME}/ide.conf" | sed 's/exclusion=\"(//')"
   if [[ -n "${clusterExclude}" ]]; then
@@ -445,9 +446,11 @@ elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && -e "${VYLE_CONFIG_HOME}/ide.conf
   fi 
   tomlSource=0
 elif [[ ! -e "${VYLE_CONFIG_HOME}/vyle.toml" && ! -e "${VYLE_CONFIG_HOME}/ide.conf" ]]; then
-    cp "${VYLE_DATA_HOME}/schema/vyle.toml" "${VYLE_CONFIG_HOME}/vyle.toml"
+    cp "${VYLE_DATA_HOME}/schema/vyle.toml" "${VYLE_DATA_HOME}/state.conf"
 fi
 source "${VYLE_STATE_HOME}/staterc"
+
+export VYLE_THEME VYLE_RESERVED_THEME
 
 case "${enableWallIde}" in
   1)
@@ -459,42 +462,80 @@ case "${enableWallIde}" in
   3)
     dcolMode="theme"
     ;;
-  0|*) 
+  0|*)
+    enableWallIde=0
     dcolMode="auto" 
     ;;
 esac
+export enableWallIde
 
 [[ "${wallFramerate}" =~ ^[0-9]+$ ]] || wallFramerate=144
-[[ "${wallTransDuration}" =~ ^[0-9]+$ ]] || wallTransDuration=0.4
 [[ "${wallAnimation}" =~ ^[0-9]+$ ]] || wallAnimation="any"
 [[ "${wallTransitionBezier}" =~ ^[0-9]+$ ]] || wallTranitionBezier=".43,1.19,1,.4"
+[[ "${brightnessStep}" =~ ^[0-9]+$ ]] || brightnessStep=5
+[[ "${brightnessNotify}" =~ ^[0-9]+$ ]] || brightnessNotify=0
+[[ "${volumeStep}" =~ ^[0-9]+$ ]] || volumeStep=5
+[[ "${volumeNotifyUpdateLevel}" =~ ^[0-9]+$ ]] || volumeNotifyUpdateLevel=0
+[[ "${volumeNotifyMute}" =~ ^[0-9]+$ ]] || volumeNotifyMute=0
+[[ "${rofiLauncherScale}" =~ ^[0-9]+$ ]] || rofiLauncherScale=10
+[[ "${rofiLauncherStyle}" =~ ^[0-9]+$ ]] || rofiLauncherStyle=1
+[[ "${rofiStyleScale}" =~ ^[0-9]+$ ]] || rofiStyleScale=10
+[[ "${notificationFontSize}" =~ ^[0-9]+$ ]] || notificationFontSize=10
+[[ "${CURSOR_SIZE}" =~ ^[0-9]+$ ]] || CURSOR_SIZE=20
+if [[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ); then
+    true
+else
+    # notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -t 900 -u critical \
+        #-p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)" &
+    nProcCount="$(nproc)"
+fi
+
+FontRegex='^[[:alnum:] .-]+$'
+
+[[ "${CONSOLE}" =~ ${FontRegex} ]] || export CONSOLE="kitty"
+[[ "${EDITOR}" =~ ${FontRegex} ]] || export EDITOR="vscodium"
+[[ "${EXPLORER}" =~ ${FontRegex} ]] || export EXPLORER="dolphin"
+[[ "${BROWSER}" =~ ${FontRegex} ]] || export BROWSER="firefox"
+[[ "${LOCKSCREEN}" =~ ${FontRegex} ]] || export LOCKSCREEN="hyprlock"
+[[ "${TASKMANAGER}" =~ ${FontRegex} ]] || export TASKMANAGER="gnome-system-monitor"
+[[ "${CURSOR}" =~ ${FontRegex} ]] || export CURSOR="Bibata-Modern-Ice"
+[[ "${wallTransDuration}" =~ ${FontRegex} ]] || wallTransDuration=0.4
 
 wallTransitionStep=$(awk -v d="$wallTransDuration" -v f="$wallFramerate" 'BEGIN {printf "%d", d*f + 31}')
+
 [[ -z "${wallAnimationPrevious}" ]] && wallAnimationPrevious="outer" || wallAnimationPrevious="${wallAnimationPrevious}"
 [[ -z "${wallAnimationNext}" ]] && wallAnimationNext="grow" || wallAnimationNext="${wallAnimationNext}"
 [[ -z "${wallAnimationTheme}" ]] && wallAnimationTheme="grow" || wallAnimationTheme="${wallAnimationTheme}"
 
-[[ "${brightnessStep}" =~ ^[0-9]+$ ]] || brightnessStep=5
-[[ "${brightnessNotify}" =~ ^[0-9]+$ ]] || brightnessNotify=0
-[[ "${brightnessIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Invalid string-type ${brightnessIconDir} -!" 
 
-[[ "${volumeStep}" =~ ^[0-9]+$ ]] || volumeStep=5
-[[ "${volumeNotifyUpdateLevel}" =~ ^[0-9]+$ ]] || volumeNotifyUpdateLevel=0
-[[ "${volumeNotifyMute}" =~ ^[0-9]+$ ]] || volumeNotifyMute=0
-[[ "${volumeIconDir}" =~ ^[0-9]+$ ]] && notify -m 2 -i "ERROR" -t 900 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Invalid string-type ${volumeIconDir} -!"
+if [[ "${brightnessIconDir}" =~ ${FontRegex} ]]; then
+    if [[ ! -d "${brightnessIconDir}" ]]; then 
+        notify -m 2 -i "ERROR" -t 1200 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Invalid string-type \"${brightnessIconDir}\" -!" 
+        brightnessIconDir="${dunstDir}/icons/vol"
+    fi
+else
+    brightnessIconDir="${dunstDir}/icons/vol"
+    if [[ ! -d "${brightnessIconDir}" ]]; then
+        notify -m 2 -i "ERROR" -t 1200 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Missing \"${dunstDir}/icons/vol\""
+    fi
+fi
 
-[[ "${nProcCount}" == "$(nproc)" ]] || ( [[ "${nProcCount}" =~ ^[0-9]+$ ]] && (( nProcCount >= 1 && nProcCount <= $(nproc) )) ) || { notify -m 2 -i "ERR" -s "${dunstDir}/icons/hyprdots.svg" -t 900 -u critical -p "[$0] ERR: Invalid integer ${nProcCount} that is greater than NPROC: $(nproc)"; nProcCount="$(nproc)"; }
+if [[ "${volumeIconDir}" =~ ${FontRegex} ]]; then
+    if [[ ! -d "${volumeIconDir}" ]]; then
+        notify -m 2 -i "ERROR" -t 1200 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Invalid string-type \"${volumeIconDir}\" -!" & 
+        brightnessIconDir="${dunstDir}/icons/vol"
+    fi
+else
+    volumeIconDir="${dunstDir}/icons/vol"
+    if [[ ! -d "${volumeIconDir}" ]]; then
+        notify -m 2 -i "ERROR" -t 1200 -s "${dunstDir}/icons/hyprdots.svg" -u critical -p "ERROR! Missing \"${dunstDir}/icons/vol\" -!" 
+    fi
+fi
 
-FontRegex='^[[:alnum:] .-]+$'
-[[ "${rofiLauncherScale}" =~ ^[0-9]+$ ]] || rofiLauncherScale=10
-[[ "${rofiLauncherStyle}" =~ ^[0-9]+$ ]] || rofiLauncherStyle=1
 [[ "${rofiLauncherFont}" =~ ${FontRegex} ]] || rofiLauncherFont="JetBrainsMono Nerd Font"
 [[ "${rofiWallpaperFont}" =~ ${FontRegex} ]] || rofiWallpaperFont="JetBrainsMono Nerd Font"
 [[ "${rofiThemeFont}" =~ ${FontRegex} ]] || rofiThemeFont="JetBrainsMono Nerd Font"
 [[ "${rofiWallbashFont}" =~ ${FontRegex} ]] || rofiWallbashFont="JetBrainsMono Nerd Font"
+[[ "${notificationFont}" =~ ${FontRegex} ]] || notificationFont="JetBrainsMono Nerd Font"
 unset FontRegex
-[[ "${rofiStyleScale}" =~ ^[0-9]+$ ]] || rofiStyleScale=10
-
-[[ "${notificationFont}" =~ ^[a-zA-Z]+$ ]] || notificationFont="JetBrainsMono Nerd Font"
-[[ "${notificationFontSize}" =~ ^[0-9]+$ ]] || notificationFontSize=10
 

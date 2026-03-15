@@ -1,0 +1,4 @@
+[default-routes]
+alsa_card.pci-0000_00_1b.0:input:analog-input-internal-mic={"channelMap":["FL", "FR"], "channelVolumes":[0.149133, 0.149133], "mute":true, "latencyOffsetNsec":0}
+alsa_card.pci-0000_00_1b.0:output:analog-output-speaker={"channelVolumes":[0.342973, 0.342973], "channelMap":["FL", "FR"], "mute":false, "latencyOffsetNsec":0}
+alsa_card.pci-0000_00_1b.0:profile:output:analog-stereo+input:analog-stereo=["analog-output-speaker"]

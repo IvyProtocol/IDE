@@ -1,0 +1,42 @@
+2026-03-09 00:19:18.915 [warning] Creation of workbench contribution 'workbench.contrib.preferencesActions' took 28ms.
+2026-03-09 00:19:24.117 [info] Started local extension host with pid 605515.
+2026-03-09 00:19:35.260 [error] [Extension Host] (node:605515) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `exe --trace-deprecation ...` to show where the warning was created)
+2026-03-09 00:19:35.925 [info] Auto updating outdated extensions. ms-vscode.cmake-tools
+2026-03-09 00:19:36.840 [error] [Extension Host] fs.access() failed:  Error: ENOENT: no such file or directory, access '/home/karmveer/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd'
+	at async Object.access (node:internal/fs/promises:608:10)
+2026-03-09 00:19:40.802 [error] [Extension Host] https://api.github.com/repos/clangd/clangd/releases/latest 403 rate limit exceeded
+2026-03-09 00:19:40.824 [error] [Extension Host] Auto-install failed:  Error: Can't fetch release: rate limit exceeded
+	at Object.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:231:1367)
+	at Generator.next (<anonymous>)
+	at fulfilled (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:230:23525)
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-03-09 00:19:44.930 [info] [perf] Render performance baseline is 353ms
+2026-03-09 00:19:46.317 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-09 00:19:53.754 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.545Z [error] [cmake] CMake Error at CMakeLists.txt:34 (target_sources):
+2026-03-09 00:19:53.755 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.547Z [error] [cmake]   Cannot find source file:
+2026-03-09 00:19:53.771 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.549Z [error] [cmake] 
+2026-03-09 00:19:53.772 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.550Z [error] [cmake]     src/main.cpp
+2026-03-09 00:19:53.776 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.551Z [error] [cmake] 
+2026-03-09 00:19:53.777 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.551Z [error] [cmake] 
+2026-03-09 00:19:53.778 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.552Z [error] [cmake] CMake Error at CMakeLists.txt:9 (add_executable):
+2026-03-09 00:19:53.780 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.553Z [error] [cmake]   No SOURCES given to target: Project1.app
+2026-03-09 00:19:53.785 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.553Z [error] [cmake] 
+2026-03-09 00:19:53.805 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.554Z [error] [cmake] 
+2026-03-09 00:19:53.807 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.554Z [error] [cmake] CMake Generate step failed.  Build files cannot be regenerated correctly.
+2026-03-09 00:19:53.863 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.804Z [error] [cmake] CMake Error at CMakeLists.txt:34 (target_sources):
+2026-03-09 00:19:53.864 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.805Z [error] [cmake]   Cannot find source file:
+2026-03-09 00:19:53.865 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.806Z [error] [cmake] 
+2026-03-09 00:19:53.867 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.806Z [error] [cmake]     src/main.cpp
+2026-03-09 00:19:53.868 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.807Z [error] [cmake] 
+2026-03-09 00:19:53.877 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.807Z [error] [cmake] 
+2026-03-09 00:19:53.885 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.808Z [error] [cmake] CMake Error at CMakeLists.txt:9 (add_executable):
+2026-03-09 00:19:53.888 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.809Z [error] [cmake]   No SOURCES given to target: Project1.app
+2026-03-09 00:19:53.889 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.809Z [error] [cmake] 
+2026-03-09 00:19:53.891 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.810Z [error] [cmake] 
+2026-03-09 00:19:53.892 [error] [Extension Host] [CMakeTools] 2026-03-08T18:19:53.811Z [error] [cmake] CMake Generate step failed.  Build files cannot be regenerated correctly.
+2026-03-09 00:20:00.124 [info] Extension host (LocalProcess pid: 605515) is unresponsive.
+2026-03-09 00:20:05.947 [warning] [lifecycle] onBeforeShutdown is taking a long time, pending operations: veto.untitledWorkspace
+2026-03-09 00:20:06.011 [info] Extension host (LocalProcess pid: 605515) is responsive.
+2026-03-09 00:20:06.247 [warning] [File Watcher (node.js)] Watcher shutdown because watched path got deleted
+2026-03-09 00:20:06.375 [info] UNRESPONSIVE extension host: received responsive event and cancelling profiling session

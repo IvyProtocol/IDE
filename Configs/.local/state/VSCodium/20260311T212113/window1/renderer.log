@@ -1,0 +1,10 @@
+2026-03-11 21:21:20.072 [warning] Creation of workbench contribution 'workbench.contrib.preferencesActions' took 34ms.
+2026-03-11 21:21:20.277 [warning] Creation of workbench contribution 'workbench.contrib.chatSetup' took 23ms.
+2026-03-11 21:21:24.074 [info] Started local extension host with pid 1012141.
+2026-03-11 21:21:29.345 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-11 21:21:32.080 [info] Auto updating outdated extensions. kylinideteam.cmake-intellisence, ms-vscode.cmake-tools
+2026-03-11 21:21:32.082 [error] [Extension Host] (node:1012141) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `exe --trace-deprecation ...` to show where the warning was created)
+2026-03-11 21:21:34.755 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-11 21:21:35.247 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-11 21:21:39.520 [info] [perf] Render performance baseline is 102ms

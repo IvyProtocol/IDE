@@ -1,0 +1,161 @@
+2026-03-11 21:21:27.487 [info] Extension host with pid 1012141 started
+2026-03-11 21:21:27.487 [info] Skipping acquiring lock for /home/iris/.config/VSCodium/User/workspaceStorage/0dc7954b7351c20d3183ab0915089e9b.
+2026-03-11 21:21:28.528 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-03-11 21:21:28.665 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-03-11 21:21:28.989 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-03-11 21:21:29.019 [info] ExtensionService#_doActivateExtension helgardrichard.helium-icon-theme, startup: true, activationEvent: '*'
+2026-03-11 21:21:29.098 [info] ExtensionService#_doActivateExtension KylinIdeTeam.cmake-intellisence, startup: true, activationEvent: 'workspaceContains:CMakeLists.txt'
+2026-03-11 21:21:29.263 [info] ExtensionService#_doActivateExtension ms-vscode.cmake-tools, startup: true, activationEvent: 'workspaceContains:CMakeLists.txt'
+2026-03-11 21:21:30.077 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-03-11 21:21:30.390 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-03-11 21:21:31.134 [info] ExtensionService#_doActivateExtension llvm-vs-code-extensions.vscode-clangd, startup: false, activationEvent: 'onLanguage:cpp'
+2026-03-11 21:21:32.396 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-03-11 21:21:35.451 [info] Eager extensions activated
+2026-03-11 21:21:35.607 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-03-11 21:21:35.772 [info] ExtensionService#_doActivateExtension Catppuccin.catppuccin-vsc, startup: false, activationEvent: 'onStartupFinished'
+2026-03-11 21:21:36.021 [info] ExtensionService#_doActivateExtension LeonardSSH.vscord, startup: false, activationEvent: 'onStartupFinished'
+2026-03-11 21:21:40.140 [info] Extension host terminating: renderer closed the MessagePort
+2026-03-11 21:21:40.196 [error] Error: Client is not running and can't be stopped. It's current state is: starting
+	at b.shutdown (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104509)
+	at b.stop (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104090)
+	at b.stop (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:270250)
+	at t.deactivate (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:355345)
+	at gee._deactivate (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:14665)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12176
+	at Array.map (<anonymous>)
+	at gee._deactivateAll (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12164)
+	at gee.terminate (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12517)
+	at oN.terminate (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:122:1082)
+	at Hs (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:11825)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8200)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-11 21:21:40.207 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.append (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3682)
+	at Socket.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:37746)
+	at Socket.emit (node:events:519:28)
+	at addChunk (node:internal/streams/readable:561:12)
+	at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+	at Readable.push (node:internal/streams/readable:392:5)
+	at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2026-03-11 21:21:40.213 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.215 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at /home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:74181
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async v_.provideLinks (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:189436)
+2026-03-11 21:21:40.215 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.215 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at provideInlayHints (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:110765)
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async Ev.provideInlayHints (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:187390)
+2026-03-11 21:21:40.216 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.216 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at /home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:95370
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async ps.provideDocumentSemanticTokens (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:176493)
+2026-03-11 21:21:40.217 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.218 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at /home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:74181
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async v_.provideLinks (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:189436)
+2026-03-11 21:21:40.218 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.219 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at _provideDocumentSymbols (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:58241)
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async yN.provideDocumentSymbols (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:161920)
+2026-03-11 21:21:40.219 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.219 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at provideInlayHints (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:110765)
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async Ev.provideInlayHints (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:187390)
+2026-03-11 21:21:40.219 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.219 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at /home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:63029
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async m_.provideCodeActions (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:168283)
+2026-03-11 21:21:40.219 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.219 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at /home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:63029
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async m_.provideCodeActions (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:168283)
+2026-03-11 21:21:40.219 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.234 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at /home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:63029
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async m_.provideCodeActions (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:168283)
+2026-03-11 21:21:40.234 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-11 21:21:40.234 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:8418)
+	at b4.handleFailedRequest (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:235:9420)
+	at /home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:39:63029
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+	at async m_.provideCodeActions (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:168283)
+2026-03-11 21:21:40.241 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.append (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3682)
+	at Socket.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:37746)
+	at Socket.emit (node:events:519:28)
+	at addChunk (node:internal/streams/readable:561:12)
+	at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+	at Readable.push (node:internal/streams/readable:392:5)
+	at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2026-03-11 21:21:44.396 [info] Extension host with pid 1012141 exiting with code 0

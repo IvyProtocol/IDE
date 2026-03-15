@@ -1,0 +1,58 @@
+2026-03-11 18:04:47.273 [info] [main] Log level: Info
+2026-03-11 18:04:47.273 [info] [main] Validating found git in: "git"
+2026-03-11 18:04:47.273 [info] [main] Using git "2.53.0" from "git"
+2026-03-11 18:04:47.273 [info] [Model][doInitialScan] Initial repository scan started
+2026-03-11 18:04:47.273 [info] > git rev-parse --show-toplevel [31ms]
+2026-03-11 18:04:47.273 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:47.273 [info] > git rev-parse --show-toplevel [374ms]
+2026-03-11 18:04:47.273 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:47.273 [info] > git rev-parse --show-toplevel [9ms]
+2026-03-11 18:04:47.273 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:47.281 [info] > git rev-parse --show-toplevel [3ms]
+2026-03-11 18:04:47.282 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:47.300 [info] > git rev-parse --show-toplevel [3ms]
+2026-03-11 18:04:47.300 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:47.309 [info] > git rev-parse --show-toplevel [3ms]
+2026-03-11 18:04:47.309 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:47.315 [info] > git rev-parse --show-toplevel [2ms]
+2026-03-11 18:04:47.322 [info] > git rev-parse --git-dir --git-common-dir --show-superproject-working-tree [3ms]
+2026-03-11 18:04:47.359 [info] [Model][openRepository] Opened repository (path): /home/iris/Templates/Nullix/lib
+2026-03-11 18:04:47.359 [info] [Model][openRepository] Opened repository (real path): /home/iris/Templates/Nullix/lib
+2026-03-11 18:04:47.359 [info] [Model][openRepository] Opened repository (kind): repository
+2026-03-11 18:04:47.393 [info] > git rev-parse --show-toplevel [10ms]
+2026-03-11 18:04:47.393 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:47.393 [info] [Model][doInitialScan] Initial repository scan completed - repositories (1), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2026-03-11 18:04:47.394 [info] > git config --get commit.template [22ms]
+2026-03-11 18:04:47.408 [info] > git rev-parse --show-toplevel [8ms]
+2026-03-11 18:04:47.408 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:47.756 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/lib refs/remotes/lib [350ms]
+2026-03-11 18:04:47.762 [warning] [Git][revParse] Unable to read file: ENOENT: no such file or directory, open '/home/iris/Templates/Nullix/lib/.git/refs/remotes/origin/lib'
+2026-03-11 18:04:47.763 [info] > git rev-parse refs/remotes/origin/lib [1ms]
+2026-03-11 18:04:47.776 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [3ms]
+2026-03-11 18:04:47.900 [info] > git check-ignore -v -z --stdin [2ms]
+2026-03-11 18:04:48.532 [info] > git status -z -uall [764ms]
+2026-03-11 18:04:48.558 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/lib refs/remotes/lib [12ms]
+2026-03-11 18:04:48.567 [info] > git config --get --local branch.lib.vscode-merge-base [3ms]
+2026-03-11 18:04:48.567 [warning] [Git][config] git config failed: Failed to execute git
+2026-03-11 18:04:48.572 [info] > git config --get commit.template [18ms]
+2026-03-11 18:04:48.579 [info] > git reflog lib --grep-reflog=branch: Created from *. [8ms]
+2026-03-11 18:04:48.592 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [9ms]
+2026-03-11 18:04:48.592 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2026-03-11 18:04:48.592 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2026-03-11 18:04:48.600 [info] > git merge-base refs/heads/lib refs/remotes/origin/lib [3ms]
+2026-03-11 18:04:48.605 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/lib refs/remotes/lib [14ms]
+2026-03-11 18:04:48.614 [warning] [Git][revParse] Unable to read file: ENOENT: no such file or directory, open '/home/iris/Templates/Nullix/lib/.git/refs/remotes/origin/lib'
+2026-03-11 18:04:48.619 [info] > git diff --raw --numstat --diff-filter=ADMR -z --find-renames=50% 94db5c224ddd2bc27e4c1b7f8b25300fe61eddad...refs/remotes/origin/lib -- [14ms]
+2026-03-11 18:04:48.654 [info] > git rev-parse refs/remotes/origin/lib [40ms]
+2026-03-11 18:04:48.680 [info] > git status -z -uall [21ms]
+2026-03-11 18:04:48.680 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [15ms]
+2026-03-11 18:04:50.112 [info] > git rev-parse --show-toplevel [17ms]
+2026-03-11 18:04:50.112 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:50.230 [info] > git rev-parse --show-toplevel [11ms]
+2026-03-11 18:04:50.230 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:51.335 [info] > git rev-parse --show-toplevel [3ms]
+2026-03-11 18:04:51.335 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:51.492 [info] > git rev-parse --show-toplevel [3ms]
+2026-03-11 18:04:51.492 [info] fatal: not a git repository (or any of the parent directories): .git
+2026-03-11 18:04:58.164 [info] > git rev-parse --show-toplevel [1ms]
+2026-03-11 18:04:58.164 [info] fatal: not a git repository (or any of the parent directories): .git

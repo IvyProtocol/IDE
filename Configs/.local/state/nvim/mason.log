@@ -1,0 +1,96 @@
+[ERROR Tue 06 Jan 2026 01:45:31 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:45:31 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Tue 06 Jan 2026 01:45:31 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:45:31 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:45:31 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Tue 06 Jan 2026 01:45:31 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Tue 06 Jan 2026 01:45:31 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Tue 06 Jan 2026 01:45:31 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[ERROR Tue 06 Jan 2026 01:48:09 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:48:09 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Tue 06 Jan 2026 01:48:09 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:48:09 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:48:09 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Tue 06 Jan 2026 01:48:09 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Tue 06 Jan 2026 01:48:09 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Tue 06 Jan 2026 01:48:09 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[ERROR Tue 06 Jan 2026 01:48:22 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:48:22 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Tue 06 Jan 2026 01:48:22 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:48:22 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Tue 06 Jan 2026 01:48:22 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Tue 06 Jan 2026 01:48:22 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Tue 06 Jan 2026 01:48:22 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Tue 06 Jan 2026 01:48:22 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[ERROR Sun 08 Feb 2026 12:28:38 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:28:38 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:28:38 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:28:48 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:28:48 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:28:48 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Sun 08 Feb 2026 12:28:48 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Sun 08 Feb 2026 12:28:48 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[ERROR Sun 08 Feb 2026 12:29:34 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:29:34 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:29:34 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:29:44 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:29:44 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:29:44 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Sun 08 Feb 2026 12:29:44 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Sun 08 Feb 2026 12:29:44 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[ERROR Sun 08 Feb 2026 12:32:07 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:32:07 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:32:07 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:32:17 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:32:17 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:32:17 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Sun 08 Feb 2026 12:32:17 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Sun 08 Feb 2026 12:32:17 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[ERROR Sun 08 Feb 2026 12:33:42 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:33:42 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:33:42 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:33:52 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:33:52 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:33:52 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Sun 08 Feb 2026 12:33:52 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Sun 08 Feb 2026 12:33:52 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[ERROR Sun 08 Feb 2026 12:36:18 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:36:18 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:36:18 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:36:20 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 08 Feb 2026 12:36:20 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sun 08 Feb 2026 12:36:20 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Sun 08 Feb 2026 12:36:20 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Sun 08 Feb 2026 12:36:20 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
+[ERROR Sun 22 Feb 2026 07:16:32 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sun 22 Feb 2026 07:16:32 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to download registry archive."
+[ERROR Sun 22 Feb 2026 07:16:32 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to download registry archive." }
+[ERROR Mon 23 Feb 2026 07:57:09 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Mon 23 Feb 2026 07:57:09 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to download checksums.txt."
+[ERROR Mon 23 Feb 2026 07:57:09 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to download checksums.txt." }
+[ERROR Sat 28 Feb 2026 01:38:30 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sat 28 Feb 2026 01:38:30 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sat 28 Feb 2026 01:38:30 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="gh", err="ENOENT: no such file or directory"
+[ERROR Sat 28 Feb 2026 01:38:30 PM +06] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="wget", err="ENOENT: no such file or directory"
+[ERROR Sat 28 Feb 2026 01:38:30 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code - and signal -. Could not find executable "wget" in PATH.
+
+[ERROR Sat 28 Feb 2026 01:38:30 PM +06] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Sat 28 Feb 2026 01:38:30 PM +06] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Sat 28 Feb 2026 01:38:30 PM +06] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }

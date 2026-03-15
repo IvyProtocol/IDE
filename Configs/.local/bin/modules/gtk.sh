@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 (
     pkill -SIGUSR1 nautilus || true
     pkill -SIGUSR1 file-roller || true
@@ -8,3 +7,5 @@
     nautilus --quit
     pkill -SIGUSR1 gnome-sound-recorder || true
 ) &>/dev/null
+
+

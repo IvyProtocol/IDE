@@ -1,6 +1,7 @@
 #|--/ /+-------------------------+--/ /|#
 #|-/ /-| IDE Configuration File |-/ /-|#
 #|/ /--+-------------------------+/ /--|#
+source "/home/iris/.local/share/vyle/staterc.conf"
 
 #  █░█ █▄█ █░░ █▀▀ 
 #  ▀▄▀ ░█░ █▄▄ ██▄  
@@ -19,7 +20,7 @@ skipTemplate=${VYLE_CONFIGURATION_SKIPTEMPLATE[@]}
 #// nProcCount, lets wallbash use the maximum or limited CPU utilization to process templates!
 #// You can limit the core utilization by declaring the number of cores to be utilized.
 #// Defaulted is '3', but $(nproc) can be used here. e.g., nProcCount=$(nproc).
-nProcCount=3
+nProcCount=$(nproc)
 
 # █░█░█ ▄▀█ █░░ █░░ █▀█ ▄▀█ █▀█ █▀▀ █▀█
 # ▀▄▀▄▀ █▀█ █▄▄ █▄▄ █▀▀ █▀█ █▀▀ ██▄ █▀▄
@@ -50,27 +51,27 @@ WallAddCustomPath=("${WALLPAPER_CONFIGURATION_CUSTOMPATH[@]}")
 
 # rofiLauncher.sh configuration.
 rofiLauncherFont="JetBrainsMono Nerd Font"
-rofiLauncherScale=9
+rofiLauncherScale=10
 rofiLauncherStyle=1
 
 
 # wbselecgen.sh configuration
 rofiWallpaperFont="JetBrainsMono Nerd Font"
-rofiWallpaperScale=9
-rofiWallpaperColumn=4
+rofiWallpaperScale=10
+rofiWallpaperColumn=
 
 # themeswitch.sh configuration.
 rofiThemeFont="JetBrainsMono Nerd Font"
-rofiThemeScale=9
-rofiThemeColumn=2
+rofiThemeScale=10
+rofiThemeColumn=
 rofiThemeStyle=1
 
 # style-launcher.sh configuration.
-rofiStyleScale=9
+rofiStyleScale=10
 
 # wallbashtoggle.sh configuration
 rofiWallbashFont="JetBrainsMono Nerd Font"
-rofiWallbashScale=9
+rofiWallbashScale=10
 
 # █░░ █▀█ █▀▀ █▀█ █░█ ▀█▀
 # █▄▄ █▄█ █▄█ █▄█ █▄█ ░█░
@@ -111,20 +112,20 @@ volumeNotifyMute=0
 # █░▀█ █▄█ ░█░ █ █▀░ █ █▄▄ █▀█ ░█░ █ █▄█ █░▀█
 # dunstctl configuration
 notificationFont="JetBrainsMono Nerd Font"
-notificationFontSize=9
+notificationFontSize=10
 
 # █░█ █▄█ █▀█ █▀█ █░░ ▄▀█ █▄░█ █▀▄
 # █▀█ ░█░ █▀▀ █▀▄ █▄▄ █▀█ █░▀█ █▄▀
 
 # Hyprland Configuration.
-TERMINAL="kitty"
+CONSOLE="kitty"
 EDITOR="vscodium"
 EXPLORER="dolphin"
 BROWSER="firefox"
 LOCKSCREEN="hyprlock"
 TASKMANAGER="gnome-system-monitor"
 CURSOR="Bibata-Modern-Ice"
-CURSOR_SIZE=19
+CURSOR_SIZE=20
 
 # █▀▀ ▀▄▀ ▀█▀ █▀█ ▄▀█
 # ██▄ █░█ ░█░ █▀▄ █▀█

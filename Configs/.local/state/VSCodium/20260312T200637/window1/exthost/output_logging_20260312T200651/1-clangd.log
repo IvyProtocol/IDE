@@ -1,0 +1,5391 @@
+I[20:06:55.783] clangd version 21.1.8 (https://github.com/llvm/llvm-project 2078da43e25a4623cab2d0d60decddf709aaea28)
+I[20:06:55.784] Features: linux+grpc
+I[20:06:55.784] PID: 1370213
+I[20:06:55.784] Working directory: /home/iris/Templates/Nullix
+I[20:06:55.784] argv[0]: /home/iris/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd
+I[20:06:55.784] argv[1]: --pretty
+I[20:06:55.784] argv[2]: --clang-tidy
+I[20:06:55.784] argv[3]: --log=verbose
+I[20:06:55.784] argv[4]: --malloc-trim
+I[20:06:55.784] argv[5]: -crash-pragmas
+I[20:06:55.784] argv[6]: --debug-origin
+I[20:06:55.784] argv[7]: --hidden-features
+I[20:06:55.784] argv[8]: --limit-results=0
+I[20:06:55.784] argv[9]: --background-index
+I[20:06:55.784] argv[10]: --import-insertions
+I[20:06:55.784] argv[11]: --use-dirty-headers
+I[20:06:55.784] argv[12]: --pch-storage=memory
+I[20:06:55.784] argv[13]: --limit-references=0
+I[20:06:55.784] argv[14]: --rename-file-limit=0
+I[20:06:55.784] argv[15]: --completion-parse=auto
+I[20:06:55.784] argv[16]: --header-insertion=iwyu
+I[20:06:55.784] argv[17]: --completion-style=detailed
+I[20:06:55.784] argv[18]: --parse-forwarding-functions
+I[20:06:55.784] argv[19]: --header-insertion-decorators
+I[20:06:55.784] argv[20]: --ranking-model=decision_forest
+I[20:06:55.784] argv[21]: --function-arg-placeholders=true
+I[20:06:55.784] argv[22]: --background-index-priority=normal
+V[20:06:55.784] User config file is /home/iris/.config/clangd/config.yaml
+I[20:06:55.788] Starting LSP over stdin/stdout
+V[20:06:55.917] <<< {
+  "id": 0,
+  "jsonrpc": "2.0",
+  "method": "initialize",
+  "params": {
+    "capabilities": {
+      "general": {
+        "markdown": {
+          "parser": "marked",
+          "version": "1.1.0"
+        },
+        "positionEncodings": [
+          "utf-16"
+        ],
+        "regularExpressions": {
+          "engine": "ECMAScript",
+          "version": "ES2020"
+        },
+        "staleRequestSupport": {
+          "cancel": true,
+          "retryOnContentModified": [
+            "textDocument/semanticTokens/full",
+            "textDocument/semanticTokens/range",
+            "textDocument/semanticTokens/full/delta"
+          ]
+        }
+      },
+      "notebookDocument": {
+        "synchronization": {
+          "dynamicRegistration": true,
+          "executionSummarySupport": true
+        }
+      },
+      "textDocument": {
+        "callHierarchy": {
+          "dynamicRegistration": true
+        },
+        "codeAction": {
+          "codeActionLiteralSupport": {
+            "codeActionKind": {
+              "valueSet": [
+                "",
+                "quickfix",
+                "refactor",
+                "refactor.extract",
+                "refactor.inline",
+                "refactor.rewrite",
+                "source",
+                "source.organizeImports"
+              ]
+            }
+          },
+          "dataSupport": true,
+          "disabledSupport": true,
+          "dynamicRegistration": true,
+          "honorsChangeAnnotations": true,
+          "isPreferredSupport": true,
+          "resolveSupport": {
+            "properties": [
+              "edit"
+            ]
+          }
+        },
+        "codeLens": {
+          "dynamicRegistration": true
+        },
+        "colorProvider": {
+          "dynamicRegistration": true
+        },
+        "completion": {
+          "completionItem": {
+            "commitCharactersSupport": true,
+            "deprecatedSupport": true,
+            "documentationFormat": [
+              "markdown",
+              "plaintext"
+            ],
+            "insertReplaceSupport": true,
+            "insertTextModeSupport": {
+              "valueSet": [
+                1,
+                2
+              ]
+            },
+            "labelDetailsSupport": true,
+            "preselectSupport": true,
+            "resolveSupport": {
+              "properties": [
+                "documentation",
+                "detail",
+                "additionalTextEdits"
+              ]
+            },
+            "snippetSupport": true,
+            "tagSupport": {
+              "valueSet": [
+                1
+              ]
+            }
+          },
+          "completionItemKind": {
+            "valueSet": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25
+            ]
+          },
+          "completionList": {
+            "itemDefaults": [
+              "commitCharacters",
+              "editRange",
+              "insertTextFormat",
+              "insertTextMode",
+              "data"
+            ]
+          },
+          "contextSupport": true,
+          "dynamicRegistration": true,
+          "editsNearCursor": true,
+          "insertTextMode": 2
+        },
+        "declaration": {
+          "dynamicRegistration": true,
+          "linkSupport": true
+        },
+        "definition": {
+          "dynamicRegistration": true,
+          "linkSupport": true
+        },
+        "diagnostic": {
+          "dynamicRegistration": true,
+          "relatedDocumentSupport": false
+        },
+        "documentHighlight": {
+          "dynamicRegistration": true
+        },
+        "documentLink": {
+          "dynamicRegistration": true,
+          "tooltipSupport": true
+        },
+        "documentSymbol": {
+          "dynamicRegistration": true,
+          "hierarchicalDocumentSymbolSupport": true,
+          "labelSupport": true,
+          "symbolKind": {
+            "valueSet": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "tagSupport": {
+            "valueSet": [
+              1
+            ]
+          }
+        },
+        "foldingRange": {
+          "dynamicRegistration": true,
+          "foldingRange": {
+            "collapsedText": false
+          },
+          "foldingRangeKind": {
+            "valueSet": [
+              "comment",
+              "imports",
+              "region"
+            ]
+          },
+          "lineFoldingOnly": true,
+          "rangeLimit": 5000
+        },
+        "formatting": {
+          "dynamicRegistration": true
+        },
+        "hover": {
+          "contentFormat": [
+            "markdown",
+            "plaintext"
+          ],
+          "dynamicRegistration": true
+        },
+        "implementation": {
+          "dynamicRegistration": true,
+          "linkSupport": true
+        },
+        "inactiveRegionsCapabilities": {
+          "inactiveRegions": true
+        },
+        "inlayHint": {
+          "dynamicRegistration": true,
+          "resolveSupport": {
+            "properties": [
+              "tooltip",
+              "textEdits",
+              "label.tooltip",
+              "label.location",
+              "label.command"
+            ]
+          }
+        },
+        "inlineValue": {
+          "dynamicRegistration": true
+        },
+        "linkedEditingRange": {
+          "dynamicRegistration": true
+        },
+        "onTypeFormatting": {
+          "dynamicRegistration": true
+        },
+        "publishDiagnostics": {
+          "codeDescriptionSupport": true,
+          "dataSupport": true,
+          "relatedInformation": true,
+          "tagSupport": {
+            "valueSet": [
+              1,
+              2
+            ]
+          },
+          "versionSupport": false
+        },
+        "rangeFormatting": {
+          "dynamicRegistration": true,
+          "rangesSupport": true
+        },
+        "references": {
+          "dynamicRegistration": true
+        },
+        "rename": {
+          "dynamicRegistration": true,
+          "honorsChangeAnnotations": true,
+          "prepareSupport": true,
+          "prepareSupportDefaultBehavior": 1
+        },
+        "selectionRange": {
+          "dynamicRegistration": true
+        },
+        "semanticTokens": {
+          "augmentsSyntaxTokens": true,
+          "dynamicRegistration": true,
+          "formats": [
+            "relative"
+          ],
+          "multilineTokenSupport": false,
+          "overlappingTokenSupport": false,
+          "requests": {
+            "full": {
+              "delta": true
+            },
+            "range": true
+          },
+          "serverCancelSupport": true,
+          "tokenModifiers": [
+            "declaration",
+            "definition",
+            "readonly",
+            "static",
+            "deprecated",
+            "abstract",
+            "async",
+            "modification",
+            "documentation",
+            "defaultLibrary"
+          ],
+          "tokenTypes": [
+            "namespace",
+            "type",
+            "class",
+            "enum",
+            "interface",
+            "struct",
+            "typeParameter",
+            "parameter",
+            "variable",
+            "property",
+            "enumMember",
+            "event",
+            "function",
+            "method",
+            "macro",
+            "keyword",
+            "modifier",
+            "comment",
+            "string",
+            "number",
+            "regexp",
+            "operator",
+            "decorator"
+          ]
+        },
+        "signatureHelp": {
+          "contextSupport": true,
+          "dynamicRegistration": true,
+          "signatureInformation": {
+            "activeParameterSupport": true,
+            "documentationFormat": [
+              "markdown",
+              "plaintext"
+            ],
+            "parameterInformation": {
+              "labelOffsetSupport": true
+            }
+          }
+        },
+        "synchronization": {
+          "didSave": true,
+          "dynamicRegistration": true,
+          "willSave": true,
+          "willSaveWaitUntil": true
+        },
+        "typeDefinition": {
+          "dynamicRegistration": true,
+          "linkSupport": true
+        },
+        "typeHierarchy": {
+          "dynamicRegistration": true
+        }
+      },
+      "window": {
+        "showDocument": {
+          "support": true
+        },
+        "showMessage": {
+          "messageActionItem": {
+            "additionalPropertiesSupport": true
+          }
+        },
+        "workDoneProgress": true
+      },
+      "workspace": {
+        "applyEdit": true,
+        "codeLens": {
+          "refreshSupport": true
+        },
+        "configuration": true,
+        "diagnostics": {
+          "refreshSupport": true
+        },
+        "didChangeConfiguration": {
+          "dynamicRegistration": true
+        },
+        "didChangeWatchedFiles": {
+          "dynamicRegistration": true,
+          "relativePatternSupport": true
+        },
+        "executeCommand": {
+          "dynamicRegistration": true
+        },
+        "fileOperations": {
+          "didCreate": true,
+          "didDelete": true,
+          "didRename": true,
+          "dynamicRegistration": true,
+          "willCreate": true,
+          "willDelete": true,
+          "willRename": true
+        },
+        "foldingRange": {
+          "refreshSupport": true
+        },
+        "inlayHint": {
+          "refreshSupport": true
+        },
+        "inlineValue": {
+          "refreshSupport": true
+        },
+        "semanticTokens": {
+          "refreshSupport": true
+        },
+        "symbol": {
+          "dynamicRegistration": true,
+          "resolveSupport": {
+            "properties": [
+              "location.range"
+            ]
+          },
+          "symbolKind": {
+            "valueSet": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "tagSupport": {
+            "valueSet": [
+              1
+            ]
+          }
+        },
+        "workspaceEdit": {
+          "changeAnnotationSupport": {
+            "groupsOnLabel": true
+          },
+          "documentChanges": true,
+          "failureHandling": "textOnlyTransactional",
+          "normalizesLineEndings": true,
+          "resourceOperations": [
+            "create",
+            "rename",
+            "delete"
+          ]
+        },
+        "workspaceFolders": true
+      }
+    },
+    "clientInfo": {
+      "name": "VSCodium",
+      "version": "1.109.5"
+    },
+    "initializationOptions": {
+      "clangdFileStatus": true,
+      "fallbackFlags": []
+    },
+    "locale": "en",
+    "processId": 1369798,
+    "rootPath": "/home/iris/Templates/Nullix",
+    "rootUri": "file:///home/iris/Templates/Nullix",
+    "trace": "off",
+    "workspaceFolders": [
+      {
+        "name": "Nullix",
+        "uri": "file:///home/iris/Templates/Nullix"
+      }
+    ]
+  }
+}
+
+I[20:06:55.917] <-- initialize(0)
+I[20:06:55.983] --> reply:initialize(0) 65 ms
+V[20:06:55.983] >>> {
+  "id": 0,
+  "jsonrpc": "2.0",
+  "result": {
+    "capabilities": {
+      "astProvider": true,
+      "callHierarchyProvider": true,
+      "clangdInlayHintsProvider": true,
+      "codeActionProvider": {
+        "codeActionKinds": [
+          "quickfix",
+          "refactor",
+          "info"
+        ]
+      },
+      "compilationDatabase": {
+        "automaticReload": true
+      },
+      "completionProvider": {
+        "resolveProvider": false,
+        "triggerCharacters": [
+          ".",
+          "<",
+          ">",
+          ":",
+          "\"",
+          "/",
+          "*"
+        ]
+      },
+      "declarationProvider": true,
+      "definitionProvider": true,
+      "documentFormattingProvider": true,
+      "documentHighlightProvider": true,
+      "documentLinkProvider": {
+        "resolveProvider": false
+      },
+      "documentOnTypeFormattingProvider": {
+        "firstTriggerCharacter": "\n",
+        "moreTriggerCharacter": []
+      },
+      "documentRangeFormattingProvider": {
+        "rangesSupport": true
+      },
+      "documentSymbolProvider": true,
+      "executeCommandProvider": {
+        "commands": [
+          "clangd.applyFix",
+          "clangd.applyRename",
+          "clangd.applyTweak"
+        ]
+      },
+      "foldingRangeProvider": true,
+      "hoverProvider": true,
+      "implementationProvider": true,
+      "inactiveRegionsProvider": true,
+      "inlayHintProvider": true,
+      "memoryUsageProvider": true,
+      "positionEncoding": "utf-16",
+      "referencesProvider": true,
+      "renameProvider": {
+        "prepareProvider": true
+      },
+      "selectionRangeProvider": true,
+      "semanticTokensProvider": {
+        "full": {
+          "delta": true
+        },
+        "legend": {
+          "tokenModifiers": [
+            "declaration",
+            "definition",
+            "deprecated",
+            "deduced",
+            "readonly",
+            "static",
+            "abstract",
+            "virtual",
+            "dependentName",
+            "defaultLibrary",
+            "usedAsMutableReference",
+            "usedAsMutablePointer",
+            "constructorOrDestructor",
+            "userDefined",
+            "functionScope",
+            "classScope",
+            "fileScope",
+            "globalScope"
+          ],
+          "tokenTypes": [
+            "variable",
+            "variable",
+            "parameter",
+            "function",
+            "method",
+            "function",
+            "property",
+            "variable",
+            "class",
+            "interface",
+            "enum",
+            "enumMember",
+            "type",
+            "type",
+            "unknown",
+            "namespace",
+            "typeParameter",
+            "concept",
+            "type",
+            "macro",
+            "modifier",
+            "operator",
+            "bracket",
+            "label",
+            "comment"
+          ]
+        },
+        "range": false
+      },
+      "signatureHelpProvider": {
+        "triggerCharacters": [
+          "(",
+          ")",
+          "{",
+          "}",
+          "<",
+          ">",
+          ","
+        ]
+      },
+      "standardTypeHierarchyProvider": true,
+      "textDocumentSync": {
+        "change": 2,
+        "openClose": true,
+        "save": true
+      },
+      "typeDefinitionProvider": true,
+      "typeHierarchyProvider": true,
+      "workspaceSymbolProvider": true
+    },
+    "offsetEncoding": "utf-16",
+    "serverInfo": {
+      "name": "clangd",
+      "version": "clangd version 21.1.8 (https://github.com/llvm/llvm-project 2078da43e25a4623cab2d0d60decddf709aaea28) linux+grpc x86_64-unknown-linux-gnu"
+    }
+  }
+}
+
+V[20:06:56.017] <<< {
+  "jsonrpc": "2.0",
+  "method": "initialized",
+  "params": {}
+}
+
+I[20:06:56.017] <-- initialized
+V[20:06:56.073] <<< {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "languageId": "cpp",
+      "text": "#include \"process/ProcStream.hpp\"\n#include \"process/SubProcess.hpp\"\n#include <print>\n#include <array>\n\nnamespace\n    fs\n{\n    using namespace ::std::filesystem;\n} /* namespace std::fs */\n\nauto\n  main\n  ( void )\n-> int\n{\n\n    const char* HOME = std::getenv(\"HOME\");\n    auto XDG_CONFIG_HOME = fs::path(HOME) / \".config\";\n    auto XDG_CONFIG_ROFI = XDG_CONFIG_HOME / \"rofi\";\n\n    using namespace uniqx::system::process;\n\n    std::array<std::string const, 4> pkgs {\n        \"pactl\",\n        \"notify-send\",\n        \"rofi\",\n        \"jq\"\n    };\n\n    std::array<std::string , 4> missingPkgs { };\n\n    for\n        ( size_t itr { }; itr < pkgs.size ( ); ++itr )\n    {\n\n        auto const& pkgCheck { SubProcess::create ( )};\n        pkgCheck ( \"which\" );\n        pkgCheck.capture(ProcStream::stdout);\n        pkgCheck [ std::move ( pkgs.at ( itr ) ) ];\n        pkgCheck.run ( );\n        auto&& checked = pkgCheck.result ( ).stdOut ( );\n\n        if (!checked.empty ( ) && checked.back ( ) == '\\n') {\n            checked = checked.substr ( checked.rfind ( '/' ) + 1 );\n            checked.pop_back();\n        }\n\n        if ( !checked.empty() && checked != pkgs.at ( itr ) )\n        {\n\n            missingPkgs.at ( itr ) += pkgs.at ( itr );\n\n            std::println ( \"missing packages: {}\" , checked );\n\n        }\n\n    }\n    auto const notify_send { SubProcess::create(\"notify-send\") };\n    auto const pactl { SubProcess::create(\"pactl\") };\n\n    for\n     ( const auto& mPkg : missingPkgs )\n    {\n        std::println ( \"missing package: {}\" , mPkg );\n        return -1;\n    }\n\n\n\n}\n",
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp",
+      "version": 1
+    }
+  }
+}
+
+I[20:06:56.073] <-- textDocument/didOpen
+V[20:06:56.437] <<< {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "textDocument/documentSymbol",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:06:56.437] <-- textDocument/documentSymbol(1)
+V[20:06:56.437] <<< {
+  "id": 2,
+  "jsonrpc": "2.0",
+  "method": "textDocument/codeAction",
+  "params": {
+    "context": {
+      "diagnostics": [],
+      "triggerKind": 2
+    },
+    "range": {
+      "end": {
+        "character": 8,
+        "line": 64
+      },
+      "start": {
+        "character": 8,
+        "line": 64
+      }
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:06:56.437] <-- textDocument/codeAction(2)
+V[20:06:56.437] <<< {
+  "id": 3,
+  "jsonrpc": "2.0",
+  "method": "textDocument/documentLink",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:06:56.437] <-- textDocument/documentLink(3)
+V[20:06:56.437] <<< {
+  "id": 4,
+  "jsonrpc": "2.0",
+  "method": "textDocument/inlayHint",
+  "params": {
+    "range": {
+      "end": {
+        "character": 0,
+        "line": 71
+      },
+      "start": {
+        "character": 0,
+        "line": 0
+      }
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:06:56.437] <-- textDocument/inlayHint(4)
+V[20:06:56.437] <<< {
+  "id": 5,
+  "jsonrpc": "2.0",
+  "method": "textDocument/foldingRange",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:06:56.437] <-- textDocument/foldingRange(5)
+V[20:06:56.437] <<< {
+  "id": 6,
+  "jsonrpc": "2.0",
+  "method": "textDocument/foldingRange",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:06:56.437] <-- textDocument/foldingRange(6)
+V[20:06:56.437] <<< {
+  "id": 7,
+  "jsonrpc": "2.0",
+  "method": "textDocument/semanticTokens/full",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:06:56.437] <-- textDocument/semanticTokens/full(7)
+I[20:06:56.438] --> reply:textDocument/foldingRange(5) 1 ms
+V[20:06:56.438] >>> {
+  "id": 5,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "endLine": 8,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 7
+    },
+    {
+      "endLine": 69,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 15
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 27,
+      "kind": "region",
+      "startCharacter": 43,
+      "startLine": 23
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 56,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 34
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 45,
+      "kind": "region",
+      "startCharacter": 61,
+      "startLine": 43
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 54,
+      "kind": "region",
+      "startCharacter": 9,
+      "startLine": 49
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 65,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 63
+    }
+  ]
+}
+
+I[20:06:56.438] --> reply:textDocument/foldingRange(6) 1 ms
+V[20:06:56.438] >>> {
+  "id": 6,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "endLine": 8,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 7
+    },
+    {
+      "endLine": 69,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 15
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 27,
+      "kind": "region",
+      "startCharacter": 43,
+      "startLine": 23
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 56,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 34
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 45,
+      "kind": "region",
+      "startCharacter": 61,
+      "startLine": 43
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 54,
+      "kind": "region",
+      "startCharacter": 9,
+      "startLine": 49
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 65,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 63
+    }
+  ]
+}
+
+I[20:06:56.692] Loaded compilation database from /home/iris/Templates/Nullix/compile_commands.json
+I[20:06:56.693] ASTWorker building file /home/iris/Templates/Nullix/src/main.cpp version 1 with command 
+[/home/iris/Templates/Nullix/build]
+/usr/bin/clang++ --driver-mode=g++ -I/home/iris/Templates/Nullix/lib/uniqx/include/system/file_tree -I/home/iris/Templates/Nullix/lib/uniqx/include/system/process -I/home/iris/Templates/Nullix/lib/uniqx/include/system -I/home/iris/Templates/Nullix/lib/nullix/include -I/home/iris/Templates/Nullix/lib/uniqx/include -I/home/iris/Templates/Nullix/lib/nullix -I/home/iris/Templates/Nullix/lib/uniqx -I/home/iris/Templates/Nullix/lib -g -std=gnu++26 -fcolor-diagnostics -Werror -Weverything -Wno-c++98-compat -Wno-switch-default -Wno-c++98-compat-pedantic -Wno-covered-switch-default -ferror-limit=999999 -fdiagnostics-color -o CMakeFiles/a.out.dir/src/main.cpp.o -c -resource-dir=/home/iris/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/lib/clang/21 -- /home/iris/Templates/Nullix/src/main.cpp
+V[20:06:56.695] Broadcasting compilation database from /home/iris/Templates/Nullix
+I[20:06:56.696] --> window/workDoneProgress/create(0)
+V[20:06:56.696] >>> {
+  "id": 0,
+  "jsonrpc": "2.0",
+  "method": "window/workDoneProgress/create",
+  "params": {
+    "token": "backgroundIndexProgress"
+  }
+}
+
+I[20:06:56.697] Enqueueing 10 commands for indexing
+V[20:06:56.772] <<< {
+  "id": 0,
+  "jsonrpc": "2.0",
+  "result": null
+}
+
+I[20:06:56.772] <-- reply(0)
+I[20:06:56.772] --> $/progress
+V[20:06:56.772] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "begin",
+      "percentage": 0,
+      "title": "indexing"
+    }
+  }
+}
+
+I[20:06:56.772] --> $/progress
+V[20:06:56.772] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "report",
+      "message": "0/1",
+      "percentage": 0
+    }
+  }
+}
+
+V[20:06:57.226] Ignored diagnostic. argument unused during compilation: '-c'
+V[20:06:57.244] Driver produced command: cc1 -cc1 -triple x86_64-unknown-linux-gnu -fsyntax-only -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name main.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debug-info-kind=constructor -dwarf-version=5 -debugger-tuning=gdb -fdebug-compilation-dir=/home/iris/Templates/Nullix/build -fcoverage-compilation-dir=/home/iris/Templates/Nullix/build -resource-dir /home/iris/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/lib/clang/21 -I /home/iris/Templates/Nullix/lib/uniqx/include/system/file_tree -I /home/iris/Templates/Nullix/lib/uniqx/include/system/process -I /home/iris/Templates/Nullix/lib/uniqx/include/system -I /home/iris/Templates/Nullix/lib/nullix/include -I /home/iris/Templates/Nullix/lib/uniqx/include -I /home/iris/Templates/Nullix/lib/nullix -I /home/iris/Templates/Nullix/lib/uniqx -I /home/iris/Templates/Nullix/lib -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1 -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward -internal-isystem /home/iris/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/lib/clang/21/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -Werror -Weverything -Wno-c++98-compat -Wno-switch-default -Wno-c++98-compat-pedantic -Wno-covered-switch-default -std=gnu++26 -fdeprecated-macro -ferror-limit 999999 -fgnuc-version=4.2.1 -fno-implicit-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -no-round-trip-args -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -x c++ /home/iris/Templates/Nullix/src/main.cpp
+I[20:06:57.280] --> textDocument/clangd.fileStatus
+V[20:06:57.280] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "parsing includes, running Update",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:06:57.280] Building first preamble for /home/iris/Templates/Nullix/src/main.cpp version 1
+V[20:07:02.628] BackgroundIndex: building version 1 after loading index from disk
+V[20:07:02.733] BackgroundIndex: serving version 1 (19626882 bytes)
+I[20:07:05.058] --> $/progress
+V[20:07:05.058] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "report",
+      "message": "0/2",
+      "percentage": 0
+    }
+  }
+}
+
+I[20:07:05.058] --> $/progress
+V[20:07:05.058] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "report",
+      "message": "1/2",
+      "percentage": 50
+    }
+  }
+}
+
+I[20:07:05.058] --> $/progress
+V[20:07:05.058] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "report",
+      "message": "1/2",
+      "percentage": 50
+    }
+  }
+}
+
+V[20:07:05.058] Indexing /home/iris/Templates/Nullix/src/main.cpp (digest:=A4B39506612D8FD9)
+V[20:07:05.059] Ignored diagnostic. argument unused during compilation: '-c'
+V[20:07:06.745] Dropped diagnostic: /home/iris/Templates/Nullix/lib/diagnostics/Diagnostics.hpp: "Warn: Header '<diagnostics.h>' has been supressed Ignore this warning if you are not using header '<diagnostics.h>'"
+V[20:07:07.513] Dropped diagnostic: /home/iris/Templates/Nullix/lib/globals.hpp: unknown attribute 'gblx_detail_::documentation_' ignored
+I[20:07:07.519] Built preamble of size 11364288 for file /home/iris/Templates/Nullix/src/main.cpp version 1 in 10.24 seconds
+I[20:07:07.520] --> workspace/semanticTokens/refresh(1)
+V[20:07:07.520] >>> {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "workspace/semanticTokens/refresh",
+  "params": null
+}
+
+I[20:07:07.520] Indexing c++23 standard library in the context of /home/iris/Templates/Nullix/src/main.cpp
+V[20:07:07.526] <<< {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": null
+}
+
+I[20:07:07.526] <-- reply(1)
+V[20:07:08.012] indexed file AST for /home/iris/Templates/Nullix/src/main.cpp version 1:
+  symbol slab: 2 symbols, 4680 bytes
+  ref slab: 24 symbols, 41 refs, 4992 bytes
+  relations slab: 0 relations, 24 bytes
+V[20:07:08.012] Build dynamic index for main-file symbols with estimated memory usage of 14008 bytes
+I[20:07:08.012] --> textDocument/publishDiagnostics
+V[20:07:08.012] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/publishDiagnostics",
+  "params": {
+    "diagnostics": [
+      {
+        "code": "typecheck_call_too_few_args_at_least",
+        "message": "Too few arguments to function call, expected at least 1, have 0",
+        "range": {
+          "end": {
+            "character": 53,
+            "line": 36
+          },
+          "start": {
+            "character": 52,
+            "line": 36
+          }
+        },
+        "relatedInformation": [
+          {
+            "location": {
+              "range": {
+                "end": {
+                  "character": 33,
+                  "line": 54
+                },
+                "start": {
+                  "character": 27,
+                  "line": 54
+                }
+              },
+              "uri": "file:///home/iris/Templates/Nullix/lib/uniqx/include/system/process/SubProcess.hpp"
+            },
+            "message": "'create' declared here"
+          }
+        ],
+        "severity": 1,
+        "source": "clang"
+      }
+    ],
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp",
+    "version": 1
+  }
+}
+
+I[20:07:08.012] --> textDocument/inactiveRegions
+V[20:07:08.012] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/inactiveRegions",
+  "params": {
+    "regions": [],
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+V[20:07:08.012] ASTWorker running DocumentSymbols on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:08.012] --> reply:textDocument/documentSymbol(1) 11575 ms
+V[20:07:08.013] >>> {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "children": [
+        {
+          "kind": 13,
+          "name": "using namespace ::std::filesystem",
+          "range": {
+            "end": {
+              "character": 37,
+              "line": 8
+            },
+            "start": {
+              "character": 4,
+              "line": 8
+            }
+          },
+          "selectionRange": {
+            "end": {
+              "character": 37,
+              "line": 8
+            },
+            "start": {
+              "character": 27,
+              "line": 8
+            }
+          }
+        }
+      ],
+      "kind": 3,
+      "name": "fs",
+      "range": {
+        "end": {
+          "character": 1,
+          "line": 9
+        },
+        "start": {
+          "character": 0,
+          "line": 5
+        }
+      },
+      "selectionRange": {
+        "end": {
+          "character": 6,
+          "line": 6
+        },
+        "start": {
+          "character": 4,
+          "line": 6
+        }
+      }
+    },
+    {
+      "detail": "auto () -> int",
+      "kind": 12,
+      "name": "main",
+      "range": {
+        "end": {
+          "character": 1,
+          "line": 70
+        },
+        "start": {
+          "character": 0,
+          "line": 11
+        }
+      },
+      "selectionRange": {
+        "end": {
+          "character": 6,
+          "line": 12
+        },
+        "start": {
+          "character": 2,
+          "line": 12
+        }
+      }
+    }
+  ]
+}
+
+V[20:07:08.013] ASTWorker running codeAction on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:08.013] --> reply:textDocument/codeAction(2) 11576 ms
+V[20:07:08.013] >>> {
+  "id": 2,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AddUsing"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Add using-declaration for println and remove qualifier"
+      },
+      "kind": "refactor",
+      "title": "Add using-declaration for println and remove qualifier"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AnnotateHighlightings"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Annotate highlighting tokens"
+      },
+      "kind": "refactor",
+      "title": "Annotate highlighting tokens"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpAST"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump DeclRefExpr AST"
+      },
+      "kind": "info",
+      "title": "Dump DeclRefExpr AST"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "ShowSelectionTree"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Show selection tree"
+      },
+      "kind": "info",
+      "title": "Show selection tree"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpSymbol"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump symbol under the cursor"
+      },
+      "kind": "info",
+      "title": "Dump symbol under the cursor"
+    }
+  ]
+}
+
+V[20:07:08.013] ASTWorker running DocumentLinks on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:08.013] --> reply:textDocument/documentLink(3) 11576 ms
+V[20:07:08.013] >>> {
+  "id": 3,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "range": {
+        "end": {
+          "character": 33,
+          "line": 0
+        },
+        "start": {
+          "character": 9,
+          "line": 0
+        }
+      },
+      "target": "file:///home/iris/Templates/Nullix/lib/uniqx/include/system/process/ProcStream.hpp"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 33,
+          "line": 1
+        },
+        "start": {
+          "character": 9,
+          "line": 1
+        }
+      },
+      "target": "file:///home/iris/Templates/Nullix/lib/uniqx/include/system/process/SubProcess.hpp"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 16,
+          "line": 2
+        },
+        "start": {
+          "character": 9,
+          "line": 2
+        }
+      },
+      "target": "file:///usr/include/c%2B%2B/15.2.1/print"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 16,
+          "line": 3
+        },
+        "start": {
+          "character": 9,
+          "line": 3
+        }
+      },
+      "target": "file:///usr/include/c%2B%2B/15.2.1/array"
+    }
+  ]
+}
+
+V[20:07:08.013] ASTWorker running InlayHints on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:08.014] --> reply:textDocument/inlayHint(4) 11576 ms
+V[20:07:08.014] >>> {
+  "id": 4,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "name:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 35,
+        "line": 17
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": path"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 24,
+        "line": 18
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "source:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 36,
+        "line": 18
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": path"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 24,
+        "line": 19
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[0]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 24
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[1]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 25
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[2]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 26
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[3]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 27
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 41,
+        "line": 39
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 54,
+        "line": 48
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 29,
+        "line": 51
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 48,
+        "line": 51
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const SubProcess"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 26,
+        "line": 58
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const SubProcess"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 20,
+        "line": 59
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const basic_string<char> &"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 23,
+        "line": 62
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "fmt:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 23,
+        "line": 64
+      }
+    }
+  ]
+}
+
+V[20:07:08.014] ASTWorker running SemanticHighlights on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:08.014] --> reply:textDocument/semanticTokens/full(7) 11577 ms
+V[20:07:08.014] >>> {
+  "id": 7,
+  "jsonrpc": "2.0",
+  "result": {
+    "data": [
+      6,
+      4,
+      2,
+      15,
+      131073,
+      2,
+      22,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      10,
+      15,
+      131584,
+      4,
+      2,
+      4,
+      3,
+      131075,
+      5,
+      16,
+      4,
+      1,
+      16403,
+      0,
+      7,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      6,
+      3,
+      66048,
+      1,
+      4,
+      4,
+      8,
+      131592,
+      0,
+      5,
+      15,
+      1,
+      16387,
+      0,
+      18,
+      2,
+      15,
+      131072,
+      0,
+      4,
+      4,
+      8,
+      131584,
+      0,
+      5,
+      4,
+      1,
+      16400,
+      0,
+      6,
+      1,
+      21,
+      8192,
+      1,
+      4,
+      4,
+      8,
+      131592,
+      0,
+      5,
+      15,
+      1,
+      16387,
+      0,
+      18,
+      15,
+      1,
+      16384,
+      0,
+      16,
+      1,
+      21,
+      8192,
+      2,
+      20,
+      5,
+      15,
+      131072,
+      0,
+      7,
+      6,
+      15,
+      131072,
+      0,
+      8,
+      7,
+      15,
+      131072,
+      2,
+      4,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      5,
+      8,
+      131584,
+      0,
+      5,
+      1,
+      22,
+      0,
+      0,
+      1,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      6,
+      8,
+      66048,
+      0,
+      15,
+      1,
+      22,
+      0,
+      0,
+      2,
+      4,
+      1,
+      16387,
+      7,
+      4,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      5,
+      8,
+      131584,
+      0,
+      5,
+      1,
+      22,
+      0,
+      0,
+      1,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      6,
+      8,
+      66048,
+      0,
+      10,
+      1,
+      22,
+      0,
+      0,
+      2,
+      11,
+      1,
+      16387,
+      3,
+      10,
+      6,
+      18,
+      66048,
+      0,
+      7,
+      3,
+      1,
+      16387,
+      0,
+      9,
+      3,
+      1,
+      16384,
+      0,
+      4,
+      1,
+      21,
+      0,
+      0,
+      2,
+      4,
+      1,
+      16384,
+      0,
+      5,
+      4,
+      4,
+      33296,
+      0,
+      10,
+      2,
+      21,
+      0,
+      0,
+      2,
+      3,
+      1,
+      16384,
+      3,
+      20,
+      8,
+      1,
+      16403,
+      0,
+      11,
+      10,
+      8,
+      131072,
+      0,
+      12,
+      6,
+      5,
+      32800,
+      1,
+      8,
+      8,
+      1,
+      16400,
+      1,
+      8,
+      8,
+      1,
+      16400,
+      0,
+      9,
+      7,
+      14,
+      33024,
+      0,
+      8,
+      10,
+      8,
+      131072,
+      0,
+      12,
+      6,
+      19,
+      131072,
+      1,
+      8,
+      8,
+      1,
+      16400,
+      0,
+      11,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      4,
+      3,
+      131584,
+      0,
+      7,
+      4,
+      1,
+      16384,
+      0,
+      5,
+      2,
+      4,
+      33280,
+      0,
+      5,
+      3,
+      1,
+      16384,
+      1,
+      8,
+      8,
+      1,
+      16400,
+      0,
+      9,
+      3,
+      14,
+      33024,
+      1,
+      15,
+      7,
+      1,
+      16387,
+      0,
+      19,
+      6,
+      14,
+      33024,
+      0,
+      11,
+      6,
+      14,
+      33024,
+      2,
+      12,
+      1,
+      21,
+      8192,
+      0,
+      9,
+      5,
+      14,
+      33024,
+      0,
+      10,
+      2,
+      21,
+      8192,
+      0,
+      11,
+      4,
+      14,
+      33024,
+      0,
+      9,
+      2,
+      21,
+      8192,
+      1,
+      12,
+      7,
+      1,
+      16384,
+      0,
+      8,
+      1,
+      21,
+      8192,
+      0,
+      10,
+      6,
+      14,
+      33024,
+      0,
+      17,
+      5,
+      14,
+      33024,
+      0,
+      14,
+      1,
+      21,
+      8192,
+      1,
+      12,
+      7,
+      1,
+      16384,
+      0,
+      8,
+      8,
+      14,
+      33024,
+      3,
+      13,
+      1,
+      21,
+      8192,
+      0,
+      9,
+      5,
+      14,
+      33024,
+      0,
+      8,
+      2,
+      21,
+      8192,
+      0,
+      11,
+      2,
+      21,
+      8192,
+      0,
+      3,
+      4,
+      1,
+      16384,
+      0,
+      5,
+      2,
+      4,
+      33280,
+      0,
+      5,
+      3,
+      1,
+      16384,
+      3,
+      12,
+      11,
+      1,
+      16384,
+      0,
+      12,
+      2,
+      4,
+      33280,
+      0,
+      5,
+      3,
+      1,
+      16384,
+      0,
+      6,
+      2,
+      21,
+      8192,
+      0,
+      3,
+      4,
+      1,
+      16384,
+      0,
+      5,
+      2,
+      4,
+      33280,
+      0,
+      5,
+      3,
+      1,
+      16384,
+      2,
+      12,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      7,
+      3,
+      131584,
+      5,
+      4,
+      4,
+      8,
+      131080,
+      0,
+      11,
+      11,
+      1,
+      16403,
+      0,
+      14,
+      10,
+      8,
+      131072,
+      0,
+      12,
+      6,
+      5,
+      32800,
+      1,
+      4,
+      4,
+      8,
+      131080,
+      0,
+      11,
+      5,
+      1,
+      16403,
+      0,
+      8,
+      10,
+      8,
+      131072,
+      0,
+      12,
+      6,
+      5,
+      32800,
+      3,
+      13,
+      4,
+      8,
+      131592,
+      0,
+      6,
+      4,
+      1,
+      16403,
+      0,
+      7,
+      11,
+      1,
+      16384,
+      2,
+      8,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      7,
+      3,
+      131584,
+      0,
+      34,
+      4,
+      1,
+      16400,
+      1,
+      15,
+      1,
+      21,
+      0
+    ],
+    "resultId": "1"
+  }
+}
+
+I[20:07:08.014] --> textDocument/clangd.fileStatus
+V[20:07:08.014] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:08.349] indexed preamble AST for /home/iris/Templates/Nullix/src/main.cpp version 1:
+  symbol slab: 10015 symbols, 3060880 bytes
+  ref slab: 0 symbols, 0 refs, 128 bytes
+  relations slab: 445 relations, 8728 bytes
+V[20:07:08.437] <<< {
+  "id": 8,
+  "jsonrpc": "2.0",
+  "method": "textDocument/codeAction",
+  "params": {
+    "context": {
+      "diagnostics": [],
+      "triggerKind": 2
+    },
+    "range": {
+      "end": {
+        "character": 8,
+        "line": 64
+      },
+      "start": {
+        "character": 8,
+        "line": 64
+      }
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:08.437] <-- textDocument/codeAction(8)
+V[20:07:08.437] ASTWorker running codeAction on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:08.438] --> reply:textDocument/codeAction(8) 1 ms
+V[20:07:08.438] >>> {
+  "id": 8,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AddUsing"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Add using-declaration for println and remove qualifier"
+      },
+      "kind": "refactor",
+      "title": "Add using-declaration for println and remove qualifier"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AnnotateHighlightings"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Annotate highlighting tokens"
+      },
+      "kind": "refactor",
+      "title": "Annotate highlighting tokens"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpAST"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump DeclRefExpr AST"
+      },
+      "kind": "info",
+      "title": "Dump DeclRefExpr AST"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "ShowSelectionTree"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Show selection tree"
+      },
+      "kind": "info",
+      "title": "Show selection tree"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpSymbol"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump symbol under the cursor"
+      },
+      "kind": "info",
+      "title": "Dump symbol under the cursor"
+    }
+  ]
+}
+
+I[20:07:08.438] --> textDocument/clangd.fileStatus
+V[20:07:08.438] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:08.532] Build dynamic index for header symbols with estimated memory usage of 7140244 bytes
+V[20:07:08.579] Ignored diagnostic. /home/iris/Templates/Nullix/src/main.cpp:37:53:too few arguments to function call, expected at least 1, have 0
+V[20:07:08.579] Ignored diagnostic. /home/iris/Templates/Nullix/lib/uniqx/include/system/process/SubProcess.hpp:55:28:'create' declared here
+I[20:07:08.907] Indexed /home/iris/Templates/Nullix/src/main.cpp (2 symbols, 11461 refs, 290 files)
+I[20:07:08.917] Failed to compile /home/iris/Templates/Nullix/src/main.cpp, index may be incomplete
+V[20:07:08.935] BackgroundIndex: building version 2 when background indexer is idle
+V[20:07:08.952] <<< {
+  "id": 9,
+  "jsonrpc": "2.0",
+  "method": "textDocument/hover",
+  "params": {
+    "position": {
+      "character": 14,
+      "line": 23
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:08.952] <-- textDocument/hover(9)
+V[20:07:08.952] ASTWorker running Hover on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:08.966] --> reply:textDocument/hover(9) 13 ms
+V[20:07:08.966] >>> {
+  "id": 9,
+  "jsonrpc": "2.0",
+  "result": {
+    "contents": {
+      "kind": "markdown",
+      "value": "### struct `array<const std::basic_string<char>, 4UL>`  \nprovided by `<array>`  \n\n---\nDeclarations of std::array and its std::get overloads, so that std::tuple_cat can use them if \\<tuple> is included before \\<array>.  \nWe also declare the other std::get overloads here so that they're visible to the P2165R4 tuple-like constructors of pair and tuple.  \n\n---\n```cpp\n// In namespace std\ntemplate <> struct array<const std::basic_string<char>, 4> {}\n```"
+    },
+    "range": {
+      "end": {
+        "character": 14,
+        "line": 23
+      },
+      "start": {
+        "character": 9,
+        "line": 23
+      }
+    }
+  }
+}
+
+I[20:07:08.966] --> textDocument/clangd.fileStatus
+V[20:07:08.966] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:09.258] BackgroundIndex: serving version 2 (19626882 bytes)
+I[20:07:09.264] --> $/progress
+V[20:07:09.264] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "end"
+    }
+  }
+}
+
+V[20:07:10.375] <<< {
+  "id": 10,
+  "jsonrpc": "2.0",
+  "method": "textDocument/semanticTokens/full/delta",
+  "params": {
+    "previousResultId": "1",
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:10.375] <-- textDocument/semanticTokens/full/delta(10)
+V[20:07:10.375] ASTWorker running SemanticHighlights on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:10.376] --> reply:textDocument/semanticTokens/full/delta(10) 0 ms
+V[20:07:10.376] >>> {
+  "id": 10,
+  "jsonrpc": "2.0",
+  "result": {
+    "edits": [],
+    "resultId": "2"
+  }
+}
+
+I[20:07:10.376] --> textDocument/clangd.fileStatus
+V[20:07:10.376] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:10.676] <<< {
+  "id": 11,
+  "jsonrpc": "2.0",
+  "method": "shutdown"
+}
+
+I[20:07:10.676] <-- shutdown(11)
+I[20:07:10.676] --> reply:shutdown(11) 0 ms
+V[20:07:10.676] >>> {
+  "id": 11,
+  "jsonrpc": "2.0",
+  "result": null
+}
+
+I[20:07:10.729] clangd version 21.1.8 (https://github.com/llvm/llvm-project 2078da43e25a4623cab2d0d60decddf709aaea28)
+I[20:07:10.729] Features: linux+grpc
+I[20:07:10.729] PID: 1371489
+I[20:07:10.729] Working directory: /home/iris/Templates/Nullix
+I[20:07:10.729] argv[0]: /home/iris/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd
+I[20:07:10.729] argv[1]: --pretty
+I[20:07:10.729] argv[2]: --clang-tidy
+I[20:07:10.729] argv[3]: --log=verbose
+I[20:07:10.729] argv[4]: --malloc-trim
+I[20:07:10.729] argv[5]: -crash-pragmas
+I[20:07:10.729] argv[6]: --debug-origin
+I[20:07:10.729] argv[7]: --hidden-features
+I[20:07:10.729] argv[8]: --limit-results=0
+I[20:07:10.729] argv[9]: --background-index
+I[20:07:10.729] argv[10]: --import-insertions
+I[20:07:10.729] argv[11]: --use-dirty-headers
+I[20:07:10.729] argv[12]: --pch-storage=memory
+I[20:07:10.729] argv[13]: --limit-references=0
+I[20:07:10.729] argv[14]: --rename-file-limit=0
+I[20:07:10.729] argv[15]: --completion-parse=auto
+I[20:07:10.729] argv[16]: --header-insertion=iwyu
+I[20:07:10.729] argv[17]: --completion-style=detailed
+I[20:07:10.729] argv[18]: --parse-forwarding-functions
+I[20:07:10.729] argv[19]: --header-insertion-decorators
+I[20:07:10.729] argv[20]: --ranking-model=decision_forest
+I[20:07:10.729] argv[21]: --function-arg-placeholders=true
+I[20:07:10.729] argv[22]: --background-index-priority=normal
+V[20:07:10.729] User config file is /home/iris/.config/clangd/config.yaml
+I[20:07:10.729] Starting LSP over stdin/stdout
+V[20:07:10.731] <<< {
+  "id": 0,
+  "jsonrpc": "2.0",
+  "method": "initialize",
+  "params": {
+    "capabilities": {
+      "general": {
+        "markdown": {
+          "parser": "marked",
+          "version": "1.1.0"
+        },
+        "positionEncodings": [
+          "utf-16"
+        ],
+        "regularExpressions": {
+          "engine": "ECMAScript",
+          "version": "ES2020"
+        },
+        "staleRequestSupport": {
+          "cancel": true,
+          "retryOnContentModified": [
+            "textDocument/semanticTokens/full",
+            "textDocument/semanticTokens/range",
+            "textDocument/semanticTokens/full/delta"
+          ]
+        }
+      },
+      "notebookDocument": {
+        "synchronization": {
+          "dynamicRegistration": true,
+          "executionSummarySupport": true
+        }
+      },
+      "textDocument": {
+        "callHierarchy": {
+          "dynamicRegistration": true
+        },
+        "codeAction": {
+          "codeActionLiteralSupport": {
+            "codeActionKind": {
+              "valueSet": [
+                "",
+                "quickfix",
+                "refactor",
+                "refactor.extract",
+                "refactor.inline",
+                "refactor.rewrite",
+                "source",
+                "source.organizeImports"
+              ]
+            }
+          },
+          "dataSupport": true,
+          "disabledSupport": true,
+          "dynamicRegistration": true,
+          "honorsChangeAnnotations": true,
+          "isPreferredSupport": true,
+          "resolveSupport": {
+            "properties": [
+              "edit"
+            ]
+          }
+        },
+        "codeLens": {
+          "dynamicRegistration": true
+        },
+        "colorProvider": {
+          "dynamicRegistration": true
+        },
+        "completion": {
+          "completionItem": {
+            "commitCharactersSupport": true,
+            "deprecatedSupport": true,
+            "documentationFormat": [
+              "markdown",
+              "plaintext"
+            ],
+            "insertReplaceSupport": true,
+            "insertTextModeSupport": {
+              "valueSet": [
+                1,
+                2
+              ]
+            },
+            "labelDetailsSupport": true,
+            "preselectSupport": true,
+            "resolveSupport": {
+              "properties": [
+                "documentation",
+                "detail",
+                "additionalTextEdits"
+              ]
+            },
+            "snippetSupport": true,
+            "tagSupport": {
+              "valueSet": [
+                1
+              ]
+            }
+          },
+          "completionItemKind": {
+            "valueSet": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25
+            ]
+          },
+          "completionList": {
+            "itemDefaults": [
+              "commitCharacters",
+              "editRange",
+              "insertTextFormat",
+              "insertTextMode",
+              "data"
+            ]
+          },
+          "contextSupport": true,
+          "dynamicRegistration": true,
+          "editsNearCursor": true,
+          "insertTextMode": 2
+        },
+        "declaration": {
+          "dynamicRegistration": true,
+          "linkSupport": true
+        },
+        "definition": {
+          "dynamicRegistration": true,
+          "linkSupport": true
+        },
+        "diagnostic": {
+          "dynamicRegistration": true,
+          "relatedDocumentSupport": false
+        },
+        "documentHighlight": {
+          "dynamicRegistration": true
+        },
+        "documentLink": {
+          "dynamicRegistration": true,
+          "tooltipSupport": true
+        },
+        "documentSymbol": {
+          "dynamicRegistration": true,
+          "hierarchicalDocumentSymbolSupport": true,
+          "labelSupport": true,
+          "symbolKind": {
+            "valueSet": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "tagSupport": {
+            "valueSet": [
+              1
+            ]
+          }
+        },
+        "foldingRange": {
+          "dynamicRegistration": true,
+          "foldingRange": {
+            "collapsedText": false
+          },
+          "foldingRangeKind": {
+            "valueSet": [
+              "comment",
+              "imports",
+              "region"
+            ]
+          },
+          "lineFoldingOnly": true,
+          "rangeLimit": 5000
+        },
+        "formatting": {
+          "dynamicRegistration": true
+        },
+        "hover": {
+          "contentFormat": [
+            "markdown",
+            "plaintext"
+          ],
+          "dynamicRegistration": true
+        },
+        "implementation": {
+          "dynamicRegistration": true,
+          "linkSupport": true
+        },
+        "inactiveRegionsCapabilities": {
+          "inactiveRegions": true
+        },
+        "inlayHint": {
+          "dynamicRegistration": true,
+          "resolveSupport": {
+            "properties": [
+              "tooltip",
+              "textEdits",
+              "label.tooltip",
+              "label.location",
+              "label.command"
+            ]
+          }
+        },
+        "inlineValue": {
+          "dynamicRegistration": true
+        },
+        "linkedEditingRange": {
+          "dynamicRegistration": true
+        },
+        "onTypeFormatting": {
+          "dynamicRegistration": true
+        },
+        "publishDiagnostics": {
+          "codeDescriptionSupport": true,
+          "dataSupport": true,
+          "relatedInformation": true,
+          "tagSupport": {
+            "valueSet": [
+              1,
+              2
+            ]
+          },
+          "versionSupport": false
+        },
+        "rangeFormatting": {
+          "dynamicRegistration": true,
+          "rangesSupport": true
+        },
+        "references": {
+          "dynamicRegistration": true
+        },
+        "rename": {
+          "dynamicRegistration": true,
+          "honorsChangeAnnotations": true,
+          "prepareSupport": true,
+          "prepareSupportDefaultBehavior": 1
+        },
+        "selectionRange": {
+          "dynamicRegistration": true
+        },
+        "semanticTokens": {
+          "augmentsSyntaxTokens": true,
+          "dynamicRegistration": true,
+          "formats": [
+            "relative"
+          ],
+          "multilineTokenSupport": false,
+          "overlappingTokenSupport": false,
+          "requests": {
+            "full": {
+              "delta": true
+            },
+            "range": true
+          },
+          "serverCancelSupport": true,
+          "tokenModifiers": [
+            "declaration",
+            "definition",
+            "readonly",
+            "static",
+            "deprecated",
+            "abstract",
+            "async",
+            "modification",
+            "documentation",
+            "defaultLibrary"
+          ],
+          "tokenTypes": [
+            "namespace",
+            "type",
+            "class",
+            "enum",
+            "interface",
+            "struct",
+            "typeParameter",
+            "parameter",
+            "variable",
+            "property",
+            "enumMember",
+            "event",
+            "function",
+            "method",
+            "macro",
+            "keyword",
+            "modifier",
+            "comment",
+            "string",
+            "number",
+            "regexp",
+            "operator",
+            "decorator"
+          ]
+        },
+        "signatureHelp": {
+          "contextSupport": true,
+          "dynamicRegistration": true,
+          "signatureInformation": {
+            "activeParameterSupport": true,
+            "documentationFormat": [
+              "markdown",
+              "plaintext"
+            ],
+            "parameterInformation": {
+              "labelOffsetSupport": true
+            }
+          }
+        },
+        "synchronization": {
+          "didSave": true,
+          "dynamicRegistration": true,
+          "willSave": true,
+          "willSaveWaitUntil": true
+        },
+        "typeDefinition": {
+          "dynamicRegistration": true,
+          "linkSupport": true
+        },
+        "typeHierarchy": {
+          "dynamicRegistration": true
+        }
+      },
+      "window": {
+        "showDocument": {
+          "support": true
+        },
+        "showMessage": {
+          "messageActionItem": {
+            "additionalPropertiesSupport": true
+          }
+        },
+        "workDoneProgress": true
+      },
+      "workspace": {
+        "applyEdit": true,
+        "codeLens": {
+          "refreshSupport": true
+        },
+        "configuration": true,
+        "diagnostics": {
+          "refreshSupport": true
+        },
+        "didChangeConfiguration": {
+          "dynamicRegistration": true
+        },
+        "didChangeWatchedFiles": {
+          "dynamicRegistration": true,
+          "relativePatternSupport": true
+        },
+        "executeCommand": {
+          "dynamicRegistration": true
+        },
+        "fileOperations": {
+          "didCreate": true,
+          "didDelete": true,
+          "didRename": true,
+          "dynamicRegistration": true,
+          "willCreate": true,
+          "willDelete": true,
+          "willRename": true
+        },
+        "foldingRange": {
+          "refreshSupport": true
+        },
+        "inlayHint": {
+          "refreshSupport": true
+        },
+        "inlineValue": {
+          "refreshSupport": true
+        },
+        "semanticTokens": {
+          "refreshSupport": true
+        },
+        "symbol": {
+          "dynamicRegistration": true,
+          "resolveSupport": {
+            "properties": [
+              "location.range"
+            ]
+          },
+          "symbolKind": {
+            "valueSet": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          "tagSupport": {
+            "valueSet": [
+              1
+            ]
+          }
+        },
+        "workspaceEdit": {
+          "changeAnnotationSupport": {
+            "groupsOnLabel": true
+          },
+          "documentChanges": true,
+          "failureHandling": "textOnlyTransactional",
+          "normalizesLineEndings": true,
+          "resourceOperations": [
+            "create",
+            "rename",
+            "delete"
+          ]
+        },
+        "workspaceFolders": true
+      }
+    },
+    "clientInfo": {
+      "name": "VSCodium",
+      "version": "1.109.5"
+    },
+    "initializationOptions": {
+      "clangdFileStatus": true,
+      "fallbackFlags": []
+    },
+    "locale": "en",
+    "processId": 1369798,
+    "rootPath": "/home/iris/Templates/Nullix",
+    "rootUri": "file:///home/iris/Templates/Nullix",
+    "trace": "off",
+    "workspaceFolders": [
+      {
+        "name": "Nullix",
+        "uri": "file:///home/iris/Templates/Nullix"
+      }
+    ]
+  }
+}
+
+I[20:07:10.732] <-- initialize(0)
+I[20:07:10.734] --> reply:initialize(0) 1 ms
+V[20:07:10.734] >>> {
+  "id": 0,
+  "jsonrpc": "2.0",
+  "result": {
+    "capabilities": {
+      "astProvider": true,
+      "callHierarchyProvider": true,
+      "clangdInlayHintsProvider": true,
+      "codeActionProvider": {
+        "codeActionKinds": [
+          "quickfix",
+          "refactor",
+          "info"
+        ]
+      },
+      "compilationDatabase": {
+        "automaticReload": true
+      },
+      "completionProvider": {
+        "resolveProvider": false,
+        "triggerCharacters": [
+          ".",
+          "<",
+          ">",
+          ":",
+          "\"",
+          "/",
+          "*"
+        ]
+      },
+      "declarationProvider": true,
+      "definitionProvider": true,
+      "documentFormattingProvider": true,
+      "documentHighlightProvider": true,
+      "documentLinkProvider": {
+        "resolveProvider": false
+      },
+      "documentOnTypeFormattingProvider": {
+        "firstTriggerCharacter": "\n",
+        "moreTriggerCharacter": []
+      },
+      "documentRangeFormattingProvider": {
+        "rangesSupport": true
+      },
+      "documentSymbolProvider": true,
+      "executeCommandProvider": {
+        "commands": [
+          "clangd.applyFix",
+          "clangd.applyRename",
+          "clangd.applyTweak"
+        ]
+      },
+      "foldingRangeProvider": true,
+      "hoverProvider": true,
+      "implementationProvider": true,
+      "inactiveRegionsProvider": true,
+      "inlayHintProvider": true,
+      "memoryUsageProvider": true,
+      "positionEncoding": "utf-16",
+      "referencesProvider": true,
+      "renameProvider": {
+        "prepareProvider": true
+      },
+      "selectionRangeProvider": true,
+      "semanticTokensProvider": {
+        "full": {
+          "delta": true
+        },
+        "legend": {
+          "tokenModifiers": [
+            "declaration",
+            "definition",
+            "deprecated",
+            "deduced",
+            "readonly",
+            "static",
+            "abstract",
+            "virtual",
+            "dependentName",
+            "defaultLibrary",
+            "usedAsMutableReference",
+            "usedAsMutablePointer",
+            "constructorOrDestructor",
+            "userDefined",
+            "functionScope",
+            "classScope",
+            "fileScope",
+            "globalScope"
+          ],
+          "tokenTypes": [
+            "variable",
+            "variable",
+            "parameter",
+            "function",
+            "method",
+            "function",
+            "property",
+            "variable",
+            "class",
+            "interface",
+            "enum",
+            "enumMember",
+            "type",
+            "type",
+            "unknown",
+            "namespace",
+            "typeParameter",
+            "concept",
+            "type",
+            "macro",
+            "modifier",
+            "operator",
+            "bracket",
+            "label",
+            "comment"
+          ]
+        },
+        "range": false
+      },
+      "signatureHelpProvider": {
+        "triggerCharacters": [
+          "(",
+          ")",
+          "{",
+          "}",
+          "<",
+          ">",
+          ","
+        ]
+      },
+      "standardTypeHierarchyProvider": true,
+      "textDocumentSync": {
+        "change": 2,
+        "openClose": true,
+        "save": true
+      },
+      "typeDefinitionProvider": true,
+      "typeHierarchyProvider": true,
+      "workspaceSymbolProvider": true
+    },
+    "offsetEncoding": "utf-16",
+    "serverInfo": {
+      "name": "clangd",
+      "version": "clangd version 21.1.8 (https://github.com/llvm/llvm-project 2078da43e25a4623cab2d0d60decddf709aaea28) linux+grpc x86_64-unknown-linux-gnu"
+    }
+  }
+}
+
+V[20:07:10.738] <<< {
+  "jsonrpc": "2.0",
+  "method": "exit"
+}
+
+I[20:07:10.739] <-- exit
+I[20:07:10.739] LSP finished, exiting with status 0
+V[20:07:10.750] <<< {
+  "jsonrpc": "2.0",
+  "method": "initialized",
+  "params": {}
+}
+
+I[20:07:10.750] <-- initialized
+V[20:07:10.771] <<< {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "languageId": "cpp",
+      "text": "#include \"process/ProcStream.hpp\"\n#include \"process/SubProcess.hpp\"\n#include <print>\n#include <array>\n\nnamespace\n    fs\n{\n    using namespace ::std::filesystem;\n} /* namespace std::fs */\n\nauto\n  main\n  ( void )\n-> int\n{\n\n    const char* HOME = std::getenv(\"HOME\");\n    auto XDG_CONFIG_HOME = fs::path(HOME) / \".config\";\n    auto XDG_CONFIG_ROFI = XDG_CONFIG_HOME / \"rofi\";\n\n    using namespace uniqx::system::process;\n\n    std::array<std::string const, 4> pkgs {\n        \"pactl\",\n        \"notify-send\",\n        \"rofi\",\n        \"jq\"\n    };\n\n    std::array<std::string , 4> missingPkgs { };\n\n    for\n        ( size_t itr { }; itr < pkgs.size ( ); ++itr )\n    {\n\n        auto const& pkgCheck { SubProcess::create ( )};\n        pkgCheck ( \"which\" );\n        pkgCheck.capture(ProcStream::stdout);\n        pkgCheck [ std::move ( pkgs.at ( itr ) ) ];\n        pkgCheck.run ( );\n        auto&& checked = pkgCheck.result ( ).stdOut ( );\n\n        if (!checked.empty ( ) && checked.back ( ) == '\\n') {\n            checked = checked.substr ( checked.rfind ( '/' ) + 1 );\n            checked.pop_back();\n        }\n\n        if ( !checked.empty() && checked != pkgs.at ( itr ) )\n        {\n\n            missingPkgs.at ( itr ) += pkgs.at ( itr );\n\n            std::println ( \"missing packages: {}\" , checked );\n\n        }\n\n    }\n    auto const notify_send { SubProcess::create(\"notify-send\") };\n    auto const pactl { SubProcess::create(\"pactl\") };\n\n    for\n     ( const auto& mPkg : missingPkgs )\n    {\n        std::println ( \"missing package: {}\" , mPkg );\n        return -1;\n    }\n\n\n\n}\n",
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp",
+      "version": 1
+    }
+  }
+}
+
+I[20:07:10.771] <-- textDocument/didOpen
+I[20:07:10.773] Loaded compilation database from /home/iris/Templates/Nullix/compile_commands.json
+V[20:07:10.774] Broadcasting compilation database from /home/iris/Templates/Nullix
+I[20:07:10.774] --> window/workDoneProgress/create(0)
+V[20:07:10.775] >>> {
+  "id": 0,
+  "jsonrpc": "2.0",
+  "method": "window/workDoneProgress/create",
+  "params": {
+    "token": "backgroundIndexProgress"
+  }
+}
+
+I[20:07:10.775] Enqueueing 10 commands for indexing
+V[20:07:10.776] <<< {
+  "id": 0,
+  "jsonrpc": "2.0",
+  "result": null
+}
+
+I[20:07:10.776] <-- reply(0)
+I[20:07:10.776] --> $/progress
+V[20:07:10.776] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "begin",
+      "percentage": 0,
+      "title": "indexing"
+    }
+  }
+}
+
+I[20:07:10.776] --> $/progress
+V[20:07:10.776] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "report",
+      "message": "0/1",
+      "percentage": 0
+    }
+  }
+}
+
+I[20:07:10.776] ASTWorker building file /home/iris/Templates/Nullix/src/main.cpp version 1 with command 
+[/home/iris/Templates/Nullix/build]
+/usr/bin/clang++ --driver-mode=g++ -I/home/iris/Templates/Nullix/lib/uniqx/include/system/file_tree -I/home/iris/Templates/Nullix/lib/uniqx/include/system/process -I/home/iris/Templates/Nullix/lib/uniqx/include/system -I/home/iris/Templates/Nullix/lib/nullix/include -I/home/iris/Templates/Nullix/lib/uniqx/include -I/home/iris/Templates/Nullix/lib/nullix -I/home/iris/Templates/Nullix/lib/uniqx -I/home/iris/Templates/Nullix/lib -g -std=gnu++26 -fcolor-diagnostics -Werror -Weverything -Wno-c++98-compat -Wno-switch-default -Wno-c++98-compat-pedantic -Wno-covered-switch-default -ferror-limit=999999 -fdiagnostics-color -o CMakeFiles/a.out.dir/src/main.cpp.o -c -resource-dir=/home/iris/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/lib/clang/21 -- /home/iris/Templates/Nullix/src/main.cpp
+V[20:07:10.783] <<< {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "textDocument/documentSymbol",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:10.783] <-- textDocument/documentSymbol(1)
+V[20:07:10.783] Ignored diagnostic. argument unused during compilation: '-c'
+V[20:07:10.784] Driver produced command: cc1 -cc1 -triple x86_64-unknown-linux-gnu -fsyntax-only -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name main.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debug-info-kind=constructor -dwarf-version=5 -debugger-tuning=gdb -fdebug-compilation-dir=/home/iris/Templates/Nullix/build -fcoverage-compilation-dir=/home/iris/Templates/Nullix/build -resource-dir /home/iris/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/lib/clang/21 -I /home/iris/Templates/Nullix/lib/uniqx/include/system/file_tree -I /home/iris/Templates/Nullix/lib/uniqx/include/system/process -I /home/iris/Templates/Nullix/lib/uniqx/include/system -I /home/iris/Templates/Nullix/lib/nullix/include -I /home/iris/Templates/Nullix/lib/uniqx/include -I /home/iris/Templates/Nullix/lib/nullix -I /home/iris/Templates/Nullix/lib/uniqx -I /home/iris/Templates/Nullix/lib -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1 -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward -internal-isystem /home/iris/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/lib/clang/21/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -Werror -Weverything -Wno-c++98-compat -Wno-switch-default -Wno-c++98-compat-pedantic -Wno-covered-switch-default -std=gnu++26 -fdeprecated-macro -ferror-limit 999999 -fgnuc-version=4.2.1 -fno-implicit-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -no-round-trip-args -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -x c++ /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:10.785] --> textDocument/clangd.fileStatus
+V[20:07:10.786] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "parsing includes, running Update",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:10.786] Building first preamble for /home/iris/Templates/Nullix/src/main.cpp version 1
+V[20:07:10.790] <<< {
+  "id": 2,
+  "jsonrpc": "2.0",
+  "method": "textDocument/codeAction",
+  "params": {
+    "context": {
+      "diagnostics": [],
+      "triggerKind": 2
+    },
+    "range": {
+      "end": {
+        "character": 8,
+        "line": 64
+      },
+      "start": {
+        "character": 8,
+        "line": 64
+      }
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:10.790] <-- textDocument/codeAction(2)
+V[20:07:10.865] <<< {
+  "id": 3,
+  "jsonrpc": "2.0",
+  "method": "textDocument/documentLink",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:10.865] <-- textDocument/documentLink(3)
+V[20:07:10.893] <<< {
+  "id": 4,
+  "jsonrpc": "2.0",
+  "method": "textDocument/inlayHint",
+  "params": {
+    "range": {
+      "end": {
+        "character": 0,
+        "line": 71
+      },
+      "start": {
+        "character": 0,
+        "line": 0
+      }
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:10.893] <-- textDocument/inlayHint(4)
+V[20:07:10.951] BackgroundIndex: building version 1 after loading index from disk
+V[20:07:11.019] <<< {
+  "id": 5,
+  "jsonrpc": "2.0",
+  "method": "textDocument/foldingRange",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:11.019] <-- textDocument/foldingRange(5)
+I[20:07:11.020] --> reply:textDocument/foldingRange(5) 1 ms
+V[20:07:11.021] >>> {
+  "id": 5,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "endLine": 8,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 7
+    },
+    {
+      "endLine": 69,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 15
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 27,
+      "kind": "region",
+      "startCharacter": 43,
+      "startLine": 23
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 56,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 34
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 45,
+      "kind": "region",
+      "startCharacter": 61,
+      "startLine": 43
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 54,
+      "kind": "region",
+      "startCharacter": 9,
+      "startLine": 49
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 65,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 63
+    }
+  ]
+}
+
+V[20:07:11.071] BackgroundIndex: serving version 1 (19626882 bytes)
+I[20:07:11.081] --> $/progress
+V[20:07:11.081] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "report",
+      "message": "0/1",
+      "percentage": 0
+    }
+  }
+}
+
+I[20:07:11.081] --> $/progress
+V[20:07:11.081] >>> {
+  "jsonrpc": "2.0",
+  "method": "$/progress",
+  "params": {
+    "token": "backgroundIndexProgress",
+    "value": {
+      "kind": "end"
+    }
+  }
+}
+
+V[20:07:11.083] <<< {
+  "id": 6,
+  "jsonrpc": "2.0",
+  "method": "textDocument/foldingRange",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:11.083] <-- textDocument/foldingRange(6)
+I[20:07:11.083] --> reply:textDocument/foldingRange(6) 0 ms
+V[20:07:11.083] >>> {
+  "id": 6,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "endLine": 8,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 7
+    },
+    {
+      "endLine": 69,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 15
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 27,
+      "kind": "region",
+      "startCharacter": 43,
+      "startLine": 23
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 56,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 34
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 45,
+      "kind": "region",
+      "startCharacter": 61,
+      "startLine": 43
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 54,
+      "kind": "region",
+      "startCharacter": 9,
+      "startLine": 49
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 65,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 63
+    }
+  ]
+}
+
+V[20:07:12.348] Dropped diagnostic: /home/iris/Templates/Nullix/lib/diagnostics/Diagnostics.hpp: "Warn: Header '<diagnostics.h>' has been supressed Ignore this warning if you are not using header '<diagnostics.h>'"
+V[20:07:12.813] Dropped diagnostic: /home/iris/Templates/Nullix/lib/globals.hpp: unknown attribute 'gblx_detail_::documentation_' ignored
+I[20:07:12.817] Built preamble of size 11364288 for file /home/iris/Templates/Nullix/src/main.cpp version 1 in 2.03 seconds
+I[20:07:12.818] Indexing c++23 standard library in the context of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:12.818] --> textDocument/clangd.fileStatus
+V[20:07:12.818] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "parsing includes, running Build AST",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+I[20:07:12.818] --> textDocument/clangd.fileStatus
+V[20:07:12.818] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "parsing includes, parsing main file",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+I[20:07:12.818] --> workspace/semanticTokens/refresh(1)
+V[20:07:12.818] >>> {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "workspace/semanticTokens/refresh",
+  "params": null
+}
+
+V[20:07:12.826] <<< {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": null
+}
+
+I[20:07:12.826] <-- reply(1)
+V[20:07:12.832] <<< {
+  "id": 7,
+  "jsonrpc": "2.0",
+  "method": "textDocument/semanticTokens/full",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:12.832] <-- textDocument/semanticTokens/full(7)
+V[20:07:13.256] indexed file AST for /home/iris/Templates/Nullix/src/main.cpp version 1:
+  symbol slab: 2 symbols, 4680 bytes
+  ref slab: 24 symbols, 41 refs, 4992 bytes
+  relations slab: 0 relations, 24 bytes
+V[20:07:13.256] Build dynamic index for main-file symbols with estimated memory usage of 14008 bytes
+I[20:07:13.256] --> textDocument/publishDiagnostics
+V[20:07:13.256] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/publishDiagnostics",
+  "params": {
+    "diagnostics": [
+      {
+        "code": "typecheck_call_too_few_args_at_least",
+        "message": "Too few arguments to function call, expected at least 1, have 0",
+        "range": {
+          "end": {
+            "character": 53,
+            "line": 36
+          },
+          "start": {
+            "character": 52,
+            "line": 36
+          }
+        },
+        "relatedInformation": [
+          {
+            "location": {
+              "range": {
+                "end": {
+                  "character": 33,
+                  "line": 54
+                },
+                "start": {
+                  "character": 27,
+                  "line": 54
+                }
+              },
+              "uri": "file:///home/iris/Templates/Nullix/lib/uniqx/include/system/process/SubProcess.hpp"
+            },
+            "message": "'create' declared here"
+          }
+        ],
+        "severity": 1,
+        "source": "clang"
+      }
+    ],
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp",
+    "version": 1
+  }
+}
+
+I[20:07:13.257] --> textDocument/inactiveRegions
+V[20:07:13.257] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/inactiveRegions",
+  "params": {
+    "regions": [],
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+V[20:07:13.257] ASTWorker running DocumentSymbols on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:13.257] --> reply:textDocument/documentSymbol(1) 2474 ms
+V[20:07:13.257] >>> {
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "children": [
+        {
+          "kind": 13,
+          "name": "using namespace ::std::filesystem",
+          "range": {
+            "end": {
+              "character": 37,
+              "line": 8
+            },
+            "start": {
+              "character": 4,
+              "line": 8
+            }
+          },
+          "selectionRange": {
+            "end": {
+              "character": 37,
+              "line": 8
+            },
+            "start": {
+              "character": 27,
+              "line": 8
+            }
+          }
+        }
+      ],
+      "kind": 3,
+      "name": "fs",
+      "range": {
+        "end": {
+          "character": 1,
+          "line": 9
+        },
+        "start": {
+          "character": 0,
+          "line": 5
+        }
+      },
+      "selectionRange": {
+        "end": {
+          "character": 6,
+          "line": 6
+        },
+        "start": {
+          "character": 4,
+          "line": 6
+        }
+      }
+    },
+    {
+      "detail": "auto () -> int",
+      "kind": 12,
+      "name": "main",
+      "range": {
+        "end": {
+          "character": 1,
+          "line": 70
+        },
+        "start": {
+          "character": 0,
+          "line": 11
+        }
+      },
+      "selectionRange": {
+        "end": {
+          "character": 6,
+          "line": 12
+        },
+        "start": {
+          "character": 2,
+          "line": 12
+        }
+      }
+    }
+  ]
+}
+
+V[20:07:13.258] ASTWorker running codeAction on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:13.258] --> reply:textDocument/codeAction(2) 2468 ms
+V[20:07:13.258] >>> {
+  "id": 2,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AddUsing"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Add using-declaration for println and remove qualifier"
+      },
+      "kind": "refactor",
+      "title": "Add using-declaration for println and remove qualifier"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AnnotateHighlightings"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Annotate highlighting tokens"
+      },
+      "kind": "refactor",
+      "title": "Annotate highlighting tokens"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpAST"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump DeclRefExpr AST"
+      },
+      "kind": "info",
+      "title": "Dump DeclRefExpr AST"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "ShowSelectionTree"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Show selection tree"
+      },
+      "kind": "info",
+      "title": "Show selection tree"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpSymbol"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump symbol under the cursor"
+      },
+      "kind": "info",
+      "title": "Dump symbol under the cursor"
+    }
+  ]
+}
+
+V[20:07:13.258] ASTWorker running DocumentLinks on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:13.259] --> reply:textDocument/documentLink(3) 2393 ms
+V[20:07:13.259] >>> {
+  "id": 3,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "range": {
+        "end": {
+          "character": 33,
+          "line": 0
+        },
+        "start": {
+          "character": 9,
+          "line": 0
+        }
+      },
+      "target": "file:///home/iris/Templates/Nullix/lib/uniqx/include/system/process/ProcStream.hpp"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 33,
+          "line": 1
+        },
+        "start": {
+          "character": 9,
+          "line": 1
+        }
+      },
+      "target": "file:///home/iris/Templates/Nullix/lib/uniqx/include/system/process/SubProcess.hpp"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 16,
+          "line": 2
+        },
+        "start": {
+          "character": 9,
+          "line": 2
+        }
+      },
+      "target": "file:///usr/include/c%2B%2B/15.2.1/print"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 16,
+          "line": 3
+        },
+        "start": {
+          "character": 9,
+          "line": 3
+        }
+      },
+      "target": "file:///usr/include/c%2B%2B/15.2.1/array"
+    }
+  ]
+}
+
+V[20:07:13.259] ASTWorker running InlayHints on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:13.259] --> reply:textDocument/inlayHint(4) 2365 ms
+V[20:07:13.259] >>> {
+  "id": 4,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "name:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 35,
+        "line": 17
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": path"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 24,
+        "line": 18
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "source:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 36,
+        "line": 18
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": path"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 24,
+        "line": 19
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[0]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 24
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[1]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 25
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[2]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 26
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[3]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 27
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 41,
+        "line": 39
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 54,
+        "line": 48
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 29,
+        "line": 51
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 48,
+        "line": 51
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const SubProcess"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 26,
+        "line": 58
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const SubProcess"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 20,
+        "line": 59
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const basic_string<char> &"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 23,
+        "line": 62
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "fmt:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 23,
+        "line": 64
+      }
+    }
+  ]
+}
+
+V[20:07:13.259] ASTWorker running SemanticHighlights on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:13.260] --> reply:textDocument/semanticTokens/full(7) 427 ms
+V[20:07:13.260] >>> {
+  "id": 7,
+  "jsonrpc": "2.0",
+  "result": {
+    "data": [
+      6,
+      4,
+      2,
+      15,
+      131073,
+      2,
+      22,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      10,
+      15,
+      131584,
+      4,
+      2,
+      4,
+      3,
+      131075,
+      5,
+      16,
+      4,
+      1,
+      16403,
+      0,
+      7,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      6,
+      3,
+      66048,
+      1,
+      4,
+      4,
+      8,
+      131592,
+      0,
+      5,
+      15,
+      1,
+      16387,
+      0,
+      18,
+      2,
+      15,
+      131072,
+      0,
+      4,
+      4,
+      8,
+      131584,
+      0,
+      5,
+      4,
+      1,
+      16400,
+      0,
+      6,
+      1,
+      21,
+      8192,
+      1,
+      4,
+      4,
+      8,
+      131592,
+      0,
+      5,
+      15,
+      1,
+      16387,
+      0,
+      18,
+      15,
+      1,
+      16384,
+      0,
+      16,
+      1,
+      21,
+      8192,
+      2,
+      20,
+      5,
+      15,
+      131072,
+      0,
+      7,
+      6,
+      15,
+      131072,
+      0,
+      8,
+      7,
+      15,
+      131072,
+      2,
+      4,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      5,
+      8,
+      131584,
+      0,
+      5,
+      1,
+      22,
+      0,
+      0,
+      1,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      6,
+      8,
+      66048,
+      0,
+      15,
+      1,
+      22,
+      0,
+      0,
+      2,
+      4,
+      1,
+      16387,
+      7,
+      4,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      5,
+      8,
+      131584,
+      0,
+      5,
+      1,
+      22,
+      0,
+      0,
+      1,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      6,
+      8,
+      66048,
+      0,
+      10,
+      1,
+      22,
+      0,
+      0,
+      2,
+      11,
+      1,
+      16387,
+      3,
+      10,
+      6,
+      18,
+      66048,
+      0,
+      7,
+      3,
+      1,
+      16387,
+      0,
+      9,
+      3,
+      1,
+      16384,
+      0,
+      4,
+      1,
+      21,
+      0,
+      0,
+      2,
+      4,
+      1,
+      16384,
+      0,
+      5,
+      4,
+      4,
+      33296,
+      0,
+      10,
+      2,
+      21,
+      0,
+      0,
+      2,
+      3,
+      1,
+      16384,
+      3,
+      20,
+      8,
+      1,
+      16403,
+      0,
+      11,
+      10,
+      8,
+      131072,
+      0,
+      12,
+      6,
+      5,
+      32800,
+      1,
+      8,
+      8,
+      1,
+      16400,
+      1,
+      8,
+      8,
+      1,
+      16400,
+      0,
+      9,
+      7,
+      14,
+      33024,
+      0,
+      8,
+      10,
+      8,
+      131072,
+      0,
+      12,
+      6,
+      19,
+      131072,
+      1,
+      8,
+      8,
+      1,
+      16400,
+      0,
+      11,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      4,
+      3,
+      131584,
+      0,
+      7,
+      4,
+      1,
+      16384,
+      0,
+      5,
+      2,
+      4,
+      33280,
+      0,
+      5,
+      3,
+      1,
+      16384,
+      1,
+      8,
+      8,
+      1,
+      16400,
+      0,
+      9,
+      3,
+      14,
+      33024,
+      1,
+      15,
+      7,
+      1,
+      16387,
+      0,
+      19,
+      6,
+      14,
+      33024,
+      0,
+      11,
+      6,
+      14,
+      33024,
+      2,
+      12,
+      1,
+      21,
+      8192,
+      0,
+      9,
+      5,
+      14,
+      33024,
+      0,
+      10,
+      2,
+      21,
+      8192,
+      0,
+      11,
+      4,
+      14,
+      33024,
+      0,
+      9,
+      2,
+      21,
+      8192,
+      1,
+      12,
+      7,
+      1,
+      16384,
+      0,
+      8,
+      1,
+      21,
+      8192,
+      0,
+      10,
+      6,
+      14,
+      33024,
+      0,
+      17,
+      5,
+      14,
+      33024,
+      0,
+      14,
+      1,
+      21,
+      8192,
+      1,
+      12,
+      7,
+      1,
+      16384,
+      0,
+      8,
+      8,
+      14,
+      33024,
+      3,
+      13,
+      1,
+      21,
+      8192,
+      0,
+      9,
+      5,
+      14,
+      33024,
+      0,
+      8,
+      2,
+      21,
+      8192,
+      0,
+      11,
+      2,
+      21,
+      8192,
+      0,
+      3,
+      4,
+      1,
+      16384,
+      0,
+      5,
+      2,
+      4,
+      33280,
+      0,
+      5,
+      3,
+      1,
+      16384,
+      3,
+      12,
+      11,
+      1,
+      16384,
+      0,
+      12,
+      2,
+      4,
+      33280,
+      0,
+      5,
+      3,
+      1,
+      16384,
+      0,
+      6,
+      2,
+      21,
+      8192,
+      0,
+      3,
+      4,
+      1,
+      16384,
+      0,
+      5,
+      2,
+      4,
+      33280,
+      0,
+      5,
+      3,
+      1,
+      16384,
+      2,
+      12,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      7,
+      3,
+      131584,
+      5,
+      4,
+      4,
+      8,
+      131080,
+      0,
+      11,
+      11,
+      1,
+      16403,
+      0,
+      14,
+      10,
+      8,
+      131072,
+      0,
+      12,
+      6,
+      5,
+      32800,
+      1,
+      4,
+      4,
+      8,
+      131080,
+      0,
+      11,
+      5,
+      1,
+      16403,
+      0,
+      8,
+      10,
+      8,
+      131072,
+      0,
+      12,
+      6,
+      5,
+      32800,
+      3,
+      13,
+      4,
+      8,
+      131592,
+      0,
+      6,
+      4,
+      1,
+      16403,
+      0,
+      7,
+      11,
+      1,
+      16384,
+      2,
+      8,
+      3,
+      15,
+      131584,
+      0,
+      5,
+      7,
+      3,
+      131584,
+      0,
+      34,
+      4,
+      1,
+      16400,
+      1,
+      15,
+      1,
+      21,
+      0
+    ],
+    "resultId": "1"
+  }
+}
+
+I[20:07:13.260] --> textDocument/clangd.fileStatus
+V[20:07:13.260] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:13.411] indexed preamble AST for /home/iris/Templates/Nullix/src/main.cpp version 1:
+  symbol slab: 10015 symbols, 3060880 bytes
+  ref slab: 0 symbols, 0 refs, 128 bytes
+  relations slab: 445 relations, 8728 bytes
+V[20:07:13.490] Build dynamic index for header symbols with estimated memory usage of 7144276 bytes
+V[20:07:13.517] <<< {
+  "id": 8,
+  "jsonrpc": "2.0",
+  "method": "textDocument/codeAction",
+  "params": {
+    "context": {
+      "diagnostics": [],
+      "triggerKind": 2
+    },
+    "range": {
+      "end": {
+        "character": 8,
+        "line": 64
+      },
+      "start": {
+        "character": 8,
+        "line": 64
+      }
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:13.517] <-- textDocument/codeAction(8)
+V[20:07:13.517] ASTWorker running codeAction on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:13.518] --> reply:textDocument/codeAction(8) 0 ms
+V[20:07:13.518] >>> {
+  "id": 8,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AddUsing"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Add using-declaration for println and remove qualifier"
+      },
+      "kind": "refactor",
+      "title": "Add using-declaration for println and remove qualifier"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AnnotateHighlightings"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Annotate highlighting tokens"
+      },
+      "kind": "refactor",
+      "title": "Annotate highlighting tokens"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpAST"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump DeclRefExpr AST"
+      },
+      "kind": "info",
+      "title": "Dump DeclRefExpr AST"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "ShowSelectionTree"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Show selection tree"
+      },
+      "kind": "info",
+      "title": "Show selection tree"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpSymbol"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump symbol under the cursor"
+      },
+      "kind": "info",
+      "title": "Dump symbol under the cursor"
+    }
+  ]
+}
+
+I[20:07:13.518] --> textDocument/clangd.fileStatus
+V[20:07:13.518] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:16.193] Ignored diagnostic. /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward/backward_warning.h:32:2:This file includes at least one deprecated or antiquated header which   may be removed without further notice at a future date. Please use a   non-deprecated interface with equivalent functionality instead. For a   listing of replacement headers and interfaces, consult the file   backward_warning.h. To disable this warning use -Wno-deprecated.
+V[20:07:16.376] Ignored diagnostic. /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward/backward_warning.h:32:2:This file includes at least one deprecated or antiquated header which   may be removed without further notice at a future date. Please use a   non-deprecated interface with equivalent functionality instead. For a   listing of replacement headers and interfaces, consult the file   backward_warning.h. To disable this warning use -Wno-deprecated.
+V[20:07:17.643] indexed preamble AST for /home/iris/Templates/Nullix/src/main.cpp version :
+  symbol slab: 21241 symbols, 6304288 bytes
+  ref slab: 0 symbols, 0 refs, 128 bytes
+  relations slab: 610 relations, 17432 bytes
+V[20:07:17.661] indexed preamble AST for /home/iris/Templates/Nullix/src/main.cpp version :
+  symbol slab: 21241 symbols, 6304288 bytes
+  ref slab: 0 symbols, 0 refs, 128 bytes
+  relations slab: 610 relations, 17432 bytes
+I[20:07:17.712] Indexed c++23 standard library: 18107 symbols, 3134 filtered
+I[20:07:17.728] Indexed c++23 standard library: 18107 symbols, 3134 filtered
+V[20:07:17.836] Build dynamic index for header symbols with estimated memory usage of 11276116 bytes
+V[20:07:17.842] Build dynamic index for header symbols with estimated memory usage of 11280212 bytes
+[Error - 8:07:17 PM] Server process exited with code 0.
+V[20:07:25.894] <<< {
+  "id": 9,
+  "jsonrpc": "2.0",
+  "method": "textDocument/codeAction",
+  "params": {
+    "context": {
+      "diagnostics": [],
+      "triggerKind": 2
+    },
+    "range": {
+      "end": {
+        "character": 8,
+        "line": 64
+      },
+      "start": {
+        "character": 8,
+        "line": 64
+      }
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:25.895] <-- textDocument/codeAction(9)
+V[20:07:25.895] ASTWorker running codeAction on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:25.895] --> reply:textDocument/codeAction(9) 0 ms
+V[20:07:25.896] >>> {
+  "id": 9,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AddUsing"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Add using-declaration for println and remove qualifier"
+      },
+      "kind": "refactor",
+      "title": "Add using-declaration for println and remove qualifier"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "AnnotateHighlightings"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Annotate highlighting tokens"
+      },
+      "kind": "refactor",
+      "title": "Annotate highlighting tokens"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpAST"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump DeclRefExpr AST"
+      },
+      "kind": "info",
+      "title": "Dump DeclRefExpr AST"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "ShowSelectionTree"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Show selection tree"
+      },
+      "kind": "info",
+      "title": "Show selection tree"
+    },
+    {
+      "command": {
+        "arguments": [
+          {
+            "file": "file:///home/iris/Templates/Nullix/src/main.cpp",
+            "selection": {
+              "end": {
+                "character": 8,
+                "line": 64
+              },
+              "start": {
+                "character": 8,
+                "line": 64
+              }
+            },
+            "tweakID": "DumpSymbol"
+          }
+        ],
+        "command": "clangd.applyTweak",
+        "title": "Dump symbol under the cursor"
+      },
+      "kind": "info",
+      "title": "Dump symbol under the cursor"
+    }
+  ]
+}
+
+I[20:07:25.896] --> textDocument/clangd.fileStatus
+V[20:07:25.896] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:25.900] <<< {
+  "id": 10,
+  "jsonrpc": "2.0",
+  "method": "textDocument/documentLink",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:25.900] <-- textDocument/documentLink(10)
+V[20:07:25.900] ASTWorker running DocumentLinks on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:25.900] --> reply:textDocument/documentLink(10) 0 ms
+V[20:07:25.901] >>> {
+  "id": 10,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "range": {
+        "end": {
+          "character": 33,
+          "line": 0
+        },
+        "start": {
+          "character": 9,
+          "line": 0
+        }
+      },
+      "target": "file:///home/iris/Templates/Nullix/lib/uniqx/include/system/process/ProcStream.hpp"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 33,
+          "line": 1
+        },
+        "start": {
+          "character": 9,
+          "line": 1
+        }
+      },
+      "target": "file:///home/iris/Templates/Nullix/lib/uniqx/include/system/process/SubProcess.hpp"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 16,
+          "line": 2
+        },
+        "start": {
+          "character": 9,
+          "line": 2
+        }
+      },
+      "target": "file:///usr/include/c%2B%2B/15.2.1/print"
+    },
+    {
+      "range": {
+        "end": {
+          "character": 16,
+          "line": 3
+        },
+        "start": {
+          "character": 9,
+          "line": 3
+        }
+      },
+      "target": "file:///usr/include/c%2B%2B/15.2.1/array"
+    }
+  ]
+}
+
+I[20:07:25.901] --> textDocument/clangd.fileStatus
+V[20:07:25.901] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:26.184] <<< {
+  "id": 11,
+  "jsonrpc": "2.0",
+  "method": "textDocument/foldingRange",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:26.184] <-- textDocument/foldingRange(11)
+I[20:07:26.185] --> reply:textDocument/foldingRange(11) 0 ms
+V[20:07:26.185] >>> {
+  "id": 11,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "endLine": 8,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 7
+    },
+    {
+      "endLine": 69,
+      "kind": "region",
+      "startCharacter": 1,
+      "startLine": 15
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 27,
+      "kind": "region",
+      "startCharacter": 43,
+      "startLine": 23
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 56,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 34
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 45,
+      "kind": "region",
+      "startCharacter": 61,
+      "startLine": 43
+    },
+    {
+      "endCharacter": 8,
+      "endLine": 54,
+      "kind": "region",
+      "startCharacter": 9,
+      "startLine": 49
+    },
+    {
+      "endCharacter": 4,
+      "endLine": 65,
+      "kind": "region",
+      "startCharacter": 5,
+      "startLine": 63
+    }
+  ]
+}
+
+V[20:07:26.361] <<< {
+  "id": 12,
+  "jsonrpc": "2.0",
+  "method": "textDocument/semanticTokens/full/delta",
+  "params": {
+    "previousResultId": "1",
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:26.361] <-- textDocument/semanticTokens/full/delta(12)
+V[20:07:26.361] ASTWorker running SemanticHighlights on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:26.361] --> reply:textDocument/semanticTokens/full/delta(12) 0 ms
+V[20:07:26.361] >>> {
+  "id": 12,
+  "jsonrpc": "2.0",
+  "result": {
+    "edits": [],
+    "resultId": "2"
+  }
+}
+
+I[20:07:26.361] --> textDocument/clangd.fileStatus
+V[20:07:26.361] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+
+V[20:07:29.480] <<< {
+  "id": 13,
+  "jsonrpc": "2.0",
+  "method": "textDocument/inlayHint",
+  "params": {
+    "range": {
+      "end": {
+        "character": 0,
+        "line": 71
+      },
+      "start": {
+        "character": 0,
+        "line": 0
+      }
+    },
+    "textDocument": {
+      "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+    }
+  }
+}
+
+I[20:07:29.480] <-- textDocument/inlayHint(13)
+V[20:07:29.480] ASTWorker running InlayHints on version 1 of /home/iris/Templates/Nullix/src/main.cpp
+I[20:07:29.480] --> reply:textDocument/inlayHint(13) 0 ms
+V[20:07:29.481] >>> {
+  "id": 13,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "name:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 35,
+        "line": 17
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": path"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 24,
+        "line": 18
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "source:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 36,
+        "line": 18
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": path"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 24,
+        "line": 19
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[0]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 24
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[1]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 25
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[2]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 26
+      }
+    },
+    {
+      "label": [
+        {
+          "value": "[3]="
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 8,
+        "line": 27
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 41,
+        "line": 39
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 54,
+        "line": 48
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 29,
+        "line": 51
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "n:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 48,
+        "line": 51
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const SubProcess"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 26,
+        "line": 58
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const SubProcess"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 20,
+        "line": 59
+      }
+    },
+    {
+      "kind": 1,
+      "label": [
+        {
+          "value": ": const basic_string<char> &"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": false,
+      "position": {
+        "character": 23,
+        "line": 62
+      }
+    },
+    {
+      "kind": 2,
+      "label": [
+        {
+          "value": "fmt:"
+        }
+      ],
+      "paddingLeft": false,
+      "paddingRight": true,
+      "position": {
+        "character": 23,
+        "line": 64
+      }
+    }
+  ]
+}
+
+I[20:07:29.481] --> textDocument/clangd.fileStatus
+V[20:07:29.481] >>> {
+  "jsonrpc": "2.0",
+  "method": "textDocument/clangd.fileStatus",
+  "params": {
+    "state": "idle",
+    "uri": "file:///home/iris/Templates/Nullix/src/main.cpp"
+  }
+}
+

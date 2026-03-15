@@ -1,0 +1,138 @@
+[bookmarks] Loaded 0 bookmarks
+[proc] Executing command: /usr/bin/cmake --version
+[proc]   with environment: {"CHROME_DESKTOP":"codium.desktop","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","DEBUGINFOD_URLS":"https://debuginfod.archlinux.org ","DESKTOP_SESSION":"hyprland","DISPLAY":":1","EDITOR":"vscodium","ELECTRON_NO_ATTACH_CONSOLE":"1","ELECTRON_OZONE_PLATFORM_HINT":"wayland","FC_FONTATIONS":"1","GDK_BACKEND":"wayland","GDK_SCALE":"1","HL_INITIAL_WORKSPACE_TOKEN":"a61ba471-a798-4ca5-99c0-9f5785bf358f","HOME":"/home/iris","HYPRLAND_CMD":"Hyprland --watchdog-fd 4","HYPRLAND_INSTANCE_SIGNATURE":"4b07770b9ef1cceb2e6f56d33538aaffb9186b9c_1773228119_1121133665","LANG":"en_US.UTF-8","LOGNAME":"iris","MAIL":"/var/spool/mail/iris","MOTD_SHOWN":"pam","MOZ_ENABLE_WAYLAND":"1","NO_AT_BRIDGE":"1","PATH":"/home/iris/.spicetify:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin","PWD":"/home/iris","QT_AUTO_SCREEN_SCALE_FACTOR":"1","QT_QPA_PLATFORM":"wayland;xcb","QT_QPA_PLATFORMTHEME":"qt6ct","QT_QUICK_CONTROLS_STYLE":"org.kde.desktop","QT_SCALE_FACTOR":"1","QT_WAYLAND_DISABLE_WINDOWDECORATION":"1","SDL_VIDEODRIVER":"wayland","SHELL":"/usr/bin/fish","SHLVL":"2","TERMINAL":"kitty","USER":"iris","VSCODE_CLI":"1","VSCODE_CODE_CACHE_PATH":"/home/iris/.config/VSCodium/CachedData/2a5b258b5b38d3d4c830bdaaa6e5c610eaacbd15","VSCODE_CRASH_REPORTER_PROCESS_TYPE":"extensionHost","VSCODE_CWD":"/home/iris","VSCODE_ESM_ENTRYPOINT":"vs/workbench/api/node/extensionHostProcess","VSCODE_HANDLES_UNCAUGHT_ERRORS":"true","VSCODE_IPC_HOOK":"/run/user/1000/vscode-79cee2d5-1.10-main.sock","VSCODE_NLS_CONFIG":"{\"userLocale\":\"en-us\",\"osLocale\":\"en-us\",\"resolvedLanguage\":\"en\",\"defaultMessagesFile\":\"/usr/share/vscodium/resources/app/out/nls.messages.json\",\"locale\":\"en-us\",\"availableLanguages\":{}}","VSCODE_PID":"189213","VYLE_CACHE_HOME":"/home/iris/.cache/ivy-shell","VYLE_CONFIG_HOME":"/home/iris/.config/ivy-shell","VYLE_DATA_HOME":"/home/iris/.local/share/vyle","WAYLAND_DISPLAY":"wayland-1","WLR_RENDERER":"vulkan","WLR_RENDERER_ALLOW_SOFTWARE":"0","XDG_BACKEND":"wayland","XDG_CACHE_HOME":"/home/iris/.cache","XDG_CONFIG_HOME":"/home/iris/.config","XDG_CURRENT_DESKTOP":"Hyprland","XDG_DATA_HOME":"/home/iris/.local/share","XDG_RUNTIME_DIR":"/run/user/1000","XDG_SEAT":"seat0","XDG_SEAT_PATH":"/org/freedesktop/DisplayManager/Seat0","XDG_SESSION_CLASS":"user","XDG_SESSION_DESKTOP":"Hyprland","XDG_SESSION_ID":"2","XDG_SESSION_PATH":"/org/freedesktop/DisplayManager/Session1","XDG_SESSION_TYPE":"wayland","XDG_VTNR":"1","_":"/usr/share/vscodium/bin/../codium","_JAVA_AWT_WM_NONREPARENTING":"1","cacheDir":"/home/iris/.cache","confDir":"/home/iris/.config","dcolDir":"/home/iris/.cache/ivy-shell/shell","dunstDir":"/home/iris/.config/dunst","hypr_border":"10","hypr_width":"2","hyprscrDir":"/home/iris/.config/hypr/scripts","ideCDir":"/home/iris/.cache/ivy-shell","ideDir":"/home/iris/.config/ivy-shell","localDir":"/home/iris/.local/share","rasiDir":"/home/iris/.config/rofi/shared","rofiAssetDir":"/home/iris/.config/rofi/shared/assets","rofiStyleDir":"/home/iris/.config/rofi/styles","wcDir":"/home/iris/.config/waybar","wlDir":"/home/iris/.config/waybar/Styles","ELECTRON_RUN_AS_NODE":"1"}
+[proc] Executing command: /usr/bin/cmake -E capabilities
+[proc]   with environment: {"CHROME_DESKTOP":"codium.desktop","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","DEBUGINFOD_URLS":"https://debuginfod.archlinux.org ","DESKTOP_SESSION":"hyprland","DISPLAY":":1","EDITOR":"vscodium","ELECTRON_NO_ATTACH_CONSOLE":"1","ELECTRON_OZONE_PLATFORM_HINT":"wayland","FC_FONTATIONS":"1","GDK_BACKEND":"wayland","GDK_SCALE":"1","HL_INITIAL_WORKSPACE_TOKEN":"a61ba471-a798-4ca5-99c0-9f5785bf358f","HOME":"/home/iris","HYPRLAND_CMD":"Hyprland --watchdog-fd 4","HYPRLAND_INSTANCE_SIGNATURE":"4b07770b9ef1cceb2e6f56d33538aaffb9186b9c_1773228119_1121133665","LANG":"en_US.UTF-8","LOGNAME":"iris","MAIL":"/var/spool/mail/iris","MOTD_SHOWN":"pam","MOZ_ENABLE_WAYLAND":"1","NO_AT_BRIDGE":"1","PATH":"/home/iris/.spicetify:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin","PWD":"/home/iris","QT_AUTO_SCREEN_SCALE_FACTOR":"1","QT_QPA_PLATFORM":"wayland;xcb","QT_QPA_PLATFORMTHEME":"qt6ct","QT_QUICK_CONTROLS_STYLE":"org.kde.desktop","QT_SCALE_FACTOR":"1","QT_WAYLAND_DISABLE_WINDOWDECORATION":"1","SDL_VIDEODRIVER":"wayland","SHELL":"/usr/bin/fish","SHLVL":"2","TERMINAL":"kitty","USER":"iris","VSCODE_CLI":"1","VSCODE_CODE_CACHE_PATH":"/home/iris/.config/VSCodium/CachedData/2a5b258b5b38d3d4c830bdaaa6e5c610eaacbd15","VSCODE_CRASH_REPORTER_PROCESS_TYPE":"extensionHost","VSCODE_CWD":"/home/iris","VSCODE_ESM_ENTRYPOINT":"vs/workbench/api/node/extensionHostProcess","VSCODE_HANDLES_UNCAUGHT_ERRORS":"true","VSCODE_IPC_HOOK":"/run/user/1000/vscode-79cee2d5-1.10-main.sock","VSCODE_NLS_CONFIG":"{\"userLocale\":\"en-us\",\"osLocale\":\"en-us\",\"resolvedLanguage\":\"en\",\"defaultMessagesFile\":\"/usr/share/vscodium/resources/app/out/nls.messages.json\",\"locale\":\"en-us\",\"availableLanguages\":{}}","VSCODE_PID":"189213","VYLE_CACHE_HOME":"/home/iris/.cache/ivy-shell","VYLE_CONFIG_HOME":"/home/iris/.config/ivy-shell","VYLE_DATA_HOME":"/home/iris/.local/share/vyle","WAYLAND_DISPLAY":"wayland-1","WLR_RENDERER":"vulkan","WLR_RENDERER_ALLOW_SOFTWARE":"0","XDG_BACKEND":"wayland","XDG_CACHE_HOME":"/home/iris/.cache","XDG_CONFIG_HOME":"/home/iris/.config","XDG_CURRENT_DESKTOP":"Hyprland","XDG_DATA_HOME":"/home/iris/.local/share","XDG_RUNTIME_DIR":"/run/user/1000","XDG_SEAT":"seat0","XDG_SEAT_PATH":"/org/freedesktop/DisplayManager/Seat0","XDG_SESSION_CLASS":"user","XDG_SESSION_DESKTOP":"Hyprland","XDG_SESSION_ID":"2","XDG_SESSION_PATH":"/org/freedesktop/DisplayManager/Session1","XDG_SESSION_TYPE":"wayland","XDG_VTNR":"1","_":"/usr/share/vscodium/bin/../codium","_JAVA_AWT_WM_NONREPARENTING":"1","cacheDir":"/home/iris/.cache","confDir":"/home/iris/.config","dcolDir":"/home/iris/.cache/ivy-shell/shell","dunstDir":"/home/iris/.config/dunst","hypr_border":"10","hypr_width":"2","hyprscrDir":"/home/iris/.config/hypr/scripts","ideCDir":"/home/iris/.cache/ivy-shell","ideDir":"/home/iris/.config/ivy-shell","localDir":"/home/iris/.local/share","rasiDir":"/home/iris/.config/rofi/shared","rofiAssetDir":"/home/iris/.config/rofi/shared/assets","rofiStyleDir":"/home/iris/.config/rofi/styles","wcDir":"/home/iris/.config/waybar","wlDir":"/home/iris/.config/waybar/Styles","ELECTRON_RUN_AS_NODE":"1"}
+[main] Safe constructing new CMakeProject instance
+[variant] Constructing VariantManager
+[main] Constructing new CMakeProject instance
+[main] Starting CMake Tools second-phase init
+[expand] expanded ${workspaceFolder}
+[kit] Reading kits file /home/iris/.local/share/CMakeTools/cmake-tools-kits.json
+[kit] Successfully loaded 3 kits from /home/iris/.local/share/CMakeTools/cmake-tools-kits.json
+[kit] Not reading non-existent kits file: /home/iris/Templates/Nullix/.vscode/cmake-kits.json
+[main] Injecting new Kit into CMake driver
+[variant] Loaded new set of variants
+[main] CMakeProject instance initialization complete.
+[extension] Configuring workspace on open /home/iris/Templates/Nullix
+[main] Starting new CMake driver
+[main] Starting CMake driver
+[main] Using generator from user configuration: Ninja
+[cmakefileapi-driver] Creating instance of CMakeFileApiDriver
+[driver] Initializing base driver using kit
+[kit] Testing Clang binary: /usr/bin/clang
+[proc] Executing command: /usr/bin/clang -v
+[kit] Detected Clang compiler: /usr/bin/clang
+[driver] CMakeDriver Kit set to Clang 21.1.6 x86_64-pc-linux-gnu
+[kit] The environment for kit 'Clang 21.1.6 x86_64-pc-linux-gnu': {
+  "CHROME_DESKTOP": "codium.desktop",
+  "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+  "DEBUGINFOD_URLS": "https://debuginfod.archlinux.org ",
+  "DESKTOP_SESSION": "hyprland",
+  "DISPLAY": ":1",
+  "EDITOR": "vscodium",
+  "ELECTRON_NO_ATTACH_CONSOLE": "1",
+  "ELECTRON_OZONE_PLATFORM_HINT": "wayland",
+  "FC_FONTATIONS": "1",
+  "GDK_BACKEND": "wayland",
+  "GDK_SCALE": "1",
+  "HL_INITIAL_WORKSPACE_TOKEN": "a61ba471-a798-4ca5-99c0-9f5785bf358f",
+  "HOME": "/home/iris",
+  "HYPRLAND_CMD": "Hyprland --watchdog-fd 4",
+  "HYPRLAND_INSTANCE_SIGNATURE": "4b07770b9ef1cceb2e6f56d33538aaffb9186b9c_1773228119_1121133665",
+  "LANG": "en_US.UTF-8",
+  "LOGNAME": "iris",
+  "MAIL": "/var/spool/mail/iris",
+  "MOTD_SHOWN": "pam",
+  "MOZ_ENABLE_WAYLAND": "1",
+  "NO_AT_BRIDGE": "1",
+  "PATH": "/home/iris/.spicetify:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin",
+  "PWD": "/home/iris",
+  "QT_AUTO_SCREEN_SCALE_FACTOR": "1",
+  "QT_QPA_PLATFORM": "wayland;xcb",
+  "QT_QPA_PLATFORMTHEME": "qt6ct",
+  "QT_QUICK_CONTROLS_STYLE": "org.kde.desktop",
+  "QT_SCALE_FACTOR": "1",
+  "QT_WAYLAND_DISABLE_WINDOWDECORATION": "1",
+  "SDL_VIDEODRIVER": "wayland",
+  "SHELL": "/usr/bin/fish",
+  "SHLVL": "2",
+  "TERMINAL": "kitty",
+  "USER": "iris",
+  "VSCODE_CLI": "1",
+  "VSCODE_CODE_CACHE_PATH": "/home/iris/.config/VSCodium/CachedData/2a5b258b5b38d3d4c830bdaaa6e5c610eaacbd15",
+  "VSCODE_CRASH_REPORTER_PROCESS_TYPE": "extensionHost",
+  "VSCODE_CWD": "/home/iris",
+  "VSCODE_ESM_ENTRYPOINT": "vs/workbench/api/node/extensionHostProcess",
+  "VSCODE_HANDLES_UNCAUGHT_ERRORS": "true",
+  "VSCODE_IPC_HOOK": "/run/user/1000/vscode-79cee2d5-1.10-main.sock",
+  "VSCODE_NLS_CONFIG": "{\"userLocale\":\"en-us\",\"osLocale\":\"en-us\",\"resolvedLanguage\":\"en\",\"defaultMessagesFile\":\"/usr/share/vscodium/resources/app/out/nls.messages.json\",\"locale\":\"en-us\",\"availableLanguages\":{}}",
+  "VSCODE_PID": "189213",
+  "VYLE_CACHE_HOME": "/home/iris/.cache/ivy-shell",
+  "VYLE_CONFIG_HOME": "/home/iris/.config/ivy-shell",
+  "VYLE_DATA_HOME": "/home/iris/.local/share/vyle",
+  "WAYLAND_DISPLAY": "wayland-1",
+  "WLR_RENDERER": "vulkan",
+  "WLR_RENDERER_ALLOW_SOFTWARE": "0",
+  "XDG_BACKEND": "wayland",
+  "XDG_CACHE_HOME": "/home/iris/.cache",
+  "XDG_CONFIG_HOME": "/home/iris/.config",
+  "XDG_CURRENT_DESKTOP": "Hyprland",
+  "XDG_DATA_HOME": "/home/iris/.local/share",
+  "XDG_RUNTIME_DIR": "/run/user/1000",
+  "XDG_SEAT": "seat0",
+  "XDG_SEAT_PATH": "/org/freedesktop/DisplayManager/Seat0",
+  "XDG_SESSION_CLASS": "user",
+  "XDG_SESSION_DESKTOP": "Hyprland",
+  "XDG_SESSION_ID": "2",
+  "XDG_SESSION_PATH": "/org/freedesktop/DisplayManager/Session1",
+  "XDG_SESSION_TYPE": "wayland",
+  "XDG_VTNR": "1",
+  "_": "/usr/share/vscodium/bin/../codium",
+  "_JAVA_AWT_WM_NONREPARENTING": "1",
+  "cacheDir": "/home/iris/.cache",
+  "confDir": "/home/iris/.config",
+  "dcolDir": "/home/iris/.cache/ivy-shell/shell",
+  "dunstDir": "/home/iris/.config/dunst",
+  "hypr_border": "10",
+  "hypr_width": "2",
+  "hyprscrDir": "/home/iris/.config/hypr/scripts",
+  "ideCDir": "/home/iris/.cache/ivy-shell",
+  "ideDir": "/home/iris/.config/ivy-shell",
+  "localDir": "/home/iris/.local/share",
+  "rasiDir": "/home/iris/.config/rofi/shared",
+  "rofiAssetDir": "/home/iris/.config/rofi/shared/assets",
+  "rofiStyleDir": "/home/iris/.config/rofi/styles",
+  "wcDir": "/home/iris/.config/waybar",
+  "wlDir": "/home/iris/.config/waybar/Styles",
+  "ELECTRON_RUN_AS_NODE": "1"
+}
+[expand] expanded ${workspaceFolder}/build
+[cache] Reading CMake cache file /home/iris/Templates/Nullix/build/CMakeCache.txt
+[cache] Parsing CMake cache string
+[cache] Reading CMake cache file /home/iris/Templates/Nullix/build/CMakeCache.txt
+[cache] Parsing CMake cache string
+[cmakefileapi-parser] Read reply folder: /home/iris/Templates/Nullix/build/.cmake/api/v1/reply
+[cmakefileapi-parser] Found index files: ["cache-v2-b156ed4ff416a01444d9.json","cmakeFiles-v1-0b8bc9cad78d6ade0e2b.json","codemodel-v2-edcc3ef2ca8da4b5b56a.json","directory-.-Debug-9ad1a58d4644cf6543fa.json","index-2026-03-10T08-19-32-0521.json","target-a.out-Debug-38f26444ae4f2d51bf9a.json","toolchains-v1-35a93553c3195ba7a020.json"]
+[driver] Setting new variant Debug
+[expand] expanded ${workspaceFolder}/build
+[main] Configuring project: Nullix 
+[main] Saving open files before configure/build
+[expand] expanded ${workspaceFolder}/build
+[driver] Start configure 
+[driver] Running pre-configure checks and steps
+[driver] Using compilers in Clang 21.1.6 x86_64-pc-linux-gnu for configure
+[expand] expanded ${workspaceFolder}/build
+[cmakefileapi-driver] Configuring using kit
+[cmakefileapi-driver] Invoking CMake /usr/bin/cmake with arguments ["-DCMAKE_BUILD_TYPE:STRING=Debug","-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE","-DCMAKE_C_COMPILER:FILEPATH=/usr/bin/clang","-DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/clang++","--no-warn-unused-cli","-S","/home/iris/Templates/Nullix","-B","/home/iris/Templates/Nullix/build","-G","Ninja"]
+[proc] Executing command: /usr/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/clang -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/clang++ --no-warn-unused-cli -S /home/iris/Templates/Nullix -B /home/iris/Templates/Nullix/build -G Ninja
+[proc]   with environment: {"CHROME_DESKTOP":"codium.desktop","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","DEBUGINFOD_URLS":"https://debuginfod.archlinux.org ","DESKTOP_SESSION":"hyprland","DISPLAY":":1","EDITOR":"vscodium","ELECTRON_NO_ATTACH_CONSOLE":"1","ELECTRON_OZONE_PLATFORM_HINT":"wayland","FC_FONTATIONS":"1","GDK_BACKEND":"wayland","GDK_SCALE":"1","HL_INITIAL_WORKSPACE_TOKEN":"a61ba471-a798-4ca5-99c0-9f5785bf358f","HOME":"/home/iris","HYPRLAND_CMD":"Hyprland --watchdog-fd 4","HYPRLAND_INSTANCE_SIGNATURE":"4b07770b9ef1cceb2e6f56d33538aaffb9186b9c_1773228119_1121133665","LANG":"en_US.UTF-8","LOGNAME":"iris","MAIL":"/var/spool/mail/iris","MOTD_SHOWN":"pam","MOZ_ENABLE_WAYLAND":"1","NO_AT_BRIDGE":"1","PATH":"/home/iris/.spicetify:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin","PWD":"/home/iris","QT_AUTO_SCREEN_SCALE_FACTOR":"1","QT_QPA_PLATFORM":"wayland;xcb","QT_QPA_PLATFORMTHEME":"qt6ct","QT_QUICK_CONTROLS_STYLE":"org.kde.desktop","QT_SCALE_FACTOR":"1","QT_WAYLAND_DISABLE_WINDOWDECORATION":"1","SDL_VIDEODRIVER":"wayland","SHELL":"/usr/bin/fish","SHLVL":"2","TERMINAL":"kitty","USER":"iris","VSCODE_CLI":"1","VSCODE_CODE_CACHE_PATH":"/home/iris/.config/VSCodium/CachedData/2a5b258b5b38d3d4c830bdaaa6e5c610eaacbd15","VSCODE_CRASH_REPORTER_PROCESS_TYPE":"extensionHost","VSCODE_CWD":"/home/iris","VSCODE_ESM_ENTRYPOINT":"vs/workbench/api/node/extensionHostProcess","VSCODE_HANDLES_UNCAUGHT_ERRORS":"true","VSCODE_IPC_HOOK":"/run/user/1000/vscode-79cee2d5-1.10-main.sock","VSCODE_NLS_CONFIG":"{\"userLocale\":\"en-us\",\"osLocale\":\"en-us\",\"resolvedLanguage\":\"en\",\"defaultMessagesFile\":\"/usr/share/vscodium/resources/app/out/nls.messages.json\",\"locale\":\"en-us\",\"availableLanguages\":{}}","VSCODE_PID":"189213","VYLE_CACHE_HOME":"/home/iris/.cache/ivy-shell","VYLE_CONFIG_HOME":"/home/iris/.config/ivy-shell","VYLE_DATA_HOME":"/home/iris/.local/share/vyle","WAYLAND_DISPLAY":"wayland-1","WLR_RENDERER":"vulkan","WLR_RENDERER_ALLOW_SOFTWARE":"0","XDG_BACKEND":"wayland","XDG_CACHE_HOME":"/home/iris/.cache","XDG_CONFIG_HOME":"/home/iris/.config","XDG_CURRENT_DESKTOP":"Hyprland","XDG_DATA_HOME":"/home/iris/.local/share","XDG_RUNTIME_DIR":"/run/user/1000","XDG_SEAT":"seat0","XDG_SEAT_PATH":"/org/freedesktop/DisplayManager/Seat0","XDG_SESSION_CLASS":"user","XDG_SESSION_DESKTOP":"Hyprland","XDG_SESSION_ID":"2","XDG_SESSION_PATH":"/org/freedesktop/DisplayManager/Session1","XDG_SESSION_TYPE":"wayland","XDG_VTNR":"1","_":"/usr/share/vscodium/bin/../codium","_JAVA_AWT_WM_NONREPARENTING":"1","cacheDir":"/home/iris/.cache","confDir":"/home/iris/.config","dcolDir":"/home/iris/.cache/ivy-shell/shell","dunstDir":"/home/iris/.config/dunst","hypr_border":"10","hypr_width":"2","hyprscrDir":"/home/iris/.config/hypr/scripts","ideCDir":"/home/iris/.cache/ivy-shell","ideDir":"/home/iris/.config/ivy-shell","localDir":"/home/iris/.local/share","rasiDir":"/home/iris/.config/rofi/shared","rofiAssetDir":"/home/iris/.config/rofi/shared/assets","rofiStyleDir":"/home/iris/.config/rofi/styles","wcDir":"/home/iris/.config/waybar","wlDir":"/home/iris/.config/waybar/Styles","ELECTRON_RUN_AS_NODE":"1"}
+[cmake] Not searching for unused variables given on the command line.
+[cmake] -- Configuring done (0.6s)
+[cmake] -- Generating done (0.1s)
+[cmake] -- Build files have been written to: /home/iris/Templates/Nullix/build
+[cmakefileapi-parser] Read reply folder: /home/iris/Templates/Nullix/build/.cmake/api/v1/reply
+[cmakefileapi-parser] Found index files: ["cache-v2-b156ed4ff416a01444d9.json","cmakeFiles-v1-0b8bc9cad78d6ade0e2b.json","codemodel-v2-edcc3ef2ca8da4b5b56a.json","directory-.-Debug-9ad1a58d4644cf6543fa.json","index-2026-03-11T12-04-53-0826.json","target-a.out-Debug-38f26444ae4f2d51bf9a.json","toolchains-v1-35a93553c3195ba7a020.json"]
+[expand] expanded ${workspaceFolder}/compile_commands.json
+[main] Copying compile_commands.json from /home/iris/Templates/Nullix/build/compile_commands.json to /home/iris/Templates/Nullix/compile_commands.json
+[extension] Deactivate CMakeTools

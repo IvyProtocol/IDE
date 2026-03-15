@@ -1,0 +1,95 @@
+[8:06:58 PM] [INFO] setStatusBarItem: status bar item is undefined
+[8:06:58 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/Templates/Nullix/src" and equal to "/home/iris/Templates/Nullix/src"
+[8:06:58 PM] [INFO] Discord Rich Presence for VS Code activated.
+[8:06:58 PM] [INFO] Registered Discord Rich Presence commands
+[8:06:59 PM] [INFO] Successfully connected to Discord
+[8:06:59 PM] [INFO] [004] Debug: Enabling Discord Rich Presence
+[8:06:59 PM] [INFO] [004] Debug: Logging in with client ID "810516608442695700"
+[8:06:59 PM] [INFO] [004] Debug: Login - isConnected true isReady 810516608442695700
+[8:06:59 PM] [INFO] [004] Debug: Login - [object Object]
+[8:06:59 PM] [INFO] [004] Debug: Client Should be logged in
+[8:06:59 PM] [INFO] [004] Debug: Enable - [object Object]
+[8:06:59 PM] [INFO] [004] Debug: Enabled - isConnected true isReady 810516608442695700
+[8:06:59 PM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[8:06:59 PM] [INFO] [activity.ts] createButton(): enabled true
+[8:06:59 PM] [INFO] [activity.ts] createButton(): enabled true
+[8:07:00 PM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[8:07:00 PM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[8:07:19 PM] [INFO] onDidChangeWindowState()
+[8:07:19 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/Templates/Nullix/src" and equal to "/home/iris/Templates/Nullix/src"
+[8:07:19 PM] [INFO] onDidChangeWindowState()
+[8:07:19 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/Templates/Nullix/src" and equal to "/home/iris/Templates/Nullix/src"
+[8:07:19 PM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[8:07:19 PM] [INFO] [activity.ts] createButton(): enabled true
+[8:07:19 PM] [INFO] [activity.ts] createButton(): enabled true
+[8:07:19 PM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[8:07:19 PM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[8:07:26 PM] [INFO] onDidChangeWindowState()
+[8:07:26 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/Templates/Nullix/src" and equal to "/home/iris/Templates/Nullix/src"
+[8:07:28 PM] [INFO] onDidChangeWindowState()
+[8:07:28 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/Templates/Nullix/src" and equal to "/home/iris/Templates/Nullix/src"
+[8:07:28 PM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[8:07:28 PM] [INFO] [activity.ts] createButton(): enabled true
+[8:07:28 PM] [INFO] [activity.ts] createButton(): enabled true
+[8:07:28 PM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[8:07:28 PM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[8:07:35 PM] [INFO] onDidChangeWindowState()
+[8:07:35 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/Templates/Nullix/src" and equal to "/home/iris/Templates/Nullix/src"
+[8:07:45 PM] [INFO] onDidChangeWindowState()
+[8:07:45 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/Templates/Nullix/src" and equal to "/home/iris/Templates/Nullix/src"
+[8:07:46 PM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[8:07:46 PM] [INFO] [activity.ts] createButton(): enabled true
+[8:07:46 PM] [INFO] [activity.ts] createButton(): enabled true
+[8:07:46 PM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[8:07:46 PM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[8:07:55 PM] [INFO] Discord Rich Presence for VS Code deactivated.
+[8:07:55 PM] [INFO] setStatusBarItem: status bar item is undefined
+[8:07:55 PM] [INFO] [004] Destroyed Discord RPC client

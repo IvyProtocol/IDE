@@ -1,0 +1,63 @@
+2026-03-09 00:19:32.373 [info] Extension host with pid 605515 started
+2026-03-09 00:19:32.375 [info] Skipping acquiring lock for /home/iris/.config/VSCodium/User/workspaceStorage/1a075534845f6b53119060f1fc6d0f91.
+2026-03-09 00:19:32.649 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-03-09 00:19:33.040 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-03-09 00:19:33.102 [info] ExtensionService#_doActivateExtension llvm-vs-code-extensions.vscode-clangd, startup: false, activationEvent: 'onLanguage:cpp'
+2026-03-09 00:19:35.434 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-03-09 00:19:35.498 [info] ExtensionService#_doActivateExtension helgardrichard.helium-icon-theme, startup: true, activationEvent: '*'
+2026-03-09 00:19:36.940 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-03-09 00:19:37.177 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-03-09 00:19:37.233 [info] ExtensionService#_doActivateExtension KylinIdeTeam.cmake-intellisence, startup: true, activationEvent: 'workspaceContains:**/*.cmake'
+2026-03-09 00:19:37.420 [info] ExtensionService#_doActivateExtension ms-vscode.cmake-tools, startup: true, activationEvent: 'workspaceContains:*/CMakeLists.txt,*/*/CMakeLists.txt,*/*/*/CMakeLists.txt'
+2026-03-09 00:19:45.080 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:19:45.183 [info] ExtensionService#_doActivateExtension Catppuccin.catppuccin-vsc, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:19:45.460 [info] ExtensionService#_doActivateExtension LeonardSSH.vscord, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:19:45.988 [error] Error: Client is not running and can't be stopped. It's current state is: starting
+	at b.shutdown (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104509)
+	at b.stop (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104090)
+	at b.stop (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:270250)
+	at b.doInitialize (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:103913)
+	at async b.start (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:100479)
+2026-03-09 00:19:45.992 [error] Error: Request initialize failed with message: Command failed: "/usr/bin/cmake" --system-information
+CMake Error at /usr/share/cmake/Modules/CMakeDetermineSystem.cmake:225 (configure_file):
+  No such file or directory
+Call Stack (most recent call first):
+  CMakeLists.txt:6 (project)
+
+
+CMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
+CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+Error: --system-information failed on internal CMake!
+
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47628
+	at ie (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47922)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:42706
+	at Immediate.<anonymous> (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:42726)
+	at process.processImmediate (node:internal/timers:485:21)
+2026-03-09 00:19:47.545 [warning] [Decorations] CAPPING events from decorations provider vscode.git 309
+2026-03-09 00:19:48.850 [warning] [Decorations] CAPPING events from decorations provider vscode.git 309
+2026-03-09 00:19:53.381 [info] Eager extensions activated
+2026-03-09 00:20:06.858 [info] Extension host terminating: renderer closed the MessagePort
+2026-03-09 00:20:06.945 [error] Error: Client is not running and can't be stopped. It's current state is: startFailed
+	at b.shutdown (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104509)
+	at b.stop (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104090)
+	at b.stop (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:270250)
+	at t.deactivate (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:355345)
+	at gee._deactivate (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:14665)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12176
+	at Array.map (<anonymous>)
+	at gee._deactivateAll (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12164)
+	at gee.terminate (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12517)
+	at oN.terminate (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:122:1082)
+	at Hs (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:11825)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8200)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:20:08.732 [error] Error: Channel has been closed
+	at n (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3998)
+	at Object.trace (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:4277)
+	at Object.openRepository (/usr/share/vscodium/resources/app/extensions/git/dist/main.js:2:120050)
+	at r (/usr/share/vscodium/resources/app/extensions/git/dist/main.js:2:69553)
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-03-09 00:20:11.939 [info] Extension host with pid 605515 exiting with code 0

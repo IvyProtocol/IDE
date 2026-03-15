@@ -1,0 +1,795 @@
+[12:19:41 AM] [INFO] setStatusBarItem: status bar item is undefined
+[12:19:41 AM] [INFO] Discord Rich Presence for VS Code activated.
+[12:19:41 AM] [INFO] Registered Discord Rich Presence commands
+[12:19:41 AM] [INFO] Successfully connected to Discord
+[12:19:41 AM] [INFO] [004] Debug: Enabling Discord Rich Presence
+[12:19:41 AM] [INFO] [004] Debug: Logging in with client ID "810516608442695700"
+[12:19:41 AM] [INFO] [004] Debug: Login - isConnected true isReady 810516608442695700
+[12:19:41 AM] [INFO] [004] Debug: Login - [object Object]
+[12:19:41 AM] [INFO] [004] Debug: Client Should be logged in
+[12:19:41 AM] [INFO] [004] Debug: Enable - [object Object]
+[12:19:41 AM] [INFO] [004] Debug: Enabled - isConnected true isReady 810516608442695700
+[12:19:45 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:19:45 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:19:45 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:19:45 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:19:45 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:19:46 AM] [INFO] onDidChangeWindowState()
+[12:19:58 AM] [INFO] onDidChangeWindowState()
+[12:20:05 AM] [INFO] onDidChangeWindowState()
+[12:20:05 AM] [INFO] onDidChangeWindowState()
+[12:20:05 AM] [INFO] onDidChangeWindowState()
+[12:20:10 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:20:10 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:10 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:20:10 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:10 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:10 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:10 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:10 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:10 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:10 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:10 AM] [INFO] onDidChangeWindowState()
+[12:20:11 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:20:11 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:11 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:11 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:11 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:15 AM] [INFO] onDidChangeWindowState()
+[12:20:16 AM] [INFO] onDidChangeWindowState()
+[12:20:16 AM] [INFO] onDidChangeWindowState()
+[12:20:16 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:20:16 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:16 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:16 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:16 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:27 AM] [INFO] onDidChangeWindowState()
+[12:20:27 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:20:27 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:27 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:27 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:27 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:28 AM] [INFO] onDidChangeWindowState()
+[12:20:52 AM] [INFO] onDidChangeWindowState()
+[12:20:53 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:20:53 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:53 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:53 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:53 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:54 AM] [INFO] onDidChangeTextEditorSelection()
+[12:20:54 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:20:54 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:54 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:54 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:54 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:59 AM] [INFO] onDidChangeTextEditorSelection()
+[12:20:59 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:20:59 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:59 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:20:59 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:20:59 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:24 AM] [INFO] onDidChangeTextEditorSelection()
+[12:21:24 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:21:24 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:25 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:25 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:25 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:26 AM] [INFO] onDidChangeWindowState()
+[12:21:30 AM] [INFO] onDidChangeWindowState()
+[12:21:30 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:21:30 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:30 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:31 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:31 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:32 AM] [INFO] onDidChangeActiveTextEditor()
+[12:21:32 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:21:32 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:32 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:32 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:32 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:32 AM] [INFO] onDidChangeActiveTextEditor()
+[12:21:32 AM] [INFO] onDidChangeTextEditorSelection()
+[12:21:34 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:21:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:34 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:21:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:34 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:34 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:34 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:34 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:46 AM] [INFO] onDidChangeActiveTextEditor()
+[12:21:46 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:21:46 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:46 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:21:46 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:21:46 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:06 AM] [INFO] onDidChangeActiveTextEditor()
+[12:22:06 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:22:06 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:06 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:06 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:06 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:07 AM] [INFO] onDidChangeActiveTextEditor()
+[12:22:07 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:22:07 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:07 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:07 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:07 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:13 AM] [INFO] onDidChangeWindowState()
+[12:22:22 AM] [INFO] onDidChangeWindowState()
+[12:22:23 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:22:23 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:23 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:23 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:23 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:26 AM] [INFO] onDidChangeWindowState()
+[12:22:28 AM] [INFO] onDidChangeWindowState()
+[12:22:28 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:22:28 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:28 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:28 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:28 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:32 AM] [INFO] onDidChangeWindowState()
+[12:22:33 AM] [INFO] onDidChangeWindowState()
+[12:22:33 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:22:33 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:33 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:33 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:33 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:52 AM] [INFO] onDidChangeWindowState()
+[12:22:53 AM] [INFO] onDidChangeWindowState()
+[12:22:53 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:22:53 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:53 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:22:53 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:53 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:22:54 AM] [INFO] onDidChangeWindowState()
+[12:23:13 AM] [INFO] onDidChangeWindowState()
+[12:23:13 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:23:13 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:13 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:14 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:14 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:15 AM] [INFO] onDidChangeWindowState()
+[12:23:34 AM] [INFO] onDidChangeWindowState()
+[12:23:34 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:23:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:34 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:34 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:34 AM] [INFO] onDidChangeActiveTextEditor()
+[12:23:34 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:23:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:34 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:34 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:35 AM] [INFO] onDidChangeActiveTextEditor()
+[12:23:35 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:23:35 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:35 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:35 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:35 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:48 AM] [INFO] onDidChangeWindowState()
+[12:23:53 AM] [INFO] onDidChangeWindowState()
+[12:23:53 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:23:53 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:53 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:23:54 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:54 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:23:59 AM] [INFO] onDidChangeWindowState()
+[12:24:33 AM] [INFO] onDidChangeWindowState()
+[12:24:33 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:24:33 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:24:33 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:24:33 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:24:33 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:24:45 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:24:45 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:24:45 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:24:45 AM] [INFO] [activity.ts] getPresenceButtons button1: Idle {
+  "button": {
+    "label": "Idle Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:24:45 AM] [INFO] [activity.ts] getPresenceButtons button2: Idle {
+  "button": {
+    "label": "Idle Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:24:52 AM] [INFO] onDidChangeWindowState()
+[12:24:56 AM] [INFO] onDidChangeWindowState()
+[12:24:56 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:24:56 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:24:56 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:24:56 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:24:56 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:08 AM] [INFO] onDidChangeWindowState()
+[12:25:19 AM] [INFO] onDidChangeWindowState()
+[12:25:19 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:25:19 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:19 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:19 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:19 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:19 AM] [INFO] onDidChangeWindowState()
+[12:25:20 AM] [INFO] onDidChangeWindowState()
+[12:25:20 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:25:20 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:20 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:20 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:20 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:20 AM] [INFO] onDidChangeWindowState()
+[12:25:48 AM] [INFO] onDidChangeWindowState()
+[12:25:49 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:25:49 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:49 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:49 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:49 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:55 AM] [INFO] onDidChangeActiveTextEditor()
+[12:25:55 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:25:55 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:55 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:55 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:55 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:55 AM] [INFO] onDidChangeActiveTextEditor()
+[12:25:56 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:25:56 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:56 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:25:56 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:25:56 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:26:01 AM] [INFO] onDidChangeWindowState()
+[12:26:13 AM] [INFO] onDidChangeWindowState()
+[12:26:13 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:26:13 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:26:13 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:26:13 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:26:13 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:26:15 AM] [INFO] onDidChangeWindowState()
+[12:26:17 AM] [INFO] onDidChangeWindowState()
+[12:26:17 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:26:17 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:26:17 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:26:17 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:26:17 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:26:30 AM] [INFO] onDidChangeWindowState()
+[12:26:34 AM] [INFO] onDidChangeWindowState()
+[12:26:34 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:26:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:26:34 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:26:34 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:26:34 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:26:43 AM] [INFO] onDidChangeWindowState()
+[12:26:57 AM] [INFO] onDidChangeWindowState()
+[12:26:57 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:26:57 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:26:57 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:26:57 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:26:57 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:27:08 AM] [INFO] onDidChangeWindowState()
+[12:27:11 AM] [INFO] onDidChangeWindowState()
+[12:27:11 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:27:11 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:27:11 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:27:11 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:27:11 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:27:12 AM] [INFO] onDidChangeWindowState()
+[12:27:12 AM] [INFO] onDidChangeWindowState()
+[12:27:13 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:27:13 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:27:13 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:27:13 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:27:13 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:27:25 AM] [INFO] onDidChangeWindowState()
+[12:27:28 AM] [INFO] onDidChangeWindowState()
+[12:27:28 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:27:28 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:27:28 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:27:28 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:27:28 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:27:44 AM] [INFO] onDidChangeWindowState()
+[12:27:54 AM] [INFO] onDidChangeWindowState()
+[12:27:54 AM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[12:27:54 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:27:55 AM] [INFO] [activity.ts] createButton(): enabled true
+[12:27:55 AM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:27:55 AM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[12:28:06 AM] [INFO] Discord Rich Presence for VS Code deactivated.
+[12:28:07 AM] [INFO] setStatusBarItem: status bar item is undefined
+[12:28:07 AM] [INFO] [004] Destroyed Discord RPC client

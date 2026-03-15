@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-wallSet="/home/iris/.config/ivy-shell/theme/Decay-Green/wallpapers/blue_swirl.png"
-wallDir="${XDG_CONFIG_HOME:-$HOME/.config}/ivy-shell/theme/Decay-Green/wallpapers"
+wallSet="/home/iris/.config/ivy-shell/theme/Catppuccin-Latte/wallpapers/abstract_blured.jpg"
+wallDir="/home/iris/.config/ivy-shell/theme/Catppuccin-Latte/wallpapers"
 enableWallIde=0
 VYLE_THEME="Wallbash-Ivy"
-VYLE_RESERVED_THEME="Decay-Green"
+VYLE_RESERVED_THEME="Catppuccin-Latte"
 

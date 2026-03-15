@@ -1,0 +1,932 @@
+2026-03-09 00:19:30.445 [info] Extension host with pid 605486 started
+2026-03-09 00:19:30.445 [info] Skipping acquiring lock for /home/iris/.config/VSCodium/User/workspaceStorage/0dc7954b7351c20d3183ab0915089e9b.
+2026-03-09 00:19:31.178 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-03-09 00:19:31.665 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-03-09 00:19:32.299 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-03-09 00:19:32.540 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-03-09 00:19:34.204 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-03-09 00:19:34.296 [info] ExtensionService#_doActivateExtension helgardrichard.helium-icon-theme, startup: true, activationEvent: '*'
+2026-03-09 00:19:35.226 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-03-09 00:19:35.666 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-03-09 00:19:35.676 [info] ExtensionService#_doActivateExtension KylinIdeTeam.cmake-intellisence, startup: true, activationEvent: 'workspaceContains:**/*.cmake'
+2026-03-09 00:19:38.225 [info] Eager extensions activated
+2026-03-09 00:19:38.240 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-03-09 00:19:40.106 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:19:40.601 [info] ExtensionService#_doActivateExtension Catppuccin.catppuccin-vsc, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:19:40.720 [info] ExtensionService#_doActivateExtension LeonardSSH.vscord, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:21:32.654 [info] ExtensionService#_doActivateExtension llvm-vs-code-extensions.vscode-clangd, startup: false, activationEvent: 'onLanguage:cpp'
+2026-03-09 00:21:39.470 [info] ExtensionService#_doActivateExtension ms-vscode.cmake-tools, startup: false, activationEvent: 'onCommand:cmake.configure'
+2026-03-09 00:27:59.988 [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+2026-03-09 00:28:06.905 [info] Extension host terminating: renderer closed the MessagePort
+2026-03-09 00:28:06.996 [error] Unable to refresh tree view cmake.projectStatus: Canceled
+2026-03-09 00:28:07.004 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b.logTrace (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:97171)
+	at Object.log (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:90664)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47362
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47557
+	at ie (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47922)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:42706
+	at Immediate.<anonymous> (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:42726)
+	at process.processImmediate (node:internal/timers:485:21)
+2026-03-09 00:28:07.027 [error] Error: Channel has been closed
+	at n (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3998)
+	at Object.info (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:4368)
+	at T.info (/usr/share/vscodium/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:45267)
+	at ChildProcess.<anonymous> (/usr/share/vscodium/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:606586)
+	at ChildProcess.emit (node:events:519:28)
+	at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+2026-03-09 00:28:08.982 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b.logOutputMessage (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:96598)
+	at b.error (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:96489)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104864
+	at async Promise.all (index 12)
+	at async gee._deactivateAll (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12199)
+2026-03-09 00:28:08.984 [info] Extension host with pid 605486 exiting with code 0
+2026-03-09 00:28:09.082 [info] Extension host with pid 631699 started
+2026-03-09 00:28:09.082 [info] Skipping acquiring lock for /home/iris/.config/VSCodium/User/workspaceStorage/0dc7954b7351c20d3183ab0915089e9b.
+2026-03-09 00:28:09.295 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-03-09 00:28:09.616 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-03-09 00:28:09.685 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-03-09 00:28:09.717 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-03-09 00:28:09.926 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-03-09 00:28:09.983 [info] ExtensionService#_doActivateExtension llvm-vs-code-extensions.vscode-clangd, startup: false, activationEvent: 'onLanguage:cpp'
+2026-03-09 00:28:10.287 [info] ExtensionService#_doActivateExtension ms-vscode.cmake-tools, startup: false, activationEvent: 'onCommand:cmake.configure'
+2026-03-09 00:28:10.599 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: false, activationEvent: '*', root cause: vscode.git
+2026-03-09 00:28:10.605 [info] ExtensionService#_doActivateExtension helgardrichard.helium-icon-theme, startup: false, activationEvent: '*'
+2026-03-09 00:28:10.632 [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+2026-03-09 00:28:10.809 [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: '*'
+2026-03-09 00:28:11.019 [info] ExtensionService#_doActivateExtension vscode.github, startup: false, activationEvent: '*'
+2026-03-09 00:28:12.492 [info] Eager extensions activated
+2026-03-09 00:28:12.549 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:28:12.631 [info] ExtensionService#_doActivateExtension Catppuccin.catppuccin-vsc, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:28:12.649 [info] ExtensionService#_doActivateExtension LeonardSSH.vscord, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:28:24.298 [info] Extension host terminating: renderer closed the MessagePort
+2026-03-09 00:28:24.438 [error] Error: Channel has been closed
+	at n (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3998)
+	at Object.info (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:4368)
+	at T.info (/usr/share/vscodium/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:45267)
+	at ChildProcess.<anonymous> (/usr/share/vscodium/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:606586)
+	at ChildProcess.emit (node:events:519:28)
+	at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+2026-03-09 00:28:24.469 [info] Extension host with pid 631699 exiting with code 0
+2026-03-09 00:28:26.771 [info] Extension host with pid 632728 started
+2026-03-09 00:28:26.772 [info] Skipping acquiring lock for /home/iris/.config/VSCodium/User/workspaceStorage/0dc7954b7351c20d3183ab0915089e9b.
+2026-03-09 00:28:26.808 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-03-09 00:28:27.018 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-03-09 00:28:27.085 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-03-09 00:28:27.119 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-03-09 00:28:27.434 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-03-09 00:28:27.524 [info] ExtensionService#_doActivateExtension llvm-vs-code-extensions.vscode-clangd, startup: false, activationEvent: 'onLanguage:cpp'
+2026-03-09 00:28:27.910 [info] ExtensionService#_doActivateExtension ms-vscode.cmake-tools, startup: false, activationEvent: 'onCommand:cmake.configure'
+2026-03-09 00:28:28.337 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: false, activationEvent: '*', root cause: vscode.git
+2026-03-09 00:28:28.347 [info] ExtensionService#_doActivateExtension helgardrichard.helium-icon-theme, startup: false, activationEvent: '*'
+2026-03-09 00:28:28.382 [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+2026-03-09 00:28:28.855 [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: '*'
+2026-03-09 00:28:29.090 [info] ExtensionService#_doActivateExtension vscode.github, startup: false, activationEvent: '*'
+2026-03-09 00:28:30.047 [info] Eager extensions activated
+2026-03-09 00:28:30.246 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:28:30.368 [info] ExtensionService#_doActivateExtension Catppuccin.catppuccin-vsc, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:28:30.385 [info] ExtensionService#_doActivateExtension LeonardSSH.vscord, startup: false, activationEvent: 'onStartupFinished'
+2026-03-09 00:29:43.413 [info] ExtensionService#_doActivateExtension KylinIdeTeam.cmake-intellisence, startup: false, activationEvent: 'onLanguage:cmake'
+2026-03-09 00:29:53.572 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:29:53.590 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:30:25.923 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:30:25.924 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:30:55.208 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:30:55.208 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:30:56.052 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:30:56.053 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:30:56.614 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:30:56.614 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:53:46.202 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:53:46.203 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:53:46.431 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:53:46.431 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:53:47.134 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:53:47.134 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:53:49.349 [error] [ms-vscode.cmake-tools] provider FAILED
+2026-03-09 00:53:49.349 [error] TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 05:17:28.147 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:28.194 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:29.114 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:29.114 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:29.726 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:29.726 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:29.729 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:29.729 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:29.732 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:29.732 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:30.885 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:30.885 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:35.762 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:35.762 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:45.740 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:45.740 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:47.371 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:47.371 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:48.690 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:48.691 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:49.648 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:49.648 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:55.519 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:55.519 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:58.775 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:58.775 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:17:58.778 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:17:58.778 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:18:08.988 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:18:08.988 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:18:08.990 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:18:08.990 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:18:19.998 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:18:19.998 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:18:32.932 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:18:32.932 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:18:35.000 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:18:35.000 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:18:35.000 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:18:35.001 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:45.898 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:45.898 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:51.527 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:51.527 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:51.529 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:51.529 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:51.531 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:51.531 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:52.793 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:52.793 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:52.796 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:52.796 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:52.796 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:52.796 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:52.799 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:52.799 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:52.801 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:52.801 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:19:53.303 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:19:53.303 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:20:57.342 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:20:57.343 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:20:58.783 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:20:58.783 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:20:58.785 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:20:58.785 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:20:59.328 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:20:59.328 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:20:59.331 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:20:59.331 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:11.313 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:11.313 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:11.314 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:11.314 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:14.381 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:14.381 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:15.018 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:15.018 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:15.522 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:15.522 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:15.523 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:15.523 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:15.531 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:15.531 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:16.111 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:16.111 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:16.112 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:16.112 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:17.409 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:17.409 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:17.938 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:17.939 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:18.779 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:18.779 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:18.781 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:18.781 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:19.345 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:19.345 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:19.347 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:19.347 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:25.187 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:25.187 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:25.741 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:25.741 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:21:26.190 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:21:26.190 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:24:48.724 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:24:48.724 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:24:50.086 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:24:50.086 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:24:52.477 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:24:52.477 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:24:52.479 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:24:52.479 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:24:52.998 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:24:52.998 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:24:53.574 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:24:53.574 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:24:53.578 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:24:53.578 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:24:55.438 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:24:55.438 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:25:01.296 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:25:01.296 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:25:02.332 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:25:02.332 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:25:03.006 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:25:03.006 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:25:04.312 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:25:04.312 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:25:05.134 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:25:05.134 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:25:06.389 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:25:06.389 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:25:06.856 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:25:06.856 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 05:25:08.383 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 05:25:08.383 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 10:53:24.258 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 10:53:24.258 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 10:53:28.763 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 10:53:28.763 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 10:59:24.424 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 10:59:24.424 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 10:59:24.782 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 10:59:24.782 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 10:59:35.325 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 10:59:35.325 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 10:59:35.886 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 10:59:35.886 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 10:59:36.109 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 10:59:36.109 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 10:59:36.111 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 10:59:36.111 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:00:30.925 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:00:30.925 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:00:33.068 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:00:33.068 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:00:33.511 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:00:33.511 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:00:33.990 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:00:33.991 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:03:06.886 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:03:06.886 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:03:13.589 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:03:13.589 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:03:23.892 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:03:23.892 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:03:28.965 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:03:28.965 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:03:31.295 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:03:31.295 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:03:43.121 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:03:43.121 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:03:47.303 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:03:47.303 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:03:47.536 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:03:47.536 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:05:00.124 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:05:00.124 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:05:11.898 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:05:11.898 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:05:12.913 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:05:12.913 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:05:21.567 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:05:21.567 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:05:21.917 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:05:21.917 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:05:48.765 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:05:48.765 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:05:49.029 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:05:49.029 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:07:28.463 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:07:28.463 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:07:29.310 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:07:29.310 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:32.677 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:32.677 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:33.299 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:33.299 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:33.514 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:33.514 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:33.723 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:33.723 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:41.349 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:41.349 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:49.060 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:49.060 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:49.282 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:49.282 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:49.517 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:49.517 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:51.096 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:51.096 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:51.295 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:51.295 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:51.514 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:51.514 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:09:54.327 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:09:54.327 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:10:15.928 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:10:15.929 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:11:01.719 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:11:01.719 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:12:19.474 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:12:19.474 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:12:19.474 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:12:19.474 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:19.737 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:19.737 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:19.738 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:19.738 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:20.280 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:20.280 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:20.283 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:20.283 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:21.057 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:21.057 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:21.062 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:21.062 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:22.469 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:22.469 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:22.469 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:22.469 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:22.816 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:22.816 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:22.817 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:22.817 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:22.817 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:22.818 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:23.190 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:23.190 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:23.547 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:23.547 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:23.548 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:23.548 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:23.549 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:23.549 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:23.891 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:23.891 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:34.833 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:34.834 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:35.158 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:35.158 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:35.468 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:35.468 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:13:35.759 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:13:35.759 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:14:44.114 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:14:44.114 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:14:44.114 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:14:44.115 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:14:44.534 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:14:44.535 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:14:44.535 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:14:44.535 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:14:53.658 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:14:53.658 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:14:54.065 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:14:54.065 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:14:54.066 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:14:54.066 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:14:56.187 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:14:56.187 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:16:34.181 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:16:34.181 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:16:38.722 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:16:38.722 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:16:47.389 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:16:47.389 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:04.226 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:04.226 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:04.694 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:04.694 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:04.987 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:04.987 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:05.261 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:05.261 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:07.582 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:07.582 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:10.386 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:10.386 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:32.305 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:32.305 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:37.478 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:37.478 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:37.480 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:37.480 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:37.882 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:37.882 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:37.885 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:37.885 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:38.700 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:38.700 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:38.701 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:38.701 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:38.702 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:38.702 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:40.304 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:40.304 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:41.093 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:41.093 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:41.612 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:41.612 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:42.294 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:42.294 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:42.298 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:42.298 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:17:46.682 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:17:46.682 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:25:15.918 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:25:15.965 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:25:15.970 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:25:15.970 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:25:15.983 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:25:15.983 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:25:15.983 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:25:15.984 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:25:16.724 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:25:16.724 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:25:16.725 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:25:16.725 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 11:25:17.020 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 11:25:17.020 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:09.099 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:09.099 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:09.318 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:09.318 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:09.527 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:09.527 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:09.708 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:09.708 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:11.342 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:11.342 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:11.673 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:11.673 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:15.097 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:15.097 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:15.318 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:15.318 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:15.525 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:15.525 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:16.479 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:16.479 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:17.380 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:17.380 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:27.153 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:27.153 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:28.404 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:28.404 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:34.092 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:34.092 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:36.415 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:36.415 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:36.619 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:36.619 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:36.808 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:36.808 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:37.560 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:37.560 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:38.940 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:38.940 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:55.770 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:55.770 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:57.703 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:57.703 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:14:58.494 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:14:58.494 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:15:16.667 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:15:16.667 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:15:18.060 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:15:18.060 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:15:37.562 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:15:37.562 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:15:38.269 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:15:38.269 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:15:38.478 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:15:38.478 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:15:55.822 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:15:55.822 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:03.533 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:03.533 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:03.935 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:03.935 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:05.219 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:05.219 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:05.220 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:05.220 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:05.815 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:05.815 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:05.816 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:05.816 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:05.816 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:05.816 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:06.010 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:06.010 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:06.219 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:06.219 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:06.219 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:06.219 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:06.452 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:06.452 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:20.721 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:20.722 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:20.941 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:20.941 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:21.163 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:21.163 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:21.164 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:21.164 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:16:59.816 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:16:59.817 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:00.041 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:00.041 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:00.247 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:00.247 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:00.450 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:00.450 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:00.673 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:00.673 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:06.272 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:06.272 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:06.504 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:06.504 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:06.715 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:06.715 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:06.916 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:06.916 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:10.087 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:10.087 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:10.088 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:10.088 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:10.274 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:10.274 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:10.473 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:10.473 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:10.474 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:10.474 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:10.678 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:10.679 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:12.463 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:12.463 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:12.463 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:12.463 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:53.400 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:53.400 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:53.609 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:53.609 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:53.845 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:53.845 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:53.845 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:53.845 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:55.697 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:55.697 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:56.106 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:56.106 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:17:56.288 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:17:56.289 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:18:36.242 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:18:36.242 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:18:50.540 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:18:50.540 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:18:50.739 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:18:50.739 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:18:50.949 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:18:50.949 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:18:51.194 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:18:51.194 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:18:51.525 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:18:51.525 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:19:36.093 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:19:36.093 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:19:36.316 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:19:36.316 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:19:36.317 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:19:36.317 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:19:36.510 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:19:36.510 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:19:36.862 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:19:36.862 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:19:37.138 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:19:37.138 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:19:37.412 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:19:37.412 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:19:37.412 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:19:37.412 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:20:50.082 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:20:50.082 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:20:50.267 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:20:50.267 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:20:50.618 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:20:50.618 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:23:24.341 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:23:24.368 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:23:45.599 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:23:45.599 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:23:48.127 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:23:48.127 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:23:50.519 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:23:50.519 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:01.064 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:01.064 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:01.481 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:01.481 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:01.481 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:01.481 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:01.482 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:01.482 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:01.886 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:01.886 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:02.328 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:02.328 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:02.637 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:02.637 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:02.638 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:02.638 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:02.638 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:02.638 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:02.922 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:02.922 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:03.664 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:03.665 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:04.061 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:04.061 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:07.162 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:07.162 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:14.953 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:14.953 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:24:16.816 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:24:16.816 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:25:43.530 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:25:43.530 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:26:17.223 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:26:17.223 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:26:17.223 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:26:17.223 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:26:17.223 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:26:17.223 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:26:17.223 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:26:17.223 [error] {"_isCancelled":false,"_emitter":{"_size":1,"_deliveryQueue":{"i":-1,"end":0},"_listeners":[{"id":11231}]}}
+2026-03-09 13:26:17.247 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:26:17.247 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:27:31.865 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:27:31.916 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:27:31.921 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:27:31.921 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:27:31.925 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:27:31.925 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:27:31.928 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:27:31.928 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:27:31.932 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:27:31.932 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:27:31.935 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:27:31.935 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:27:31.936 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:27:31.936 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:28:03.446 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:28:03.446 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:28:03.451 [error] [llvm-vs-code-extensions.vscode-clangd] provider FAILED
+2026-03-09 13:28:03.451 [error] {"_isCancelled":true,"_emitter":null}
+2026-03-09 13:28:13.021 [info] Extension host terminating: renderer closed the MessagePort
+2026-03-09 13:28:13.115 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b.logTrace (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:97171)
+	at Object.log (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:90664)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47362
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47557
+	at ie (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:47922)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:42706
+	at Immediate.<anonymous> (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:42726)
+	at process.processImmediate (node:internal/timers:485:21)
+2026-03-09 13:28:13.119 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.append (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3682)
+	at Socket.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:37746)
+	at Socket.emit (node:events:519:28)
+	at addChunk (node:internal/streams/readable:561:12)
+	at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+	at Readable.push (node:internal/streams/readable:392:5)
+	at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2026-03-09 13:28:13.128 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.append (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3682)
+	at Socket.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:37746)
+	at Socket.emit (node:events:519:28)
+	at addChunk (node:internal/streams/readable:561:12)
+	at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+	at Readable.push (node:internal/streams/readable:392:5)
+	at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2026-03-09 13:28:13.207 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b4.logOutputMessage (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:489)
+	at b4.error (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:41:379)
+	at ChildProcess.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:44:39032)
+	at ChildProcess.emit (node:events:519:28)
+	at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+2026-03-09 13:28:14.125 [error] CONNECTION_ENDED: Closed by Discord
+	at Jh.setActivity (/home/iris/.vscode-oss/extensions/leonardssh.vscord-5.3.9/dist/extension.js:46:13738)
+	at dg.sendActivity (/home/iris/.vscode-oss/extensions/leonardssh.vscord-5.3.9/dist/extension.js:100:23)
+2026-03-09 13:28:14.125 [error] CONNECTION_ENDED: Closed by Discord
+	at Jh.setActivity (/home/iris/.vscode-oss/extensions/leonardssh.vscord-5.3.9/dist/extension.js:46:13738)
+	at dg.sendActivity (/home/iris/.vscode-oss/extensions/leonardssh.vscord-5.3.9/dist/extension.js:100:23)
+2026-03-09 13:28:14.329 [error] Error: Channel has been closed
+	at n (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3998)
+	at Object.info (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:4368)
+	at T.info (/usr/share/vscodium/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:45267)
+	at ChildProcess.<anonymous> (/usr/share/vscodium/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:606586)
+	at ChildProcess.emit (node:events:519:28)
+	at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+2026-03-09 13:28:15.084 [error] Error: Channel has been closed
+	at s (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3585)
+	at Object.appendLine (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:3724)
+	at b.logOutputMessage (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:96598)
+	at b.error (/home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:96489)
+	at /home/iris/.vscode-oss/extensions/kylinideteam.cmake-intellisence-0.4.0-universal/dist/client.js:1:104864
+	at async Promise.all (index 12)
+	at async gee._deactivateAll (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:12199)
+2026-03-09 13:28:15.084 [info] Extension host with pid 632728 exiting with code 0

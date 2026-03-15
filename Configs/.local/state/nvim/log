@@ -1,0 +1,52 @@
+ERR 2026-01-04T22:35:35.997 nvim.1350072.0 decor_provider_error:36: Error in decoration provider "line" (ns=nvim.treesitter.highlighter):
+Error executing lua: /usr/share/nvim/runtime/lua/vim/treesitter.lua:195: Index out of bounds
+stack traceback:
+	[C]: in function 'nvim_buf_get_text'
+	/usr/share/nvim/runtime/lua/vim/treesitter.lua:195: in function 'get_node_text'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:553: in function 'handler'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:884: in function '_match_predicates'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:1013: in function 'iter'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:385: in function 'fn'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:239: in function 'for_each_highlight_state'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:358: in function 'on_line_impl'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:457: in function </usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:451>
+	[C]: in function 'nvim_command'
+	vim/_editor.lua: in function <vim/_editor.lua:0>
+ERR 2026-01-04T22:35:36.011 nvim.1350072.0 decor_provider_error:36: Error in decoration provider "line" (ns=nvim.treesitter.highlighter):
+Error executing lua: /usr/share/nvim/runtime/lua/vim/treesitter.lua:195: Index out of bounds
+stack traceback:
+	[C]: in function 'nvim_buf_get_text'
+	/usr/share/nvim/runtime/lua/vim/treesitter.lua:195: in function 'get_node_text'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:553: in function 'handler'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:884: in function '_match_predicates'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:1013: in function 'iter'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:385: in function 'fn'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:239: in function 'for_each_highlight_state'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:358: in function 'on_line_impl'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:457: in function </usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:451>
+	[C]: at 0x564f80a6d730
+ERR 2026-01-04T22:35:36.012 nvim.1350072.0 decor_provider_error:36: Error in decoration provider "line" (ns=nvim.treesitter.highlighter):
+Error executing lua: /usr/share/nvim/runtime/lua/vim/treesitter.lua:195: Index out of bounds
+stack traceback:
+	[C]: in function 'nvim_buf_get_text'
+	/usr/share/nvim/runtime/lua/vim/treesitter.lua:195: in function 'get_node_text'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:553: in function 'handler'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:884: in function '_match_predicates'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:1013: in function 'iter'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:385: in function 'fn'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:239: in function 'for_each_highlight_state'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:358: in function 'on_line_impl'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:457: in function </usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:451>
+	[C]: at 0x564f80a6d730
+ERR 2026-01-20T15:43:26.274 nvim.88438.0 decor_provider_error:36: Error in decoration provider "line" (ns=nvim.treesitter.highlighter):
+Error executing lua: /usr/share/nvim/runtime/lua/vim/treesitter.lua:195: Index out of bounds
+stack traceback:
+	[C]: in function 'nvim_buf_get_text'
+	/usr/share/nvim/runtime/lua/vim/treesitter.lua:195: in function 'get_node_text'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:553: in function 'handler'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:884: in function '_match_predicates'
+	/usr/share/nvim/runtime/lua/vim/treesitter/query.lua:1013: in function 'iter'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:385: in function 'fn'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:239: in function 'for_each_highlight_state'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:358: in function 'on_line_impl'
+	/usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:457: in function </usr/share/nvim/runtime/lua/vim/treesitter/highlighter.lua:451>

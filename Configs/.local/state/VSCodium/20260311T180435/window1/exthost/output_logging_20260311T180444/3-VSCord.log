@@ -1,0 +1,53 @@
+[6:04:49 PM] [INFO] setStatusBarItem: status bar item is undefined
+[6:04:49 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/.config/ivy-shell" and equal to "/home/iris/.config/ivy-shell"
+[6:04:49 PM] [INFO] Discord Rich Presence for VS Code activated.
+[6:04:49 PM] [INFO] Registered Discord Rich Presence commands
+[6:04:49 PM] [INFO] Successfully connected to Discord
+[6:04:49 PM] [INFO] [004] Debug: Enabling Discord Rich Presence
+[6:04:49 PM] [INFO] [004] Debug: Logging in with client ID "810516608442695700"
+[6:04:49 PM] [INFO] [004] Debug: Login - isConnected true isReady 810516608442695700
+[6:04:49 PM] [INFO] [004] Debug: Login - [object Object]
+[6:04:49 PM] [INFO] [004] Debug: Client Should be logged in
+[6:04:49 PM] [INFO] [004] Debug: Enable - [object Object]
+[6:04:49 PM] [INFO] [004] Debug: Enabled - isConnected true isReady 810516608442695700
+[6:04:50 PM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[6:04:50 PM] [INFO] [activity.ts] createButton(): enabled true
+[6:04:50 PM] [INFO] [activity.ts] createButton(): enabled true
+[6:04:50 PM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[6:04:50 PM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[6:05:09 PM] [INFO] onDidChangeWindowState()
+[6:05:09 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/.config/ivy-shell" and equal to "/home/iris/.config/ivy-shell"
+[6:33:02 PM] [INFO] onDidChangeWindowState()
+[6:33:02 PM] [INFO] [data.ts] extractRepo(): "/home/iris/Templates/Nullix/lib" less than "/home/iris/.config/ivy-shell" and equal to "/home/iris/.config/ivy-shell"
+[6:33:02 PM] [INFO] [activity.ts] repo button1#gitRemoteUrl:  isGit false
+[6:33:02 PM] [INFO] [activity.ts] createButton(): enabled true
+[6:33:02 PM] [INFO] [activity.ts] createButton(): enabled true
+[6:33:02 PM] [INFO] [activity.ts] getPresenceButtons button1: Active {
+  "button": {
+    "label": "Active Label Button 1",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[6:33:02 PM] [INFO] [activity.ts] getPresenceButtons button2: Active {
+  "button": {
+    "label": "Active Label Button 2",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "validationError": ""
+}
+[6:33:49 PM] [INFO] Discord Rich Presence for VS Code deactivated.
+[6:33:49 PM] [INFO] setStatusBarItem: status bar item is undefined
+[6:33:49 PM] [INFO] [004] Destroyed Discord RPC client

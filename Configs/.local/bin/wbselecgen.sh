@@ -58,7 +58,7 @@ wallSelTui() {
     fi
 
     {   
-        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t "${img}")" "${VYLE_STATE_HOME}/staterc"
+        setConf "wallSet" "${wallSel}/$(fl_wallpaper -t "$img")" "${VYLE_STATE_HOME}/staterc"
         ln -sf "${colsDir}/${scRun}.cols" "${rasiDir}/wall.cols"
         ln -sf "${blurDir}/${scRun}.bpex" "${rasiDir}/wall.bpex"
         cp "${blurred}" "/usr/share/sddm/themes/silent/backgrounds/default.jpg" 
@@ -73,7 +73,7 @@ wallSelTui() {
         --swww-t) swww img "$img" -t "${wallAnimationTheme}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" ;;
         *)        swww img "$img" -t "${wallAnimation}" --transition-bezier "${wallTransitionBezier}" --transition-duration "${wallTransDuration}" --transition-step "${wallTransitionStep}" --transition-fps "${wallFramerate}" --invert-y  ;;
     esac
-    sleep "${wallTransDuration}"
+    sleep 0.5
     case "${schIPC}" in
         dark|light) 
             "${scrDir}/ivy-shell.sh" "${img}" --"${schIPC}"

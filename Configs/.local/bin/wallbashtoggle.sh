@@ -16,13 +16,13 @@ apply_config() {
     [[ ! -e "${scrDir}/ivy-shell.sh" ]] && exit 1
     if [[ "${wallIde}" -eq 3 ]]; then
         setConf "VYLE_THEME|enableWallIde" "${VYLE_RESERVED_THEME}|3" "${VYLE_STATE_HOME}/staterc"
-        [[ -f "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/theme.dcol" ]] && cp "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/theme.dcol" "${VYLE_CONFIG_HOME}/main/ivygen.dcol" &
-        sed -i 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf" &
+        [[ -f "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/theme.dcol" ]] && cp "${VYLE_CONFIG_HOME}/theme/${VYLE_RESERVED_THEME}/theme.dcol" "${VYLE_CONFIG_HOME}/main/ivygen.dcol" 
+        sed -i 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf"
         "${scrDir}/modules/ivyshell-helper.sh"
         exit 0
     else
         [[ "${VYLE_THEME}" != "Wallbash-Ivy" ]] && setConf "VYLE_THEME" "Wallbash-Ivy" "${VYLE_STATE_HOME}/staterc" &
-        sed -i 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf" &
+        sed -i 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf"
         "${scrDir}/ivy-shell.sh" "${wallSet}" --"${1}"
     fi
 
@@ -48,6 +48,7 @@ rofi_wallbash() {
         -select "${ivyshellModes[$(($enableWallIde + 1))]}" )
 
     [[ -z "$choice" ]] && { echo "No option selected. Exiting."; exit 0; }
+    sleep 0.7
     apply_config "$choice"
 }
 

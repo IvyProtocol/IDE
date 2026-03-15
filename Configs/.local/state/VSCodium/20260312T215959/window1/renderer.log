@@ -1,0 +1,17 @@
+2026-03-12 22:00:03.200 [info] Started local extension host with pid 1794804.
+2026-03-12 22:00:06.530 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-12 22:00:09.426 [error] [Extension Host] (node:1794804) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `exe --trace-deprecation ...` to show where the warning was created)
+2026-03-12 22:00:10.101 [info] Auto updating outdated extensions. kylinideteam.cmake-intellisence, ms-vscode.cmake-tools
+2026-03-12 22:00:10.372 [info] [perf] Render performance baseline is 169ms
+2026-03-12 22:00:12.013 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-12 22:00:14.073 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-12 22:00:27.815 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-12 22:00:42.283 [error] Cannot read properties of undefined (reading 'then'): TypeError: Cannot read properties of undefined (reading 'then')
+    at Yxt.setDimensions (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:3157:3890)
+    at zT._updatePtyDimensions (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:3161:3252)
+    at DFi._resizeXCallback (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:3157:37302)
+    at DFi._debounceResizeX (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:3157:18950)
+    at vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:104:14659
+2026-03-12 22:00:46.212 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-12 22:00:52.552 [error] An unknown error occurred. Please consult the log for more details.

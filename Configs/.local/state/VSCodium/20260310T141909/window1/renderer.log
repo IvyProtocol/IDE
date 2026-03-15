@@ -1,0 +1,5 @@
+2026-03-10 14:19:16.763 [warning] Creation of workbench contribution 'workbench.contrib.preferencesActions' took 34ms.
+2026-03-10 14:19:16.903 [warning] Creation of workbench contribution 'workbench.contrib.remoteStatusIndicator' took 21ms.
+2026-03-10 14:19:20.196 [info] Started local extension host with pid 107954.
+2026-03-10 14:19:26.087 [info] Auto updating outdated extensions. ms-vscode.cmake-tools
+2026-03-10 14:19:27.904 [info] [perf] Render performance baseline is 111ms

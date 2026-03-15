@@ -1,0 +1,240 @@
+2026-03-09 00:19:18.921 [warning] Creation of workbench contribution 'workbench.contrib.preferencesActions' took 22ms.
+2026-03-09 00:19:23.178 [info] Started local extension host with pid 605486.
+2026-03-09 00:19:33.989 [info] Auto updating outdated extensions. ms-vscode.cmake-tools
+2026-03-09 00:19:38.401 [warning] Creation of workbench contribution 'terminal.chatAgentTools' took 209ms.
+2026-03-09 00:19:44.922 [info] [perf] Render performance baseline is 336ms
+2026-03-09 00:20:05.978 [info] Extension host (LocalProcess pid: 605486) is unresponsive.
+2026-03-09 00:20:06.019 [info] Extension host (LocalProcess pid: 605486) is responsive.
+2026-03-09 00:20:06.315 [info] UNRESPONSIVE extension host: received responsive event and cancelling profiling session
+2026-03-09 00:20:09.674 [info] UNRESPONSIVE extension host: starting to profile NOW
+2026-03-09 00:20:10.078 [warning] UNRESPONSIVE extension host: 'leonardssh.vscord' took 31.12301511383202% of 8.134ms, saved PROFILE here: 'file:///tmp/exthost-72ad2b.cpuprofile'
+2026-03-09 00:21:34.037 [error] [Extension Host] (node:605486) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `exe --trace-deprecation ...` to show where the warning was created)
+2026-03-09 00:21:34.039 [error] [Extension Host] fs.access() failed:  Error: ENOENT: no such file or directory, access '/home/karmveer/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd'
+	at async Object.access (node:internal/fs/promises:608:10)
+2026-03-09 00:21:34.540 [error] [Extension Host] https://api.github.com/repos/clangd/clangd/releases/latest 403 rate limit exceeded
+2026-03-09 00:21:34.542 [error] [Extension Host] Auto-install failed:  Error: Can't fetch release: rate limit exceeded
+	at Object.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:231:1367)
+	at Generator.next (<anonymous>)
+	at fulfilled (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:230:23525)
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-03-09 00:21:41.961 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.778Z [error] [cmake] CMake Error at CMakeLists.txt:34 (target_sources):
+2026-03-09 00:21:41.963 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.780Z [error] [cmake]   Cannot find source file:
+2026-03-09 00:21:41.974 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.783Z [error] [cmake] 
+2026-03-09 00:21:41.979 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.784Z [error] [cmake]     src/main.cpp
+2026-03-09 00:21:41.981 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.785Z [error] [cmake] 
+2026-03-09 00:21:41.983 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.785Z [error] [cmake] 
+2026-03-09 00:21:41.988 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.787Z [error] [cmake] CMake Error at CMakeLists.txt:9 (add_executable):
+2026-03-09 00:21:41.989 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.789Z [error] [cmake]   No SOURCES given to target: Project1.app
+2026-03-09 00:21:41.990 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.790Z [error] [cmake] 
+2026-03-09 00:21:41.991 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.791Z [error] [cmake] 
+2026-03-09 00:21:41.992 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:41.792Z [error] [cmake] CMake Generate step failed.  Build files cannot be regenerated correctly.
+2026-03-09 00:21:42.557 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.413Z [error] [cmake] CMake Error at CMakeLists.txt:34 (target_sources):
+2026-03-09 00:21:42.565 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.413Z [error] [cmake]   Cannot find source file:
+2026-03-09 00:21:42.570 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.414Z [error] [cmake] 
+2026-03-09 00:21:42.578 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.414Z [error] [cmake]     src/main.cpp
+2026-03-09 00:21:42.583 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.415Z [error] [cmake] 
+2026-03-09 00:21:42.587 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.415Z [error] [cmake] 
+2026-03-09 00:21:42.588 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.417Z [error] [cmake] CMake Error at CMakeLists.txt:9 (add_executable):
+2026-03-09 00:21:42.589 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.418Z [error] [cmake]   No SOURCES given to target: Project1.app
+2026-03-09 00:21:42.596 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.418Z [error] [cmake] 
+2026-03-09 00:21:42.600 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.419Z [error] [cmake] 
+2026-03-09 00:21:42.601 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:42.419Z [error] [cmake] CMake Generate step failed.  Build files cannot be regenerated correctly.
+2026-03-09 00:21:43.400 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.345Z [error] [cmake] CMake Error at CMakeLists.txt:34 (target_sources):
+2026-03-09 00:21:43.400 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.346Z [error] [cmake]   Cannot find source file:
+2026-03-09 00:21:43.401 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.346Z [error] [cmake] 
+2026-03-09 00:21:43.402 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.347Z [error] [cmake]     src/main.cpp
+2026-03-09 00:21:43.404 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.348Z [error] [cmake] 
+2026-03-09 00:21:43.405 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.349Z [error] [cmake] 
+2026-03-09 00:21:43.409 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.349Z [error] [cmake] CMake Error at CMakeLists.txt:9 (add_executable):
+2026-03-09 00:21:43.413 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.350Z [error] [cmake]   No SOURCES given to target: Project1.app
+2026-03-09 00:21:43.415 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.351Z [error] [cmake] 
+2026-03-09 00:21:43.416 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.352Z [error] [cmake] 
+2026-03-09 00:21:43.417 [error] [Extension Host] [CMakeTools] 2026-03-08T18:21:43.353Z [error] [cmake] CMake Generate step failed.  Build files cannot be regenerated correctly.
+2026-03-09 00:22:40.743 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-09 00:24:35.848 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-09 00:28:07.076 [info] Started local extension host with pid 631699.
+2026-03-09 00:28:10.291 [error] [Extension Host] (node:631699) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `exe --trace-deprecation ...` to show where the warning was created)
+2026-03-09 00:28:10.826 [error] [Extension Host] fs.access() failed:  Error: ENOENT: no such file or directory, access '/home/karmveer/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd'
+	at async Object.access (node:internal/fs/promises:608:10)
+2026-03-09 00:28:11.008 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-09 00:28:12.513 [error] [Extension Host] https://api.github.com/repos/clangd/clangd/releases/latest 403 rate limit exceeded
+2026-03-09 00:28:12.518 [error] [Extension Host] Auto-install failed:  Error: Can't fetch release: rate limit exceeded
+	at Object.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:231:1367)
+	at Generator.next (<anonymous>)
+	at fulfilled (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:230:23525)
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-03-09 00:28:24.241 [info] Started local extension host with pid 632728.
+2026-03-09 00:28:27.911 [error] [Extension Host] (node:632728) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `exe --trace-deprecation ...` to show where the warning was created)
+2026-03-09 00:28:28.721 [error] [Extension Host] fs.access() failed:  Error: ENOENT: no such file or directory, access '/home/karmveer/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd'
+	at async Object.access (node:internal/fs/promises:608:10)
+2026-03-09 00:28:28.963 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-09 00:28:30.841 [error] [Extension Host] https://api.github.com/repos/clangd/clangd/releases/latest 403 rate limit exceeded
+2026-03-09 00:28:30.842 [error] [Extension Host] Auto-install failed:  Error: Can't fetch release: rate limit exceeded
+	at Object.<anonymous> (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:231:1367)
+	at Generator.next (<anonymous>)
+	at fulfilled (/home/iris/.vscode-oss/extensions/llvm-vs-code-extensions.vscode-clangd-0.4.0/out/bundle.js:230:23525)
+	at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-03-09 00:29:53.592 [error] Cannot read properties of undefined (reading 'description'): TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:30:25.927 [error] Cannot read properties of undefined (reading 'description'): TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:30:26.242 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.158Z [error] [cmake] CMake Error at CMakeLists.txt:24 (target_sources):
+2026-03-09 00:30:26.257 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.165Z [error] [cmake]   Cannot find source file:
+2026-03-09 00:30:26.265 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.168Z [error] [cmake] 
+2026-03-09 00:30:26.269 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.172Z [error] [cmake]     main.cpp
+2026-03-09 00:30:26.271 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.173Z [error] [cmake] 
+2026-03-09 00:30:26.272 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.175Z [error] [cmake] 
+2026-03-09 00:30:26.278 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.177Z [error] [cmake] CMake Error at CMakeLists.txt:11 (add_executable):
+2026-03-09 00:30:26.280 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.178Z [error] [cmake]   No SOURCES given to target: a.out
+2026-03-09 00:30:26.283 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.178Z [error] [cmake] 
+2026-03-09 00:30:26.285 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.179Z [error] [cmake] 
+2026-03-09 00:30:26.286 [error] [Extension Host] [CMakeTools] 2026-03-08T18:30:26.185Z [error] [cmake] CMake Generate step failed.  Build files cannot be regenerated correctly.
+2026-03-09 00:30:55.262 [error] Cannot read properties of undefined (reading 'description'): TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:30:56.616 [error] Cannot read properties of undefined (reading 'description'): TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:53:46.205 [error] Cannot read properties of undefined (reading 'description'): TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 00:53:49.351 [error] Cannot read properties of undefined (reading 'description'): TypeError: Cannot read properties of undefined (reading 'description')
+	at LanguageServiceData.provideHover (/home/iris/.vscode-oss/extensions/ms-vscode.cmake-tools-1.22.27/dist/main.js:103755:50)
+	at bN.provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:165540)
+	at file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199427
+	at ci._withAdapter (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:196166)
+	at ci.$provideHover (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:144:199404)
+	at OC._doInvokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:135104)
+	at OC._invokeHandler (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:134848)
+	at OC._receiveRequest (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:133563)
+	at OC._receiveOneMessage (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:132440)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:130539)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at ef.value (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:10007)
+	at D._deliver (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2892)
+	at D.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3212)
+	at Qo.fire (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10961)
+	at MessagePortMain.<anonymous> (file:///usr/share/vscodium/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:405:8160)
+	at MessagePortMain.emit (node:events:519:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2959)
+2026-03-09 05:07:30.833 [error] [Extension Host] fs.access() failed:  Error: ENOENT: no such file or directory, access '/home/karmveer/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd'
+	at async Object.access (node:internal/fs/promises:608:10)
+2026-03-09 05:07:31.404 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-09 05:07:35.567 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-09 05:08:05.979 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-09 13:20:05.389 [error] Unable to read file '/home/iris/Templates/Nullix/lib/uniqx/source/system/process/sub_process/SubProcess.cpp' (Error: Unable to resolve nonexistent file '/home/iris/Templates/Nullix/lib/uniqx/source/system/process/sub_process/SubProcess.cpp'): Error: Unable to read file '/home/iris/Templates/Nullix/lib/uniqx/source/system/process/sub_process/SubProcess.cpp' (Error: Unable to resolve nonexistent file '/home/iris/Templates/Nullix/lib/uniqx/source/system/process/sub_process/SubProcess.cpp')
+    at qRt.restoreReadError (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:4163:92657)
+    at qRt.doReadFileStream (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:4163:92438)
+    at async aMt.doRead (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:4168:13892)
+    at async aMt.readStream (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:4168:13647)
+    at async OCe.resolveFromFile (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:1329:16581)
+    at async OCe.resolve (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:1329:14715)
+    at async nMt.doResolve (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:4168:9034)
+    at async Jtt.doCreateReferencedObject (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:1329:28374)
+    at async EVt.acquire (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:27:3887)
+    at async Ztt.createModelReference (vscode-file://vscode-app/usr/share/vscodium/resources/app/out/vs/workbench/workbench.desktop.main.js:1329:30633)
+2026-03-09 13:26:14.540 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-09 13:26:17.254 [error] An unknown error occurred. Please consult the log for more details.
+2026-03-09 13:26:17.258 [error] [Extension Host] Sending notification failed.
+2026-03-09 13:26:17.269 [error] [Extension Host] Sending notification failed.
+2026-03-09 13:26:17.273 [error] [Extension Host] Sending notification failed.
+2026-03-09 13:26:17.585 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-09 13:26:48.863 [error] [Extension Host] Can't glibc version from ldd --version output: ldd (GNU libc) 2.43
+2026-03-09 13:28:14.430 [warning] [lifecycle] onWillShutdown is taking a long time, pending operations: join.workingCopyHistory

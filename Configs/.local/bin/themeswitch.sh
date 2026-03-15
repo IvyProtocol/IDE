@@ -15,20 +15,23 @@ themeSelTui() {
         fi
         if [[ "${wallDir}" != "${themeDir}/${thmChsh}/wallpapers" ]]; then
             echo " :: Theme Control - Theme '${thmChsh}' :: Wallpaper '${thmImg}' :: DcolMode '${enableWallIde}' --> '${XDG_CONFIG_HOME}'"
-            setConf "wallDir" "\${XDG_CONFIG_HOME:-\$HOME/.config}/ivy-shell/theme/${thmChsh}/wallpapers" "${VYLE_STATE_HOME}/staterc"
+            notify -m 2 -i "theme_engine" -p "${thmChsh}" -s "${VYLE_CACHE_HOME}/cache/thumb/$(fl_wallpaper -t "${thmImg}" -f 1).sloc" -t 1100 -a "t1"
+            setConf "wallDir" "${themeDir}/${thmChsh}/wallpapers" "${VYLE_STATE_HOME}/staterc"
         else
             echo -e " :: Theme Control - Skipped populating $thmChsh -> ${XDG_CONFIG_HOME}"
             exit 0
-        fi
+        fi 
         if [[ "${enableWallIde}" -eq 3 ]]; then
-            [[ "${VYLE_THEME}" != "${thmChsh}" ]] && setConf "VYLE_THEME" "${thmChsh}" "${VYLE_STATE_HOME}/staterc"
-            sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf"
+            if [[ "${VYLE_THEME}" != "${thmChsh}" ]]; then
+                setConf "VYLE_THEME" "${thmChsh}" "${VYLE_STATE_HOME}/staterc"
+            fi
+            sed -Ei 's|^[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|#source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf" 
         else
             "${scrDir}/modules/ivyshell-helper.sh" "${themeDir}/${thmChsh}/hypr.theme"
-             sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf"
+             sed -Ei 's|^#[[:space:]]*source[[:space:]]*=[[:space:]]*./themes/wallbash-ide.conf|source = ./themes/wallbash-ide.conf|' "${XDG_CONFIG_HOME}/hypr/hyprland.conf" 
         fi
         [[ ! -e "${scrDir}/wbselecgen.sh" ]] && { notify -m 1 -p "Does wbselecgen.sh exist?" -s "${dunstDir}/icons/hyprdots.svg" -u critical; return 1; }
-        notify -m 2 -i "theme_engine" -p "${thmChsh}" -s "${VYLE_CACHE_HOME}/cache/thumb/$(fl_wallpaper -t "${thmImg}" -f 1).sloc" -t 1100 -a "t1"
+        sleep 0.5
         "${scrDir}/wbselecgen.sh" -t -i "${thmImg}" -w --swww-t -n 1 -r 1
         echo -e " :: Theme Control - Populated successfully ${thmChsh} -> ${XDG_CONFIG_HOME}"
     fi
@@ -91,7 +94,7 @@ thmSelEnv() {
     }
     choice=$(menu | rofi -dmenu -i -p "ThemeControl" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${VYLE_RESERVED_THEME}")
     [[ -z "$choice" ]] && exit 0
-    sleep 0.4
+    sleep 0.7
     themeSelTui "$choice"
 }
 

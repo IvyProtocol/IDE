@@ -1,0 +1,256 @@
+
+2026/03/11 (20:36:15) | ===> btop++ v.1.4.6
+2026/03/11 (20:36:15) | INFO: Logger set to DEBUG
+2026/03/11 (20:36:15) | DEBUG: Using locale C
+2026/03/11 (20:36:15) | INFO: Running on /dev/pts/1
+2026/03/11 (20:36:15) | DEBUG: TTY mode enabled: false
+2026/03/11 (20:36:15) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/11 (20:36:15) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/11 (20:36:15) | DEBUG: Shared::init() : Initialized.
+2026/03/11 (20:36:15) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/11 (20:45:55) | ===> btop++ v.1.4.6
+2026/03/11 (20:45:55) | INFO: Logger set to DEBUG
+2026/03/11 (20:45:55) | DEBUG: Using locale C
+2026/03/11 (20:45:55) | INFO: Running on /dev/pts/0
+2026/03/11 (20:45:55) | DEBUG: TTY mode enabled: false
+2026/03/11 (20:45:55) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/11 (20:45:55) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/11 (20:45:55) | DEBUG: Shared::init() : Initialized.
+2026/03/11 (20:45:55) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+2026/03/11 (20:50:13) | DEBUG: Writing new config file
+2026/03/11 (20:50:13) | INFO: Quitting! Runtime: 00:04:18
+
+2026/03/11 (20:50:16) | ===> btop++ v.1.4.6
+2026/03/11 (20:50:16) | INFO: Logger set to DEBUG
+2026/03/11 (20:50:16) | DEBUG: Using locale C
+2026/03/11 (20:50:16) | INFO: Running on /dev/pts/0
+2026/03/11 (20:50:16) | DEBUG: TTY mode enabled: false
+2026/03/11 (20:50:16) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/11 (20:50:16) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/11 (20:50:16) | DEBUG: Shared::init() : Initialized.
+2026/03/11 (20:50:16) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/11 (21:14:55) | ===> btop++ v.1.4.6
+2026/03/11 (21:14:55) | INFO: Logger set to DEBUG
+2026/03/11 (21:14:55) | DEBUG: Using locale C
+2026/03/11 (21:14:55) | INFO: Running on /dev/pts/0
+2026/03/11 (21:14:55) | DEBUG: TTY mode enabled: false
+2026/03/11 (21:14:55) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/11 (21:14:55) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/11 (21:14:55) | DEBUG: Shared::init() : Initialized.
+2026/03/11 (21:14:55) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+2026/03/11 (21:16:42) | DEBUG: Writing new config file
+2026/03/11 (21:16:42) | INFO: Quitting! Runtime: 00:01:47
+
+2026/03/11 (21:16:43) | ===> btop++ v.1.4.6
+2026/03/11 (21:16:43) | INFO: Logger set to DEBUG
+2026/03/11 (21:16:43) | DEBUG: Using locale C
+2026/03/11 (21:16:43) | INFO: Running on /dev/pts/0
+2026/03/11 (21:16:43) | DEBUG: TTY mode enabled: false
+2026/03/11 (21:16:43) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/11 (21:16:43) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/11 (21:16:43) | DEBUG: Shared::init() : Initialized.
+2026/03/11 (21:16:43) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/11 (21:16:46) | ===> btop++ v.1.4.6
+2026/03/11 (21:16:46) | INFO: Logger set to DEBUG
+2026/03/11 (21:16:46) | DEBUG: Using locale C
+2026/03/11 (21:16:46) | INFO: Running on /dev/pts/0
+2026/03/11 (21:16:46) | DEBUG: TTY mode enabled: false
+2026/03/11 (21:16:46) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/11 (21:16:46) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/11 (21:16:46) | DEBUG: Shared::init() : Initialized.
+2026/03/11 (21:16:46) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/11 (21:17:06) | ===> btop++ v.1.4.6
+2026/03/11 (21:17:06) | INFO: Logger set to DEBUG
+2026/03/11 (21:17:06) | DEBUG: Using locale C
+2026/03/11 (21:17:06) | INFO: Running on /dev/pts/0
+2026/03/11 (21:17:06) | DEBUG: TTY mode enabled: false
+2026/03/11 (21:17:06) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/11 (21:17:06) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/11 (21:17:06) | DEBUG: Shared::init() : Initialized.
+2026/03/11 (21:17:06) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/12 (05:11:53) | ===> btop++ v.1.4.6
+2026/03/12 (05:11:53) | INFO: Logger set to DEBUG
+2026/03/12 (05:11:53) | DEBUG: Using locale C
+2026/03/12 (05:11:53) | INFO: Running on /dev/pts/0
+2026/03/12 (05:11:53) | DEBUG: TTY mode enabled: false
+2026/03/12 (05:11:53) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/12 (05:11:53) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/12 (05:11:53) | DEBUG: Shared::init() : Initialized.
+2026/03/12 (05:11:53) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+2026/03/12 (05:12:05) | INFO: Quitting! Runtime: 00:00:12
+
+2026/03/12 (05:12:58) | ===> btop++ v.1.4.6
+2026/03/12 (05:12:58) | INFO: Logger set to DEBUG
+2026/03/12 (05:12:58) | DEBUG: Using locale C
+2026/03/12 (05:12:58) | INFO: Running on /dev/pts/0
+2026/03/12 (05:12:58) | DEBUG: TTY mode enabled: false
+2026/03/12 (05:12:58) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/12 (05:12:58) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/12 (05:12:58) | DEBUG: Shared::init() : Initialized.
+2026/03/12 (05:12:58) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/12 (19:15:20) | ===> btop++ v.1.4.6
+2026/03/12 (19:15:20) | INFO: Logger set to DEBUG
+2026/03/12 (19:15:20) | DEBUG: Using locale C
+2026/03/12 (19:15:20) | INFO: Running on /dev/pts/2
+2026/03/12 (19:15:20) | DEBUG: TTY mode enabled: false
+2026/03/12 (19:15:20) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/12 (19:15:20) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/12 (19:15:20) | DEBUG: Shared::init() : Initialized.
+2026/03/12 (19:15:21) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/12 (21:08:09) | ===> btop++ v.1.4.6
+2026/03/12 (21:08:09) | INFO: Logger set to DEBUG
+2026/03/12 (21:08:09) | DEBUG: Using locale C
+2026/03/12 (21:08:09) | INFO: Running on /dev/pts/0
+2026/03/12 (21:08:09) | DEBUG: TTY mode enabled: false
+2026/03/12 (21:08:09) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/12 (21:08:09) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/12 (21:08:09) | DEBUG: Shared::init() : Initialized.
+2026/03/12 (21:08:09) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/13 (16:28:52) | ===> btop++ v.1.4.6
+2026/03/13 (16:28:52) | INFO: Logger set to DEBUG
+2026/03/13 (16:28:52) | DEBUG: Using locale C
+2026/03/13 (16:28:52) | INFO: Running on /dev/pts/0
+2026/03/13 (16:28:52) | DEBUG: TTY mode enabled: false
+2026/03/13 (16:28:52) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/13 (16:28:52) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/13 (16:28:52) | DEBUG: Shared::init() : Initialized.
+2026/03/13 (16:28:52) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/13 (17:52:28) | ===> btop++ v.1.4.6
+2026/03/13 (17:52:28) | INFO: Logger set to DEBUG
+2026/03/13 (17:52:28) | DEBUG: Using locale C
+2026/03/13 (17:52:28) | INFO: Running on /dev/pts/0
+2026/03/13 (17:52:28) | DEBUG: TTY mode enabled: false
+2026/03/13 (17:52:28) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/13 (17:52:28) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/13 (17:52:28) | DEBUG: Shared::init() : Initialized.
+2026/03/13 (17:52:28) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/13 (20:23:42) | ===> btop++ v.1.4.6
+2026/03/13 (20:23:42) | INFO: Logger set to DEBUG
+2026/03/13 (20:23:42) | DEBUG: Using locale C
+2026/03/13 (20:23:42) | INFO: Running on /dev/pts/0
+2026/03/13 (20:23:42) | DEBUG: TTY mode enabled: false
+2026/03/13 (20:23:42) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/13 (20:23:42) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/13 (20:23:42) | DEBUG: Shared::init() : Initialized.
+2026/03/13 (20:23:42) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/13 (20:24:43) | ===> btop++ v.1.4.6
+2026/03/13 (20:24:43) | INFO: Logger set to DEBUG
+2026/03/13 (20:24:43) | DEBUG: Using locale C
+2026/03/13 (20:24:43) | INFO: Running on /dev/pts/0
+2026/03/13 (20:24:43) | DEBUG: TTY mode enabled: false
+2026/03/13 (20:24:43) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/13 (20:24:43) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/13 (20:24:43) | DEBUG: Shared::init() : Initialized.
+2026/03/13 (20:24:43) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/14 (02:34:51) | ===> btop++ v.1.4.6
+2026/03/14 (02:34:51) | INFO: Logger set to DEBUG
+2026/03/14 (02:34:51) | DEBUG: Using locale C
+2026/03/14 (02:34:51) | INFO: Running on /dev/pts/3
+2026/03/14 (02:34:51) | DEBUG: TTY mode enabled: false
+2026/03/14 (02:34:51) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/14 (02:34:51) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/14 (02:34:51) | DEBUG: Shared::init() : Initialized.
+2026/03/14 (02:34:51) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/14 (02:35:03) | ===> btop++ v.1.4.6
+2026/03/14 (02:35:03) | INFO: Logger set to DEBUG
+2026/03/14 (02:35:03) | DEBUG: Using locale C
+2026/03/14 (02:35:03) | INFO: Running on /dev/pts/4
+2026/03/14 (02:35:03) | DEBUG: TTY mode enabled: false
+2026/03/14 (02:35:03) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/14 (02:35:03) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/14 (02:35:03) | DEBUG: Shared::init() : Initialized.
+2026/03/14 (02:35:03) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/14 (02:48:32) | ===> btop++ v.1.4.6
+2026/03/14 (02:48:32) | INFO: Logger set to DEBUG
+2026/03/14 (02:48:32) | DEBUG: Using locale C
+2026/03/14 (02:48:32) | INFO: Running on /dev/pts/0
+2026/03/14 (02:48:32) | DEBUG: TTY mode enabled: false
+2026/03/14 (02:48:32) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/14 (02:48:32) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/14 (02:48:32) | DEBUG: Shared::init() : Initialized.
+2026/03/14 (02:48:32) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+2026/03/14 (02:48:46) | INFO: Quitting! Runtime: 00:00:14
+
+2026/03/14 (04:33:41) | ===> btop++ v.1.4.6
+2026/03/14 (04:33:41) | INFO: Logger set to DEBUG
+2026/03/14 (04:33:41) | DEBUG: Using locale C
+2026/03/14 (04:33:41) | INFO: Running on /dev/pts/0
+2026/03/14 (04:33:41) | DEBUG: TTY mode enabled: false
+2026/03/14 (04:33:41) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/14 (04:33:41) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/14 (04:33:41) | DEBUG: Shared::init() : Initialized.
+2026/03/14 (04:33:41) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/14 (09:24:06) | ===> btop++ v.1.4.6
+2026/03/14 (09:24:06) | INFO: Logger set to DEBUG
+2026/03/14 (09:24:06) | DEBUG: Using locale C
+2026/03/14 (09:24:06) | INFO: Running on /dev/pts/1
+2026/03/14 (09:24:06) | DEBUG: TTY mode enabled: false
+2026/03/14 (09:24:06) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/14 (09:24:06) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/14 (09:24:06) | DEBUG: Shared::init() : Initialized.
+2026/03/14 (09:24:06) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/14 (17:47:24) | ===> btop++ v.1.4.6
+2026/03/14 (17:47:24) | INFO: Logger set to DEBUG
+2026/03/14 (17:47:24) | DEBUG: Using locale C
+2026/03/14 (17:47:24) | INFO: Running on /dev/pts/0
+2026/03/14 (17:47:24) | DEBUG: TTY mode enabled: false
+2026/03/14 (17:47:24) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/14 (17:47:24) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/14 (17:47:24) | DEBUG: Shared::init() : Initialized.
+2026/03/14 (17:47:24) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/14 (22:10:13) | ===> btop++ v.1.4.6
+2026/03/14 (22:10:13) | INFO: Logger set to DEBUG
+2026/03/14 (22:10:13) | DEBUG: Using locale C
+2026/03/14 (22:10:13) | INFO: Running on /dev/pts/4
+2026/03/14 (22:10:13) | DEBUG: TTY mode enabled: false
+2026/03/14 (22:10:13) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/14 (22:10:13) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/14 (22:10:13) | DEBUG: Shared::init() : Initialized.
+2026/03/14 (22:10:13) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/14 (22:10:37) | ===> btop++ v.1.4.6
+2026/03/14 (22:10:37) | INFO: Logger set to DEBUG
+2026/03/14 (22:10:37) | DEBUG: Using locale C
+2026/03/14 (22:10:37) | INFO: Running on /dev/pts/4
+2026/03/14 (22:10:37) | DEBUG: TTY mode enabled: false
+2026/03/14 (22:10:37) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/14 (22:10:37) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/14 (22:10:37) | DEBUG: Shared::init() : Initialized.
+2026/03/14 (22:10:37) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/15 (00:00:07) | ===> btop++ v.1.4.6
+2026/03/15 (00:00:07) | INFO: Logger set to DEBUG
+2026/03/15 (00:00:07) | DEBUG: Using locale C
+2026/03/15 (00:00:07) | INFO: Running on /dev/pts/0
+2026/03/15 (00:00:07) | DEBUG: TTY mode enabled: false
+2026/03/15 (00:00:07) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/15 (00:00:07) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/15 (00:00:07) | DEBUG: Shared::init() : Initialized.
+2026/03/15 (00:00:07) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
+
+2026/03/15 (12:18:55) | ===> btop++ v.1.4.6
+2026/03/15 (12:18:55) | INFO: Logger set to DEBUG
+2026/03/15 (12:18:55) | DEBUG: Using locale C
+2026/03/15 (12:18:55) | INFO: Running on /dev/pts/1
+2026/03/15 (12:18:55) | DEBUG: TTY mode enabled: false
+2026/03/15 (12:18:55) | INFO: Failed to load libnvidia-ml.so, NVIDIA GPUs will not be detected: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+2026/03/15 (12:18:55) | INFO: Failed to load librocm_smi64.so, AMD GPUs will not be detected: librocm_smi64.so.6: cannot open shared object file: No such file or directory
+2026/03/15 (12:18:55) | DEBUG: Shared::init() : Initialized.
+2026/03/15 (12:18:55) | WARNING: Failed to get disk/partition stats for mount "/run/user/1000/doc" with statvfs error code: 1. Ignoring...
