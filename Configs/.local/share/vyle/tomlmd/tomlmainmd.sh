@@ -1,7 +1,7 @@
 #|--/ /+-------------------------+--/ /|#
 #|-/ /-| IDE Configuration File |-/ /-|#
 #|/ /--+-------------------------+/ /--|#
-source "$VYLE_DATA_HOME/vyle/staterc.conf"
+source "$VYLE_DATA_HOME/staterc.conf"
 
 #  █░█ █▄█ █░░ █▀▀ 
 #  ▀▄▀ ░█░ █▄▄ ██▄  
@@ -84,7 +84,7 @@ wlogoutStyle=1
 # █▀░ █▀█ ▄█ ░█░ █▀░ ██▄ ░█░ █▄▄ █▀█
 
 #// fetchIcon, sets the user directories scanned for finding fastfetch icons and randomizes. Default is to /home/iris/.config/fastfetch/icons!
-fetchIcon="/home/iris/.config/fastfetch/icons"
+fetchIcon="$XDG_CONFIG_HOME/fastfetch/icons"
 
 # █▄▄ █▀█ █ █▀  █░█ ▀█▀ █▄░█ █▀▀ █▀ █▀ █▀ ▀█▀ █░░ 
 # █▄█ █▀▄ █ █▄█ █▀█ ░█░ █░▀█ ██▄ ▄█ ▄█ █▄ ░█░ █▄▄
@@ -93,7 +93,7 @@ fetchIcon="/home/iris/.config/fastfetch/icons"
 #// brightnessIconDir is string-type variable that needs directory for dunst to use icons.
 #// brightnessStep is integer-type variable that is determined through 0 (true) and 1 (False).
 #// brightnessNotify is integer-type, determined of 0 and 1.
-brightnessIconDir="/home/iris/.config/dunst/icons/vol"
+brightnessIconDir="$XDG_CONFIG_HOME/dunst/icons/vol"
 brightnessStep=5
 brightnessNotify=0
 
@@ -103,7 +103,7 @@ brightnessNotify=0
 #// voluemcontrol.sh configuration, declarable according to user preference.
 #// volumeStep is an integer-type variable to determine the steps. For example, volumeStep is defaultly set to 5.
 #// volumeNotifyUpdateLevel & volumeNotifyMute, is an integer-type variable that suppress Notification-Popups determined through 0 (true) or {1 or greater (false)}.
-volumeIconDir="/home/iris/.config/dunst/icons/vol"
+volumeIconDir="$XDG_CONFIG_HOME/dunst/icons/vol"
 volumeStep=5
 volumeNotifyUpdateLevel=0
 volumeNotifyMute=0
@@ -136,5 +136,3 @@ CURSOR_SIZE=20
 #// Do not let exclusion be defined empty. This will unload all the variable and immediately fail!
 #// If an exclusion is declared, it would still be set to empty.
 # exclusion="()"
-
-
